@@ -38,7 +38,8 @@ Para clonar un repositorio se sigue la siguiente estructura: `git clone [url del
 
 ```
 
->[!note] En este ejemplo se ha insertado la url del repositorio para que puedan simplemente copiar y pegar.
+> [!NOTE]
+> En este ejemplo se ha insertado la url del repositorio para que puedan simplemente copiar y pegar.
 
 ### 2. Introduccion a ramas
 
@@ -55,7 +56,8 @@ Las ramas en GITHUB son muy importantes puesto a que son utilizadas para trabaja
 
 Como se puede apreciar en el ejemplo se crear una rama con `git branch`, sin embargo al revisar las ramas del repositorio, se observa que solo existe la rama `origin/main`
 
->[!note] como se ve en el ejemplo el comando branch tiene varias funcionalidades las cuales son:
+> [!NOTE]
+> como se ve en el ejemplo el comando branch tiene varias funcionalidades las cuales son:
 >
 > - git branch: muestra las ramas que tiene en local
 > - git branch [rama]: crea una nueva rama en local
@@ -66,7 +68,8 @@ Como se puede apreciar en el ejemplo se crear una rama con `git branch`, sin emb
 
 en github existe dos formas de cambiar de rama, utilizando el comando `git checkout [rama]` o `git switch [rama]`, las dos son similares, asi que no importa cual utilizes realmente.
 
->[!warning] Ten en cuenta que para cambiar de rama no debes de tener cambios sin subir en tu rama local, caso contrario no te permitira el cambio, para solucionar esto existe dos opciones:
+> [!WARNING]
+> Ten en cuenta que para cambiar de rama no debes de tener cambios sin subir en tu rama local, caso contrario no te permitira el cambio, para solucionar esto existe dos opciones:
 >
 > 1. subir tus cambios a la rama [mas informacion](#subir-cambios)
 > 2. guardar temporalmente los cambios en local, para ello se utiliza el comando `git stash`.
@@ -75,7 +78,8 @@ en github existe dos formas de cambiar de rama, utilizando el comando `git check
 
 github cuenta
 
->[!importante] Ten en cuenta que es posible que te pidan cierta configuraciones antes de poder participar en el proyecto. en caso de que tengas algun error al hacer un push verifica si tienes configurado el global.email y global.username de git en local para que puedas subir los cambios.
+> [!IMPORTANT]
+> Ten en cuenta que es posible que te pidan cierta configuraciones antes de poder participar en el proyecto. en caso de que tengas algun error al hacer un push verifica si tienes configurado el global.email y global.username de git en local para que puedas subir los cambios.
 
 ## Formas de trabajar en el repositorio
 
