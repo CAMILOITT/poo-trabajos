@@ -9,5 +9,10 @@ package consesionarios;
  * @author mnobo
  */
 public class prueba {
+  private string prueba;
+
+  public prueba(string prueba) {
+    this.prueba = prueba;
+  }
     
 }
