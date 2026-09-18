@@ -88,7 +88,7 @@ Para mantener una misma estructura entre todo el repositorio se recomienda traba
 ```txt
 poo-trabajos
 |
-|--[clase|deber|examen][Tema]
+|--[clase|deber][Tema]
 |     |
 |     |--[archivo Dia]
 |     |--demas-archivos-java...
