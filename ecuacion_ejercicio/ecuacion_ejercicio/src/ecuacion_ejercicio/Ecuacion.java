@@ -34,7 +34,6 @@ public class Ecuacion {
      */
     public void setA(float a) {
         this.a = a;
- 
     }
 
     /**
