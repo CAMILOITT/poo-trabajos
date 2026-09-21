@@ -121,14 +121,14 @@ public class Ecuacion {
             String valorIzq = "" + -b / valorDenominador;
             String valorDer = "" + valorDiscriminante / valorDenominador;
 
-            resulatado[0] = valorIzq + " + " + valorDer;
-            resulatado[1] = valorIzq + " - " + valorDer;
+            resultado[0] = valorIzq + " + " + valorDer;
+            resultado[1] = valorIzq + " - " + valorDer;
 
             return resultado;
         }
 
-        resultado[0] = (float) (-b + Math.sqrt(valorDiscriminante)) / valorDenominador;
-        resultado[1] = (float) (-b - Math.sqrt(valorDiscriminante)) / valorDenominador;
+        resultado[0] = "X1 = " + (-b + Math.sqrt(valorDiscriminante)) / valorDenominador;
+        resultado[1] = "X2 = " + (-b - Math.sqrt(valorDiscriminante)) / valorDenominador;
 
         return resultado;
     }

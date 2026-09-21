@@ -53,7 +53,7 @@ public class Ecuacion_ejercicio {
 
         Ecuacion ec = new Ecuacion(a, b, c);
 
-        if (opcion > 2) {
+        if (opcion > 2 || opcion < 0) {
             System.out.print("La opcion no es valida");
         }
 
@@ -62,7 +62,8 @@ public class Ecuacion_ejercicio {
         }
         
         if (opcion == 2) {
-            float[] vector= ;
+            String[] vector= new String[2];
+            ec.encontrarRaices2Grado();
         }
 
     }
