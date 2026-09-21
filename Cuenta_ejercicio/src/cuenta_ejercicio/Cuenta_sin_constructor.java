@@ -15,7 +15,7 @@ public class Cuenta_sin_constructor {
 
     
     private float saldo;
-    private int numero_cuenta;
+    private String numero_cuenta;
 
     /**
      * Asigna el saldo de la cuenta.
@@ -31,10 +31,10 @@ public class Cuenta_sin_constructor {
      * Se usa una sola vez, justo después de crear el objeto, para
      * simular lo que un constructor haría de una sola vez.
      *
-     * @param numero_cuenta número de cuenta a asignar
+     * @param numeroCuentaI número de cuenta a asignar
      */
-    public void setNumero_cuenta(int numero_cuenta) {
-        this.numero_cuenta = numero_cuenta;
+    public void setNumeroCuenta(String numeroCuentaI) {
+        this.numero_cuenta = numeroCuentaI;
     }
 
     /**
@@ -44,7 +44,7 @@ public class Cuenta_sin_constructor {
      *
      * @return el número de cuenta almacenado
      */
-    public int getNumero_cuenta() {
+    public String getNumeroCuenta() {
         return numero_cuenta;
     }
 
@@ -63,7 +63,7 @@ public class Cuenta_sin_constructor {
 
         if (cantidad <= this.saldo)
                 {
-                   this.saldo = this.saldo - cantidad; 
+                   this.saldo -= cantidad; 
                    return true;
                 }
         else
@@ -81,7 +81,7 @@ public class Cuenta_sin_constructor {
      */
     public void depositar (float cantidad)
     {
-        this.saldo = this.saldo + cantidad; 
+        this.saldo +=cantidad; 
     }
 
     /**
