@@ -98,7 +98,7 @@ public class Vehiculo {
      *
      * @return una cadena con marca, modelo, placa, año y precio
      */
-    public String VerVehiculo()
+    public String verVehiculo()
     {
 
         String cad = "[" + "Marca: "+ this.Marca +" | "+ "Modelo: "+this.Modelo +" | "+ "Placa: "+this.Placa +" | "+ "Anios: "+this.anios +" | "+ "Precio: "+this.Precio+" dolares"+ " ]";

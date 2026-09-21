@@ -23,9 +23,9 @@ public class Consesionarios {
      * @param marca marca por la cual filtrar
      * @return la suma total en dinero de los vehículos de esa marca
      */
-    public static float TotalStockEnDinero(Vehiculo arr[][], String marca)
+    public static float totalStockEnDinero(Vehiculo arr[][], String marca)
     {
-        float stock_dinero = 0;
+        float stockDinero = 0;
 
         for (int i = 0; i < arr.length; i++)
         {
@@ -33,12 +33,12 @@ public class Consesionarios {
             {
                 if (arr[i][j].getMarca().equals(marca))
                 {
-                    stock_dinero += arr[i][j].getPrecio();
+                    stockDinero += arr[i][j].getPrecio();
                 }
             }
         }
 
-        return stock_dinero;
+        return stockDinero;
     }
 
     /**
@@ -56,7 +56,7 @@ public class Consesionarios {
      * @return un arreglo con los vehículos cuyo año está entre
      *         anio1 y anio2
      */
-    public static Vehiculo[] RangoAnios(Vehiculo arr[][], int anio1, int anio2)
+    public static Vehiculo[] rangoAnios(Vehiculo arr[][], int anio1, int anio2)
     {
         
         int cont = 0;
@@ -100,7 +100,7 @@ public class Consesionarios {
      * @return la representación en texto del vehículo encontrado, o
      *         un mensaje indicando que no se encontró ninguno
      */
-    public static String BuscarPlaca(Vehiculo arr[][], String placa)
+    public static String buscarPlaca(Vehiculo arr[][], String placa)
     {
         for (int i = 0; i < arr.length; i++)
         {
@@ -109,7 +109,7 @@ public class Consesionarios {
 
                 if (arr[i][j].getPlaca().equals(placa))
                 {
-                    return arr[i][j].VerVehiculo();
+                    return arr[i][j].verVehiculo();
                 }
             }
         }
@@ -132,22 +132,21 @@ public class Consesionarios {
      *
      * @param args the command line arguments
      */
-    public static void ImprimirArr(Vehiculo arr[])
+    public static void imprimirArr(Vehiculo arr[])
     {
         for (int i = 0; i < arr.length; i++)
         {
-            System.out.println(arr[i].VerVehiculo());
+            System.out.println(arr[i].verVehiculo());
         }
     }
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
-        // El inventario de la concesionaria: una matriz fija de 3x3,
-        // tal como pide el enunciado.
+        //El inventario de la concesionaria: una matriz fija de 3x3
         Vehiculo[][] inventario = new Vehiculo[3][3];
 
-        // --- Ingreso de datos por teclado: se llenan los 9 vehículos ---
+        //Ingreso de datos por teclado: se llenan los 9 vehículos
         System.out.println("Ingreso de datos del inventario (3x3 vehiculos)");
         System.out.println();
 
@@ -179,7 +178,7 @@ public class Consesionarios {
             }
         }
 
-        // --- Menu para probar las funciones sobre el inventario ya lleno ---
+        //Menu para probar las funciones sobre el inventario ya lleno
         String opcion = "";
 
         while (!opcion.equals("FIN"))
@@ -201,7 +200,7 @@ public class Consesionarios {
                 System.out.print("Ingrese la marca a consultar: ");
                 String marcaBuscada = sc.nextLine();
 
-                float total = TotalStockEnDinero(inventario, marcaBuscada);
+                float total = totalStockEnDinero(inventario, marcaBuscada);
                 System.out.println("El total en stock de la marca " + marcaBuscada + " es: " + total);
             }
             else if (opcion.equals("2"))
@@ -214,18 +213,18 @@ public class Consesionarios {
                 int anio2 = sc.nextInt();
                 sc.nextLine();
 
-                Vehiculo[] encontrados = RangoAnios(inventario, anio1, anio2);
+                Vehiculo[] encontrados = rangoAnios(inventario, anio1, anio2);
 
                 System.out.println();
                 System.out.println("Vehiculos encontrados en ese rango de anios:");
-                ImprimirArr(encontrados);
+                imprimirArr(encontrados);
             }
             else if (opcion.equals("3"))
             {
                 System.out.print("Ingrese la placa a buscar: ");
                 String placaBuscada = sc.nextLine();
 
-                String resultado = BuscarPlaca(inventario, placaBuscada);
+                String resultado = buscarPlaca(inventario, placaBuscada);
                 System.out.println(resultado);
             }
         }
