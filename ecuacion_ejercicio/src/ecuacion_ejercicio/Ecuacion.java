@@ -20,6 +20,10 @@ public class Ecuacion {
 
     /**
      * Crea una ecuación vacía, con todos los coeficientes en 0.
+     *
+     * @param a es la variable a de la ecuacion
+     * @param b es la variable b de la ecuacion
+     * @param c es la variable c de la ecuacion
      */
     public Ecuacion(float a, float b, float c) {
         this.a = a;
@@ -85,8 +89,6 @@ public class Ecuacion {
      * Calcula la raíz de una ecuación de primer grado: bx + c = 0, despejando x
      * = -c / b.
      *
-     * @param b coeficiente que acompaña a x
-     * @param c término independiente
      * @return la raíz x de la ecuación, o el valor de c si b es 0 (nota: si b =
      * 0 y c distinto de 0.
      */
@@ -117,7 +119,7 @@ public class Ecuacion {
         float valorDenominador = 2 * this.a;
 
         if (valorDiscriminante < 0) {
-                float nImaginario = valorDiscriminante;
+            // float nImaginario = valorDiscriminante;
             String valorIzq = "" + -b / valorDenominador;
             String valorDer = "" + valorDiscriminante / valorDenominador;
 
@@ -127,8 +129,8 @@ public class Ecuacion {
             return resultado;
         }
 
-        resultado[0] = "X1 = " + (-b + Math.sqrt(valorDiscriminante)) / valorDenominador;
-        resultado[1] = "X2 = " + (-b - Math.sqrt(valorDiscriminante)) / valorDenominador;
+        resultado[0] = "" + (-b + (Math.sqrt(valorDiscriminante)) / valorDenominador);
+        resultado[1] = "" + (-b - (Math.sqrt(valorDiscriminante)) / valorDenominador);
 
         return resultado;
     }

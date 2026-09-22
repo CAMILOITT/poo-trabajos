@@ -5,8 +5,8 @@
 package consesionarios;
 
 /**
- * Representa un vehículo dentro del inventario de una concesionaria,
- * con sus datos intrínsecos: marca, modelo, precio, año y placa.
+ * Representa un vehículo dentro del inventario de una concesionaria, con sus
+ * datos intrínsecos: marca, modelo, precio, año y placa.
  *
  * @author grupo 1
  */
@@ -17,18 +17,6 @@ public class Vehiculo {
     private float Precio;
     private String anios;
     private String Placa;
-
-    /**
-     * Crea un vehículo con valores por defecto, útil para casos donde
-     * todavía no se conocen todos los datos reales del vehículo.
-     */
-    public Vehiculo() {
-        this.Marca = "Sin Marca";
-        this.Modelo = "Sin Modelo";
-        this.Precio = 0;
-        this.anios = "Sin anio";
-        this.Placa = "Sin placa";
-    }
 
     /**
      * Crea un vehículo con todos sus datos conocidos.
@@ -93,15 +81,14 @@ public class Vehiculo {
     }
 
     /**
-     * Arma una representación en texto con todos los datos del
-     * vehículo, separados por comas para que sea legible.
+     * Arma una representación en texto con todos los datos del vehículo,
+     * separados por comas para que sea legible.
      *
      * @return una cadena con marca, modelo, placa, año y precio
      */
-    public String verVehiculo()
-    {
+    public String verVehiculo() {
 
-        String cad = "[" + "Marca: "+ this.Marca +" | "+ "Modelo: "+this.Modelo +" | "+ "Placa: "+this.Placa +" | "+ "Anios: "+this.anios +" | "+ "Precio: "+this.Precio+" dolares"+ " ]";
+        String cad = "[" + "Marca: " + this.Marca + " | " + "Modelo: " + this.Modelo + " | " + "Placa: " + this.Placa + " | " + "Anios: " + this.anios + " | " + "Precio: " + this.Precio + " dolares" + " ]";
 
         return cad;
     }

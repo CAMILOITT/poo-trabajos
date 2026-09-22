@@ -30,9 +30,11 @@ public class Ecuacion_ejercicio {
         // Se crea con el constructor vacío; los coeficientes se van
         // asignando después con los setters, según lo que el usuario
         // vaya respondiendo.
-        System.out.println("Ingrese las siguiente variables:");
-        System.out.println();
-        System.out.print("Cual sera a?: ");
+        System.out.println("""
+            Ingrese las siguiente variables:
+
+            Cual sera a?: 
+        """);
         a = sc.nextFloat();
         sc.nextLine();
 
@@ -44,11 +46,14 @@ public class Ecuacion_ejercicio {
         c = sc.nextFloat();
         sc.nextLine();
 
-        System.out.println("Selecione la ecuacion que desea resolver (escriba el literal correspondiente)");
-        System.out.println("1. Ecuacion de primer grado");
-        System.out.println("2. Ecuacion de segundo grado");
-        System.out.println();
-        System.out.print("Cual sera su opcion?: ");
+        System.out.println("""
+            Selecione la ecuacion que desea resolver (escriba el literal correspondiente)
+            1. Ecuacion de primer grado
+            2. Ecuacion de segundo grado
+
+            Ingrese su opcion:
+
+            """);
         opcion = sc.nextInt();
 
         Ecuacion ec = new Ecuacion(a, b, c);
@@ -60,10 +65,10 @@ public class Ecuacion_ejercicio {
         if (opcion == 1) {
             System.out.print("su resultado es: " + ec.encontrarRaiz());
         }
-        
+
         if (opcion == 2) {
-            String[] vector= new String[2];
-            ec.encontrarRaices2Grado();
+            String[] respuesta = ec.encontrarRaices2Grado();
+            System.out.println("[ "+ respuesta[0]+ ", "+ respuesta[1]+ " ]");
         }
 
     }
