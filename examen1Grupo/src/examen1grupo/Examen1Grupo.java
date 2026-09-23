@@ -29,20 +29,26 @@ public class Examen1Grupo {
                           MENU
           =================================
           1)Agregar un Sitio Turistico
-          2)Buscar Sitio Turistico
-          3)Salir
+          2)Buscar (Por Ciudad)
+          3)Buscar (Por rango de costos)
+          4)Salir
                                       """);
       System.out.println("Ingrese la opcion: ");
       String respuestaI = readline.nextLine();
-      if (respuestaI.equals("3")) {
+      if (respuestaI.equals("4")) {
         break;
       }
       if (respuestaI.equals("1")) {
-
+        //agragar sitio
         continue;
       }
       if (respuestaI.equals("2")) {
+        //
 
+        continue;
+      }
+      if(respuestaI.equals("3"))
+      {
         continue;
       }
       System.out.println("ERROR! EL dato ingresado no es valido");
@@ -55,7 +61,7 @@ public class Examen1Grupo {
 
 		for (SitioTuristico sitioTuristico : listaSitios) {
 			if (sitioTuristico.getCiudad().equals(ciudad)) {
-				listaFiltrada.add(sitioTuristico)
+				listaFiltrada.add(sitioTuristico);
 			}
 		}
 		return listaFiltrada;
