@@ -4,6 +4,9 @@
  */
 package examen1grupo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author camil
@@ -15,8 +18,22 @@ public class Examen1Grupo {
      */
     public static void main(String[] args) {
 
+        List<SitioTuristico> listaSitios = new ArrayList<SitioTuristico>();
+
+        // realizar el menu para el ingreso de datos
+
+        // realizar el menu para escoger laopcion (debe de tener la opcion para salir
+        // del programa)
+
     }
 
-    public static  
+    public static SitioTuristico buscarSitiosTuristicosPorCiudad(List<SitioTuristico> sitio, String ciudad) {
+        return sitio;
+    }
+
+    public static List<SitioTuristico> buscarSitiosTurisiticosPorRangoDeCosto(List<SitioTuristico> sitio,
+            double costo) {
+        return sitio;
+    }
 
 }

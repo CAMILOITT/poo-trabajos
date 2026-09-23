@@ -14,32 +14,27 @@ public class SitioTuristico {
     private String descripcion;
     private float costos;
 
-    public SitioTuristico(String ciudad,String nombre,String descripcion,float costo)
-    {
-        this.ciudad=ciudad;
-        this.nombre=nombre;
-        this.descripcion=descripcion;
-        this.costos=costo;
+    public SitioTuristico(String ciudad, String nombre, String descripcion, float costo) {
+        this.ciudad = ciudad;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.costos = costo;
     }
 
-    public String getCiudad()
-    {
+    public String getCiudad() {
         return this.ciudad;
     }
 
-    public  String getNombre()
-    {
-        return  this.nombre;
+    public String getNombre() {
+        return this.nombre;
     }
 
-    public String getDescripcion()
-    {
+    public String getDescripcion() {
         return this.descripcion;
     }
-    
-    public Float getCosto()
-    {
+
+    public Float getCosto() {
         return this.costos;
     }
-    
+
 }
