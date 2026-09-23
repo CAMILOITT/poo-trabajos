@@ -6,6 +6,7 @@ package examen1grupo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -13,21 +14,43 @@ import java.util.List;
  */
 public class Examen1Grupo {
 
-	/**
-	 * @param args the command line arguments
-	 */
-	public static void main(String[] args) {
+  /**
+   * @param args the command line arguments
+   */
+  public static void main(String[] args) {
+    Scanner readline = new Scanner(System.in);
+    List<SitioTuristico> listaSitios = new ArrayList<SitioTuristico>();
 
-		List<SitioTuristico> listaSitios = new ArrayList<SitioTuristico>();
+    // realizar el menu para el ingreso de datos
+    System.out.println("PROGRAMA PRUEBA RDA1 -GRUPO 1-");
+    while (true) {
+      System.out.println("""
+          =================================
+                          MENU
+          =================================
+          1)Agregar un Sitio Turistico
+          2)Buscar Sitio Turistico
+          3)Salir
+                                      """);
+      System.out.println("Ingrese la opcion: ");
+      String respuestaI = readline.nextLine();
+      if (respuestaI.equals("3")) {
+        break;
+      }
+      if (respuestaI.equals("1")) {
 
-		// realizar el menu para el ingreso de datos
+        continue;
+      }
+      if (respuestaI.equals("2")) {
 
-		// realizar el menu para escoger la opcion (debe de tener la opcion para salir
-		// del programa)
+        continue;
+      }
+      System.out.println("ERROR! EL dato ingresado no es valido");
 
-	}
+    }
+  }
 
-	public static List<SitioTuristico> buscarSitiosTuristicosPorCiudad(List<SitioTuristico> listaSitios, String ciudad) {
+  public static List<SitioTuristico> buscarSitiosTuristicosPorCiudad(List<SitioTuristico> listaSitios, String ciudad) {
 		List<SitioTuristico> listaFiltrada = new ArrayList<SitioTuristico>();
 
 		for (SitioTuristico sitioTuristico : listaSitios) {
@@ -38,17 +61,16 @@ public class Examen1Grupo {
 		return listaFiltrada;
 	}
 
-	public static List<SitioTuristico> buscarSitiosTurisiticosPorRangoDeCosto(List<SitioTuristico> listaSitios,
-			double costoInferior, double costoSuperior) {
-		List<SitioTuristico> listaFiltrada = new ArrayList<SitioTuristico>();
+  public static List<SitioTuristico> buscarSitiosTurisiticosPorRangoDeCosto(List<SitioTuristico> listaSitios,
+      double costoInferior, double costoSuperior) {
 
-		for (SitioTuristico sitioTuristico : listaSitios) {
-			if (costoInferior <= sitioTuristico.getCosto() && sitioTuristico.getCosto() <= costoSuperior) {
-				listaFiltrada.add(sitioTuristico);
-			}
-		}
-
-		return listaFiltrada;
-	}
+    List<SitioTuristico> listaFiltrada = new ArrayList<SitioTuristico>();
+    for (SitioTuristico sitioTuristico : listaSitios) {
+      if (costoInferior <= sitioTuristico.getCosto() && sitioTuristico.getCosto() <= costoSuperior) {
+        listaFiltrada.add(sitioTuristico);
+      }
+    }
+    return listaFiltrada;
+  }
 
 }
