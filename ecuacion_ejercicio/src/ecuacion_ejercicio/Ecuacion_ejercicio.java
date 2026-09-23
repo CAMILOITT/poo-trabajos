@@ -11,7 +11,7 @@ import java.util.Scanner;
  * pidiendo al usuario los coeficientes necesarios según el tipo de ecuación que
  * elija.
  *
- * @author mnobo
+ * @author grupo1
  */
 public class Ecuacion_ejercicio {
 
@@ -20,56 +20,36 @@ public class Ecuacion_ejercicio {
      */
     public static void main(String[] args) {
         float a, b, c;
-
-        // Guarda qué tipo de ecuación eligió el usuario: 1 (primer
-        // grado) o 2 (segundo grado).
-        int opcion;
-
+ 
         Scanner sc = new Scanner(System.in);
 
-        // Se crea con el constructor vacío; los coeficientes se van
-        // asignando después con los setters, según lo que el usuario
-        // vaya respondiendo.
-        System.out.println("""
-            Ingrese las siguiente variables:
-
-            Cual sera a?: 
-        """);
+        System.out.println("Ingrese las variables:");
+        System.out.println();
+        System.out.print("Ingrese a: ");
         a = sc.nextFloat();
         sc.nextLine();
 
-        System.out.print("Cual sera b?: ");
+        System.out.print("Ingrse b: ");
         b = sc.nextFloat();
         sc.nextLine();
 
-        System.out.print("Cual sera c?: ");
+        System.out.print("Ingrese c: ");
         c = sc.nextFloat();
         sc.nextLine();
 
-        System.out.println("""
-            Selecione la ecuacion que desea resolver (escriba el literal correspondiente)
-            1. Ecuacion de primer grado
-            2. Ecuacion de segundo grado
-
-            Ingrese su opcion:
-
-            """);
-        opcion = sc.nextInt();
-
         Ecuacion ec = new Ecuacion(a, b, c);
-
-        if (opcion > 2 || opcion < 0) {
-            System.out.print("La opcion no es valida");
+        String[] resultado = ec.encontrarRaices();
+        
+        if(ec.esPrimerGrado()){
+            System.out.println();
+            System.out.println("Es una ecuacion de primer grado");
+            System.out.println("El resultado es: " + resultado[0]);
+        }else {
+            System.out.println();
+            System.out.println("Es una ecuacion de segundo grado");
+            System.out.println("X1 = " + resultado[0]);
+            System.out.println("X2 = " + resultado[1]);
+           
         }
-
-        if (opcion == 1) {
-            System.out.print("su resultado es: " + ec.encontrarRaiz());
-        }
-
-        if (opcion == 2) {
-            String[] respuesta = ec.encontrarRaices2Grado();
-            System.out.println("[ "+ respuesta[0]+ ", "+ respuesta[1]+ " ]");
-        }
-
     }
 }
