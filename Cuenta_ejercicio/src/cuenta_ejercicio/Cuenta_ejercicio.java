@@ -15,6 +15,17 @@ public class Cuenta_ejercicio {
      */
     public static void main(String[] args)
      {
+
+        // crear constructor
+        System.out.println("PROGRAMA CONSTRUCTOR Y NO CONSTRUCTOR");
+        System.out.println("Ingreso");
+        if(opcion == 'si')
+            cuenta_ejercicio cuenta = new Cuenta_ejercicio(23423, "erwer");
+        else 
+            cuenta_ejercicio cuenta = new Cuenta_ejercicio();   
+
+
+
         Scanner scan = new Scanner(System.in);
         Cuenta_sin_constructor cuentaUsuario = new Cuenta_sin_constructor();
         System.out.println("BIENVENIDO, Ingresar su numero de cuenta: ");
@@ -41,7 +52,7 @@ public class Cuenta_ejercicio {
                 switch (respuesta) 
                 {
                     case "1":
-                    cuentaUsuario.ConsultarSaldo();
+                    cuentaUsuario.consultarSaldo();
                         break;
                     case "2":
                         System.out.print("Ingrese el valor a depositar:  ");
@@ -75,7 +86,7 @@ public class Cuenta_ejercicio {
                         System.out.println("Cerrando el sistema...");
                         break;
                     default: 
-                        cuentaUsuario.ConsultarSaldo();
+                        cuentaUsuario.consultarSaldo();
                         break;
                  }
             }
