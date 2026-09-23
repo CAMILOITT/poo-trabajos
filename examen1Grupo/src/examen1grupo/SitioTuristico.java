@@ -9,32 +9,32 @@ package examen1grupo;
  * @author camil
  */
 public class SitioTuristico {
-  private String ciudad;
-  private String nombre;
-  private String descripcion;
-  private float costos;
+    private String director;
+    private String nombrePelicula;
+    private String descripcion;
+    private float anioEstreno;
 
-  public SitioTuristico(String ciudad, String nombre, String descripcion, float costo) {
-    this.ciudad = ciudad;
-    this.nombre = nombre;
-    this.descripcion = descripcion;
-    this.costos = costo;
-  }
+    public SitioTuristico(String nombreDirectorI, String nombrePeliculaI, String descripcionI, float anioEstrenoI) {
+        this.director = nombreDirectorI;
+        this.nombrePelicula = nombrePeliculaI;
+        this.descripcion = descripcionI;
+        this.anioEstreno = anioEstrenoI;
+    }
 
-  public String getCiudad() {
-    return this.ciudad;
-  }
+    public String getDirector() {
+        return this.director;
+    }
 
-  public String getNombre() {
-    return this.nombre;
-  }
+    public String getNombrePelicula() {
+        return this.nombrePelicula;
+    }
 
-  public String getDescripcion() {
-    return this.descripcion;
-  }
+    public String getDescripcion() {
+        return this.descripcion;
+    }   
 
-  public Float getCosto() {
-    return this.costos;
-  }
+    public Float getCosto() {
+        return this.anioEstreno;
+    }
 
 }

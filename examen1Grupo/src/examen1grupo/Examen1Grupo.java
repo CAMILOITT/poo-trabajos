@@ -39,17 +39,15 @@ public class Examen1Grupo {
         break;
       }
       if (respuestaI.equals("1")) {
-        //agragar sitio
+        // agragar sitio
         continue;
       }
       if (respuestaI.equals("2")) {
         System.out.println("");
-        String palabraBuscar=
-        buscarSitiosTuristicosPorCiudad(listaSitios, respuestaI);
+        String palabraBuscar = buscarSitiosTuristicosPorCiudad(listaSitios, respuestaI);
         continue;
       }
-      if(respuestaI.equals("3"))
-      {
+      if (respuestaI.equals("3")) {
         continue;
       }
       System.out.println("ERROR! EL dato ingresado no es valido");
@@ -58,15 +56,15 @@ public class Examen1Grupo {
   }
 
   public static List<SitioTuristico> buscarSitiosTuristicosPorCiudad(List<SitioTuristico> listaSitios, String ciudad) {
-		List<SitioTuristico> listaFiltrada = new ArrayList<SitioTuristico>();
+    List<SitioTuristico> listaFiltrada = new ArrayList<SitioTuristico>();
 
-		for (SitioTuristico sitioTuristico : listaSitios) {
-			if (sitioTuristico.getCiudad().equals(ciudad)) {
-				listaFiltrada.add(sitioTuristico);
-			}
-		}
-		return listaFiltrada;
-	}
+    for (SitioTuristico sitioTuristico : listaSitios) {
+      if (sitioTuristico.getDirector().equals(ciudad)) {
+        listaFiltrada.add(sitioTuristico);
+      }
+    }
+    return listaFiltrada;
+  }
 
   public static List<SitioTuristico> buscarSitiosTurisiticosPorRangoDeCosto(List<SitioTuristico> listaSitios,
       double costoInferior, double costoSuperior) {
