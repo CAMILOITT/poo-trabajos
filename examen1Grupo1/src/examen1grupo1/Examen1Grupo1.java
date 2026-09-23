@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package examen1Grupo1;
+package examen1grupo1;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,18 +19,17 @@ public class Examen1Grupo1 {
    */
   public static void main(String[] args) {
     Scanner readline = new Scanner(System.in);
-    List<Pelicula> peliculas = new ArrayList<Pelicula>();
+    List<Pelicula> listaPeliculas = new ArrayList<Pelicula>();
 
-    // realizar el menu para el ingreso de datos
     System.out.println("PROGRAMA PRUEBA RDA1 -GRUPO 1-");
     while (true) {
       System.out.println("""
           =================================
                           MENU
           =================================
-          1)Agregar un Sitio Turistico
-          2)Buscar (Por Ciudad)
-          3)Buscar (Por rango de costos)
+          1)Agregar Pelicula
+          2)Buscar por Autor
+          3)Buscar por anio
           4)Salir
                                       """);
       System.out.println("Ingrese la opcion: ");
@@ -39,40 +38,78 @@ public class Examen1Grupo1 {
         break;
       }
       if (respuestaI.equals("1")) {
-        // agragar sitio
+        Pelicula item = crearPelicula(readline);
+        listaPeliculas.add(item);
         continue;
       }
-      if (respuestaI.equals("2")) {
-        System.out.println("");
-        String palabraBuscar = buscarSitiosTuristicosPorCiudad(listaSitios, respuestaI);
-        continue;
-      }
-      if (respuestaI.equals("3")) {
-        continue;
-      }
-      System.out.println("ERROR! EL dato ingresado no es valido");
 
+      if (respuestaI.equals("2")) {
+        System.out.println("Ingrese el autor:");
+        String autor = readline.nextLine();
+        if (autor.equals("")) {
+          System.out.println("Autor no valido.");
+          continue;
+        }
+        List<Pelicula> peliculasPorAutor = buscarPeliculaPorAutor(listaPeliculas, autor);
+        imprimirLista(peliculasPorAutor);
+        continue;
+      }
+
+      if (respuestaI.equals("3")) {
+        System.out.println("Ingrese el anio:");
+        int anioBuscar = (int) readline.nextInt();
+        List<Pelicula> listaPeliculasPorAnio = buscarPeliculaPorAnio(listaPeliculas, anioBuscar);
+        imprimirLista(listaPeliculasPorAnio);
+        continue;
+      }
+
+      System.out.println("ERROR! EL dato ingresado no es valido");
+    }
+
+    readline.close();
+  }
+
+  public static Pelicula crearPelicula(Scanner readline) {
+
+    System.out.println("Ingrese el nombre:");
+    String nombre = readline.nextLine();
+    System.out.println("Ingrese el descripcion:");
+    String descripcion = readline.nextLine();
+    System.out.println("Ingrese el director:");
+    String director = readline.nextLine();
+    System.out.println("Ingrese el genero:");
+    String genero = readline.nextLine();
+    System.out.println("Ingrese el anio:");
+    int anio = readline.nextInt();
+
+    return new Pelicula(director, nombre, descripcion, genero, anio);
+  }
+
+  public static void imprimirLista(List<Pelicula> listaPelicula) {
+    for (Pelicula item : listaPelicula) {
+      System.out.println("Nombre:" + item.getNombre());
+      System.out.println("Anio:" + item.getAnio());
+      System.out.println("Director:" + item.getDirector());
+      System.out.println();
     }
   }
 
-  public static List<SitioTuristico> buscarSitiosTuristicosPorCiudad(List<SitioTuristico> listaSitios, String ciudad) {
-    List<SitioTuristico> listaFiltrada = new ArrayList<SitioTuristico>();
-
-    for (SitioTuristico sitioTuristico : listaSitios) {
-      if (sitioTuristico.getDirector().equals(ciudad)) {
-        listaFiltrada.add(sitioTuristico);
+  public static List<Pelicula> buscarPeliculaPorAutor(List<Pelicula> listaPeliculas, String ciudad) {
+    List<Pelicula> listaFiltrada = new ArrayList<Pelicula>();
+    for (Pelicula Pelicula : listaPeliculas) {
+      if (Pelicula.getDirector().equals(ciudad)) {
+        listaFiltrada.add(Pelicula);
       }
     }
     return listaFiltrada;
   }
 
-  public static List<SitioTuristico> buscarSitiosTurisiticosPorRangoDeCosto(List<SitioTuristico> listaSitios,
-      double costoInferior, double costoSuperior) {
-
-    List<SitioTuristico> listaFiltrada = new ArrayList<SitioTuristico>();
-    for (SitioTuristico sitioTuristico : listaSitios) {
-      if (costoInferior <= sitioTuristico.getCosto() && sitioTuristico.getCosto() <= costoSuperior) {
-        listaFiltrada.add(sitioTuristico);
+  public static List<Pelicula> buscarPeliculaPorAnio(List<Pelicula> listaPeliculas,
+      int anio) {
+    List<Pelicula> listaFiltrada = new ArrayList<Pelicula>();
+    for (Pelicula Pelicula : listaPeliculas) {
+      if (Pelicula.getAnio() == anio) {
+        listaFiltrada.add(Pelicula);
       }
     }
     return listaFiltrada;
