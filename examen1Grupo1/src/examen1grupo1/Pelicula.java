@@ -10,6 +10,10 @@ package examen1grupo1;
  */
 public class Pelicula {
     
-    
+    private String ciudad;
+    private String nombre;
+    private String descripcion;
+    private String aniosEstreno;
+    private int Anios;
     
 }
