@@ -43,8 +43,9 @@ public class Examen1Grupo {
         continue;
       }
       if (respuestaI.equals("2")) {
-        //
-
+        System.out.println("");
+        String palabraBuscar=
+        buscarSitiosTuristicosPorCiudad(listaSitios, respuestaI);
         continue;
       }
       if(respuestaI.equals("3"))
