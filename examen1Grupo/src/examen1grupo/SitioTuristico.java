@@ -10,31 +10,37 @@ package examen1grupo;
  */
 public class SitioTuristico {
     private String director;
-    private String nombrePelicula;
+    private String nombre;
     private String descripcion;
-    private float anioEstreno;
+    private int anioEstreno;
+    private String genero;
 
-    public SitioTuristico(String nombreDirectorI, String nombrePeliculaI, String descripcionI, float anioEstrenoI) {
-        this.director = nombreDirectorI;
-        this.nombrePelicula = nombrePeliculaI;
-        this.descripcion = descripcionI;
+    public SitioTuristico(String director, String nombre, String decripcion, int anioEstrenoI, String genero) {
+        this.director = director;
+        this.nombre = nombre;
+        this.descripcion = decripcion;
         this.anioEstreno = anioEstrenoI;
+        this.genero = genero;
     }
 
     public String getDirector() {
         return this.director;
     }
 
-    public String getNombrePelicula() {
-        return this.nombrePelicula;
+    public String getNombre() {
+        return this.nombre;
     }
 
     public String getDescripcion() {
         return this.descripcion;
-    }   
+    }
 
-    public Float getCosto() {
+    public int getAnioEstreno() {
         return this.anioEstreno;
+    }
+    public String getGenero()
+    {
+        return this.genero;
     }
 
 }

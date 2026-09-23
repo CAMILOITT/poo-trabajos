@@ -28,9 +28,9 @@ public class Examen1Grupo {
           =================================
                           MENU
           =================================
-          1)Agregar un Sitio Turistico
-          2)Buscar (Por Ciudad)
-          3)Buscar (Por rango de costos)
+          1)Agregar Pelicula
+          2)Buscar (Por Director)
+          3)Buscar (Por rango de Anios de Estreno)
           4)Salir
                                       """);
       System.out.println("Ingrese la opcion: ");
@@ -39,12 +39,11 @@ public class Examen1Grupo {
         break;
       }
       if (respuestaI.equals("1")) {
-        // agragar sitio
+        // agragar 
         continue;
       }
       if (respuestaI.equals("2")) {
-        System.out.println("");
-        String palabraBuscar = buscarSitiosTuristicosPorCiudad(listaSitios, respuestaI);
+        //agregar busquedaa por directaor
         continue;
       }
       if (respuestaI.equals("3")) {
@@ -71,7 +70,7 @@ public class Examen1Grupo {
 
     List<SitioTuristico> listaFiltrada = new ArrayList<SitioTuristico>();
     for (SitioTuristico sitioTuristico : listaSitios) {
-      if (costoInferior <= sitioTuristico.getCosto() && sitioTuristico.getCosto() <= costoSuperior) {
+      if (costoInferior <= sitioTuristico.getAnioEstreno() && sitioTuristico.getAnioEstreno() <= costoSuperior) {
         listaFiltrada.add(sitioTuristico);
       }
     }
