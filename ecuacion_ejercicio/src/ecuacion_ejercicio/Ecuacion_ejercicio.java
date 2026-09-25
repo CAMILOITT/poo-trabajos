@@ -54,3 +54,4 @@ public class Ecuacion_ejercicio {
         sc.close();
     }
 }
+    
