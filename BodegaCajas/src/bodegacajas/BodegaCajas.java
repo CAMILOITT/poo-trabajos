@@ -61,6 +61,7 @@ public class BodegaCajas {
             } else if (!opcion.equals("5")) {
                 System.out.println("Opcion no valida");
             }
+            sc.close();
         }
     }
 
