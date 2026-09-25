@@ -1,16 +1,15 @@
 package empleados_ejercicio;
 
 /**
- * Representa un empleado, con sus datos intrínsecos: nombre, cargo
- * y código de identificación.
+ * Representa un empleado, con sus datos intrínsecos: nombre, cargo y código de
+ * identificación.
  *
- * Nota: esta clase no declara ningún constructor propio, así que
- * Java le da automáticamente un constructor vacío por defecto
- * (equivalente a "public Empleado() {}"). Por eso, para crear un
- * empleado con datos, primero se instancia vacío y luego se llenan
- * sus atributos uno por uno con los setters.
+ * Nota: esta clase no declara ningún constructor propio, así que Java le da
+ * automáticamente un constructor vacío por defecto (equivalente a "public
+ * Empleado() {}"). Por eso, para crear un empleado con datos, primero se
+ * instancia vacío y luego se llenan sus atributos uno por uno con los setters.
  *
- * @author mnobo
+ * @author grupo 1
  */
 public class Empleado {
 

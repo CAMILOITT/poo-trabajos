@@ -8,9 +8,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Programa que gestiona una lista dinámica de empleados: permite
- * agregarlos por teclado y buscarlos por su código de
- * identificación.
+ * Programa que gestiona una lista dinámica de empleados: permite agregarlos por
+ * teclado y buscarlos por su código de identificación.
  *
  * @author grupo 1
  */
@@ -21,15 +20,12 @@ public class Empleados_ejercicio {
      *
      * @param empleados lista de empleados donde buscar
      * @param codigo código del empleado que se desea encontrar
-     * @return el empleado encontrado, o null si ningún empleado de
-     *         la lista tiene ese código
+     * @return el empleado encontrado, o null si ningún empleado de la lista
+     * tiene ese código
      */
-    public static Empleado buscarEmpleado(ArrayList<Empleado> empleados, String codigo)
-    {
-        for (int i=0; i< empleados.size(); i++)
-        {
-            if (empleados.get(i).getCodigo().equals(codigo))
-            {
+    public static Empleado buscarEmpleado(ArrayList<Empleado> empleados, String codigo) {
+        for (int i = 0; i < empleados.size(); i++) {
+            if (empleados.get(i).getCodigo().equals(codigo)) {
                 return empleados.get(i);
             }
         }
@@ -37,9 +33,9 @@ public class Empleados_ejercicio {
     }
 
     /**
-     * Punto de entrada del programa. Muestra un menú que permite
-     * agregar empleados nuevos a la lista, o buscar uno existente
-     * por su código, hasta que el usuario decida salir.
+     * Punto de entrada del programa. Muestra un menú que permite agregar
+     * empleados nuevos a la lista, o buscar uno existente por su código, hasta
+     * que el usuario decida salir.
      *
      * @param args the command line arguments
      */
@@ -54,23 +50,21 @@ public class Empleados_ejercicio {
 
         String opcion = "";
 
-        while (!opcion.equals("FIN"))
-        {
+        while (!opcion.equals("FIN")) {
             System.out.println();
             System.out.println("Que desea hacer? (escriba el literal correspondiente)");
             System.out.println("Para salir digite: FIN");
             System.out.println();
             System.out.println("1. Agregar un empleado");
-            System.out.println("2. Buscar un empleado por codigo");
+            System.out.println("2. Buscar un empleado por código");
             System.out.println();
-            System.out.print("Cual sera su opcion?: ");
+            System.out.print("Cual sera su opción?: ");
             opcion = sc.nextLine();
             System.out.println();
 
-            if (opcion.equals("1"))
-            {
+            if (opcion.equals("1")) {
                 // Como Empleado no tiene constructor con parametros,
-                // se crea vacio y se llena con los setters.
+                // se crea vació y se llena con los setters.
                 Empleado e = new Empleado();
 
                 System.out.print("Nombre: ");
@@ -86,25 +80,20 @@ public class Empleados_ejercicio {
 
                 System.out.println();
                 System.out.println("Empleado agregado correctamente.");
-            }
-            else if (opcion.equals("2"))
-            {
-                System.out.print("Ingrese el codigo a buscar: ");
+            } else if (opcion.equals("2")) {
+                System.out.print("Ingrese el código a buscar: ");
                 String codigo = sc.nextLine();
 
                 Empleado encontrado = buscarEmpleado(empleados, codigo);
 
                 System.out.println();
-                if (encontrado != null)
-                {
+                if (encontrado != null) {
                     System.out.println("Empleado encontrado:");
                     System.out.println("Nombre: " + encontrado.getNombre());
                     System.out.println("Cargo: " + encontrado.getCargo());
-                    System.out.println("Codigo: " + encontrado.getCodigo());
-                }
-                else
-                {
-                    System.out.println("No se encontro ningun empleado con ese codigo.");
+                    System.out.println("Código: " + encontrado.getCodigo());
+                } else {
+                    System.out.println("No se encontró ningún empleado con ese código.");
                 }
             }
         }
