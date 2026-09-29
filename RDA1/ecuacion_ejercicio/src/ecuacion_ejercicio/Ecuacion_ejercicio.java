@@ -51,5 +51,7 @@ public class Ecuacion_ejercicio {
             System.out.println("X2 = " + resultado[1]);
            
         }
+        sc.close();
     }
 }
+    

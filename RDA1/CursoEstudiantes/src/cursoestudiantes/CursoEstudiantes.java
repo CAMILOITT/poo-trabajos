@@ -66,7 +66,7 @@ public class CursoEstudiantes {
                 System.out.println("Opcion no valida");
             }
         }
-
+        sc.close();
     }
 
 }
