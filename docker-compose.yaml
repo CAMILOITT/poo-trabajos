@@ -1,0 +1,8 @@
+name: poo-trabajos
+
+services:
+  java:
+    container_name: java
+    platform: ubuntu
+    entrypoint:
+      - .:/app
