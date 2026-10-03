@@ -6,7 +6,7 @@ package sistema.supermercado;
 
 /**
  *
- * @author mnobo
+ * @author grupo 1
  */
 public class Producto {
     private String codigo;
