@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Cliente extends Persona {
   private int puntos;
   private String correo;
-  private ArrayList<Venta> listaDeCompras;
+  private ArrayList<Compra> listaDeCompras;
 
   public Cliente(String cedula, String nombre, String apellido, String telefono, int puntos, String correo) {
     super(cedula, nombre, apellido, telefono);
@@ -18,11 +18,11 @@ public class Cliente extends Persona {
   public String getCorreo() {
     return correo;
   }
-  public ArrayList<Venta> getListaDeCompras() {
+  public ArrayList<Compra> getListaDeCompras() {
     return listaDeCompras;
   }
 
-  public void agregarCompra(Venta datoVenta) {
+  public void agregarCompra(Compra datoVenta) {
     this.listaDeCompras.add(datoVenta);
   }
 

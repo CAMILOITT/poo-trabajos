@@ -10,7 +10,7 @@ public class Cajero extends Persona {
 
     private int numeroCaja;
     private String codigoEmpleado;
-    private ArrayList<Venta> listaDeVenta;
+    private ArrayList<Compra> listaDeVenta;
 
     public Cajero(String cedula, String nombre, String apellido, String telefono, int numeroCaja, String codigoEmpleado
             ) {
@@ -29,11 +29,11 @@ public class Cajero extends Persona {
     }
     
     
-    public ArrayList<Venta> getListaDeVenta() {
+    public ArrayList<Compra> getListaDeVenta() {
         return listaDeVenta;
     }
     
-    public void registrarVenta(Venta datoVenta) {
+    public void registrarVenta(Compra datoVenta) {
         this.listaDeVenta.add(datoVenta);
     }
 
