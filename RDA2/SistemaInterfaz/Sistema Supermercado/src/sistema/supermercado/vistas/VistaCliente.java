@@ -5,10 +5,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import sistema.supermercado.Cliente;
+import sistema.supermercado.widgets.Tabla;
 
 public class VistaCliente extends Vista {
 
@@ -20,6 +24,7 @@ public class VistaCliente extends Vista {
 
   private void initComponents() {
     this.encabeza();
+    this.tabla();
   }
 
   private void encabeza() {
@@ -37,4 +42,30 @@ public class VistaCliente extends Vista {
     add(encabezado);
   }
 
+  private void tabla() {
+    // datos de prueba
+    ArrayList<Object[]> listaCliente = new ArrayList<>();
+    ArrayList<String> listaEncabezado = new ArrayList<>();
+
+    listaEncabezado.add("ID");
+    listaEncabezado.add("Nombre");
+    listaEncabezado.add("Apellido");
+    listaEncabezado.add("Cedula");
+    listaEncabezado.add("Telefono");
+    listaEncabezado.add("Puntos");
+
+    Cliente itemCliente = new Cliente("1234567890", "Juan Carlos", "Montalvo Lopez", "+593 99 999 999", 0,
+        "jmontalvo@correo.com");
+
+    Object[] listaDatos = {
+        1, itemCliente.getNombre(), itemCliente.getApellido(), itemCliente.getCedula(),
+        itemCliente.getTelefono(), itemCliente.getPuntos()
+    };
+
+    listaCliente.add(listaDatos);
+
+    Tabla<Cliente> tablaClientes = new Tabla<Cliente>("Buscar id del cliente", listaEncabezado, listaCliente);
+
+    add(tablaClientes);
+  }
 }
