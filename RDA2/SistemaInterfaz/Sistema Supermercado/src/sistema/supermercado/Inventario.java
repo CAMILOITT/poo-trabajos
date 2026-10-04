@@ -13,16 +13,16 @@ public class Inventario {
     private int numeroPasillo;
     private ArrayList<Producto> listaDeProductos;
 
-    public Inventario(int numeroPasillo, ArrayList listaDeProductos) {
+    public Inventario(int numeroPasillo) {
         this.numeroPasillo = numeroPasillo;
-        this.listaDeProductos = listaDeProductos;
+        this.listaDeProductos = new ArrayList<>();
     }
 
     public int getNumeroPasillo() {
         return numeroPasillo;
     }
 
-    public ArrayList getListaDeProductos() {
+    public ArrayList<Producto> getListaDeProductos() {
         return listaDeProductos;
     }
     
