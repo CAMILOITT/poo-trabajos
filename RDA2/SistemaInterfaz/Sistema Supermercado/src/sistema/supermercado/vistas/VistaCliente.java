@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -30,7 +31,6 @@ public class VistaCliente extends Vista {
     add(crearContenidoTabla(), BorderLayout.CENTER);
   }
 
-  // ---- Banner superior: título + pequeña descripción ----
   private JPanel crearBanner() {
     JPanel banner = new JPanel();
     banner.setLayout(new BoxLayout(banner, BoxLayout.Y_AXIS));
@@ -41,22 +41,20 @@ public class VistaCliente extends Vista {
     titulo.setFont(new Font("SansSerif", Font.BOLD, 28));
     titulo.setForeground(Color.WHITE);
 
-    JLabel descripcion = new JLabel(
-        "Busca clientes por su número de cédula y filtra los resultados por nombre, apellido u otros campos.");
-    descripcion.setFont(new Font("SansSerif", Font.PLAIN, 14));
-    descripcion.setForeground(new Color(219, 234, 254));
+    JButton btnRegresar = new JButton("<-");
+    btnRegresar.setBackground(Color.gray);
+    btnRegresar.setBounds(10, 10, 12, 12);
 
     titulo.setAlignmentX(LEFT_ALIGNMENT);
-    descripcion.setAlignmentX(LEFT_ALIGNMENT);
+    // descripcion.setAlignmentX(LEFT_ALIGNMENT);
 
     banner.add(titulo);
     banner.add(Box.createVerticalStrut(6));
-    banner.add(descripcion);
+    banner.add(btnRegresar);
 
     return banner;
   }
 
-  // ---- Tabla inferior ----
   private JPanel crearContenidoTabla() {
     JPanel contenido = new JPanel(new BorderLayout());
     contenido.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
