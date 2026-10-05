@@ -1,7 +1,5 @@
 package sistema.supermercado.widgets;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -26,7 +24,7 @@ public class Tabla<T> extends JPanel {
   private String placeholder;
 
   public Tabla(String placeholder, ArrayList<Map<String, Object>> listaDatos) {
-    super(new BorderLayout(0, 8));
+    // super(new BorderLayout(0, 8));
     this.placeholder = placeholder;
     this.initComponente(listaDatos);
   }
@@ -37,7 +35,7 @@ public class Tabla<T> extends JPanel {
   }
 
   public void crearBuscador() {
-    JPanel panelBuscador = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 8));
+    JPanel panelBuscador = new JPanel();
 
     JLabel lblBuscar = new JLabel("Buscar por cédula:");
     txtBusqueda = new JTextField(20);
@@ -82,7 +80,7 @@ public class Tabla<T> extends JPanel {
     panelBuscador.add(btnBuscar);
     panelBuscador.add(btnLimpiar);
 
-    add(panelBuscador, BorderLayout.NORTH);
+    add(panelBuscador);
   }
 
   public void crearTabla(ArrayList<Map<String, Object>> listaDatos) {
@@ -110,7 +108,7 @@ public class Tabla<T> extends JPanel {
     table.setRowSorter(sorter);
 
     JScrollPane scrollTable = new JScrollPane(table);
-    add(scrollTable, BorderLayout.CENTER);
+    add(scrollTable);
   }
 
   private void aplicarFiltro() {
