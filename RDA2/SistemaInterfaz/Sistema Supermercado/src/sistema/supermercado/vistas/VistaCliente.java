@@ -1,13 +1,16 @@
 package sistema.supermercado.vistas;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -18,54 +21,74 @@ public class VistaCliente extends Vista {
 
   public VistaCliente(CardLayout layout, JPanel panel, String title) {
     super(title, layout, panel);
-    setSize(panel.getWidth(), panel.getHeight());
+    setLayout(new BorderLayout());
     this.initComponents();
   }
 
   private void initComponents() {
-    this.encabeza();
-    this.tabla();
+    add(crearBanner(), BorderLayout.NORTH);
+    add(crearContenidoTabla(), BorderLayout.CENTER);
   }
 
-  private void encabeza() {
-    JLabel titulo = new JLabel("Cliente");
-    JLabel descripcion = new JLabel("Busca los clientes y clasificalos");
-    JPanel encabezado = new JPanel();
-    titulo.setFont(new Font(this.getFont().getName(), Font.BOLD, 34));
-    encabezado.setBackground(new Color(245, 247, 250));
-    encabezado.setPreferredSize(new Dimension(this.panel.getWidth(), 100));
-    encabezado.setLayout(new GridLayout(2, 1));
-    encabezado.add(Box.createVerticalStrut(100));
-    // encabezado.setSize(this.panel.getWidth(), this.panel.getHeight());
-    encabezado.add(titulo);
-    encabezado.add(descripcion);
-    add(encabezado);
+  // ---- Banner superior: título + pequeña descripción ----
+  private JPanel crearBanner() {
+    JPanel banner = new JPanel();
+    banner.setLayout(new BoxLayout(banner, BoxLayout.Y_AXIS));
+    banner.setBackground(new Color(30, 64, 175)); // azul corporativo
+    banner.setBorder(BorderFactory.createEmptyBorder(24, 24, 24, 24));
+
+    JLabel titulo = new JLabel("Gestión de Clientes");
+    titulo.setFont(new Font("SansSerif", Font.BOLD, 28));
+    titulo.setForeground(Color.WHITE);
+
+    JLabel descripcion = new JLabel(
+        "Busca clientes por su número de cédula y filtra los resultados por nombre, apellido u otros campos.");
+    descripcion.setFont(new Font("SansSerif", Font.PLAIN, 14));
+    descripcion.setForeground(new Color(219, 234, 254));
+
+    titulo.setAlignmentX(LEFT_ALIGNMENT);
+    descripcion.setAlignmentX(LEFT_ALIGNMENT);
+
+    banner.add(titulo);
+    banner.add(Box.createVerticalStrut(6));
+    banner.add(descripcion);
+
+    return banner;
   }
 
-  private void tabla() {
-    // datos de prueba
-    ArrayList<Object[]> listaCliente = new ArrayList<>();
-    ArrayList<String> listaEncabezado = new ArrayList<>();
+  // ---- Tabla inferior ----
+  private JPanel crearContenidoTabla() {
+    JPanel contenido = new JPanel(new BorderLayout());
+    contenido.setBorder(BorderFactory.createEmptyBorder(12, 12, 12, 12));
+    contenido.setBackground(new Color(245, 247, 250));
 
-    listaEncabezado.add("ID");
-    listaEncabezado.add("Nombre");
-    listaEncabezado.add("Apellido");
-    listaEncabezado.add("Cedula");
-    listaEncabezado.add("Telefono");
-    listaEncabezado.add("Puntos");
+    Tabla<Cliente> tablaClientes = new Tabla<Cliente>("Buscar por cédula...", datosDePrueba());
+    contenido.add(tablaClientes, BorderLayout.CENTER);
 
-    Cliente itemCliente = new Cliente("1234567890", "Juan Carlos", "Montalvo Lopez", "+593 99 999 999", 0,
-        "jmontalvo@correo.com");
+    return contenido;
+  }
 
-    Object[] listaDatos = {
-        1, itemCliente.getNombre(), itemCliente.getApellido(), itemCliente.getCedula(),
-        itemCliente.getTelefono(), itemCliente.getPuntos()
+  private ArrayList<Map<String, Object>> datosDePrueba() {
+    ArrayList<Map<String, Object>> listaDatos = new ArrayList<>();
+
+    Cliente[] clientes = {
+        new Cliente("1799999999", "Juan Carlos", "Montalvo Lopez", "+593 99 999 999", 120, "jmontalvo@correo.com"),
+        new Cliente("1723456784", "María", "Pérez Andrade", "+593 98 765 432", 45, "mperez@correo.com"),
+        new Cliente("0912345678", "Pedro", "Gómez Ruiz", "+593 97 111 222", 0, "pgomez@correo.com"),
     };
 
-    listaCliente.add(listaDatos);
+    int id = 1;
+    for (Cliente c : clientes) {
+      Map<String, Object> fila = new LinkedHashMap<>();
+      fila.put("id", id++);
+      fila.put("Nombre", c.getNombre());
+      fila.put("Apellido", c.getApellido());
+      fila.put("Cedula", c.getCedula());
+      fila.put("Telefono", c.getTelefono());
+      fila.put("Puntos", c.getPuntos());
+      listaDatos.add(fila);
+    }
 
-    Tabla<Cliente> tablaClientes = new Tabla<Cliente>("Buscar id del cliente", listaEncabezado, listaCliente);
-
-    add(tablaClientes);
+    return listaDatos;
   }
 }

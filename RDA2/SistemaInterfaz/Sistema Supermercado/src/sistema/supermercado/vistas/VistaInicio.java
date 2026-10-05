@@ -18,16 +18,12 @@ public class VistaInicio extends Vista {
     this.listaNavegacion.add("cliente");
     if (this.listaNavegacion.size() < 1)
       return;
-
     JPanel panel = new JPanel();
-
     this.listaNavegacion.forEach(title -> {
       JButton botonNavegacion = new JButton("ir a" + title);
       botonNavegacion.addActionListener(e -> this.layout.show(this.panel, title));
       panel.add(botonNavegacion);
     });
-
     this.panel.add(panel);
   }
-
 }
