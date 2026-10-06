@@ -3,21 +3,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistema.supermercado;
+import java.util.ArrayList;
 
 /**
  *
  * @author mnobo
  */
 public class Jframe_Menu extends javax.swing.JFrame {
-
+    private ArrayList<Cliente> listaClientes;
+    private ArrayList<Producto> listaProductos;
+    private ArrayList<Cajero> listaCajeros;
     /**
      * Creates new form Jframe_Menu
      */
     public Jframe_Menu() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); //centra la ventana en la pantalla
     }
-
+    public Jframe_Menu(ArrayList<Cliente> listaClientes,
+                       ArrayList<Producto> listaProductos,
+                       ArrayList<Cajero> listaCajeros) {
+        initComponents();
+        this.listaClientes = listaClientes;
+        this.listaProductos = listaProductos;
+        this.listaCajeros = listaCajeros;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,6 +47,7 @@ public class Jframe_Menu extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Supermercado \"SuperPOO\" menu");
         setBackground(new java.awt.Color(51, 153, 0));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -54,17 +65,17 @@ public class Jframe_Menu extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(151, 151, 151)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(161, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addGap(153, 153, 153))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addContainerGap())
         );
 
         jPanel3.setBackground(new java.awt.Color(235, 255, 255));
@@ -173,7 +184,7 @@ public class Jframe_Menu extends javax.swing.JFrame {
 
     private void botonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarClienteActionPerformed
         // TODO add your handling code here:
-        JFrame_buscarCliente ventana = new JFrame_buscarCliente();
+        JFrame_buscarCliente ventana = new JFrame_buscarCliente(listaClientes);
         ventana.setLocationRelativeTo(null); //la centra en la pantalla
         ventana.setVisible(true);
      this.dispose();   
