@@ -10,6 +10,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 /**
  *
  * @author mnobo
@@ -18,15 +20,20 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrame_buscarCliente.class.getName());
     private ArrayList<Cliente> listaClientes;
-
+    private Jframe_Menu menu;
+    
     /**
      * Creates new form JFrame_buscarCliente
      */
     
-    public JFrame_buscarCliente(ArrayList<Cliente> listaClientes) 
+    public JFrame_buscarCliente(ArrayList<Cliente> listaClientes, Jframe_Menu menu) 
     {
         initComponents();
+        ImageIcon original = new ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/flecha retroceso.png"));
+        Image escalada = original.getImage().getScaledInstance(24, 24, Image.SCALE_SMOOTH);
+        botonVolverMenu.setIcon(new ImageIcon(escalada));
         this.listaClientes = listaClientes;
+        this.menu = menu;
         configurarAutocompletado();
     }
 
@@ -108,6 +115,7 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Busqueda de Cliente");
 
+        botonVolverMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/flecha retroceso.png"))); // NOI18N
         botonVolverMenu.addActionListener(this::botonVolverMenuActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -354,10 +362,8 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
 
     private void botonVolverMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverMenuActionPerformed
         // TODO add your handling code here:
-        Jframe_Menu ventana = new Jframe_Menu();
-        ventana.setLocationRelativeTo(null);
-        ventana.setVisible(true);
-     this.dispose();
+        menu.setVisible(true);
+    this.dispose();
     }//GEN-LAST:event_botonVolverMenuActionPerformed
 
     private void campoPuntosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPuntosActionPerformed

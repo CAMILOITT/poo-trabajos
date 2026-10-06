@@ -16,10 +16,7 @@ public class Jframe_Menu extends javax.swing.JFrame {
     /**
      * Creates new form Jframe_Menu
      */
-    public Jframe_Menu() {
-        initComponents();
-        this.setLocationRelativeTo(null); //centra la ventana en la pantalla
-    }
+
     public Jframe_Menu(ArrayList<Cliente> listaClientes,
                        ArrayList<Producto> listaProductos,
                        ArrayList<Cajero> listaCajeros) {
@@ -27,6 +24,8 @@ public class Jframe_Menu extends javax.swing.JFrame {
         this.listaClientes = listaClientes;
         this.listaProductos = listaProductos;
         this.listaCajeros = listaCajeros;
+        this.setLocationRelativeTo(null);
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -184,10 +183,10 @@ public class Jframe_Menu extends javax.swing.JFrame {
 
     private void botonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarClienteActionPerformed
         // TODO add your handling code here:
-        JFrame_buscarCliente ventana = new JFrame_buscarCliente(listaClientes);
+        JFrame_buscarCliente ventana = new JFrame_buscarCliente(listaClientes, this);
         ventana.setLocationRelativeTo(null); //la centra en la pantalla
         ventana.setVisible(true);
-     this.dispose();   
+        this.setVisible(false);  
     }//GEN-LAST:event_botonBuscarClienteActionPerformed
 
     private void botonBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarProductoActionPerformed
@@ -198,37 +197,7 @@ public class Jframe_Menu extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Jframe_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Jframe_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Jframe_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Jframe_Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Jframe_Menu().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBuscarCliente;
