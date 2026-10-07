@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import java.time.LocalDateTime;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -67,6 +69,31 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
         campoCorreo.setEditable(habilitar);
         campoTelefono.setEditable(habilitar);
         botonRegistrarCliente.setEnabled(habilitar);
+    }
+
+    private int generarNumeroCompra() {
+        int totalCompras = 0;
+        for (Cliente datoCliente : listaClientes) {
+            totalCompras = totalCompras + datoCliente.getListaDeCompras().size();
+        }
+        return totalCompras + 1;
+    }
+
+    private void limpiarFormulario() {
+        campoCedula.setSelectedItem("");
+        campoNombre.setText("");
+        campoApellido.setText("");
+        campoCorreo.setText("");
+        campoTelefono.setText("");
+        campoPuntos.setText("");
+        campoTotal.setText("");
+        habilitarEdicionCliente(false);
+
+        DefaultTableModel modeloFactura = (DefaultTableModel) tablaFactura.getModel();
+        modeloFactura.setRowCount(0);
+
+        clienteActual = null;
+        compraActual = null;
     }
 
     /**
@@ -442,6 +469,25 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
 
     private void botonRegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarClienteActionPerformed
         // TODO add your handling code here:
+        String cedulaIngresada = String.valueOf(campoCedula.getEditor().getItem()).trim();
+        String nombreIngresado = campoNombre.getText().trim();
+        String apellidoIngresado = campoApellido.getText().trim();
+        String correoIngresado = campoCorreo.getText().trim();
+        String telefonoIngresado = campoTelefono.getText().trim();
+
+        if (cedulaIngresada.isEmpty() || nombreIngresado.isEmpty() || apellidoIngresado.isEmpty()
+                || correoIngresado.isEmpty() || telefonoIngresado.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Complete todos los datos del cliente.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        Cliente clienteNuevo = new Cliente(cedulaIngresada, nombreIngresado, apellidoIngresado,
+                telefonoIngresado, 0, correoIngresado);
+
+        listaClientes.add(clienteNuevo);
+        clienteActual = clienteNuevo;
+
+        habilitarEdicionCliente(false);
+        JOptionPane.showMessageDialog(this, "Cliente registrado correctamente.");
 
     }//GEN-LAST:event_botonRegistrarClienteActionPerformed
 
@@ -455,6 +501,38 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
 
     private void botonAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAnadirActionPerformed
         // TODO add your handling code here:
+        if (clienteActual == null) {
+            JOptionPane.showMessageDialog(this, "Primero busque o registre un cliente.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        int posicionProducto = comboProducto.getSelectedIndex();
+        if (posicionProducto == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione un producto.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        Producto productoSeleccionado = listaProductos.get(posicionProducto);
+
+        if (!productoSeleccionado.verificarStockDisponible(1)) {
+            JOptionPane.showMessageDialog(this, "No hay stock disponible de " + productoSeleccionado.getNombreProducto() + ".", "Sin stock", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (compraActual == null) {
+            compraActual = new Compra(generarNumeroCompra(), LocalDateTime.now());
+        }
+
+        compraActual.agregarProducto(productoSeleccionado);
+
+        DefaultTableModel modeloFactura = (DefaultTableModel) tablaFactura.getModel();
+        modeloFactura.addRow(new Object[]{
+            productoSeleccionado.getCodigo(),
+            productoSeleccionado.getNombreProducto(),
+            String.format("$%.2f", productoSeleccionado.getPrecio())
+        });
+
+        campoTotal.setText(String.format("$%.2f", compraActual.calcularTotal()));
+
     }//GEN-LAST:event_botonAnadirActionPerformed
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
@@ -503,10 +581,47 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
 
     private void botonFinalizarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFinalizarCompraActionPerformed
         // TODO add your handling code here:
+        if (clienteActual == null) {
+            JOptionPane.showMessageDialog(this, "Primero busque o registre un cliente.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (compraActual == null || compraActual.getListaDeProductosComprados().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Añada al menos un producto.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        int posicionCajero = comboCajero.getSelectedIndex();
+        if (posicionCajero == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione un cajero.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        Cajero cajeroSeleccionado = listaCajeros.get(posicionCajero);
+
+        for (Producto datoProducto : compraActual.getListaDeProductosComprados()) {
+            datoProducto.descontarStock(1);
+        }
+
+        clienteActual.agregarCompra(compraActual);
+        cajeroSeleccionado.registrarVenta(compraActual);
+
+        float totalCompra = compraActual.calcularTotal();
+        int puntosGanados = (int) totalCompra;
+        clienteActual.acumularPuntos(puntosGanados);
+
+        JOptionPane.showMessageDialog(this,
+                "Compra N° " + compraActual.getNumeroCompra() + " registrada con éxito.\n"
+                + "Cliente: " + clienteActual.getNombre() + " " + clienteActual.getApellido() + "\n"
+                + "Cajero: " + cajeroSeleccionado.getNombre() + " " + cajeroSeleccionado.getApellido() + "\n"
+                + "Total: " + String.format("$%.2f", totalCompra) + "\n"
+                + "Puntos ganados: " + puntosGanados);
     }//GEN-LAST:event_botonFinalizarCompraActionPerformed
 
     private void botonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarActionPerformed
         // TODO add your handling code here:
+        limpiarFormulario();
+
 
     }//GEN-LAST:event_botonLimpiarActionPerformed
 

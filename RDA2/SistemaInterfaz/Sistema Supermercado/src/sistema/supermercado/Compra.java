@@ -26,7 +26,7 @@ public int getNumeroCompra() {
 public LocalDateTime getFechaCompra() {
     return fechaCompra;
 }
-public ArrayList<Producto> getListaDePorductosComprados() {
+public ArrayList<Producto> getListaDeProductosComprados() {
     return listaDeProductosComprados;
 }
 public void agregarProducto(Producto datoProducto) {

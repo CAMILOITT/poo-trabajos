@@ -220,11 +220,6 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(235, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
-        listaProductos.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(listaProductos);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -352,7 +347,7 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
         
         for (Compra compra: encontrado.getListaDeCompras())
         {
-            for (Producto p: compra.getListaDePorductosComprados())
+            for (Producto p: compra.getListaDeProductosComprados())
             {
                 modelo.addElement(p.getNombreProducto());
             }
