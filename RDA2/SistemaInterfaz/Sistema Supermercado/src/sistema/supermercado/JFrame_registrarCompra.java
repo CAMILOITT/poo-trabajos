@@ -96,6 +96,10 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
         compraActual = null;
     }
 
+    private boolean validarCedula(String cedulaIngresada) {
+        return cedulaIngresada.matches("\\d{10}");
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -480,6 +484,10 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Complete todos los datos del cliente.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        if (!validarCedula(cedulaIngresada)) {
+            JOptionPane.showMessageDialog(this, "La cédula debe tener exactamente 10 números.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         Cliente clienteNuevo = new Cliente(cedulaIngresada, nombreIngresado, apellidoIngresado,
                 telefonoIngresado, 0, correoIngresado);
 
@@ -541,6 +549,10 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
 
         if (cedulaIngresada.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese una cédula o RUC.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (!validarCedula(cedulaIngresada)) {
+            JOptionPane.showMessageDialog(this, "La cédula debe tener exactamente 10 números.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
         Cliente clienteEncontrado = null;
