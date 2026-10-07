@@ -19,14 +19,14 @@ public class Jframe_Menu extends javax.swing.JFrame {
      */
 
     public Jframe_Menu(ArrayList<Cliente> listaClientes,
-                       ArrayList<Producto> listaProductos,
-                       ArrayList<Cajero> listaCajeros) {
-        initComponents();
-        this.listaClientes = listaClientes;
-        this.listaProductos = listaProductos;
-        this.listaCajeros = listaCajeros;
-        this.setLocationRelativeTo(null);
-        
+                   ArrayList<Producto> listaProductos,
+                   ArrayList<Cajero> listaCajeros,
+                   ArrayList<Inventario> listaInventario) {
+    initComponents();
+    this.listaClientes = listaClientes;
+    this.listaProductos = listaProductos;
+    this.listaCajeros = listaCajeros;
+    this.listaInventario = listaInventario;
     }
     /**
      * This method is called from within the constructor to initialize the form.

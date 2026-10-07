@@ -349,7 +349,7 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
         {
             for (Producto p: compra.getListaDeProductosComprados())
             {
-                modelo.addElement(p.getNombreProducto());
+                modelo.addElement(p.getNombreProducto() + "       $" + p.getPrecio());
             }
         }
         listaProductos.setModel(modelo);

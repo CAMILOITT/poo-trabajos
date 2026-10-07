@@ -20,28 +20,12 @@ import sistema.supermercado.vistas.VistaInicio;
  */
 public class SistemaSupermercado extends JFrame {
 
-    public SistemaSupermercado() {
-        setTitle("Sistema de Supermercado");
-        setSize(500, 300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        CardLayout cardLayout = new CardLayout();
-        JPanel panelContenedor = new JPanel(cardLayout);
-        panelContenedor.setSize(500, 300);
-        VistaCliente cliente = new VistaCliente(cardLayout, panelContenedor, "cliente");
-        VistaInicio inicio = new VistaInicio(cardLayout, panelContenedor, "inicio");
-
-        panelContenedor.add(inicio, "inicio");
-        panelContenedor.add(cliente, "cliente");
-
-        add(panelContenedor);
-    }
+ 
 
     public static void main(String[] args) {
-        //SwingUtilities.invokeLater(() -> {
-            //new SistemaSupermercado().setVisible(true);
-        //});
+
         
+   
             // ---------- PRODUCTOS ----------
     ArrayList<Producto> productos = new ArrayList<>();
     productos.add(new Producto(50, 1.25f, "P001", "Arroz 1kg", "Granos"));
@@ -106,7 +90,28 @@ public class SistemaSupermercado extends JFrame {
     cajeros.add(new Cajero("1720000002", "Lucia", "Gomez", "0982222222", 2, "E002"));
 
     // ---------- ABRIR EL MENU ----------
-    Jframe_Menu menu = new Jframe_Menu(clientes, productos, cajeros);
+    ArrayList<Inventario> inventarios = new ArrayList<>();
+
+    Inventario pasillo1 = new Inventario(1);
+    pasillo1.insertarProducto(productos.get(0)); // Arroz
+    pasillo1.insertarProducto(productos.get(1)); // Aceite
+    pasillo1.insertarProducto(productos.get(4)); // Atun
+
+    Inventario pasillo2 = new Inventario(2);
+    pasillo2.insertarProducto(productos.get(2)); // Leche
+    pasillo2.insertarProducto(productos.get(3)); // Pan
+    pasillo2.insertarProducto(productos.get(5)); // Huevos
+
+    Inventario pasillo3 = new Inventario(3);
+    pasillo3.insertarProducto(productos.get(6)); // Detergente
+    pasillo3.insertarProducto(productos.get(7)); // Gaseosa
+
+    inventarios.add(pasillo1);
+    inventarios.add(pasillo2);
+    inventarios.add(pasillo3);
+    
+    // ---------- ABRIR EL MENU ----------
+    Jframe_Menu menu = new Jframe_Menu(clientes, productos, cajeros, inventarios);
     menu.setLocationRelativeTo(null);
     menu.setVisible(true);
     }
