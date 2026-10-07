@@ -113,7 +113,7 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Candara", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Busqueda de Cliente");
+        jLabel1.setText("Búsqueda de Cliente");
 
         botonVolverMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/flecha retroceso.png"))); // NOI18N
         botonVolverMenu.addActionListener(this::botonVolverMenuActionPerformed);
@@ -125,7 +125,7 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(botonVolverMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -133,7 +133,7 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(17, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(botonVolverMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -156,9 +156,9 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
 
         campoNombre.setEditable(false);
 
-        jLabel4.setText("Correo electronico");
+        jLabel4.setText("Correo electrónico");
 
-        jLabel5.setText("Nombres / Razon Social");
+        jLabel5.setText("Nombres / Razón Social");
 
         campoCelular.setEditable(false);
 

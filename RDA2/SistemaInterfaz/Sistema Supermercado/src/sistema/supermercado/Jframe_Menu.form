@@ -197,6 +197,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Registrar Compra"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRegistrarCompraActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

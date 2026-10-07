@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author mnobo
+ * @author grupo1
  */
 public class Jframe_Menu extends javax.swing.JFrame {
     private ArrayList<Cliente> listaClientes;
@@ -96,6 +96,11 @@ public class Jframe_Menu extends javax.swing.JFrame {
         });
 
         botonRegistrarCompra.setText("Registrar Compra");
+        botonRegistrarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarCompraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -193,6 +198,14 @@ public class Jframe_Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_botonBuscarProductoActionPerformed
+
+    private void botonRegistrarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarCompraActionPerformed
+        // TODO add your handling code here:
+        JFrame_registrarCompra ventanaRegistrarCompra = new JFrame_registrarCompra(listaClientes, listaProductos, listaCajeros, this);
+        ventanaRegistrarCompra.setLocationRelativeTo(null);
+        ventanaRegistrarCompra.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_botonRegistrarCompraActionPerformed
 
     /**
      * @param args the command line arguments
