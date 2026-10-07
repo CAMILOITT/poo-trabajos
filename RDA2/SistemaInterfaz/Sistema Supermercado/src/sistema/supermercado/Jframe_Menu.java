@@ -13,6 +13,7 @@ public class Jframe_Menu extends javax.swing.JFrame {
     private ArrayList<Cliente> listaClientes;
     private ArrayList<Producto> listaProductos;
     private ArrayList<Cajero> listaCajeros;
+    private ArrayList<Inventario> listaInventario;
     /**
      * Creates new form Jframe_Menu
      */
@@ -196,6 +197,10 @@ public class Jframe_Menu extends javax.swing.JFrame {
 
     private void botonBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarProductoActionPerformed
         // TODO add your handling code here:
+        JFrame_buscarProducto ventanaBuscarProducto= new JFrame_buscarProducto(listaProductos,listaInventario,this);
+        ventanaBuscarProducto.setLocationRelativeTo(null);
+        ventanaBuscarProducto.setVisible(true);
+        this.setVisible(false);
         
     }//GEN-LAST:event_botonBuscarProductoActionPerformed
 

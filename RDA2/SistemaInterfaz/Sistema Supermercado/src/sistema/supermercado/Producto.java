@@ -34,6 +34,10 @@ public String getCodigo() {
 public String getNombreProducto() {
     return nombreProducto;
 }
+public String getCategoria()
+{
+    return categoria;
+}
 public boolean verificarStockDisponible(int cantidad) {
     return stock >= cantidad;
 }
