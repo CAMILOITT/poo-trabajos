@@ -4,7 +4,9 @@
  */
 package sistema.supermercado;
 
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +26,9 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
 
     public JFrame_buscarProducto(ArrayList<Producto> listaProductos, ArrayList<Inventario> listaInventario, Jframe_Menu menu) {
         initComponents();
+        ImageIcon original = new ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/flecha retroceso.png"));
+        Image escalada = original.getImage().getScaledInstance(24, 24, Image.SCALE_SMOOTH);
+        botonRegresarMenu.setIcon(new ImageIcon(escalada));
         this.listaProductos = listaProductos;
         this.listaInventario = listaInventario;
         this.menu = menu;
@@ -69,7 +74,6 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 0));
 
-        botonRegresarMenu.setText("<-");
         botonRegresarMenu.addActionListener(this::botonRegresarMenuActionPerformed);
 
         jLabel1.setFont(new java.awt.Font("Candara", 3, 36)); // NOI18N
@@ -85,7 +89,7 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
                 .addComponent(botonRegresarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(jLabel1)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +97,7 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
                 .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(botonRegresarMenu))
+                    .addComponent(botonRegresarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16))
         );
 
@@ -110,7 +114,6 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jLabel2.setFont(new java.awt.Font("Candara", 3, 15)); // NOI18N
         jLabel2.setText("Ingrese el código del producto");
 
         botonBuscar.setBackground(new java.awt.Color(51, 153, 0));
@@ -121,20 +124,15 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(235, 255, 255));
 
-        jLabel4.setFont(new java.awt.Font("Candara", 3, 15)); // NOI18N
-        jLabel4.setText("Codigo del Producto:");
+        jLabel4.setText("Código del Producto:");
 
-        jLabel5.setFont(new java.awt.Font("Candara", 3, 15)); // NOI18N
         jLabel5.setText("Nombre del Producto:");
 
-        jLabel6.setFont(new java.awt.Font("Candara", 3, 15)); // NOI18N
         jLabel6.setText("Precio Unitario:");
 
-        jLabel7.setFont(new java.awt.Font("Candara", 3, 15)); // NOI18N
-        jLabel7.setText("Numero de Stock:");
+        jLabel7.setText("Número de Stock:");
 
-        jLabel8.setFont(new java.awt.Font("Candara", 3, 15)); // NOI18N
-        jLabel8.setText("Categoria:");
+        jLabel8.setText("Categoría:");
 
         campoNombre.setEditable(false);
         campoNombre.addActionListener(this::campoNombreActionPerformed);
@@ -150,8 +148,7 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
         campoCategoria.setEditable(false);
         campoCategoria.addActionListener(this::campoCategoriaActionPerformed);
 
-        jLabel9.setFont(new java.awt.Font("Candara", 3, 15)); // NOI18N
-        jLabel9.setText("Numero de Pasillo:");
+        jLabel9.setText("Número de Pasillo:");
 
         campoPasillo.setEditable(false);
         campoPasillo.addActionListener(this::campoPasilloActionPerformed);
@@ -210,7 +207,7 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("Candara", 3, 15)); // NOI18N
-        jLabel3.setText("Inormacion del Producto");
+        jLabel3.setText("Información del Producto");
 
         limpiarDatos.setFont(new java.awt.Font("Candara", 3, 18)); // NOI18N
         limpiarDatos.setForeground(new java.awt.Color(51, 51, 51));
@@ -231,25 +228,27 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 4, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(limpiarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(limpiarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(27, 27, 27)
                                     .addComponent(jLabel2)
                                     .addGap(18, 18, 18)
                                     .addComponent(campoCod, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(28, 28, 28)
-                                    .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(28, 28, 28)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(jLabel3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,9 +261,9 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
                     .addComponent(campoCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(limpiarDatos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
