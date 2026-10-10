@@ -12,12 +12,12 @@ import java.util.ArrayList;
 public class Docente extends Empleado{
     
     private String facultadPertenece;
-    private ArrayList<String> listaMateriales;
+    private ArrayList<String> listaMaterias;
 
-    public Docente(String facultadPertenece, ArrayList<String> listaMateriales, float sueldo, String titulo, String nivelDeFormacion, ArrayList<String> listaDeCargos, String cedula, String nombre, String correo, String apellido, String telefono) {
+    public Docente(String facultadPertenece, ArrayList<String> listaMaterias, float sueldo, String titulo, String nivelDeFormacion, ArrayList<String> listaDeCargos, String cedula, String nombre, String correo, String apellido, String telefono) {
         super(sueldo, titulo, nivelDeFormacion, listaDeCargos, cedula, nombre, correo, apellido, telefono);
         this.facultadPertenece = facultadPertenece;
-        this.listaMateriales = listaMateriales;
+        this.listaMaterias = listaMaterias;
         this.sueldo = sueldo;
         this.titulo = titulo;
         this.nivelDeFormacion = nivelDeFormacion;
@@ -33,8 +33,8 @@ public class Docente extends Empleado{
         return facultadPertenece;
     }
 
-    public ArrayList<String> getListaMateriales() {
-        return listaMateriales;
+    public ArrayList<String> getListaMaterias() {
+        return listaMaterias;
     }
 
     public void setFacultadPertenece(String facultadPertenece) {
@@ -42,16 +42,16 @@ public class Docente extends Empleado{
     }
 
     public void setListaMateriales(ArrayList<String> listaMateriales) {
-        this.listaMateriales = listaMateriales;
+        this.listaMaterias = listaMateriales;
     }
     
     public boolean eliminarMateria(String materia)
     {
-        for (int i = 0;  i < this.listaMateriales.size(); i++)
+        for (int i = 0;  i < this.listaMaterias.size(); i++)
         {
-            if (this.listaMateriales.get(i).equals(materia))
+            if (this.listaMaterias.get(i).equals(materia))
             {
-                listaMateriales.remove(i);
+                listaMaterias.remove(i);
                 return true;
             }
         }
@@ -60,9 +60,9 @@ public class Docente extends Empleado{
     
     public boolean aniadirMateria (String materia)
     {
-        for (int i = 0;  i < this.listaMateriales.size(); i++)
+        for (int i = 0;  i < this.listaMaterias.size(); i++)
         {
-            if (this.listaMateriales.get(i).equals(materia))
+            if (this.listaMaterias.get(i).equals(materia))
             {
                 return false;
             }

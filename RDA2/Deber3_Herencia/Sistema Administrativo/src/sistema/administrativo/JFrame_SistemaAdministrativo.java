@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistema.administrativo;
+import java.util.ArrayList;
 
 /**
  *
@@ -11,12 +12,18 @@ package sistema.administrativo;
 public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrame_SistemaAdministrativo.class.getName());
+    private ArrayList<Docente> listaDocentes;
+    private ArrayList<String> listaMaterias;
+    private ArrayList<String> listaDeCargos;
 
     /**
      * Creates new form JFrame_SistemaAdministrativo
      */
-    public JFrame_SistemaAdministrativo() {
+    public JFrame_SistemaAdministrativo(ArrayList<Docente> listaDocentes, ArrayList<String> listaMaterias, ArrayList<String> listaDeCargos) {
         initComponents();
+        this.listaDocentes = listaDocentes;
+        this.listaDeCargos = listaDeCargos;
+        this.listaMaterias = listaMaterias;
     }
 
     /**
@@ -105,11 +112,11 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(42, 42, 42)
                 .addComponent(BotonGestionDeEstudiantes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(BotonGestionDeDocentes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonGestionDeAdministrativos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(botonSalir)
@@ -144,6 +151,10 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
 
     private void BotonGestionDeDocentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionDeDocentesActionPerformed
         // TODO add your handling code here:
+        JFrame_GestionDeDocente ventanaDocentes = new JFrame_GestionDeDocente(listaDocentes, listaDeCargos, listaMaterias);
+        ventanaDocentes.setLocationRelativeTo(null); //la centra en la pantalla
+        ventanaDocentes.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BotonGestionDeDocentesActionPerformed
 
     private void BotonGestionDeAdministrativosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionDeAdministrativosActionPerformed
@@ -153,27 +164,7 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new JFrame_SistemaAdministrativo().setVisible(true));
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonGestionDeAdministrativos;

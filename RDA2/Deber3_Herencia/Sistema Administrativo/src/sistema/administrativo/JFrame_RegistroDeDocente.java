@@ -3,20 +3,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistema.administrativo;
+import java.util.ArrayList;
 
 /**
  *
  * @author mnobo
  */
-public class JFrame_GestionDeDocentes extends javax.swing.JFrame {
+public class JFrame_RegistroDeDocente extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrame_GestionDeDocentes.class.getName());
-
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrame_RegistroDeDocente.class.getName());
+    private ArrayList<Docente> listaDocentes;
+    private ArrayList<String> listaMaterias;
+    private ArrayList<String> listaDeCargos;
     /**
      * Creates new form JFrame_GestionDeDocentes
      */
-    public JFrame_GestionDeDocentes() {
+    public JFrame_RegistroDeDocente(ArrayList<Docente> listaDocentes,  ArrayList<String> listaMaterias, ArrayList<String> listaDeCargos) {
         initComponents();
+        this.listaDocentes = listaDocentes;
+        this.listaDeCargos = listaDeCargos;
+        this.listaMaterias = listaMaterias;
     }
 
     /**
@@ -44,12 +50,14 @@ public class JFrame_GestionDeDocentes extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         campoCedula = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        campoCedula1 = new javax.swing.JTextField();
+        campoCorreo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        campoCedula2 = new javax.swing.JTextField();
+        campoTelefono = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         campoFacultad = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        campoSueldo = new javax.swing.JTextField();
 
         jLabel1.setText("jLabel1");
 
@@ -84,6 +92,8 @@ public class JFrame_GestionDeDocentes extends javax.swing.JFrame {
         botonSalir1.setForeground(new java.awt.Color(255, 255, 255));
         botonSalir1.setText("SALIR");
 
+        campoNombres.addActionListener(this::campoNombresActionPerformed);
+
         jLabel3.setText("Apellido: ");
 
         jLabel4.setText("Nombres:");
@@ -92,7 +102,7 @@ public class JFrame_GestionDeDocentes extends javax.swing.JFrame {
 
         jLabel6.setText("Nivel de Formacion:");
 
-        campoNivelDeFormacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        campoNivelDeFormacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin nivel de formacion", "Maestria", "Doctorado" }));
         campoNivelDeFormacion.addActionListener(this::campoNivelDeFormacionActionPerformed);
 
         jLabel7.setText("Cedula: ");
@@ -103,10 +113,13 @@ public class JFrame_GestionDeDocentes extends javax.swing.JFrame {
 
         jLabel10.setText("Facultad:");
 
-        campoFacultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        campoFacultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin facultad", "Ingeniería", "Ciencias Exactas y Naturales", "Ciencias Administrativas y Contables", "Ciencias Humanas", "Ciencias de la Salud", "Medicina", "Enfermería", "Psicología", "Jurisprudencia", "Economía", "Comunicación y Literatura", "Arquitectura, Diseño y Artes", "Educación", "Teología" }));
 
         jButton1.setBackground(new java.awt.Color(204, 255, 204));
         jButton1.setText("Registrar");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+
+        jLabel11.setText("Sueldo: ");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -124,7 +137,7 @@ public class JFrame_GestionDeDocentes extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(campoFacultad, javax.swing.GroupLayout.Alignment.LEADING, 0, 140, Short.MAX_VALUE)
+                                .addComponent(campoFacultad, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(campoNivelDeFormacion, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -139,28 +152,31 @@ public class JFrame_GestionDeDocentes extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoCedula2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoCedula1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(campoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(campoCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(46, 46, 46)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonSalir1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(32, 32, 32))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(botonSalir1)
+                        .addGap(32, 32, 32)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(21, 21, 21))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonSalir1)
-                .addGap(16, 16, 16))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,7 +184,8 @@ public class JFrame_GestionDeDocentes extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(campoNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
+                            .addComponent(jLabel11)
+                            .addComponent(campoSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(campoApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,24 +196,27 @@ public class JFrame_GestionDeDocentes extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoCedula1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoCedula2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(campoNivelDeFormacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(9, 9, 9)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addComponent(campoFacultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(campoFacultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonSalir1)
+                        .addComponent(jButton1)))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -206,7 +226,7 @@ public class JFrame_GestionDeDocentes extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 2, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -225,44 +245,48 @@ public class JFrame_GestionDeDocentes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoNivelDeFormacionActionPerformed
 
+    private void campoNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombresActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_campoNombresActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String nombres = campoNombres.getText().trim();
+        String apellidos = campoApellido.getText().trim();
+        String cedula = campoCedula.getText().trim();
+        String correo = campoCorreo.getText().trim();
+        String telefono = campoTelefono.getText().trim();
+        String titulo = campoTitulo.getText().trim();
+        float sueldo = Float.parseFloat(campoSueldo.getText().trim());
+        String nivel = String.valueOf(campoNivelDeFormacion.getSelectedItem());
+        String facultad = String.valueOf(campoFacultad.getSelectedItem());
+        
+        Docente profesor = new Docente(facultad, listaMaterias, sueldo, titulo, nivel, listaDeCargos, cedula, nombres, correo, apellidos, telefono );
+        
+        listaDocentes.add(profesor);    
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new JFrame_GestionDeDocentes().setVisible(true));
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonSalir1;
     private javax.swing.JTextField campoApellido;
     private javax.swing.JTextField campoCedula;
-    private javax.swing.JTextField campoCedula1;
-    private javax.swing.JTextField campoCedula2;
+    private javax.swing.JTextField campoCorreo;
     private javax.swing.JComboBox<String> campoFacultad;
     private javax.swing.JComboBox<String> campoNivelDeFormacion;
     private javax.swing.JTextField campoNombres;
+    private javax.swing.JTextField campoSueldo;
+    private javax.swing.JTextField campoTelefono;
     private javax.swing.JTextField campoTitulo;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

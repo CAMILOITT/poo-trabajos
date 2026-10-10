@@ -189,6 +189,7 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
         jLabel4.setText("Apellidos");
 
         campoNombre.setEditable(false);
+        campoNombre.addActionListener(this::campoNombreActionPerformed);
 
         jLabel5.setText("Teléfono/Celular");
 
@@ -636,6 +637,10 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_botonLimpiarActionPerformed
+
+    private void campoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoNombreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

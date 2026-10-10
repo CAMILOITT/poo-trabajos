@@ -4,19 +4,27 @@
  */
 package sistema.administrativo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author mnobo
  */
-public class JFrame_RegistrarNuevoDocente extends javax.swing.JFrame {
+public class JFrame_GestionDeDocente extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrame_RegistrarNuevoDocente.class.getName());
-
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrame_GestionDeDocente.class.getName());
+    private ArrayList<Docente> listaDocentes;
+    private ArrayList<String> listaMaterias;
+    private ArrayList<String> listaDeCargos;
+    
     /**
      * Creates new form JFrame_RegistrarNuevoDocente
      */
-    public JFrame_RegistrarNuevoDocente() {
+    public JFrame_GestionDeDocente(ArrayList<Docente> listaDocentes,  ArrayList<String> listaMaterias, ArrayList<String> listaDeCargos) {
         initComponents();
+        this.listaDocentes = listaDocentes;
+        this.listaDeCargos = listaDeCargos;
+        this.listaMaterias = listaMaterias;
     }
 
     /**
@@ -49,7 +57,7 @@ public class JFrame_RegistrarNuevoDocente extends javax.swing.JFrame {
         BotonGestionDeDocentes1.addActionListener(this::BotonGestionDeDocentes1ActionPerformed);
 
         BotonGestionDeAdministrativos1.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
-        BotonGestionDeAdministrativos1.setText("Administrar Materia a Docente");
+        BotonGestionDeAdministrativos1.setText("Administrar Materia o Cargo");
         BotonGestionDeAdministrativos1.addActionListener(this::BotonGestionDeAdministrativos1ActionPerformed);
 
         botonSalir1.setBackground(new java.awt.Color(255, 51, 51));
@@ -61,28 +69,27 @@ public class JFrame_RegistrarNuevoDocente extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(179, Short.MAX_VALUE)
+                .addContainerGap(562, Short.MAX_VALUE)
+                .addComponent(botonSalir1)
+                .addGap(35, 35, 35))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(165, 165, 165)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(botonSalir1)
-                        .addGap(35, 35, 35))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(BotonGestionDeDocentes1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
-                            .addComponent(BotonGestionDeEstudiantes1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
-                            .addComponent(BotonGestionDeAdministrativos1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(158, 158, 158))))
+                    .addComponent(BotonGestionDeAdministrativos1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonGestionDeDocentes1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonGestionDeEstudiantes1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addComponent(BotonGestionDeEstudiantes1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(BotonGestionDeDocentes1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(BotonGestionDeAdministrativos1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addComponent(botonSalir1)
                 .addGap(16, 16, 16))
         );
@@ -142,6 +149,10 @@ public class JFrame_RegistrarNuevoDocente extends javax.swing.JFrame {
 
     private void BotonGestionDeEstudiantes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionDeEstudiantes1ActionPerformed
         // TODO add your handling code here:
+        JFrame_RegistroDeDocente ventanaRegistro = new JFrame_RegistroDeDocente(listaDocentes, listaDeCargos, listaMaterias);
+        ventanaRegistro.setLocationRelativeTo(null); //la centra en la pantalla
+        ventanaRegistro.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BotonGestionDeEstudiantes1ActionPerformed
 
     private void BotonGestionDeDocentes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionDeDocentes1ActionPerformed
@@ -155,27 +166,6 @@ public class JFrame_RegistrarNuevoDocente extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new JFrame_RegistrarNuevoDocente().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonGestionDeAdministrativos1;
