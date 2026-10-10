@@ -28,21 +28,127 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        BotonGestionDeEstudiantes = new javax.swing.JButton();
+        BotonGestionDeDocentes = new javax.swing.JButton();
+        BotonGestionDeAdministrativos = new javax.swing.JButton();
+        botonSalir = new javax.swing.JButton();
+
+        jLabel2.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("REGISTRAR NUEVO DOCENTE");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(48, 125, 174));
+
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
+
+        jLabel3.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("SISTEMA ADMINISTRATIVO");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(194, 194, 194))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addContainerGap())
+        );
+
+        jPanel2.setBackground(new java.awt.Color(152, 165, 190));
+
+        BotonGestionDeEstudiantes.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
+        BotonGestionDeEstudiantes.setText("GESTIÓN DE ESTUDIANTES");
+        BotonGestionDeEstudiantes.addActionListener(this::BotonGestionDeEstudiantesActionPerformed);
+
+        BotonGestionDeDocentes.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
+        BotonGestionDeDocentes.setText("GESTIÓN DE DOCENTES");
+        BotonGestionDeDocentes.addActionListener(this::BotonGestionDeDocentesActionPerformed);
+
+        BotonGestionDeAdministrativos.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
+        BotonGestionDeAdministrativos.setText("GESTIÓN DE ADMINISTRATIVOS");
+        BotonGestionDeAdministrativos.addActionListener(this::BotonGestionDeAdministrativosActionPerformed);
+
+        botonSalir.setBackground(new java.awt.Color(255, 51, 51));
+        botonSalir.setForeground(new java.awt.Color(255, 255, 255));
+        botonSalir.setText("SALIR");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(179, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(botonSalir)
+                        .addGap(35, 35, 35))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BotonGestionDeDocentes, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BotonGestionDeAdministrativos)
+                            .addComponent(BotonGestionDeEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(158, 158, 158))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(BotonGestionDeEstudiantes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BotonGestionDeDocentes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BotonGestionDeAdministrativos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(botonSalir)
+                .addGap(16, 16, 16))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BotonGestionDeEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionDeEstudiantesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonGestionDeEstudiantesActionPerformed
+
+    private void BotonGestionDeDocentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionDeDocentesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonGestionDeDocentesActionPerformed
+
+    private void BotonGestionDeAdministrativosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionDeAdministrativosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonGestionDeAdministrativosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +176,13 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonGestionDeAdministrativos;
+    private javax.swing.JButton BotonGestionDeDocentes;
+    private javax.swing.JButton BotonGestionDeEstudiantes;
+    private javax.swing.JButton botonSalir;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
