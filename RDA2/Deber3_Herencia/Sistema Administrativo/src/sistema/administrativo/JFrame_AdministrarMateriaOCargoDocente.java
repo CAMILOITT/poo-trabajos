@@ -46,153 +46,139 @@ public class JFrame_AdministrarMateriaOCargoDocente extends javax.swing.JFrame {
         botonSalir1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         comboDocente = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
         comboMateria = new javax.swing.JComboBox<>();
         botonAniadirMateria = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         comboCargo = new javax.swing.JComboBox<>();
         botonAniadirCargo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaCargo = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaMaterias = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Administrar materias y cargos");
 
         jPanel6.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel6.setLayout(new java.awt.BorderLayout());
 
         jLabel2.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Administrar Materia o Cargo");
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("ADMINISTRAR MATERIAS Y CARGOS");
+        jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 0, 18, 0));
+        jPanel6.add(jLabel2, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(196, 196, 196)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(15, 15, 15))
-        );
+        jPanel4.setBackground(new java.awt.Color(241, 244, 248));
+        jPanel4.setPreferredSize(new java.awt.Dimension(910, 445));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel4.setBackground(new java.awt.Color(152, 165, 190));
-
-        botonSalir1.setBackground(new java.awt.Color(255, 51, 51));
+        botonSalir1.setBackground(new java.awt.Color(200, 50, 50));
+        botonSalir1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         botonSalir1.setForeground(new java.awt.Color(255, 255, 255));
-        botonSalir1.setText("SALIR");
+        botonSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/administrativo/iconos/volver.png"))); // NOI18N
+        botonSalir1.setText("Volver");
+        botonSalir1.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 12, 4, 12));
+        botonSalir1.setContentAreaFilled(false);
+        botonSalir1.setFocusPainted(false);
+        botonSalir1.setIconTextGap(8);
+        botonSalir1.setOpaque(true);
         botonSalir1.addActionListener(this::botonSalir1ActionPerformed);
+        jPanel4.add(botonSalir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 385, 130, 40));
 
-        jLabel1.setText("Seleccionar Docente:");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel1.setText("Docente:");
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 100, 35));
 
+        comboDocente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboDocente.addActionListener(this::comboDocenteActionPerformed);
+        jPanel4.add(comboDocente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 310, 35));
 
-        jLabel3.setText("Seleccionar Materia:");
-
+        comboMateria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboMateria.addActionListener(this::comboMateriaActionPerformed);
+        jPanel4.add(comboMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 125, 290, 35));
 
-        botonAniadirMateria.setBackground(new java.awt.Color(0, 204, 204));
-        botonAniadirMateria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonAniadirMateria.setBackground(new java.awt.Color(0, 51, 102));
+        botonAniadirMateria.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonAniadirMateria.setForeground(new java.awt.Color(255, 255, 255));
+        botonAniadirMateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/administrativo/iconos/anadir.png"))); // NOI18N
         botonAniadirMateria.setText("Añadir");
+        botonAniadirMateria.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 12, 4, 12));
+        botonAniadirMateria.setContentAreaFilled(false);
+        botonAniadirMateria.setFocusPainted(false);
+        botonAniadirMateria.setIconTextGap(8);
+        botonAniadirMateria.setOpaque(true);
         botonAniadirMateria.addActionListener(this::botonAniadirMateriaActionPerformed);
+        jPanel4.add(botonAniadirMateria, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 125, 120, 35));
 
-        jLabel4.setText("Seleccionar Cargo:");
-
+        comboCargo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboCargo.addActionListener(this::comboCargoActionPerformed);
+        jPanel4.add(comboCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 125, 290, 35));
 
-        botonAniadirCargo.setBackground(new java.awt.Color(0, 204, 204));
-        botonAniadirCargo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botonAniadirCargo.setBackground(new java.awt.Color(0, 51, 102));
+        botonAniadirCargo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonAniadirCargo.setForeground(new java.awt.Color(255, 255, 255));
+        botonAniadirCargo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/administrativo/iconos/anadir.png"))); // NOI18N
         botonAniadirCargo.setText("Añadir");
+        botonAniadirCargo.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 12, 4, 12));
+        botonAniadirCargo.setContentAreaFilled(false);
+        botonAniadirCargo.setFocusPainted(false);
+        botonAniadirCargo.setIconTextGap(8);
+        botonAniadirCargo.setOpaque(true);
         botonAniadirCargo.addActionListener(this::botonAniadirCargoActionPerformed);
+        jPanel4.add(botonAniadirCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 125, 120, 35));
 
         tablaCargo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Cargos administrativo que posee el docente:"
+                "Cargo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tablaCargo);
+
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 175, 420, 190));
 
         tablaMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Materias que imparte el docente"
+                "Materia"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tablaMaterias);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(botonSalir1))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(comboDocente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(comboMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botonAniadirMateria))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botonAniadirCargo))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(19, 19, 19))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(comboDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(comboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonAniadirCargo)
-                        .addComponent(jLabel4))
-                    .addComponent(jLabel3)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(comboMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonAniadirMateria)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(botonSalir1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 175, 420, 190));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel3.setText("Cargos administrativos");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 85, 420, 30));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel4.setText("Materias que imparte");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 85, 420, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

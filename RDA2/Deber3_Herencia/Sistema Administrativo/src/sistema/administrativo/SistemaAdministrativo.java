@@ -44,7 +44,7 @@ public class SistemaAdministrativo {
 
         // ---------- Docente 1 ----------
         listaDocentes.add(new Docente("1730000001", "Carlos", "Mendoza", "0991010101",
-                "carlos.mendoza@mail.com", 1800.0f, "Ingeniero de Sistemas", "Maestria",
+                "carlos.mendoza@mail.com", 1800.0f, "Ingeniero de Sistemas", "Maestría",
                 crearLista(listaDeCargos.get(0)),
                 "Ingeniería",
                 crearLista(listaMaterias.get(0), listaMaterias.get(1))));
@@ -58,7 +58,7 @@ public class SistemaAdministrativo {
 
         // ---------- Docente 3 (sin materias ni cargos) ----------
         listaDocentes.add(new Docente("1730000003", "Marcela", "Ortega", "0994040404",
-                "marcela.ortega@mail.com", 1500.0f, "Ingeniera Industrial", "Maestria",
+                "marcela.ortega@mail.com", 1500.0f, "Ingeniera Industrial", "Maestría",
                 crearLista(),
                 "Ingeniería",
                 crearLista()));

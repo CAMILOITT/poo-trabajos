@@ -47,7 +47,7 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestión de docentes");
 
-        jPanel4.setBackground(new java.awt.Color(152, 165, 190));
+        jPanel4.setBackground(new java.awt.Color(241, 244, 248));
 
         BotonGestionDeEstudiantes1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         BotonGestionDeEstudiantes1.setForeground(new java.awt.Color(0, 51, 102));
@@ -134,6 +134,7 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("GESTIÓN DE DOCENTES");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
