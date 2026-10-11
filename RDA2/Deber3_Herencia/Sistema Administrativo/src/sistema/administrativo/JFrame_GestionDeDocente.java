@@ -79,7 +79,7 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
         BotonGestionDeAdministrativos1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         BotonGestionDeAdministrativos1.setForeground(new java.awt.Color(0, 51, 102));
         BotonGestionDeAdministrativos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/administrativo/iconos/materiasCargos.png"))); // NOI18N
-        BotonGestionDeAdministrativos1.setText("Administrar materia o cargo");
+        BotonGestionDeAdministrativos1.setText("Administrar materias y cargos");
         BotonGestionDeAdministrativos1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)), javax.swing.BorderFactory.createEmptyBorder(8, 40, 8, 20)));
         BotonGestionDeAdministrativos1.setContentAreaFilled(false);
         BotonGestionDeAdministrativos1.setFocusPainted(false);
