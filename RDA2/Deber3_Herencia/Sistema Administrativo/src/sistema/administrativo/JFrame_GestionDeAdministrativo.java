@@ -194,9 +194,9 @@ public class JFrame_GestionDeAdministrativo extends javax.swing.JFrame {
 
     private void botonAsignarCargosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAsignarCargosActionPerformed
         // TODO add your handling code here:
-        JFrame_AdministrarMateriaOCargoDocente ventanaMateria = new JFrame_AdministrarMateriaOCargoDocente(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos);
-        ventanaMateria.setLocationRelativeTo(null); //la centra en la pantalla
-        ventanaMateria.setVisible(true);
+        JFrame_AsignarCargosAdministrativo ventanaCargos = new JFrame_AsignarCargosAdministrativo(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos);
+        ventanaCargos.setLocationRelativeTo(null);
+        ventanaCargos.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_botonAsignarCargosActionPerformed
 
