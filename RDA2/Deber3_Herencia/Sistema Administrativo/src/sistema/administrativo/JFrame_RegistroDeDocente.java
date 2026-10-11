@@ -4,6 +4,7 @@
  */
 package sistema.administrativo;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -74,16 +75,16 @@ public class JFrame_RegistroDeDocente extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(176, 176, 176)
+                .addGap(199, 199, 199)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(14, 14, 14))
+                .addGap(15, 15, 15))
         );
 
         jPanel4.setBackground(new java.awt.Color(152, 165, 190));
@@ -91,6 +92,7 @@ public class JFrame_RegistroDeDocente extends javax.swing.JFrame {
         botonSalir1.setBackground(new java.awt.Color(255, 51, 51));
         botonSalir1.setForeground(new java.awt.Color(255, 255, 255));
         botonSalir1.setText("SALIR");
+        botonSalir1.addActionListener(this::botonSalir1ActionPerformed);
 
         campoNombres.addActionListener(this::campoNombresActionPerformed);
 
@@ -252,6 +254,7 @@ public class JFrame_RegistroDeDocente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         String nombres = campoNombres.getText().trim();
         String apellidos = campoApellido.getText().trim();
         String cedula = campoCedula.getText().trim();
@@ -262,11 +265,70 @@ public class JFrame_RegistroDeDocente extends javax.swing.JFrame {
         String nivel = String.valueOf(campoNivelDeFormacion.getSelectedItem());
         String facultad = String.valueOf(campoFacultad.getSelectedItem());
         
+        if (nombres.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Falta ingresar el Nombre", "AVISO", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (apellidos.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Falta ingresar el Apellido", "AVISO", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (cedula.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Falta ingresar la cedula", "AVISO", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (correo.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Falta ingresar el Correo Electronico", "AVISO", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (telefono.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Falta ingresar el numero de telefono", "AVISO", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (titulo.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Falta ingresar el titulo", "AVISO", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (cedula.length()!= 10)
+        {
+            JOptionPane.showMessageDialog(this, "numero de cedula invalido", "AVISO", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         Docente profesor = new Docente(facultad, listaMaterias, sueldo, titulo, nivel, listaDeCargos, cedula, nombres, correo, apellidos, telefono );
         
-        listaDocentes.add(profesor);    
+        listaDocentes.add(profesor);
+        
+        JOptionPane.showMessageDialog(this, "Docente registrado exitosamente", "AVISO", JOptionPane.INFORMATION_MESSAGE);
+        
+        limpiarCampos();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void botonSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalir1ActionPerformed
+        // TODO add your handling code here:
+        JFrame_GestionDeDocente ventana = new JFrame_GestionDeDocente(listaDocentes, listaMaterias, listaDeCargos);
+        ventana.setLocationRelativeTo(null); //la centra en la pantalla
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_botonSalir1ActionPerformed
+
+    private void limpiarCampos()
+    {
+        campoNombres.setText("");
+        campoApellido.setText("");
+        campoCedula.setText("");
+        campoCorreo.setText("");
+        campoTelefono.setText("");
+        campoTitulo.setText("");
+        campoSueldo.setText("");
+        campoNivelDeFormacion.setSelectedIndex(0);
+        campoFacultad.setSelectedIndex(0);
+    }
     /**
      * @param args the command line arguments
      */

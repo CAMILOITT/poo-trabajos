@@ -67,6 +67,9 @@ public class Docente extends Empleado{
                 return false;
             }
         }
+        
+        listaMaterias.add(materia);
+        
         return true;
     }
     

@@ -91,6 +91,7 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
         botonSalir.setBackground(new java.awt.Color(255, 51, 51));
         botonSalir.setForeground(new java.awt.Color(255, 255, 255));
         botonSalir.setText("SALIR");
+        botonSalir.addActionListener(this::botonSalirActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -160,6 +161,11 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
     private void BotonGestionDeAdministrativosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionDeAdministrativosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonGestionDeAdministrativosActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_botonSalirActionPerformed
 
     /**
      * @param args the command line arguments

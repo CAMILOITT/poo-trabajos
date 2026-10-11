@@ -69,6 +69,7 @@ public class Empleado extends Persona{
                 return false;
             }
         }
+        listaDeCargos.add(Cargo);
         return true;
     }
     

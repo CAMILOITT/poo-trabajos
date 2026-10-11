@@ -53,7 +53,7 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
         BotonGestionDeEstudiantes1.addActionListener(this::BotonGestionDeEstudiantes1ActionPerformed);
 
         BotonGestionDeDocentes1.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
-        BotonGestionDeDocentes1.setText("Listar Docentes Registrados");
+        BotonGestionDeDocentes1.setText("Consultar Docentes");
         BotonGestionDeDocentes1.addActionListener(this::BotonGestionDeDocentes1ActionPerformed);
 
         BotonGestionDeAdministrativos1.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
@@ -63,22 +63,23 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
         botonSalir1.setBackground(new java.awt.Color(255, 51, 51));
         botonSalir1.setForeground(new java.awt.Color(255, 255, 255));
         botonSalir1.setText("SALIR");
+        botonSalir1.addActionListener(this::botonSalir1ActionPerformed);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(562, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonSalir1)
                 .addGap(35, 35, 35))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(165, 165, 165)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BotonGestionDeAdministrativos1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotonGestionDeDocentes1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonGestionDeAdministrativos1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotonGestionDeEstudiantes1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 172, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,9 +87,9 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE)
                 .addComponent(BotonGestionDeEstudiantes1)
                 .addGap(18, 18, 18)
-                .addComponent(BotonGestionDeDocentes1)
-                .addGap(18, 18, 18)
                 .addComponent(BotonGestionDeAdministrativos1)
+                .addGap(18, 18, 18)
+                .addComponent(BotonGestionDeDocentes1)
                 .addGap(26, 26, 26)
                 .addComponent(botonSalir1)
                 .addGap(16, 16, 16))
@@ -157,11 +158,27 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
 
     private void BotonGestionDeDocentes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionDeDocentes1ActionPerformed
         // TODO add your handling code here:
+        JFrame_ConsultarDocentes ventanaConsulta = new JFrame_ConsultarDocentes(listaDocentes, listaDeCargos, listaMaterias);
+        ventanaConsulta.setLocationRelativeTo(null); //la centra en la pantalla
+        ventanaConsulta.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BotonGestionDeDocentes1ActionPerformed
 
     private void BotonGestionDeAdministrativos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionDeAdministrativos1ActionPerformed
         // TODO add your handling code here:
+        JFrame_AdministrarMateriaOCargoDocente ventanaMateria = new JFrame_AdministrarMateriaOCargoDocente (listaDocentes, listaDeCargos, listaMaterias);
+        ventanaMateria.setLocationRelativeTo(null); //la centra en la pantalla
+        ventanaMateria.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BotonGestionDeAdministrativos1ActionPerformed
+
+    private void botonSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalir1ActionPerformed
+        // TODO add your handling code here:
+        JFrame_SistemaAdministrativo ventana = new JFrame_SistemaAdministrativo(listaDocentes, listaMaterias, listaDeCargos);
+        ventana.setLocationRelativeTo(null); //la centra en la pantalla
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_botonSalir1ActionPerformed
 
     /**
      * @param args the command line arguments
