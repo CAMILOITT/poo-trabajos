@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistema.administrativo;
+
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -12,23 +13,26 @@ import javax.swing.JOptionPane;
  * @author grupo1
  */
 public class JFrame_AdministrarMateriaOCargoDocente extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrame_AdministrarMateriaOCargoDocente.class.getName());
     private ArrayList<Docente> listaDocentes;
     private ArrayList<String> listaMaterias;
     private ArrayList<String> listaDeCargos;
+    private ArrayList<Administrativo> listaAdministrativos;
+
     /**
      * Creates new form JFrame_AdministrarMateriaOCargoDocente
      */
-    public JFrame_AdministrarMateriaOCargoDocente(ArrayList<Docente> listaDocentes,  ArrayList<String> listaMaterias, ArrayList<String> listaDeCargos) {
+    public JFrame_AdministrarMateriaOCargoDocente(ArrayList<Docente> listaDocentes, ArrayList<String> listaMaterias,
+            ArrayList<String> listaDeCargos, ArrayList<Administrativo> listaAdministrativos) {
         initComponents();
         this.listaDocentes = listaDocentes;
-        this.listaDeCargos = listaDeCargos;
         this.listaMaterias = listaMaterias;
+        this.listaDeCargos = listaDeCargos;
+        this.listaAdministrativos = listaAdministrativos;
         cargarDocentes();
         cargarMaterias();
         cargarCargos();
-        
     }
 
     /**
@@ -200,7 +204,7 @@ public class JFrame_AdministrarMateriaOCargoDocente extends javax.swing.JFrame {
 
     private void botonSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalir1ActionPerformed
         // TODO add your handling code here:
-        JFrame_GestionDeDocente ventana = new JFrame_GestionDeDocente(listaDocentes, listaMaterias, listaDeCargos);
+        JFrame_GestionDeDocente ventana = new JFrame_GestionDeDocente(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos);
         ventana.setLocationRelativeTo(null); //la centra en la pantalla
         ventana.setVisible(true);
         this.setVisible(false);
@@ -210,59 +214,49 @@ public class JFrame_AdministrarMateriaOCargoDocente extends javax.swing.JFrame {
         // TODO add your handling code here:
         int posicionDocente = obtenerDocenteSeleccionado();
         boolean materiaAgregada;
-        if (posicionDocente == -1)
-        {
+        if (posicionDocente == -1) {
             JOptionPane.showMessageDialog(this, "Seleccione un docente válido", "AVISO", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        if (comboMateria.getSelectedIndex() < 1)
-        {
+        if (comboMateria.getSelectedIndex() < 1) {
             JOptionPane.showMessageDialog(this, "Seleccione una materia válida", "AVISO", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String materia = String.valueOf(comboMateria.getSelectedItem());
-        
+
         materiaAgregada = listaDocentes.get(posicionDocente).aniadirMateria(materia);
-        
-        if (materiaAgregada)
-        {
+
+        if (materiaAgregada) {
             actualizarTablaMaterias();
-        }
-        else
-        {
-          JOptionPane.showMessageDialog(this, "El docente ya imparte esa materia", "AVISO", JOptionPane.WARNING_MESSAGE);
-          return;  
+        } else {
+            JOptionPane.showMessageDialog(this, "El docente ya imparte esa materia", "AVISO", JOptionPane.WARNING_MESSAGE);
+            return;
         }
     }//GEN-LAST:event_botonAniadirMateriaActionPerformed
 
     private void botonAniadirCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirCargoActionPerformed
         // TODO add your handling code here:
         int posicionDocente = obtenerDocenteSeleccionado();
-        boolean  cargoAgregado;
-        if (posicionDocente == -1)
-        {
+        boolean cargoAgregado;
+        if (posicionDocente == -1) {
             JOptionPane.showMessageDialog(this, "Seleccione un docente válido", "AVISO", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        if (comboCargo.getSelectedIndex() < 1)
-        {
+        if (comboCargo.getSelectedIndex() < 1) {
             JOptionPane.showMessageDialog(this, "Seleccione un cargo válido", "AVISO", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String cargo = String.valueOf(comboCargo.getSelectedItem());
-        
+
         cargoAgregado = listaDocentes.get(posicionDocente).aniadirCargo(cargo);
-        
-        if ( cargoAgregado)
-        {
+
+        if (cargoAgregado) {
             actualizarTablaCargos();
-        }
-        else
-        {
-          JOptionPane.showMessageDialog(this, "El docente ya tiene ese cargo", "AVISO", JOptionPane.WARNING_MESSAGE);
-          return;  
+        } else {
+            JOptionPane.showMessageDialog(this, "El docente ya tiene ese cargo", "AVISO", JOptionPane.WARNING_MESSAGE);
+            return;
         }
     }//GEN-LAST:event_botonAniadirCargoActionPerformed
 
@@ -278,83 +272,68 @@ public class JFrame_AdministrarMateriaOCargoDocente extends javax.swing.JFrame {
 
     private void comboCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCargoActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_comboCargoActionPerformed
 
-    private void cargarDocentes()
-    {
+    private void cargarDocentes() {
         comboDocente.addItem("Seleccione un docente");
-        
-        for (int i=0; i< this.listaDocentes.size();i++)
-        {
+
+        for (int i = 0; i < this.listaDocentes.size(); i++) {
             comboDocente.addItem(listaDocentes.get(i).getNombre() + " " + listaDocentes.get(i).getApellido());
         }
     }
-    
-    private void cargarMaterias()
-    {
+
+    private void cargarMaterias() {
         comboMateria.addItem("Seleccione una materia");
-        
-        for (int i=0; i< this.listaMaterias.size();i++)
-        {
+
+        for (int i = 0; i < this.listaMaterias.size(); i++) {
             comboMateria.addItem(listaMaterias.get(i));
         }
     }
-    
-    private void cargarCargos()
-    {
+
+    private void cargarCargos() {
         comboCargo.addItem("Seleccione un cargo");
-        
-        for (int i=0; i< this.listaDeCargos.size();i++)
-        {
+
+        for (int i = 0; i < this.listaDeCargos.size(); i++) {
             comboCargo.addItem(listaDeCargos.get(i));
         }
     }
-    
-    private int obtenerDocenteSeleccionado()
-    {
+
+    private int obtenerDocenteSeleccionado() {
         String docenteNombre = String.valueOf(comboDocente.getSelectedItem());
-        
-        for (int i = 0; i< listaDocentes.size(); i++)
-        {
-            if ((listaDocentes.get(i).getNombre() + " " + listaDocentes.get(i).getApellido()).equals(docenteNombre))
-            {
+
+        for (int i = 0; i < listaDocentes.size(); i++) {
+            if ((listaDocentes.get(i).getNombre() + " " + listaDocentes.get(i).getApellido()).equals(docenteNombre)) {
                 return i;
             }
         }
         return -1;
     }
-    
-    private void actualizarTablaMaterias()
-    {
+
+    private void actualizarTablaMaterias() {
         DefaultTableModel modelo = (DefaultTableModel) tablaMaterias.getModel();
-        modelo.setRowCount(0); 
+        modelo.setRowCount(0);
         int posicionDocente = obtenerDocenteSeleccionado();
-        
-        if (posicionDocente == -1)
-        {
+
+        if (posicionDocente == -1) {
             return;
         }
-        for (int i =0; i<listaDocentes.get(posicionDocente).getListaMaterias().size(); i++ )
-        {
-          modelo.addRow(new Object[] {listaDocentes.get(posicionDocente).getListaMaterias().get(i)});
+        for (int i = 0; i < listaDocentes.get(posicionDocente).getListaMaterias().size(); i++) {
+            modelo.addRow(new Object[]{listaDocentes.get(posicionDocente).getListaMaterias().get(i)});
         }
     }
-    
-    private void actualizarTablaCargos()
-    {
-       DefaultTableModel modelo2 = (DefaultTableModel) tablaCargo.getModel();
-        modelo2.setRowCount(0); 
+
+    private void actualizarTablaCargos() {
+        DefaultTableModel modelo2 = (DefaultTableModel) tablaCargo.getModel();
+        modelo2.setRowCount(0);
         int posicionDocente = obtenerDocenteSeleccionado();
-        
-        if (posicionDocente == -1)
-        {
+
+        if (posicionDocente == -1) {
             return;
         }
-        for (int i =0; i<listaDocentes.get(posicionDocente).getListaDeCargos().size(); i++ )
-        {
-          modelo2.addRow(new Object[] {listaDocentes.get(posicionDocente).getListaDeCargos().get(i)});
-        } 
+        for (int i = 0; i < listaDocentes.get(posicionDocente).getListaDeCargos().size(); i++) {
+            modelo2.addRow(new Object[]{listaDocentes.get(posicionDocente).getListaDeCargos().get(i)});
+        }
     }
     /**
      * @param args the command line arguments

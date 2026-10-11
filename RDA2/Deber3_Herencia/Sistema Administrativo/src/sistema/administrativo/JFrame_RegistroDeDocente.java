@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author mnobo
+ * @author grupo1
  */
 public class JFrame_RegistroDeDocente extends javax.swing.JFrame {
 
@@ -17,15 +17,18 @@ public class JFrame_RegistroDeDocente extends javax.swing.JFrame {
     private ArrayList<Docente> listaDocentes;
     private ArrayList<String> listaMaterias;
     private ArrayList<String> listaDeCargos;
+    private ArrayList<Administrativo> listaAdministrativos;
 
     /**
      * Creates new form JFrame_GestionDeDocentes
      */
-    public JFrame_RegistroDeDocente(ArrayList<Docente> listaDocentes, ArrayList<String> listaMaterias, ArrayList<String> listaDeCargos) {
+    public JFrame_RegistroDeDocente(ArrayList<Docente> listaDocentes, ArrayList<String> listaMaterias,
+            ArrayList<String> listaDeCargos, ArrayList<Administrativo> listaAdministrativos) {
         initComponents();
         this.listaDocentes = listaDocentes;
-        this.listaDeCargos = listaDeCargos;
         this.listaMaterias = listaMaterias;
+        this.listaDeCargos = listaDeCargos;
+        this.listaAdministrativos = listaAdministrativos;
     }
 
     /**
@@ -308,7 +311,7 @@ public class JFrame_RegistroDeDocente extends javax.swing.JFrame {
 
     private void botonSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalir1ActionPerformed
         // TODO add your handling code here:
-        JFrame_GestionDeDocente ventana = new JFrame_GestionDeDocente(listaDocentes, listaMaterias, listaDeCargos);
+        JFrame_GestionDeDocente ventana = new JFrame_GestionDeDocente(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos);
         ventana.setLocationRelativeTo(null); //la centra en la pantalla
         ventana.setVisible(true);
         this.setVisible(false);

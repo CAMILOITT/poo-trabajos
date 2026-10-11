@@ -93,7 +93,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/sistema/administrativo/iconos/registrar.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Registrar Nuevo Docente"/>
+            <Property name="text" type="java.lang.String" value="Registrar nuevo docente"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                 <CompoundBorder>
@@ -129,7 +129,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/sistema/administrativo/iconos/consultar.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Consultar Docentes"/>
+            <Property name="text" type="java.lang.String" value="Consultar docentes"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                 <CompoundBorder>
@@ -165,7 +165,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/sistema/administrativo/iconos/materiasCargos.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Administrar Materia o Cargo"/>
+            <Property name="text" type="java.lang.String" value="Administrar materia o cargo"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.CompoundBorderInfo">
                 <CompoundBorder>

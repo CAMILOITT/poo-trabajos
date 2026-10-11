@@ -3,27 +3,31 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistema.administrativo;
+
 import java.util.ArrayList;
 
 /**
  *
- * @author mnobo
+ * @author grupo1
  */
 public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrame_SistemaAdministrativo.class.getName());
     private ArrayList<Docente> listaDocentes;
     private ArrayList<String> listaMaterias;
     private ArrayList<String> listaDeCargos;
+    private ArrayList<Administrativo> listaAdministrativos;
 
     /**
      * Creates new form JFrame_SistemaAdministrativo
      */
-    public JFrame_SistemaAdministrativo(ArrayList<Docente> listaDocentes, ArrayList<String> listaMaterias, ArrayList<String> listaDeCargos) {
+    public JFrame_SistemaAdministrativo(ArrayList<Docente> listaDocentes, ArrayList<String> listaMaterias,
+            ArrayList<String> listaDeCargos, ArrayList<Administrativo> listaAdministrativos) {
         initComponents();
         this.listaDocentes = listaDocentes;
-        this.listaDeCargos = listaDeCargos;
         this.listaMaterias = listaMaterias;
+        this.listaDeCargos = listaDeCargos;
+        this.listaAdministrativos = listaAdministrativos;
     }
 
     /**
@@ -183,7 +187,7 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
 
     private void BotonGestionDeDocentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionDeDocentesActionPerformed
         // TODO add your handling code here:
-        JFrame_GestionDeDocente ventanaDocentes = new JFrame_GestionDeDocente(listaDocentes, listaDeCargos, listaMaterias);
+        JFrame_GestionDeDocente ventanaDocentes = new JFrame_GestionDeDocente(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos);
         ventanaDocentes.setLocationRelativeTo(null); //la centra en la pantalla
         ventanaDocentes.setVisible(true);
         this.setVisible(false);
@@ -191,6 +195,10 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
 
     private void BotonGestionDeAdministrativosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionDeAdministrativosActionPerformed
         // TODO add your handling code here:
+        JFrame_GestionDeAdministrativo ventanaAdministrativos = new JFrame_GestionDeAdministrativo(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos);
+        ventanaAdministrativos.setLocationRelativeTo(null);
+        ventanaAdministrativos.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_BotonGestionDeAdministrativosActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
@@ -201,7 +209,6 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonGestionDeAdministrativos;

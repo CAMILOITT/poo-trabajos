@@ -8,23 +8,26 @@ import java.util.ArrayList;
 
 /**
  *
- * @author mnobo
+ * @author grupo1
  */
 public class JFrame_GestionDeDocente extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrame_GestionDeDocente.class.getName());
     private ArrayList<Docente> listaDocentes;
     private ArrayList<String> listaMaterias;
     private ArrayList<String> listaDeCargos;
-    
+    private ArrayList<Administrativo> listaAdministrativos;
+
     /**
      * Creates new form JFrame_RegistrarNuevoDocente
      */
-    public JFrame_GestionDeDocente(ArrayList<Docente> listaDocentes,  ArrayList<String> listaMaterias, ArrayList<String> listaDeCargos) {
+    public JFrame_GestionDeDocente(ArrayList<Docente> listaDocentes, ArrayList<String> listaMaterias,
+            ArrayList<String> listaDeCargos, ArrayList<Administrativo> listaAdministrativos) {
         initComponents();
         this.listaDocentes = listaDocentes;
-        this.listaDeCargos = listaDeCargos;
         this.listaMaterias = listaMaterias;
+        this.listaDeCargos = listaDeCargos;
+        this.listaAdministrativos = listaAdministrativos;
     }
 
     /**
@@ -52,7 +55,7 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
         BotonGestionDeEstudiantes1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         BotonGestionDeEstudiantes1.setForeground(new java.awt.Color(0, 51, 102));
         BotonGestionDeEstudiantes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/administrativo/iconos/registrar.png"))); // NOI18N
-        BotonGestionDeEstudiantes1.setText("Registrar Nuevo Docente");
+        BotonGestionDeEstudiantes1.setText("Registrar nuevo docente");
         BotonGestionDeEstudiantes1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)), javax.swing.BorderFactory.createEmptyBorder(8, 40, 8, 20)));
         BotonGestionDeEstudiantes1.setContentAreaFilled(false);
         BotonGestionDeEstudiantes1.setFocusPainted(false);
@@ -64,7 +67,7 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
         BotonGestionDeDocentes1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         BotonGestionDeDocentes1.setForeground(new java.awt.Color(0, 51, 102));
         BotonGestionDeDocentes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/administrativo/iconos/consultar.png"))); // NOI18N
-        BotonGestionDeDocentes1.setText("Consultar Docentes");
+        BotonGestionDeDocentes1.setText("Consultar docentes");
         BotonGestionDeDocentes1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)), javax.swing.BorderFactory.createEmptyBorder(8, 40, 8, 20)));
         BotonGestionDeDocentes1.setContentAreaFilled(false);
         BotonGestionDeDocentes1.setFocusPainted(false);
@@ -76,7 +79,7 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
         BotonGestionDeAdministrativos1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         BotonGestionDeAdministrativos1.setForeground(new java.awt.Color(0, 51, 102));
         BotonGestionDeAdministrativos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/administrativo/iconos/materiasCargos.png"))); // NOI18N
-        BotonGestionDeAdministrativos1.setText("Administrar Materia o Cargo");
+        BotonGestionDeAdministrativos1.setText("Administrar materia o cargo");
         BotonGestionDeAdministrativos1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)), javax.swing.BorderFactory.createEmptyBorder(8, 40, 8, 20)));
         BotonGestionDeAdministrativos1.setContentAreaFilled(false);
         BotonGestionDeAdministrativos1.setFocusPainted(false);
@@ -174,7 +177,7 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
 
     private void BotonGestionDeEstudiantes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionDeEstudiantes1ActionPerformed
         // TODO add your handling code here:
-        JFrame_RegistroDeDocente ventanaRegistro = new JFrame_RegistroDeDocente(listaDocentes, listaDeCargos, listaMaterias);
+        JFrame_RegistroDeDocente ventanaRegistro = new JFrame_RegistroDeDocente(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos);
         ventanaRegistro.setLocationRelativeTo(null); //la centra en la pantalla
         ventanaRegistro.setVisible(true);
         this.setVisible(false);
@@ -182,7 +185,7 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
 
     private void BotonGestionDeDocentes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionDeDocentes1ActionPerformed
         // TODO add your handling code here:
-        JFrame_ConsultarDocentes ventanaConsulta = new JFrame_ConsultarDocentes(listaDocentes, listaDeCargos, listaMaterias);
+        JFrame_ConsultarDocentes ventanaConsulta = new JFrame_ConsultarDocentes(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos);
         ventanaConsulta.setLocationRelativeTo(null); //la centra en la pantalla
         ventanaConsulta.setVisible(true);
         this.setVisible(false);
@@ -190,7 +193,7 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
 
     private void BotonGestionDeAdministrativos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionDeAdministrativos1ActionPerformed
         // TODO add your handling code here:
-        JFrame_AdministrarMateriaOCargoDocente ventanaMateria = new JFrame_AdministrarMateriaOCargoDocente (listaDocentes, listaDeCargos, listaMaterias);
+        JFrame_AdministrarMateriaOCargoDocente ventanaMateria = new JFrame_AdministrarMateriaOCargoDocente(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos);
         ventanaMateria.setLocationRelativeTo(null); //la centra en la pantalla
         ventanaMateria.setVisible(true);
         this.setVisible(false);
@@ -198,7 +201,7 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
 
     private void botonSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalir1ActionPerformed
         // TODO add your handling code here:
-        JFrame_SistemaAdministrativo ventana = new JFrame_SistemaAdministrativo(listaDocentes, listaMaterias, listaDeCargos);
+        JFrame_SistemaAdministrativo ventana = new JFrame_SistemaAdministrativo(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos);
         ventana.setLocationRelativeTo(null); //la centra en la pantalla
         ventana.setVisible(true);
         this.setVisible(false);

@@ -10,22 +10,26 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author mnobo
+ * @author grupo1
  */
 public class JFrame_ConsultarDocentes extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrame_ConsultarDocentes.class.getName());
     private ArrayList<Docente> listaDocentes;
     private ArrayList<String> listaMaterias;
     private ArrayList<String> listaDeCargos;
+    private ArrayList<Administrativo> listaAdministrativos;
+
     /**
      * Creates new form JFrame_ConsultarDocentes
      */
-    public JFrame_ConsultarDocentes(ArrayList<Docente> listaDocentes,  ArrayList<String> listaMaterias, ArrayList<String> listaDeCargos) {
+    public JFrame_ConsultarDocentes(ArrayList<Docente> listaDocentes, ArrayList<String> listaMaterias,
+            ArrayList<String> listaDeCargos, ArrayList<Administrativo> listaAdministrativos) {
         initComponents();
         this.listaDocentes = listaDocentes;
         this.listaDeCargos = listaDeCargos;
         this.listaMaterias = listaMaterias;
+        this.listaAdministrativos = listaAdministrativos;
     }
 
     /**
@@ -76,7 +80,7 @@ public class JFrame_ConsultarDocentes extends javax.swing.JFrame {
         jPanel4.setPreferredSize(new java.awt.Dimension(910, 360));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        botonSalir1.setBackground(new java.awt.Color(250, 50, 50));
+        botonSalir1.setBackground(new java.awt.Color(200, 50, 50));
         botonSalir1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         botonSalir1.setForeground(new java.awt.Color(255, 255, 255));
         botonSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/administrativo/iconos/volver.png"))); // NOI18N
@@ -179,7 +183,7 @@ public class JFrame_ConsultarDocentes extends javax.swing.JFrame {
 
     private void botonSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalir1ActionPerformed
         // TODO add your handling code here:
-        JFrame_GestionDeDocente ventana = new JFrame_GestionDeDocente(listaDocentes, listaMaterias, listaDeCargos);
+        JFrame_GestionDeDocente ventana = new JFrame_GestionDeDocente(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos);
         ventana.setLocationRelativeTo(null); //la centra en la pantalla
         ventana.setVisible(true);
         this.setVisible(false);
@@ -187,7 +191,7 @@ public class JFrame_ConsultarDocentes extends javax.swing.JFrame {
 
     private void campoNivelDeFormacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNivelDeFormacionActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_campoNivelDeFormacionActionPerformed
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
@@ -197,63 +201,52 @@ public class JFrame_ConsultarDocentes extends javax.swing.JFrame {
         ArrayList<Docente> listaDocentesPorFacultad = new ArrayList<Docente>();
         ArrayList<Docente> listaDocentesPorNivel = new ArrayList<Docente>();
         int numeroDocentes = 0;
-        
-        if (campoFacultad.getSelectedIndex() > 0)
-        {
-            for (int i = 0; i < listaDocentes.size();i++)
-            {
-                if (listaDocentes.get(i).getFacultadPertenece().equals(facultad))
-                {
+
+        if (campoFacultad.getSelectedIndex() > 0) {
+            for (int i = 0; i < listaDocentes.size(); i++) {
+                if (listaDocentes.get(i).getFacultadPertenece().equals(facultad)) {
                     listaDocentesPorFacultad.add(listaDocentes.get(i));
                 }
             }
-        }
-        else
-        {
+        } else {
             listaDocentesPorFacultad = listaDocentes;
         }
-        
-        for (int i = 0; i < listaDocentesPorFacultad.size();i++)
-            {
-                if (listaDocentesPorFacultad.get(i).getNivelDeFormacion().equals(nivel))
-                {
-                    listaDocentesPorNivel.add(listaDocentesPorFacultad.get(i));
-                }
+
+        for (int i = 0; i < listaDocentesPorFacultad.size(); i++) {
+            if (listaDocentesPorFacultad.get(i).getNivelDeFormacion().equals(nivel)) {
+                listaDocentesPorNivel.add(listaDocentesPorFacultad.get(i));
             }
-        
+        }
+
         numeroDocentes = SistemaAdministrativo.numeroDeDocentesConMaestriaODoctorado(nivel, listaDocentesPorFacultad);
-        
+
         NumeroDocentes.setText("" + numeroDocentes);
-        
-        if (numeroDocentes < 1)
-        {
+
+        if (numeroDocentes < 1) {
             JOptionPane.showMessageDialog(this, "Docentes no encontrados", "AVISO", JOptionPane.WARNING_MESSAGE);
             return;
         }
-                
+
         actualizarTablaDocentes(listaDocentesPorNivel);
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void NumeroDocentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumeroDocentesActionPerformed
         // TODO add your handling code here:   
     }//GEN-LAST:event_NumeroDocentesActionPerformed
-    
-    
-    private void actualizarTablaDocentes(ArrayList<Docente> listaDocentesPorFacultad)
-    {
-        DefaultTableModel modelo = (DefaultTableModel) tablaDocentes.getModel();
-        modelo.setRowCount(0); 
 
-        for (int i =0; i < listaDocentesPorFacultad.size(); i++ )
-        {
-          modelo.addRow(new Object[] {listaDocentesPorFacultad.get(i).getNombre() + " " + listaDocentesPorFacultad.get(i).getApellido()});
+    private void actualizarTablaDocentes(ArrayList<Docente> listaDocentesPorFacultad) {
+        DefaultTableModel modelo = (DefaultTableModel) tablaDocentes.getModel();
+        modelo.setRowCount(0);
+
+        for (int i = 0; i < listaDocentesPorFacultad.size(); i++) {
+            modelo.addRow(new Object[]{listaDocentesPorFacultad.get(i).getNombre() + " " + listaDocentesPorFacultad.get(i).getApellido()});
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NumeroDocentes;
     private javax.swing.JButton botonBuscar;
