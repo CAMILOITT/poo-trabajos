@@ -19,17 +19,27 @@ public class JFrame_AsignarCargosAdministrativo extends javax.swing.JFrame {
     private ArrayList<String> listaMaterias;
     private ArrayList<String> listaDeCargos;
     private ArrayList<Administrativo> listaAdministrativos;
+    private ArrayList<Estudiante> listaEstudiantes;
+
+
+
+
+
+
+
+
 
     /**
      * Creates new form JFrame_AdministrarMateriaOCargoDocente
      */
     public JFrame_AsignarCargosAdministrativo(ArrayList<Docente> listaDocentes, ArrayList<String> listaMaterias,
-            ArrayList<String> listaDeCargos, ArrayList<Administrativo> listaAdministrativos) {
+            ArrayList<String> listaDeCargos, ArrayList<Administrativo> listaAdministrativos, ArrayList<Estudiante> listaEstudiantes) {
         initComponents();
         this.listaDocentes = listaDocentes;
         this.listaMaterias = listaMaterias;
         this.listaDeCargos = listaDeCargos;
         this.listaAdministrativos = listaAdministrativos;
+        this.listaEstudiantes = listaEstudiantes;
         cargarAdministrativos();
         cargarCargos();
     }
@@ -156,7 +166,7 @@ public class JFrame_AsignarCargosAdministrativo extends javax.swing.JFrame {
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
         // TODO add your handling code here:
-        JFrame_GestionDeAdministrativo ventana = new JFrame_GestionDeAdministrativo(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos);
+        JFrame_GestionDeAdministrativo ventana = new JFrame_GestionDeAdministrativo(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos, listaEstudiantes);
         ventana.setLocationRelativeTo(null); //la centra en la pantalla
         ventana.setVisible(true);
         this.setVisible(false);

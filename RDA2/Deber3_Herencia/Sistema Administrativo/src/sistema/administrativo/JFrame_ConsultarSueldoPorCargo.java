@@ -19,17 +19,27 @@ public class JFrame_ConsultarSueldoPorCargo extends javax.swing.JFrame {
     private ArrayList<String> listaMaterias;
     private ArrayList<String> listaDeCargos;
     private ArrayList<Administrativo> listaAdministrativos;
+    private ArrayList<Estudiante> listaEstudiantes;
+
+
+
+
+
+
+
+
 
     /**
      * Creates new form JFrame_ConsultarDocentes
      */
     public JFrame_ConsultarSueldoPorCargo(ArrayList<Docente> listaDocentes, ArrayList<String> listaMaterias,
-            ArrayList<String> listaDeCargos, ArrayList<Administrativo> listaAdministrativos) {
+            ArrayList<String> listaDeCargos, ArrayList<Administrativo> listaAdministrativos, ArrayList<Estudiante> listaEstudiantes) {
         initComponents();
         this.listaDocentes = listaDocentes;
         this.listaDeCargos = listaDeCargos;
         this.listaMaterias = listaMaterias;
         this.listaAdministrativos = listaAdministrativos;
+        this.listaEstudiantes = listaEstudiantes;
         cargarCargos();
     }
 
@@ -179,7 +189,7 @@ public class JFrame_ConsultarSueldoPorCargo extends javax.swing.JFrame {
 
     private void botonSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalir1ActionPerformed
         // TODO add your handling code here:
-        JFrame_GestionDeAdministrativo ventana = new JFrame_GestionDeAdministrativo(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos);
+        JFrame_GestionDeAdministrativo ventana = new JFrame_GestionDeAdministrativo(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos, listaEstudiantes);
         ventana.setLocationRelativeTo(null); //la centra en la pantalla
         ventana.setVisible(true);
         this.setVisible(false);

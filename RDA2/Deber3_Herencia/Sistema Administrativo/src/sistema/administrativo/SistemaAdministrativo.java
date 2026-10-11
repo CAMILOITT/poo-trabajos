@@ -36,6 +36,29 @@ public class SistemaAdministrativo {
         return administrativosConCargo;
     }
 
+    static Estudiante buscarEstudiantePorCodigo(String codigo, ArrayList<Estudiante> listaEstudiantes) {
+        for (int i = 0; i < listaEstudiantes.size(); i++) {
+            if (listaEstudiantes.get(i).getCodigo().equalsIgnoreCase(codigo)) {
+                return listaEstudiantes.get(i);
+            }
+        }
+        return null;
+    }
+
+    static String generarCodigoEstudiante(ArrayList<Estudiante> listaEstudiantes) {
+        int numeroMayor = 0;
+
+        for (int i = 0; i < listaEstudiantes.size(); i++) {
+            String codigo = listaEstudiantes.get(i).getCodigo();
+            int numero = Integer.parseInt(codigo.substring(1));
+            if (numero > numeroMayor) {
+                numeroMayor = numero;
+            }
+        }
+
+        return String.format("L%08d", numeroMayor + 1);
+    }
+
     private static ArrayList<String> crearLista(String... elementos) {
         ArrayList<String> lista = new ArrayList<>();
         for (String elemento : elementos) {
@@ -95,7 +118,21 @@ public class SistemaAdministrativo {
                 crearLista(listaDeCargos.get(4), listaDeCargos.get(1)),
                 "Bienestar Estudiantil"));
 
-        JFrame_SistemaAdministrativo menu = new JFrame_SistemaAdministrativo(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos);
+        ArrayList<Estudiante> listaEstudiantes = new ArrayList<>();
+
+        // ---------- Estudiante 1 ----------
+        listaEstudiantes.add(new Estudiante("1750000001", "Mateo", "Guerrero", "0981111111",
+                "mateo.guerrero@mail.com", "Nivel 4", "L00123456", "Ingeniería de SIstemas de Información"));
+
+        // ---------- Estudiante 2 ----------
+        listaEstudiantes.add(new Estudiante("1750000002", "Valentina", "Ruiz", "0982222222",
+                "valentina.ruiz@mail.com", "Nivel 2", "L00234567", "Medicina"));
+
+        // ---------- Estudiante 3 ----------
+        listaEstudiantes.add(new Estudiante("1750000003", "Daniel", "Morales", "0983333333",
+                "daniel.morales@mail.com", "Nivel 6", "L00345678", "Arquitectura"));
+
+        JFrame_SistemaAdministrativo menu = new JFrame_SistemaAdministrativo(listaDocentes, listaMaterias, listaDeCargos, listaAdministrativos, listaEstudiantes);
         menu.setLocationRelativeTo(null);
         menu.setVisible(true);
     }
