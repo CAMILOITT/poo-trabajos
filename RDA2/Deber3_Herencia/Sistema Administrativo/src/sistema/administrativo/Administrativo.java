@@ -8,32 +8,25 @@ import java.util.ArrayList;
 
 /**
  *
- * @author mnobo
+ * @author grupo1
  */
-public class Administrativo extends Empleado{
-    
+public class Administrativo extends Empleado {
+
     private String area;
 
-    public Administrativo(String area, float sueldo, String titulo, String nivelDeFormacion, ArrayList<String> listaDeCargos, String cedula, String nombre, String correo, String apellido, String telefono) {
-        super(sueldo, titulo, nivelDeFormacion, listaDeCargos, cedula, nombre, correo, apellido, telefono);
+    public Administrativo(String cedula, String nombre, String apellido, String telefono,
+            String correo, float sueldo, String nivelDeFormacion, String titulo,
+            ArrayList<String> listaDeCargos, String area) {
+        super(cedula, nombre, apellido, telefono, correo, listaDeCargos,
+                sueldo, nivelDeFormacion, titulo);
         this.area = area;
-        this.sueldo = sueldo;
-        this.titulo = titulo;
-        this.nivelDeFormacion = nivelDeFormacion;
-        this.listaDeCargos = listaDeCargos;
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.correo = correo;
-        this.apellido = apellido;
-        this.telefono = telefono;
     }
 
     public String getArea() {
         return area;
     }
 
-    public void setArea(String area) {
-        this.area = area;
+    public void setArea(String nuevaArea) {
+        this.area = nuevaArea;
     }
-       
 }

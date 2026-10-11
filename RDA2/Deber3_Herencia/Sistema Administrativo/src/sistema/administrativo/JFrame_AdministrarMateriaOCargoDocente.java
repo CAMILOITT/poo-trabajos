@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author mnobo
+ * @author grupo1
  */
 public class JFrame_AdministrarMateriaOCargoDocente extends javax.swing.JFrame {
     
@@ -89,26 +89,26 @@ public class JFrame_AdministrarMateriaOCargoDocente extends javax.swing.JFrame {
         botonSalir1.setText("SALIR");
         botonSalir1.addActionListener(this::botonSalir1ActionPerformed);
 
-        jLabel1.setText("Selecionar Docente:");
+        jLabel1.setText("Seleccionar Docente:");
 
         comboDocente.addActionListener(this::comboDocenteActionPerformed);
 
-        jLabel3.setText("Selecionar Materia:");
+        jLabel3.setText("Seleccionar Materia:");
 
         comboMateria.addActionListener(this::comboMateriaActionPerformed);
 
         botonAniadirMateria.setBackground(new java.awt.Color(0, 204, 204));
         botonAniadirMateria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        botonAniadirMateria.setText("añadir");
+        botonAniadirMateria.setText("Añadir");
         botonAniadirMateria.addActionListener(this::botonAniadirMateriaActionPerformed);
 
-        jLabel4.setText("Selecionar Cargo:");
+        jLabel4.setText("Seleccionar Cargo:");
 
         comboCargo.addActionListener(this::comboCargoActionPerformed);
 
         botonAniadirCargo.setBackground(new java.awt.Color(0, 204, 204));
         botonAniadirCargo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        botonAniadirCargo.setText("añadir");
+        botonAniadirCargo.setText("Añadir");
         botonAniadirCargo.addActionListener(this::botonAniadirCargoActionPerformed);
 
         tablaCargo.setModel(new javax.swing.table.DefaultTableModel(
@@ -222,24 +222,24 @@ public class JFrame_AdministrarMateriaOCargoDocente extends javax.swing.JFrame {
 
     private void botonAniadirMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirMateriaActionPerformed
         // TODO add your handling code here:
-        int j = obtenerDocenteSeleccionado();
-        boolean aniadirmateria;
-        if (j == -1)
+        int posicionDocente = obtenerDocenteSeleccionado();
+        boolean materiaAgregada;
+        if (posicionDocente == -1)
         {
-            JOptionPane.showMessageDialog(this, "Seleccione un docente valido", "AVISO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Seleccione un docente válido", "AVISO", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         if (comboMateria.getSelectedIndex() < 1)
         {
-            JOptionPane.showMessageDialog(this, "Seleccione una materia valida", "AVISO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Seleccione una materia válida", "AVISO", JOptionPane.WARNING_MESSAGE);
             return;
         }
         String materia = String.valueOf(comboMateria.getSelectedItem());
         
-        aniadirmateria = listaDocentes.get(j).aniadirMateria(materia);
+        materiaAgregada = listaDocentes.get(posicionDocente).aniadirMateria(materia);
         
-        if (aniadirmateria)
+        if (materiaAgregada)
         {
             actualizarTablaMaterias();
         }
@@ -252,24 +252,24 @@ public class JFrame_AdministrarMateriaOCargoDocente extends javax.swing.JFrame {
 
     private void botonAniadirCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirCargoActionPerformed
         // TODO add your handling code here:
-        int j = obtenerDocenteSeleccionado();
-        boolean  aniadircargo;
-        if (j == -1)
+        int posicionDocente = obtenerDocenteSeleccionado();
+        boolean  cargoAgregado;
+        if (posicionDocente == -1)
         {
-            JOptionPane.showMessageDialog(this, "Seleccione un docente valido", "AVISO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Seleccione un docente válido", "AVISO", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        if (comboMateria.getSelectedIndex() < 1)
+        if (comboCargo.getSelectedIndex() < 1)
         {
-            JOptionPane.showMessageDialog(this, "Seleccione un cargo valido", "AVISO", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Seleccione un cargo válido", "AVISO", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        String Cargos = String.valueOf(comboCargo.getSelectedItem());
+        String cargo = String.valueOf(comboCargo.getSelectedItem());
         
-        aniadircargo = listaDocentes.get(j).aniadirCargo(Cargos);
+        cargoAgregado = listaDocentes.get(posicionDocente).aniadirCargo(cargo);
         
-        if ( aniadircargo)
+        if ( cargoAgregado)
         {
             actualizarTablaCargos();
         }
@@ -297,7 +297,7 @@ public class JFrame_AdministrarMateriaOCargoDocente extends javax.swing.JFrame {
 
     private void cargarDocentes()
     {
-        comboDocente.addItem("Selecione un Docente");
+        comboDocente.addItem("Seleccione un docente");
         
         for (int i=0; i< this.listaDocentes.size();i++)
         {
@@ -307,7 +307,7 @@ public class JFrame_AdministrarMateriaOCargoDocente extends javax.swing.JFrame {
     
     private void cargarMaterias()
     {
-        comboMateria.addItem("Selecione una Materia");
+        comboMateria.addItem("Seleccione una materia");
         
         for (int i=0; i< this.listaMaterias.size();i++)
         {
@@ -317,7 +317,7 @@ public class JFrame_AdministrarMateriaOCargoDocente extends javax.swing.JFrame {
     
     private void cargarCargos()
     {
-        comboCargo.addItem("Selecione un cargo");
+        comboCargo.addItem("Seleccione un cargo");
         
         for (int i=0; i< this.listaDeCargos.size();i++)
         {
@@ -343,15 +343,15 @@ public class JFrame_AdministrarMateriaOCargoDocente extends javax.swing.JFrame {
     {
         DefaultTableModel modelo = (DefaultTableModel) tablaMaterias.getModel();
         modelo.setRowCount(0); 
-        int j = obtenerDocenteSeleccionado();
+        int posicionDocente = obtenerDocenteSeleccionado();
         
-        if (j == -1)
+        if (posicionDocente == -1)
         {
             return;
         }
-        for (int i =0; i<listaDocentes.get(j).getListaMaterias().size(); i++ )
+        for (int i =0; i<listaDocentes.get(posicionDocente).getListaMaterias().size(); i++ )
         {
-          modelo.addRow(new Object[] {listaDocentes.get(j).getListaMaterias().get(i)});
+          modelo.addRow(new Object[] {listaDocentes.get(posicionDocente).getListaMaterias().get(i)});
         }
     }
     
@@ -359,15 +359,15 @@ public class JFrame_AdministrarMateriaOCargoDocente extends javax.swing.JFrame {
     {
        DefaultTableModel modelo2 = (DefaultTableModel) tablaCargo.getModel();
         modelo2.setRowCount(0); 
-        int j = obtenerDocenteSeleccionado();
+        int posicionDocente = obtenerDocenteSeleccionado();
         
-        if (j == -1)
+        if (posicionDocente == -1)
         {
             return;
         }
-        for (int i =0; i<listaDocentes.get(j).getListaDeCargos().size(); i++ )
+        for (int i =0; i<listaDocentes.get(posicionDocente).getListaDeCargos().size(); i++ )
         {
-          modelo2.addRow(new Object[] {listaDocentes.get(j).getListaDeCargos().get(i)});
+          modelo2.addRow(new Object[] {listaDocentes.get(posicionDocente).getListaDeCargos().get(i)});
         } 
     }
     /**

@@ -7,25 +7,23 @@ import java.util.ArrayList;
 
 /**
  *
- * @author mnobo
+ * @author grupo1
  */
-public class Empleado extends Persona{
+public class Empleado extends Persona {
+
     protected float sueldo;
     protected String titulo;
     protected String nivelDeFormacion;
     protected ArrayList<String> listaDeCargos;
 
-    public Empleado(float sueldo, String titulo, String nivelDeFormacion, ArrayList<String> listaDeCargos, String cedula, String nombre, String correo, String apellido, String telefono) {
-        super(cedula, nombre, correo, apellido, telefono);
-        this.sueldo = sueldo;
-        this.titulo = titulo;
-        this.nivelDeFormacion = nivelDeFormacion;
+    public Empleado(String cedula, String nombre, String apellido, String telefono,
+            String correo, ArrayList<String> listaDeCargos, float sueldo,
+            String nivelDeFormacion, String titulo) {
+        super(cedula, nombre, apellido, correo, telefono);
         this.listaDeCargos = listaDeCargos;
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.correo = correo;
-        this.apellido = apellido;
-        this.telefono = telefono;
+        this.sueldo = sueldo;
+        this.nivelDeFormacion = nivelDeFormacion;
+        this.titulo = titulo;
     }
 
     public float getSueldo() {
@@ -44,46 +42,46 @@ public class Empleado extends Persona{
         return listaDeCargos;
     }
 
-    public void setSueldo(float sueldo) {
-        this.sueldo = sueldo;
+    public void setSueldo(float nuevoSueldo) {
+        this.sueldo = nuevoSueldo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTitulo(String nuevoTitulo) {
+        this.titulo = nuevoTitulo;
     }
 
-    public void setNivelDeFormacion(String nivelDeFormacion) {
-        this.nivelDeFormacion = nivelDeFormacion;
+    public void setNivelDeFormacion(String nivelFormacion) {
+        this.nivelDeFormacion = nivelFormacion;
     }
 
-    public void setListaDeCargos(ArrayList<String> listaDeCargos) {
-        this.listaDeCargos = listaDeCargos;
+    public void setListaDeCargos(ArrayList<String> nuevaListaDeCargos) {
+        this.listaDeCargos = nuevaListaDeCargos;
     }
-    
-    public boolean aniadirCargo (String Cargo)
-    {
-        for (int i = 0;  i < this.listaDeCargos.size(); i++)
-        {
-            if (this.listaDeCargos.get(i).equals(Cargo))
-            {
-                return false;
-            }
-        }
-        listaDeCargos.add(Cargo);
-        return true;
-    }
-    
-    public boolean eliminarCargo (String nombreCargo)
-    {
-        for (int i = 0;  i < this.listaDeCargos.size(); i++)
-        {
-            if (this.listaDeCargos.get(i).equals(nombreCargo))
-            {
-                listaDeCargos.remove(i);
+
+    public boolean verificarCargo(String cargo) {
+        for (int i = 0; i < this.listaDeCargos.size(); i++) {
+            if (this.listaDeCargos.get(i).equals(cargo)) {
                 return true;
             }
         }
         return false;
     }
-    
+
+    public boolean aniadirCargo(String cargo) {
+        if (verificarCargo(cargo)) {
+            return false;
+        }
+        this.listaDeCargos.add(cargo);
+        return true;
+    }
+
+    public boolean eliminarCargo(String nombreCargo) {
+        for (int i = 0; i < this.listaDeCargos.size(); i++) {
+            if (this.listaDeCargos.get(i).equals(nombreCargo)) {
+                this.listaDeCargos.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
 }

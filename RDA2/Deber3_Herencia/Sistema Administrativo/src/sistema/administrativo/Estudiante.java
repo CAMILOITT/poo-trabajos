@@ -6,26 +6,18 @@ package sistema.administrativo;
 
 /**
  *
- * @author mnobo
+ * @author grupo1
  */
-public class Estudiante extends Persona{
-    
+public class Estudiante extends Persona {
+
     private String nivel;
     private String codigo;
 
-    public Estudiante(String nivel, String codigo, String cedula, String nombre, String correo, String apellido, String telefono) {
-        super(cedula, nombre, correo, apellido, telefono);
+    public Estudiante(String cedula, String nombre, String apellido, String telefono,
+            String correo, String nivel, String codigo) {
+        super(cedula, nombre, apellido, correo, telefono);
         this.nivel = nivel;
         this.codigo = codigo;
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.correo = correo;
-        this.apellido = apellido;
-        this.telefono = telefono;
-    }
-    
-    public String Correo() {
-        return correo;
     }
 
     public String getNivel() {
@@ -35,7 +27,4 @@ public class Estudiante extends Persona{
     public String getCodigo() {
         return codigo;
     }
-    
-    
-    
 }

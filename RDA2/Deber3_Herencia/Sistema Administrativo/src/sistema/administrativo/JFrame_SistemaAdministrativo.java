@@ -49,6 +49,7 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
         jLabel2.setText("REGISTRAR NUEVO DOCENTE");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Administrativo");
         setBackground(new java.awt.Color(48, 125, 174));
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 102));
@@ -62,7 +63,7 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(209, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(194, 194, 194))
         );
@@ -76,21 +77,52 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(152, 165, 190));
 
-        BotonGestionDeEstudiantes.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
-        BotonGestionDeEstudiantes.setText("GESTIÓN DE ESTUDIANTES");
+        BotonGestionDeEstudiantes.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        BotonGestionDeEstudiantes.setForeground(new java.awt.Color(0, 51, 102));
+        BotonGestionDeEstudiantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/administrativo/iconos/estudiantes.png"))); // NOI18N
+        BotonGestionDeEstudiantes.setText("Gestión de estudiantes");
+        BotonGestionDeEstudiantes.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)), javax.swing.BorderFactory.createEmptyBorder(8, 40, 8, 20)));
+        BotonGestionDeEstudiantes.setContentAreaFilled(false);
+        BotonGestionDeEstudiantes.setFocusPainted(false);
+        BotonGestionDeEstudiantes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonGestionDeEstudiantes.setIconTextGap(12);
+        BotonGestionDeEstudiantes.setOpaque(true);
         BotonGestionDeEstudiantes.addActionListener(this::BotonGestionDeEstudiantesActionPerformed);
 
-        BotonGestionDeDocentes.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
-        BotonGestionDeDocentes.setText("GESTIÓN DE DOCENTES");
+        BotonGestionDeDocentes.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        BotonGestionDeDocentes.setForeground(new java.awt.Color(0, 51, 102));
+        BotonGestionDeDocentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/administrativo/iconos/docentes.png"))); // NOI18N
+        BotonGestionDeDocentes.setText("Gestión de docentes");
+        BotonGestionDeDocentes.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)), javax.swing.BorderFactory.createEmptyBorder(8, 40, 8, 20)));
+        BotonGestionDeDocentes.setContentAreaFilled(false);
+        BotonGestionDeDocentes.setFocusPainted(false);
+        BotonGestionDeDocentes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonGestionDeDocentes.setIconTextGap(12);
+        BotonGestionDeDocentes.setOpaque(true);
         BotonGestionDeDocentes.addActionListener(this::BotonGestionDeDocentesActionPerformed);
 
-        BotonGestionDeAdministrativos.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
-        BotonGestionDeAdministrativos.setText("GESTIÓN DE ADMINISTRATIVOS");
+        BotonGestionDeAdministrativos.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        BotonGestionDeAdministrativos.setForeground(new java.awt.Color(0, 51, 102));
+        BotonGestionDeAdministrativos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/administrativo/iconos/administrativos.png"))); // NOI18N
+        BotonGestionDeAdministrativos.setText("Gestión de administrativos");
+        BotonGestionDeAdministrativos.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)), javax.swing.BorderFactory.createEmptyBorder(8, 40, 8, 20)));
+        BotonGestionDeAdministrativos.setContentAreaFilled(false);
+        BotonGestionDeAdministrativos.setFocusPainted(false);
+        BotonGestionDeAdministrativos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonGestionDeAdministrativos.setIconTextGap(12);
+        BotonGestionDeAdministrativos.setOpaque(true);
         BotonGestionDeAdministrativos.addActionListener(this::BotonGestionDeAdministrativosActionPerformed);
 
-        botonSalir.setBackground(new java.awt.Color(255, 51, 51));
+        botonSalir.setBackground(new java.awt.Color(200, 50, 50));
+        botonSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         botonSalir.setForeground(new java.awt.Color(255, 255, 255));
-        botonSalir.setText("SALIR");
+        botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/administrativo/iconos/salir.png"))); // NOI18N
+        botonSalir.setText("Salir");
+        botonSalir.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 12, 4, 12));
+        botonSalir.setContentAreaFilled(false);
+        botonSalir.setFocusPainted(false);
+        botonSalir.setIconTextGap(8);
+        botonSalir.setOpaque(true);
         botonSalir.addActionListener(this::botonSalirActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -98,18 +130,21 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(179, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(botonSalir)
                         .addGap(35, 35, 35))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BotonGestionDeDocentes, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BotonGestionDeAdministrativos)
-                            .addComponent(BotonGestionDeEstudiantes, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BotonGestionDeEstudiantes, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                            .addComponent(BotonGestionDeDocentes, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                            .addComponent(BotonGestionDeAdministrativos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(158, 158, 158))))
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {BotonGestionDeAdministrativos, BotonGestionDeDocentes, BotonGestionDeEstudiantes});
+
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -119,7 +154,7 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
                 .addComponent(BotonGestionDeDocentes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonGestionDeAdministrativos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(botonSalir)
                 .addGap(16, 16, 16))
         );
@@ -129,18 +164,14 @@ public class JFrame_SistemaAdministrativo extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();

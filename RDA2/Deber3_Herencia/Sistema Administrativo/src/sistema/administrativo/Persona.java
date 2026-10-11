@@ -6,21 +6,21 @@ package sistema.administrativo;
 
 /**
  *
- * @author mnobo
+ * @author grupo1
  */
 public class Persona {
-    
+
     protected String cedula;
     protected String nombre;
     protected String correo;
     protected String apellido;
     protected String telefono;
 
-    public Persona(String cedula, String nombre, String correo, String apellido, String telefono) {
+    public Persona(String cedula, String nombre, String apellido, String correo, String telefono) {
         this.cedula = cedula;
         this.nombre = nombre;
-        this.correo = correo;
         this.apellido = apellido;
+        this.correo = correo;
         this.telefono = telefono;
     }
 
@@ -43,7 +43,5 @@ public class Persona {
     public String getTelefono() {
         return telefono;
     }
-    
-    
-    
+
 }

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistema.administrativo;
+
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -11,15 +12,16 @@ import javax.swing.JOptionPane;
  * @author mnobo
  */
 public class JFrame_RegistroDeDocente extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrame_RegistroDeDocente.class.getName());
     private ArrayList<Docente> listaDocentes;
     private ArrayList<String> listaMaterias;
     private ArrayList<String> listaDeCargos;
+
     /**
      * Creates new form JFrame_GestionDeDocentes
      */
-    public JFrame_RegistroDeDocente(ArrayList<Docente> listaDocentes,  ArrayList<String> listaMaterias, ArrayList<String> listaDeCargos) {
+    public JFrame_RegistroDeDocente(ArrayList<Docente> listaDocentes, ArrayList<String> listaMaterias, ArrayList<String> listaDeCargos) {
         initComponents();
         this.listaDocentes = listaDocentes;
         this.listaDeCargos = listaDeCargos;
@@ -100,18 +102,18 @@ public class JFrame_RegistroDeDocente extends javax.swing.JFrame {
 
         jLabel4.setText("Nombres:");
 
-        jLabel5.setText("Titulo: ");
+        jLabel5.setText("Título: ");
 
-        jLabel6.setText("Nivel de Formacion:");
+        jLabel6.setText("Nivel de Formación:");
 
         campoNivelDeFormacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin nivel de formacion", "Maestria", "Doctorado" }));
         campoNivelDeFormacion.addActionListener(this::campoNivelDeFormacionActionPerformed);
 
-        jLabel7.setText("Cedula: ");
+        jLabel7.setText("Cédula: ");
 
-        jLabel8.setText("Correo Electronico: ");
+        jLabel8.setText("Correo Electrónico: ");
 
-        jLabel9.setText("Telefono: ");
+        jLabel9.setText("Teléfono: ");
 
         jLabel10.setText("Facultad:");
 
@@ -249,63 +251,72 @@ public class JFrame_RegistroDeDocente extends javax.swing.JFrame {
 
     private void campoNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombresActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_campoNombresActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+
         String nombres = campoNombres.getText().trim();
         String apellidos = campoApellido.getText().trim();
         String cedula = campoCedula.getText().trim();
         String correo = campoCorreo.getText().trim();
         String telefono = campoTelefono.getText().trim();
         String titulo = campoTitulo.getText().trim();
-        float sueldo = Float.parseFloat(campoSueldo.getText().trim());
+        String textoSueldo = campoSueldo.getText().trim();
         String nivel = String.valueOf(campoNivelDeFormacion.getSelectedItem());
         String facultad = String.valueOf(campoFacultad.getSelectedItem());
-        
-        if (nombres.isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Falta ingresar el Nombre", "AVISO", JOptionPane.WARNING_MESSAGE);
+
+        if (nombres.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese los nombres del docente.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if (apellidos.isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Falta ingresar el Apellido", "AVISO", JOptionPane.WARNING_MESSAGE);
+        if (apellidos.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese los apellidos del docente.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if (cedula.isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Falta ingresar la cedula", "AVISO", JOptionPane.WARNING_MESSAGE);
+        if (cedula.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese la cédula del docente.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if (correo.isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Falta ingresar el Correo Electronico", "AVISO", JOptionPane.WARNING_MESSAGE);
+        if (cedula.length() != 10) {
+            JOptionPane.showMessageDialog(this, "La cédula debe tener 10 dígitos.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if (telefono.isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Falta ingresar el numero de telefono", "AVISO", JOptionPane.WARNING_MESSAGE);
+        if (correo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el correo electrónico del docente.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if (titulo.isEmpty())
-        {
-            JOptionPane.showMessageDialog(this, "Falta ingresar el titulo", "AVISO", JOptionPane.WARNING_MESSAGE);
+        if (telefono.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el número de teléfono del docente.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if (cedula.length()!= 10)
-        {
-            JOptionPane.showMessageDialog(this, "numero de cedula invalido", "AVISO", JOptionPane.WARNING_MESSAGE);
+        if (titulo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el título del docente.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Docente profesor = new Docente(facultad, listaMaterias, sueldo, titulo, nivel, listaDeCargos, cedula, nombres, correo, apellidos, telefono );
-        
+        if (textoSueldo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese el sueldo del docente.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        float sueldo;
+        try {
+            sueldo = Float.parseFloat(textoSueldo);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El sueldo debe ser un número, por ejemplo 1200.50", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (sueldo <= 0) {
+            JOptionPane.showMessageDialog(this, "El sueldo debe ser mayor a cero.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        Docente profesor = new Docente(cedula, nombres, apellidos, telefono, correo, sueldo, titulo, nivel, new ArrayList<>(), facultad, new ArrayList<>());
         listaDocentes.add(profesor);
-        
-        JOptionPane.showMessageDialog(this, "Docente registrado exitosamente", "AVISO", JOptionPane.INFORMATION_MESSAGE);
-        
+
+        JOptionPane.showMessageDialog(this, "El docente se registró correctamente.", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+
         limpiarCampos();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -317,8 +328,7 @@ public class JFrame_RegistroDeDocente extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_botonSalir1ActionPerformed
 
-    private void limpiarCampos()
-    {
+    private void limpiarCampos() {
         campoNombres.setText("");
         campoApellido.setText("");
         campoCedula.setText("");
@@ -332,7 +342,7 @@ public class JFrame_RegistroDeDocente extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonSalir1;

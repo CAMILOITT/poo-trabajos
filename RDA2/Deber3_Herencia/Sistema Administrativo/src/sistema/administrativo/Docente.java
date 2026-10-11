@@ -3,30 +3,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package sistema.administrativo;
+
 import java.util.ArrayList;
 
 /**
  *
- * @author mnobo
+ * @author grupo1
  */
-public class Docente extends Empleado{
-    
+public class Docente extends Empleado {
+
     private String facultadPertenece;
     private ArrayList<String> listaMaterias;
 
-    public Docente(String facultadPertenece, ArrayList<String> listaMaterias, float sueldo, String titulo, String nivelDeFormacion, ArrayList<String> listaDeCargos, String cedula, String nombre, String correo, String apellido, String telefono) {
-        super(sueldo, titulo, nivelDeFormacion, listaDeCargos, cedula, nombre, correo, apellido, telefono);
+    public Docente(String cedula, String nombre, String apellido, String telefono,
+            String correo, float sueldo, String titulo, String nivelDeFormacion,
+            ArrayList<String> listaDeCargos, String facultadPertenece,
+            ArrayList<String> listaMaterias) {
+        super(cedula, nombre, apellido, telefono, correo, listaDeCargos,
+                sueldo, nivelDeFormacion, titulo);
         this.facultadPertenece = facultadPertenece;
         this.listaMaterias = listaMaterias;
-        this.sueldo = sueldo;
-        this.titulo = titulo;
-        this.nivelDeFormacion = nivelDeFormacion;
-        this.listaDeCargos = listaDeCargos;
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.correo = correo;
-        this.apellido = apellido;
-        this.telefono = telefono;
     }
 
     public String getFacultadPertenece() {
@@ -37,40 +33,31 @@ public class Docente extends Empleado{
         return listaMaterias;
     }
 
-    public void setFacultadPertenece(String facultadPertenece) {
-        this.facultadPertenece = facultadPertenece;
+    public void setFacultadPertenece(String nombreFacultad) {
+        this.facultadPertenece = nombreFacultad;
     }
 
-    public void setListaMateriales(ArrayList<String> listaMateriales) {
-        this.listaMaterias = listaMateriales;
+    public void setListaMaterias(ArrayList<String> listaMaterias) {
+        this.listaMaterias = listaMaterias;
     }
-    
-    public boolean eliminarMateria(String materia)
-    {
-        for (int i = 0;  i < this.listaMaterias.size(); i++)
-        {
-            if (this.listaMaterias.get(i).equals(materia))
-            {
-                listaMaterias.remove(i);
+
+    public boolean eliminarMateria(String materia) {
+        for (int i = 0; i < this.listaMaterias.size(); i++) {
+            if (this.listaMaterias.get(i).equals(materia)) {
+                this.listaMaterias.remove(i);
                 return true;
             }
         }
         return false;
     }
-    
-    public boolean aniadirMateria (String materia)
-    {
-        for (int i = 0;  i < this.listaMaterias.size(); i++)
-        {
-            if (this.listaMaterias.get(i).equals(materia))
-            {
+
+    public boolean aniadirMateria(String materia) {
+        for (int i = 0; i < this.listaMaterias.size(); i++) {
+            if (this.listaMaterias.get(i).equals(materia)) {
                 return false;
             }
         }
-        
-        listaMaterias.add(materia);
-        
+        this.listaMaterias.add(materia);
         return true;
     }
-    
 }
