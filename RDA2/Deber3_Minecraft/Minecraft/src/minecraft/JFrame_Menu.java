@@ -47,8 +47,8 @@ public class JFrame_Menu extends javax.swing.JFrame {
         name = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         buttonGenestionarMonstruo = new javax.swing.JButton();
-        buttonBuscarMonstruo = new javax.swing.JButton();
         buttonSalir = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 51, 51));
@@ -76,38 +76,39 @@ public class JFrame_Menu extends javax.swing.JFrame {
         buttonGenestionarMonstruo.setText("Gestionar Monstruos");
         buttonGenestionarMonstruo.addActionListener(this::buttonGenestionarMonstruoActionPerformed);
 
-        buttonBuscarMonstruo.setBackground(new java.awt.Color(139, 139, 139));
-        buttonBuscarMonstruo.setText("Buscar Monstruo");
-        buttonBuscarMonstruo.addActionListener(this::buttonBuscarMonstruoActionPerformed);
-
         buttonSalir.setText("Salir");
         buttonSalir.addActionListener(this::buttonSalirActionPerformed);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Incons/whiter.jpeg"))); // NOI18N
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonBuscarMonstruo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonGenestionarMonstruo, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonSalir)
-                .addGap(16, 16, 16))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonGenestionarMonstruo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(238, 238, 238))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(buttonSalir)
+                        .addGap(34, 34, 34))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(buttonGenestionarMonstruo, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonBuscarMonstruo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(81, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonGenestionarMonstruo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addComponent(buttonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(15, 15, 15))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -150,15 +151,15 @@ public class JFrame_Menu extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_buttonGenestionarMonstruoActionPerformed
 
-    private void buttonBuscarMonstruoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarMonstruoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonBuscarMonstruoActionPerformed
-
     private void buttonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalirActionPerformed
                                              
     System.exit(0);
 
     }//GEN-LAST:event_buttonSalirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,9 +167,9 @@ public class JFrame_Menu extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonBuscarMonstruo;
     private javax.swing.JButton buttonGenestionarMonstruo;
     private javax.swing.JButton buttonSalir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel name;
