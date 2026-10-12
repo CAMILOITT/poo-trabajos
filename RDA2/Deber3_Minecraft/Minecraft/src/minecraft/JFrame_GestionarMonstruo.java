@@ -88,6 +88,7 @@ public class JFrame_GestionarMonstruo extends javax.swing.JFrame {
         buttonArania.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Incons/arania.jpeg"))); // NOI18N
         buttonArania.setText("jButton3");
         buttonArania.setBorderPainted(false);
+        buttonArania.addActionListener(this::buttonAraniaActionPerformed);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -174,6 +175,20 @@ public class JFrame_GestionarMonstruo extends javax.swing.JFrame {
 
     private void buttonEsqueletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEsqueletoActionPerformed
         // TODO add your handling code here:
+        JFrame_GestionEsqueleto ventanaEsqueleto = new JFrame_GestionEsqueleto(
+        bestiarioGlobal, 
+        listaZombies, 
+        listaEsqueletos, 
+        listaAranias);
+    
+    // Centramos la subventana en la pantalla
+        ventanaEsqueleto.setLocationRelativeTo(null);
+    
+    // La hacemos visible
+        ventanaEsqueleto.setVisible(true);
+    
+    // Cerramos la ventana de selección actual
+    this.dispose();
     }//GEN-LAST:event_buttonEsqueletoActionPerformed
 
     private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
@@ -201,6 +216,25 @@ public class JFrame_GestionarMonstruo extends javax.swing.JFrame {
     // Cerramos la ventana de selección actual
     this.dispose();
     }//GEN-LAST:event_buttonZombieActionPerformed
+
+    private void buttonAraniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAraniaActionPerformed
+        // TODO add your handling code here:
+        JFrame_GestionArania ventanaArania = new JFrame_GestionArania(
+        bestiarioGlobal, 
+        listaZombies, 
+        listaEsqueletos, 
+        listaAranias
+    );
+    
+    // Centramos la subventana en la pantalla
+    ventanaArania.setLocationRelativeTo(null);
+    
+    // La hacemos visible
+    ventanaArania.setVisible(true);
+    
+    // Cerramos la ventana de selección actual
+    this.dispose();
+    }//GEN-LAST:event_buttonAraniaActionPerformed
 
     /**
      * @param args the command line arguments
