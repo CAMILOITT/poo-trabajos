@@ -1,0 +1,23 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package minecraft;
+import java.util.ArrayList;
+public class Esqueleto extends Monstruo{
+    private String tipoArco;
+
+    public Esqueleto(String tipoArco, String codigo, String nombre, double saludMaxima, double danioBase, ArrayList<String> listaDrops) {
+        super(codigo, nombre, saludMaxima, danioBase, listaDrops);
+        this.tipoArco = tipoArco;
+    }
+
+    public String getTipoArco() {
+        return tipoArco;
+    }
+
+    public void setTipoArco(String tipoArco) {
+        this.tipoArco = tipoArco;
+    }
+    
+}
