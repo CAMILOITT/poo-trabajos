@@ -3,14 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package minecraft;
+
 import java.util.ArrayList;
+
 /**
  *
  * @author DET PC
  */
 public class JFrame_GestionArania extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrame_GestionArania.class.getName());
+
+    private static final java.util.logging.Logger logger = java.util.logging.Logger
+            .getLogger(JFrame_GestionArania.class.getName());
 
     /**
      * Creates new form JFrame_GestionArania
@@ -22,11 +25,10 @@ public class JFrame_GestionArania extends javax.swing.JFrame {
 
     private Arania araniaCargada = null;
 
-    
-    public JFrame_GestionArania(ArrayList<Monstruo> bestiarioGlobal, 
-                                ArrayList<Zombie> listaZombies, 
-                                ArrayList<Esqueleto> listaEsqueletos, 
-                                ArrayList<Arania> listaAranias) {
+    public JFrame_GestionArania(ArrayList<Monstruo> bestiarioGlobal,
+            ArrayList<Zombie> listaZombies,
+            ArrayList<Esqueleto> listaEsqueletos,
+            ArrayList<Arania> listaAranias) {
         initComponents();
         this.bestiarioGlobal = bestiarioGlobal;
         this.listaZombies = listaZombies;
@@ -34,14 +36,13 @@ public class JFrame_GestionArania extends javax.swing.JFrame {
         this.listaAranias = listaAranias;
     }
 
-    
     public JFrame_GestionArania() {
         initComponents();
     }
-                        
-  
+
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -74,15 +75,14 @@ public class JFrame_GestionArania extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(name)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(name)
+                                .addGap(0, 0, Short.MAX_VALUE)));
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, Short.MAX_VALUE)
-        );
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(name, javax.swing.GroupLayout.Alignment.TRAILING,
+                                javax.swing.GroupLayout.PREFERRED_SIZE, 109, Short.MAX_VALUE));
 
         jPanel2.setBackground(new java.awt.Color(74, 55, 40));
 
@@ -97,7 +97,7 @@ public class JFrame_GestionArania extends javax.swing.JFrame {
 
         IngresoBuscar.addActionListener(this::IngresoBuscarActionPerformed);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Incons/araniaBody.jpeg"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Incons/araniaBody.png"))); // NOI18N
         jButton3.setText("jButton3");
         jButton3.addActionListener(this::jButton3ActionPerformed);
 
@@ -123,149 +123,194 @@ public class JFrame_GestionArania extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(Drop)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel5)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(DanioBase, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel3))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addComponent(saludMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4)))))
-                .addGap(25, 25, 25))
-        );
+                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addContainerGap(39, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(Drop)
+                                        .addGroup(jPanel3Layout
+                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel5)
+                                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                                        .addGroup(jPanel3Layout
+                                                                .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(jPanel3Layout.createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                        false)
+                                                                        .addComponent(DanioBase,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                151,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(nombre,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                151,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addComponent(jLabel1)
+                                                                .addComponent(jLabel3))
+                                                        .addPreferredGap(
+                                                                javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addGroup(jPanel3Layout
+                                                                .createParallelGroup(
+                                                                        javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(jLabel2)
+                                                                .addComponent(saludMaxima,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 151,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(tipo,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 151,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(jLabel4)))))
+                                .addGap(25, 25, 25)));
         jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(saludMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DanioBase, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Drop, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82))
-        );
+                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 50,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(saludMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 50,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 50,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(DanioBase, javax.swing.GroupLayout.PREFERRED_SIZE, 50,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Drop, javax.swing.GroupLayout.PREFERRED_SIZE, 49,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(82, 82, 82)));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(buttonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(IngresoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(buttonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(buttonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buttonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(42, 42, 42))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(62, 62, 62))))))
-        );
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(65, 65, 65)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout
+                                                .createSequentialGroup()
+                                                .addComponent(buttonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(IngresoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        219, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout
+                                                .createSequentialGroup()
+                                                .addGap(75, 75, 75)
+                                                .addComponent(buttonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(48, 48, 48))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel2Layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                                .addComponent(buttonBuscar,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 88,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(
+                                                                        javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(buttonEditar,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE, 105,
+                                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(42, 42, 42))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                jPanel2Layout.createSequentialGroup()
+                                                                        .addComponent(jButton3,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                138,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addGap(62, 62, 62)))))));
         jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonBuscar)
-                    .addComponent(buttonAgregar)
-                    .addComponent(IngresoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonEditar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(30, 30, 30)
-                        .addComponent(buttonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(buttonBuscar)
+                                        .addComponent(buttonAgregar)
+                                        .addComponent(IngresoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(buttonEditar))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jButton3)
+                                                .addGap(30, 30, 30)
+                                                .addComponent(buttonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 319,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(17, Short.MAX_VALUE)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addContainerGap()))));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegresarActionPerformed
-       JFrame_GestionarMonstruo ventanaGestion = new JFrame_GestionarMonstruo(
-            bestiarioGlobal, 
-            listaZombies, 
-            listaEsqueletos, 
-            listaAranias
-        );
+    private void buttonRegresarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_buttonRegresarActionPerformed
+        JFrame_GestionarMonstruo ventanaGestion = new JFrame_GestionarMonstruo(
+                bestiarioGlobal,
+                listaZombies,
+                listaEsqueletos,
+                listaAranias);
         ventanaGestion.setLocationRelativeTo(null);
         ventanaGestion.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_buttonRegresarActionPerformed
+    }// GEN-LAST:event_buttonRegresarActionPerformed
 
-    private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
+    private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_buttonBuscarActionPerformed
         String codigoBuscado = IngresoBuscar.getText().trim();
 
         if (codigoBuscado.isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, 
-                "Ingresa un código para realizar la búsqueda.", 
-                "Campo Vacío", 
-                javax.swing.JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Ingresa un código para realizar la búsqueda.",
+                    "Campo Vacío",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -288,17 +333,17 @@ public class JFrame_GestionArania extends javax.swing.JFrame {
                     Drop.setText("");
                 }
 
-                javax.swing.JOptionPane.showMessageDialog(this, 
-                    "Araña encontrada. Datos cargados correctamente.", 
-                    "Búsqueda Exitosa", 
-                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Araña encontrada. Datos cargados correctamente.",
+                        "Búsqueda Exitosa",
+                        javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 break;
             }
         }
 
         if (!encontrado) {
             araniaCargada = null;
-            
+
             // Limpiamos los campos
             nombre.setText("");
             saludMaxima.setText("");
@@ -306,14 +351,14 @@ public class JFrame_GestionArania extends javax.swing.JFrame {
             tipo.setText("");
             Drop.setText("");
 
-            javax.swing.JOptionPane.showMessageDialog(this, 
-                "No se encontró ninguna Araña con el código: " + codigoBuscado, 
-                "Sin Coincidencias", 
-                javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "No se encontró ninguna Araña con el código: " + codigoBuscado,
+                    "Sin Coincidencias",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
         }
-    }//GEN-LAST:event_buttonBuscarActionPerformed
+    }// GEN-LAST:event_buttonBuscarActionPerformed
 
-    private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed
+    private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_buttonAgregarActionPerformed
         String cod = IngresoBuscar.getText().trim();
         String nom = nombre.getText().trim();
         String saludStr = saludMaxima.getText().trim();
@@ -322,20 +367,20 @@ public class JFrame_GestionArania extends javax.swing.JFrame {
         String dropStr = Drop.getText().trim();
 
         if (cod.isEmpty() || nom.isEmpty() || saludStr.isEmpty() || danioStr.isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, 
-                "Completa los campos obligatorios: Código, Nombre, Salud Máxima y Daño Base.", 
-                "Faltan Datos", 
-                javax.swing.JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Completa los campos obligatorios: Código, Nombre, Salud Máxima y Daño Base.",
+                    "Faltan Datos",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         // Verificar si el código ya existe en el bestiario
         for (Monstruo m : bestiarioGlobal) {
             if (m.getCodigo().equalsIgnoreCase(cod)) {
-                javax.swing.JOptionPane.showMessageDialog(this, 
-                    "El código '" + cod + "' ya pertenece a un monstruo registrado.", 
-                    "Código Duplicado", 
-                    javax.swing.JOptionPane.ERROR_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "El código '" + cod + "' ya pertenece a un monstruo registrado.",
+                        "Código Duplicado",
+                        javax.swing.JOptionPane.ERROR_MESSAGE);
                 return;
             }
         }
@@ -362,10 +407,10 @@ public class JFrame_GestionArania extends javax.swing.JFrame {
             listaAranias.add(nuevaArania);
             bestiarioGlobal.add(nuevaArania);
 
-            javax.swing.JOptionPane.showMessageDialog(this, 
-                "Araña registrada con éxito en el Bestiario.", 
-                "Registro Exitoso", 
-                javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Araña registrada con éxito en el Bestiario.",
+                    "Registro Exitoso",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
             // Limpiar formulario
             IngresoBuscar.setText("");
@@ -376,28 +421,28 @@ public class JFrame_GestionArania extends javax.swing.JFrame {
             Drop.setText("");
 
         } catch (NumberFormatException e) {
-            javax.swing.JOptionPane.showMessageDialog(this, 
-                "Salud Máxima y Daño Base deben ser números válidos (ej. 16.0, 2.0).", 
-                "Error de Formato", 
-                javax.swing.JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Salud Máxima y Daño Base deben ser números válidos (ej. 16.0, 2.0).",
+                    "Error de Formato",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_buttonAgregarActionPerformed
+    }// GEN-LAST:event_buttonAgregarActionPerformed
 
-    private void IngresoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresoBuscarActionPerformed
+    private void IngresoBuscarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_IngresoBuscarActionPerformed
         // TODO add your handling code here:
         buttonBuscarActionPerformed(evt);
-    }//GEN-LAST:event_IngresoBuscarActionPerformed
+    }// GEN-LAST:event_IngresoBuscarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }// GEN-LAST:event_jButton3ActionPerformed
 
-    private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
+    private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_buttonEditarActionPerformed
         if (araniaCargada == null) {
-            javax.swing.JOptionPane.showMessageDialog(this, 
-                "Primero busca una Araña existente para poder editarla.", 
-                "Ninguna Araña Seleccionada", 
-                javax.swing.JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Primero busca una Araña existente para poder editarla.",
+                    "Ninguna Araña Seleccionada",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -408,10 +453,10 @@ public class JFrame_GestionArania extends javax.swing.JFrame {
         String dropStr = Drop.getText().trim();
 
         if (nom.isEmpty() || saludStr.isEmpty() || danioStr.isEmpty()) {
-            javax.swing.JOptionPane.showMessageDialog(this, 
-                "Completa los campos de Nombre, Salud Máxima y Daño Base.", 
-                "Campos Incompletos", 
-                javax.swing.JOptionPane.WARNING_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Completa los campos de Nombre, Salud Máxima y Daño Base.",
+                    "Campos Incompletos",
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -430,17 +475,13 @@ public class JFrame_GestionArania extends javax.swing.JFrame {
                 tipoVenenoStr = "Sin Veneno";
             }
 
-            // Actualizar la entidad con sus setters
-            araniaCargada.setNombre(nom);
-            araniaCargada.setSaludMaxima(salud);
-            araniaCargada.setDanioBase(danio);
-            araniaCargada.setTipoVeneno(tipoVenenoStr);
-            araniaCargada.setListaDrops(listaDrops);
+            this.araniaCargada = new Arania(tipoVenenoStr, this.araniaCargada.getCodigo(), nom, salud, danio,
+                    listaDrops);
 
-            javax.swing.JOptionPane.showMessageDialog(this, 
-                "¡Araña '" + araniaCargada.getCodigo() + "' actualizada correctamente!", 
-                "Edición Exitosa", 
-                javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "¡Araña '" + araniaCargada.getCodigo() + "' actualizada correctamente!",
+                    "Edición Exitosa",
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
             // Limpieza del formulario
             araniaCargada = null;
@@ -452,33 +493,37 @@ public class JFrame_GestionArania extends javax.swing.JFrame {
             Drop.setText("");
 
         } catch (NumberFormatException e) {
-            javax.swing.JOptionPane.showMessageDialog(this, 
-                "Salud Máxima y Daño Base deben ser números válidos.", 
-                "Error de Formato", 
-                javax.swing.JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Salud Máxima y Daño Base deben ser números válidos.",
+                    "Error de Formato",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_buttonEditarActionPerformed
+    }// GEN-LAST:event_buttonEditarActionPerformed
 
-    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_nombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreActionPerformed
+    }// GEN-LAST:event_nombreActionPerformed
 
-    private void DanioBaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DanioBaseActionPerformed
+    private void DanioBaseActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_DanioBaseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DanioBaseActionPerformed
+    }// GEN-LAST:event_DanioBaseActionPerformed
 
-    private void DropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DropActionPerformed
+    private void DropActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_DropActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DropActionPerformed
+    }// GEN-LAST:event_DropActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+        // (optional) ">
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+         * look and feel.
+         * For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -490,7 +535,7 @@ public class JFrame_GestionArania extends javax.swing.JFrame {
         } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+        // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new JFrame_GestionArania().setVisible(true));

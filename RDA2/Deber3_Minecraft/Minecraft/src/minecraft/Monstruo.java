@@ -4,6 +4,7 @@
  */
 
 package minecraft;
+
 import java.util.ArrayList;
 
 public class Monstruo {
@@ -40,21 +41,19 @@ public class Monstruo {
     public ArrayList<String> getListaDrops() {
         return listaDrops;
     }
-    
-    public boolean aniadirDrop(String itemDrop)
-    {
-        if(itemDrop !=null && itemDrop.trim().isEmpty())
-        {
+
+    public boolean aniadirDrop(String itemDrop) {
+        if (itemDrop != null && itemDrop.trim().isEmpty()) {
             return this.listaDrops.add(itemDrop);
         }
         return false;
     }
+
     public boolean eliminarDrop(String nombreDrop) {
         return this.listaDrops.remove(nombreDrop);
     }
-    public boolean verificarDrop(String itemDrop)
-    {
+
+    public boolean verificarDrop(String itemDrop) {
         return this.listaDrops.contains(itemDrop);
     }
 }
-
