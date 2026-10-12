@@ -427,7 +427,79 @@ public class JFrame_GestionZombie extends javax.swing.JFrame {
 
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
         // TODO add your handling code here:
-        
+        if (zombieCargado == null) {
+        javax.swing.JOptionPane.showMessageDialog(this, 
+            "Primero debes buscar un Zombie existente para poder editarlo.", 
+            "Ningún Zombie Seleccionado", 
+            javax.swing.JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    String nom = nombre.getText().trim();
+    String saludStr = saludMaxima.getText().trim();
+    String danioStr = DanioBase.getText().trim();
+    String tipoStr = tipo.getText().trim();
+    String dropStr = Drop.getText().trim();
+
+    if (nom.isEmpty() || saludStr.isEmpty() || danioStr.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, 
+            "Por favor completa los campos de Nombre, Salud Máxima y Daño Base.", 
+            "Campos Incompletos", 
+            javax.swing.JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    try {
+        double salud = Double.parseDouble(saludStr);
+        double danio = Double.parseDouble(danioStr);
+
+        // Procesar Drops
+        ArrayList<String> listaDrops = new ArrayList<>();
+        if (!dropStr.isEmpty()) {
+            for (String d : dropStr.split(",")) {
+                listaDrops.add(d.trim());
+            }
+        }
+
+        // Procesar Tipo / Variantes
+        ArrayList<String> listaVariantes = new ArrayList<>();
+        if (!tipoStr.isEmpty()) {
+            for (String v : tipoStr.split(",")) {
+                listaVariantes.add(v.trim());
+            }
+        } else {
+            listaVariantes.add("Estándar");
+        }
+
+        // 2. Modificación de los atributos
+        zombieCargado.setNombre(nom);
+        zombieCargado.setSaludMaxima(salud);
+        zombieCargado.setDanioBase(danio);
+
+        // Intentar asignar los drops y variantes (comprueba cómo están nombrados en tu clase Zombie)
+        zombieCargado.setListaDrops(listaDrops);
+        zombieCargado.setVariante(listaVariantes);
+
+        javax.swing.JOptionPane.showMessageDialog(this, 
+            "¡Zombie '" + zombieCargado.getCodigo() + "' actualizado correctamente!", 
+            "Edición Exitosa", 
+            javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+        // Limpieza del formulario
+        zombieCargado = null;
+        IngresoBuscar.setText("");
+        nombre.setText("");
+        saludMaxima.setText("");
+        DanioBase.setText("");
+        tipo.setText("");
+        Drop.setText("");
+
+    } catch (NumberFormatException e) {
+        javax.swing.JOptionPane.showMessageDialog(this, 
+            "Salud Máxima y Daño Base deben ser números válidos.", 
+            "Error de Formato", 
+            javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_buttonEditarActionPerformed
 
     /**
