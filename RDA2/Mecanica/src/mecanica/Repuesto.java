@@ -11,9 +11,9 @@ package mecanica;
 public class Repuesto {
     private String codigo;
     private String nombre;
-    private String precio;
+    private float precio;
 
-    public Repuesto(String codigo, String nombre, String precio) {
+    public Repuesto(String codigo, String nombre, float precio) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
@@ -27,7 +27,7 @@ public class Repuesto {
         return nombre;
     }
 
-    public String getPrecio() {
+    public float getPrecio() {
         return precio;
     }
     

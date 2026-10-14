@@ -9,10 +9,16 @@ public class Cliente extends Persona {
     
     private ArrayList<OrdenTrabajo> ordenesRealizadas;
 
-    public Cliente(String nombre, String apellido, String cedula) {
-        super(nombre, apellido, cedula);
-        this.ordenesRealizadas = new ArrayList<>();
+    public Cliente(ArrayList<OrdenTrabajo> ordenesRealizadas, String nombre, String apellido, String cedula, String celular, String correo) {
+        super(nombre, apellido, cedula, celular, correo);
+        this.ordenesRealizadas = ordenesRealizadas;
     }
+
+    public ArrayList<OrdenTrabajo> getOrdenesRealizadas() {
+        return ordenesRealizadas;
+    }
+
+    
     public void solicitarOrden(OrdenTrabajo orden) {
         this.ordenesRealizadas.add(orden);
     }

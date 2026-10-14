@@ -12,11 +12,13 @@ public class Mecanico extends Persona {
     private String especialidad;
     private ArrayList<OrdenTrabajo> listaOrdenes;
 
-    public Mecanico(String especialidad, ArrayList<OrdenTrabajo> listaOrdenes, String nombre, String apellido, String cedula) {
-        super(nombre, apellido, cedula);
+    public Mecanico(String especialidad, ArrayList<OrdenTrabajo> listaOrdenes, String nombre, String apellido, String cedula, String celular, String correo) {
+        super(nombre, apellido, cedula, celular, correo);
         this.especialidad = especialidad;
         this.listaOrdenes = listaOrdenes;
     }
+
+    
 
     public String getEspecialidad() {
         return especialidad;

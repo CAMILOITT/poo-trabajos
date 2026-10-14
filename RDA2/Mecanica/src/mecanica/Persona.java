@@ -12,11 +12,15 @@ public class Persona {
     protected String nombre;
     protected String apellido;
     protected String cedula;
+    protected String celular;
+    protected String correo;
 
-    public Persona(String nombre, String apellido, String cedula) {
+    public Persona(String nombre, String apellido, String cedula, String celular, String correo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
+        this.celular = celular;
+        this.correo = correo;
     }
 
     public String getNombre() {
@@ -30,5 +34,15 @@ public class Persona {
     public String getCedula() {
         return cedula;
     }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    
 
 }

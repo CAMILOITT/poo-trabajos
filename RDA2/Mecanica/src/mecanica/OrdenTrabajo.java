@@ -4,20 +4,21 @@
  */
 package mecanica;
 import java.util.ArrayList;
+import java.util.Date;
 /**
  *
  * @author grupo 1
  */
 public class OrdenTrabajo {
     private String numeroOrden;
-    private String fecha;
+    private Date fecha;
     private ArrayList<Repuesto> repuestoUsado;
     
-    public OrdenTrabajo(String numeroOrden, String fecha) {
+    public OrdenTrabajo(String numeroOrden, Date fecha) {
         this.numeroOrden = numeroOrden;
         this.fecha = fecha;
     }
-    public OrdenTrabajo(String numeroOrden, String fecha, ArrayList<Repuesto> repuestoUsado) {
+    public OrdenTrabajo(String numeroOrden, Date fecha, ArrayList<Repuesto> repuestoUsado) {
         this.numeroOrden = numeroOrden;
         this.fecha = fecha;
         this.repuestoUsado = repuestoUsado;
@@ -27,7 +28,7 @@ public class OrdenTrabajo {
         return numeroOrden;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
@@ -35,9 +36,18 @@ public class OrdenTrabajo {
         return repuestoUsado;
     }
     
-    public void agregarRespuesto(Repuesto rep)
+    public void agregarRepuesto(Repuesto rep)
     {
         repuestoUsado.add(rep);
+    }
+    
+
+    public double calcularSubtotal() {
+        double suma = 0;
+        for (int i = 0; i < this.repuestoUsado.size(); i++) {
+            suma += this.repuestoUsado.get(i).getPrecio();
+        }
+        return suma;
     }
     
 }
