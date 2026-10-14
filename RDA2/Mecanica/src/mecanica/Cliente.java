@@ -17,9 +17,6 @@ public class Cliente extends Persona {
         this.ordenesRealizadas.add(orden);
     }
     
-    public void MostrarDatos() {
-        System.out.println(ordenesRealizadas);
-    }
 }
 
    

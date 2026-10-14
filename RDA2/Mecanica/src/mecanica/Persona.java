@@ -6,7 +6,7 @@ package mecanica;
 
 /**
  *
- * @author DET PC
+ * @author grupo 1
  */
 public class Persona {
     protected String nombre;
@@ -30,8 +30,5 @@ public class Persona {
     public String getCedula() {
         return cedula;
     }
-    public String mostrarDatos()
-    {
-        return nombre+" "+apellido+" "+cedula;
-    }
+
 }

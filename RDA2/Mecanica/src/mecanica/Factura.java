@@ -6,7 +6,7 @@ package mecanica;
 import java.util.ArrayList;
 /**
  *
- * @author DET PC
+ * @author grupo 1
  */
 public class Factura {
     private int numeroFactura;
@@ -38,13 +38,7 @@ public class Factura {
     public void setTotal(double total) {
         this.total = total;
     }
-    public void imprimirFactura()//OJO
-    {
-    }
-    private double calcularTotal()
-    {
-        return total;//ojo AGREGADO
-    }
+
   
     
 }

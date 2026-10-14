@@ -6,7 +6,7 @@ package mecanica;
 
 /**
  *
- * @author DET PC
+ * @author grupo 1
  */
 public class Repuesto {
     private String codigo;

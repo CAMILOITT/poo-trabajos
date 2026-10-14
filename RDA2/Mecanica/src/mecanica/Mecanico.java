@@ -10,12 +10,12 @@ import java.util.ArrayList;
  */
 public class Mecanico extends Persona {
     private String especialidad;
-    private ArrayList<OrdenTrabajo> ordenRegistrada;
+    private ArrayList<OrdenTrabajo> listaOrdenes;
 
-    public Mecanico(String especialidad, ArrayList<OrdenTrabajo> ordenRegistrada, String nombre, String apellido, String cedula) {
+    public Mecanico(String especialidad, ArrayList<OrdenTrabajo> listaOrdenes, String nombre, String apellido, String cedula) {
         super(nombre, apellido, cedula);
         this.especialidad = especialidad;
-        this.ordenRegistrada = ordenRegistrada;
+        this.listaOrdenes = listaOrdenes;
     }
 
     public String getEspecialidad() {
@@ -23,11 +23,11 @@ public class Mecanico extends Persona {
     }
 
     public ArrayList<OrdenTrabajo> getOrdenRegistrada() {
-        return ordenRegistrada;
+        return listaOrdenes;
     }
     public void registrarOrdenes(OrdenTrabajo orden)
     {
-        ordenRegistrada.add(orden);//OJo
+        listaOrdenes.add(orden);//OJo
     }
     
 }

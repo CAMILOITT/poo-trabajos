@@ -6,7 +6,7 @@ package mecanica;
 import java.util.ArrayList;
 /**
  *
- * @author DET PC
+ * @author grupo 1
  */
 public class Bahia {
     private String codigoBahia;

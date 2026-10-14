@@ -6,11 +6,11 @@ package mecanica;
 import java.util.ArrayList;
 /**
  *
- * @author DET PC
+ * @author grupo 1
  */
 public class OrdenTrabajo {
     private String numeroOrden;
-    private String fecha;//OJO ACA TIPO DE DATO FECHA
+    private String fecha;
     private ArrayList<Repuesto> repuestoUsado;
     
     public OrdenTrabajo(String numeroOrden, String fecha) {
@@ -34,6 +34,7 @@ public class OrdenTrabajo {
     public ArrayList<Repuesto> getRepuestoUsado() {
         return repuestoUsado;
     }
+    
     public void agregarRespuesto(Repuesto rep)
     {
         repuestoUsado.add(rep);
