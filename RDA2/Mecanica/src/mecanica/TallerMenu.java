@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class TallerMenu extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TallerMenu.class.getName());
-    private ArrayList<Cliente> listaClientes;
+    private ArrayList<Cliente> listaClientes;   
     private ArrayList<Mecanico> listaMecanicos;
     private ArrayList<Repuesto> listaRepuestos;
     private ArrayList<Factura> listaFacturas;
@@ -121,6 +121,7 @@ public class TallerMenu extends javax.swing.JFrame {
         PanelBotones.add(jButton4);
 
         jButton5.setText("Gestionar Respuesto");
+        jButton5.addActionListener(this::jButton5ActionPerformed);
         PanelBotones.add(jButton5);
 
         jButton6.setText("jButton6");
@@ -162,6 +163,14 @@ public class TallerMenu extends javax.swing.JFrame {
         ventanaM.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        JFrame_GestionarRepuesto ventana = new JFrame_GestionarRepuesto(listaRepuestos, this);
+        ventana.setLocationRelativeTo(null);
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
