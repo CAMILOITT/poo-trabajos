@@ -116,10 +116,11 @@ public class TallerMenu extends javax.swing.JFrame {
         botonRegistrarTrabajo.addActionListener(this::botonRegistrarTrabajoActionPerformed);
         PanelBotones.add(botonRegistrarTrabajo);
 
-        jButton4.setText("jButton4");
+        jButton4.setText("Registrar Mecánico");
+        jButton4.addActionListener(this::jButton4ActionPerformed);
         PanelBotones.add(jButton4);
 
-        jButton5.setText("jButton5");
+        jButton5.setText("Gestionar Respuesto");
         PanelBotones.add(jButton5);
 
         jButton6.setText("jButton6");
@@ -153,6 +154,14 @@ public class TallerMenu extends javax.swing.JFrame {
         ventana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_botonFacturaActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        JFrame_ResgistarMecanico ventanaM = new JFrame_ResgistarMecanico(listaMecanicos, this);
+        ventanaM.setLocationRelativeTo(null);
+        ventanaM.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

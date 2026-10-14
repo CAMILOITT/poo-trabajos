@@ -18,6 +18,11 @@ public class Mecanico extends Persona {
         this.listaOrdenes = listaOrdenes;
     }
 
+    public Mecanico(String especialidad, String nombre, String apellido, String cedula, String celular, String correo) {
+        super(nombre, apellido, cedula, celular, correo);
+        this.especialidad = especialidad;
+    }
+
     
 
     public String getEspecialidad() {

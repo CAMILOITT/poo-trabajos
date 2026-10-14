@@ -42,8 +42,8 @@ public class RegistrarCliente extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         panelEntrada = new javax.swing.JPanel();
         campoNombre = new javax.swing.JTextField();
-        campoApellido = new javax.swing.JTextField();
         campoCedula = new javax.swing.JTextField();
+        campoApellido = new javax.swing.JTextField();
         campoCorreo = new javax.swing.JTextField();
         campoCelular = new javax.swing.JTextField();
         PanelTitulo = new javax.swing.JPanel();
@@ -85,8 +85,8 @@ public class RegistrarCliente extends javax.swing.JFrame {
 
         campoNombre.addActionListener(this::campoNombreActionPerformed);
         panelEntrada.add(campoNombre);
-        panelEntrada.add(campoApellido);
         panelEntrada.add(campoCedula);
+        panelEntrada.add(campoApellido);
 
         campoCorreo.addActionListener(this::campoCorreoActionPerformed);
         panelEntrada.add(campoCorreo);
