@@ -6,7 +6,7 @@ package mecanica;
 import java.util.ArrayList;
 /**
  *
- * @author DET PC
+ * @author grupo1
  */
 public class Taller {
     private String nombre;

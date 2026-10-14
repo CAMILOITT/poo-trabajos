@@ -44,22 +44,22 @@ public class CrearFactura extends javax.swing.JFrame {
         PanelCentro = new javax.swing.JPanel();
         PanelDatos = new javax.swing.JPanel();
         PanelEtiquetas = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        etiquetaNumeroFactura = new javax.swing.JLabel();
+        etiquetaFechaFactura = new javax.swing.JLabel();
+        etiquetaCliente = new javax.swing.JLabel();
         PanelEntradas = new javax.swing.JPanel();
         campoNumero = new javax.swing.JTextField();
         campoFecha = new javax.swing.JTextField();
         comboCliente = new javax.swing.JComboBox<>();
         PanelOrdenes = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        etiquetaOrdenesPendientes = new javax.swing.JLabel();
         scrollOrdenes = new javax.swing.JScrollPane();
         tablaOrdenes = new javax.swing.JTable();
         PanelDetalle = new javax.swing.JPanel();
         scroll = new javax.swing.JScrollPane();
         areaFactura = new javax.swing.JTextArea();
         PanelTitulo = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        etiquetaTituloGenerarFactura = new javax.swing.JLabel();
         PanelBotones = new javax.swing.JPanel();
         botonGenerarFactura = new javax.swing.JButton();
         botonLimpiar = new javax.swing.JButton();
@@ -67,21 +67,25 @@ public class CrearFactura extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        PanelCentro.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 25, 15, 25));
         PanelCentro.setLayout(new java.awt.BorderLayout(10, 0));
 
-        PanelDatos.setLayout(new java.awt.BorderLayout());
+        PanelDatos.setLayout(new java.awt.BorderLayout(10, 0));
 
         PanelEtiquetas.setLayout(new java.awt.GridLayout(3, 1, 0, 10));
 
-        jLabel2.setText("Numero de factura:");
-        PanelEtiquetas.add(jLabel2);
+        etiquetaNumeroFactura.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaNumeroFactura.setText("Número de factura:");
+        PanelEtiquetas.add(etiquetaNumeroFactura);
 
-        jLabel3.setText("Fecha:");
-        PanelEtiquetas.add(jLabel3);
+        etiquetaFechaFactura.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaFechaFactura.setText("Fecha:");
+        PanelEtiquetas.add(etiquetaFechaFactura);
 
-        jLabel4.setText("Cliente:");
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        PanelEtiquetas.add(jLabel4);
+        etiquetaCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaCliente.setText("Cliente:");
+        etiquetaCliente.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        PanelEtiquetas.add(etiquetaCliente);
 
         PanelDatos.add(PanelEtiquetas, java.awt.BorderLayout.WEST);
 
@@ -102,8 +106,8 @@ public class CrearFactura extends javax.swing.JFrame {
 
         PanelOrdenes.setLayout(new java.awt.BorderLayout());
 
-        jLabel5.setText("Ordenes pendientes (seleccione una o varias)");
-        PanelOrdenes.add(jLabel5, java.awt.BorderLayout.NORTH);
+        etiquetaOrdenesPendientes.setText("Órdenes pendientes (seleccione una o varias)");
+        PanelOrdenes.add(etiquetaOrdenesPendientes, java.awt.BorderLayout.NORTH);
 
         tablaOrdenes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,7 +132,7 @@ public class CrearFactura extends javax.swing.JFrame {
         PanelCentro.add(PanelOrdenes, java.awt.BorderLayout.CENTER);
 
         PanelDetalle.setPreferredSize(new java.awt.Dimension(400, 150));
-        PanelDetalle.setLayout(new java.awt.BorderLayout());
+        PanelDetalle.setLayout(new java.awt.BorderLayout(10, 0));
 
         areaFactura.setEditable(false);
         areaFactura.setColumns(20);
@@ -143,29 +147,18 @@ public class CrearFactura extends javax.swing.JFrame {
         getContentPane().add(PanelCentro, java.awt.BorderLayout.CENTER);
 
         PanelTitulo.setBackground(new java.awt.Color(0, 102, 153));
+        PanelTitulo.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("CREAR FACTURA");
-
-        javax.swing.GroupLayout PanelTituloLayout = new javax.swing.GroupLayout(PanelTitulo);
-        PanelTitulo.setLayout(PanelTituloLayout);
-        PanelTituloLayout.setHorizontalGroup(
-            PanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTituloLayout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(jLabel1)
-                .addContainerGap(115, Short.MAX_VALUE))
-        );
-        PanelTituloLayout.setVerticalGroup(
-            PanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTituloLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        etiquetaTituloGenerarFactura.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        etiquetaTituloGenerarFactura.setForeground(new java.awt.Color(255, 255, 255));
+        etiquetaTituloGenerarFactura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiquetaTituloGenerarFactura.setText("GENERAR FACTURA");
+        etiquetaTituloGenerarFactura.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 0, 20, 0));
+        PanelTitulo.add(etiquetaTituloGenerarFactura, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(PanelTitulo, java.awt.BorderLayout.NORTH);
+
+        PanelBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15));
 
         botonGenerarFactura.setBackground(new java.awt.Color(204, 255, 204));
         botonGenerarFactura.setText("Generar");
@@ -337,11 +330,11 @@ public class CrearFactura extends javax.swing.JFrame {
     private javax.swing.JTextField campoFecha;
     private javax.swing.JTextField campoNumero;
     private javax.swing.JComboBox<String> comboCliente;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel etiquetaCliente;
+    private javax.swing.JLabel etiquetaFechaFactura;
+    private javax.swing.JLabel etiquetaNumeroFactura;
+    private javax.swing.JLabel etiquetaOrdenesPendientes;
+    private javax.swing.JLabel etiquetaTituloGenerarFactura;
     private javax.swing.JScrollPane scroll;
     private javax.swing.JScrollPane scrollOrdenes;
     private javax.swing.JTable tablaOrdenes;

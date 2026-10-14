@@ -35,19 +35,19 @@ public class RegistrarCliente extends javax.swing.JFrame {
 
         PanelCampos = new javax.swing.JPanel();
         panelEtiquetas = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        etiquetaNombreCliente = new javax.swing.JLabel();
+        etiquetaApellidoCliente = new javax.swing.JLabel();
+        etiquetaCedulaCliente = new javax.swing.JLabel();
+        etiquetaCorreoCliente = new javax.swing.JLabel();
+        etiquetaCelularCliente = new javax.swing.JLabel();
         panelEntrada = new javax.swing.JPanel();
         campoNombre = new javax.swing.JTextField();
-        campoCedula = new javax.swing.JTextField();
         campoApellido = new javax.swing.JTextField();
+        campoCedula = new javax.swing.JTextField();
         campoCorreo = new javax.swing.JTextField();
         campoCelular = new javax.swing.JTextField();
         PanelTitulo = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        etiquetaTituloRegistrarCliente = new javax.swing.JLabel();
         PanelBotones = new javax.swing.JPanel();
         botonRegistrar = new javax.swing.JButton();
         botonLimpiar = new javax.swing.JButton();
@@ -55,42 +55,53 @@ public class RegistrarCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        PanelCampos.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 25, 15, 25));
+        PanelCampos.setPreferredSize(new java.awt.Dimension(380, 320));
         PanelCampos.setLayout(new java.awt.BorderLayout(10, 0));
 
         panelEtiquetas.setLayout(new java.awt.GridLayout(5, 1, 0, 15));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Nombre:");
-        panelEtiquetas.add(jLabel2);
+        etiquetaNombreCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaNombreCliente.setText("Nombre:");
+        panelEtiquetas.add(etiquetaNombreCliente);
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Apellido:");
-        panelEtiquetas.add(jLabel3);
+        etiquetaApellidoCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaApellidoCliente.setText("Apellido:");
+        panelEtiquetas.add(etiquetaApellidoCliente);
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Cédula:");
-        panelEtiquetas.add(jLabel4);
+        etiquetaCedulaCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaCedulaCliente.setText("Cédula:");
+        panelEtiquetas.add(etiquetaCedulaCliente);
 
-        jLabel5.setText("Correo:");
-        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        panelEtiquetas.add(jLabel5);
+        etiquetaCorreoCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaCorreoCliente.setText("Correo:");
+        etiquetaCorreoCliente.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        panelEtiquetas.add(etiquetaCorreoCliente);
 
-        jLabel6.setText("Celular:");
-        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        panelEtiquetas.add(jLabel6);
+        etiquetaCelularCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaCelularCliente.setText("Celular:");
+        etiquetaCelularCliente.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        panelEtiquetas.add(etiquetaCelularCliente);
 
         PanelCampos.add(panelEtiquetas, java.awt.BorderLayout.WEST);
 
         panelEntrada.setLayout(new java.awt.GridLayout(5, 1, 0, 15));
 
+        campoNombre.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         campoNombre.addActionListener(this::campoNombreActionPerformed);
         panelEntrada.add(campoNombre);
-        panelEntrada.add(campoCedula);
+
+        campoApellido.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         panelEntrada.add(campoApellido);
 
+        campoCedula.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        panelEntrada.add(campoCedula);
+
+        campoCorreo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         campoCorreo.addActionListener(this::campoCorreoActionPerformed);
         panelEntrada.add(campoCorreo);
 
+        campoCelular.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         campoCelular.addActionListener(this::campoCelularActionPerformed);
         campoCelular.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -104,29 +115,18 @@ public class RegistrarCliente extends javax.swing.JFrame {
         getContentPane().add(PanelCampos, java.awt.BorderLayout.CENTER);
 
         PanelTitulo.setBackground(new java.awt.Color(0, 102, 153));
+        PanelTitulo.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("REGISTRAR CLIENTE");
-
-        javax.swing.GroupLayout PanelTituloLayout = new javax.swing.GroupLayout(PanelTitulo);
-        PanelTitulo.setLayout(PanelTituloLayout);
-        PanelTituloLayout.setHorizontalGroup(
-            PanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTituloLayout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(jLabel1)
-                .addContainerGap(94, Short.MAX_VALUE))
-        );
-        PanelTituloLayout.setVerticalGroup(
-            PanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTituloLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        etiquetaTituloRegistrarCliente.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        etiquetaTituloRegistrarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        etiquetaTituloRegistrarCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiquetaTituloRegistrarCliente.setText("REGISTRAR CLIENTE");
+        etiquetaTituloRegistrarCliente.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 0, 20, 0));
+        PanelTitulo.add(etiquetaTituloRegistrarCliente, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(PanelTitulo, java.awt.BorderLayout.NORTH);
+
+        PanelBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 5));
 
         botonRegistrar.setBackground(new java.awt.Color(204, 255, 204));
         botonRegistrar.setText("Registrar");
@@ -258,12 +258,12 @@ public class RegistrarCliente extends javax.swing.JFrame {
     private javax.swing.JTextField campoCelular;
     private javax.swing.JTextField campoCorreo;
     private javax.swing.JTextField campoNombre;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel etiquetaApellidoCliente;
+    private javax.swing.JLabel etiquetaCedulaCliente;
+    private javax.swing.JLabel etiquetaCelularCliente;
+    private javax.swing.JLabel etiquetaCorreoCliente;
+    private javax.swing.JLabel etiquetaNombreCliente;
+    private javax.swing.JLabel etiquetaTituloRegistrarCliente;
     private javax.swing.JPanel panelEntrada;
     private javax.swing.JPanel panelEtiquetas;
     // End of variables declaration//GEN-END:variables

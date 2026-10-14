@@ -49,10 +49,10 @@ public class RegistrarTrabajo extends javax.swing.JFrame {
         PanelCentro = new javax.swing.JPanel();
         PanelDatos = new javax.swing.JPanel();
         PanelEtiquetas = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        etiquetaNumeroOrden = new javax.swing.JLabel();
+        etiquetaClienteTrabajo = new javax.swing.JLabel();
+        etiquetaMecanicoTrabajo = new javax.swing.JLabel();
+        etiquetaFechaTrabajo = new javax.swing.JLabel();
         PanelEntradas = new javax.swing.JPanel();
         campoNumero = new javax.swing.JTextField();
         comboCliente = new javax.swing.JComboBox<>();
@@ -69,7 +69,7 @@ public class RegistrarTrabajo extends javax.swing.JFrame {
         scrollRepuestos = new javax.swing.JScrollPane();
         tablaRepuestos = new javax.swing.JTable();
         PanelTitulo = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        etiquetaTituloTrabajo = new javax.swing.JLabel();
         PanelBotones = new javax.swing.JPanel();
         botonGuardar = new javax.swing.JButton();
         botonLimpiar = new javax.swing.JButton();
@@ -77,27 +77,32 @@ public class RegistrarTrabajo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        PanelCentro.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 25, 15, 25));
         PanelCentro.setLayout(new java.awt.BorderLayout(10, 0));
 
-        PanelDatos.setLayout(new java.awt.BorderLayout());
+        PanelDatos.setLayout(new java.awt.BorderLayout(10, 0));
 
         PanelEtiquetas.setLayout(new java.awt.GridLayout(4, 1, 0, 10));
 
-        jLabel4.setText("Numero Orden");
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        PanelEtiquetas.add(jLabel4);
+        etiquetaNumeroOrden.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaNumeroOrden.setText("Número Orden:");
+        etiquetaNumeroOrden.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        PanelEtiquetas.add(etiquetaNumeroOrden);
 
-        jLabel2.setText("Cliente:");
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        PanelEtiquetas.add(jLabel2);
+        etiquetaClienteTrabajo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaClienteTrabajo.setText("Cliente:");
+        etiquetaClienteTrabajo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        PanelEtiquetas.add(etiquetaClienteTrabajo);
 
-        jLabel3.setText("Mecanico");
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        PanelEtiquetas.add(jLabel3);
+        etiquetaMecanicoTrabajo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaMecanicoTrabajo.setText("Mecánico:");
+        etiquetaMecanicoTrabajo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        PanelEtiquetas.add(etiquetaMecanicoTrabajo);
 
-        jLabel5.setText("Fecha");
-        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        PanelEtiquetas.add(jLabel5);
+        etiquetaFechaTrabajo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaFechaTrabajo.setText("Fecha:");
+        etiquetaFechaTrabajo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        PanelEtiquetas.add(etiquetaFechaTrabajo);
 
         PanelDatos.add(PanelEtiquetas, java.awt.BorderLayout.WEST);
 
@@ -126,7 +131,7 @@ public class RegistrarTrabajo extends javax.swing.JFrame {
         PanelAniadir.add(comboRepuesto);
 
         botonAniadir.setBackground(new java.awt.Color(204, 255, 204));
-        botonAniadir.setText("Aniadir");
+        botonAniadir.setText("Añadir");
         botonAniadir.addActionListener(this::botonAniadirActionPerformed);
         PanelAniadir.add(botonAniadir);
 
@@ -164,29 +169,18 @@ public class RegistrarTrabajo extends javax.swing.JFrame {
         getContentPane().add(PanelCentro, java.awt.BorderLayout.CENTER);
 
         PanelTitulo.setBackground(new java.awt.Color(0, 102, 153));
+        PanelTitulo.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("REGISTRAR TRABAJO");
-
-        javax.swing.GroupLayout PanelTituloLayout = new javax.swing.GroupLayout(PanelTitulo);
-        PanelTitulo.setLayout(PanelTituloLayout);
-        PanelTituloLayout.setHorizontalGroup(
-            PanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTituloLayout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addComponent(jLabel1)
-                .addContainerGap(90, Short.MAX_VALUE))
-        );
-        PanelTituloLayout.setVerticalGroup(
-            PanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTituloLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        etiquetaTituloTrabajo.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
+        etiquetaTituloTrabajo.setForeground(new java.awt.Color(255, 255, 255));
+        etiquetaTituloTrabajo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiquetaTituloTrabajo.setText("REGISTRAR TRABAJO");
+        etiquetaTituloTrabajo.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 0, 20, 0));
+        PanelTitulo.add(etiquetaTituloTrabajo, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(PanelTitulo, java.awt.BorderLayout.NORTH);
+
+        PanelBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15));
 
         botonGuardar.setBackground(new java.awt.Color(204, 255, 204));
         botonGuardar.setText("Guardar");
@@ -367,12 +361,12 @@ private void limpiarFormulario() {
     private javax.swing.JComboBox<String> comboCliente;
     private javax.swing.JComboBox<String> comboMecanico;
     private javax.swing.JComboBox<String> comboRepuesto;
+    private javax.swing.JLabel etiquetaClienteTrabajo;
+    private javax.swing.JLabel etiquetaFechaTrabajo;
+    private javax.swing.JLabel etiquetaMecanicoTrabajo;
+    private javax.swing.JLabel etiquetaNumeroOrden;
+    private javax.swing.JLabel etiquetaTituloTrabajo;
     private javax.swing.JLabel etiquetaTotal;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane scrollRepuestos;

@@ -40,11 +40,11 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         PanelCampos = new javax.swing.JPanel();
         panelEtiquetas = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        etiquetaNombreMecanico = new javax.swing.JLabel();
+        etiquetaApellidoMecanico = new javax.swing.JLabel();
+        etiquetaCedulaMecanico = new javax.swing.JLabel();
+        etiquetaCelularMecanico = new javax.swing.JLabel();
+        etiquetaEspecialidadMecanico = new javax.swing.JLabel();
         panelEntrada = new javax.swing.JPanel();
         campoNombre = new javax.swing.JTextField();
         campoApellido = new javax.swing.JTextField();
@@ -64,29 +64,31 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        PanelCampos.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 25, 15, 25));
+        PanelCampos.setPreferredSize(new java.awt.Dimension(380, 320));
         PanelCampos.setLayout(new java.awt.BorderLayout(10, 0));
 
         panelEtiquetas.setLayout(new java.awt.GridLayout(5, 1, 0, 15));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Nombre:");
-        panelEtiquetas.add(jLabel2);
+        etiquetaNombreMecanico.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaNombreMecanico.setText("Nombre:");
+        panelEtiquetas.add(etiquetaNombreMecanico);
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Apellido:");
-        panelEtiquetas.add(jLabel3);
+        etiquetaApellidoMecanico.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaApellidoMecanico.setText("Apellido:");
+        panelEtiquetas.add(etiquetaApellidoMecanico);
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Cédula:");
-        panelEtiquetas.add(jLabel4);
+        etiquetaCedulaMecanico.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaCedulaMecanico.setText("Cédula:");
+        panelEtiquetas.add(etiquetaCedulaMecanico);
 
-        jLabel6.setText("       Celular:");
-        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        panelEtiquetas.add(jLabel6);
+        etiquetaCelularMecanico.setText("       Celular:");
+        etiquetaCelularMecanico.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        panelEtiquetas.add(etiquetaCelularMecanico);
 
-        jLabel5.setText("Especialidad:");
-        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        panelEtiquetas.add(jLabel5);
+        etiquetaEspecialidadMecanico.setText("Especialidad:");
+        etiquetaEspecialidadMecanico.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        panelEtiquetas.add(etiquetaEspecialidadMecanico);
 
         PanelCampos.add(panelEtiquetas, java.awt.BorderLayout.WEST);
 
@@ -111,7 +113,7 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("REGISTRAR CLIENTE");
+        jLabel1.setText("REGISTRAR MECÁNICO");
 
         javax.swing.GroupLayout PanelTituloLayout = new javax.swing.GroupLayout(PanelTitulo);
         PanelTitulo.setLayout(PanelTituloLayout);
@@ -129,6 +131,8 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addContainerGap(14, Short.MAX_VALUE))
         );
+
+        PanelBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15));
 
         botonRegistrar.setBackground(new java.awt.Color(204, 255, 204));
         botonRegistrar.setText("Registrar");
@@ -150,7 +154,7 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 430, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -162,7 +166,7 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 391, Short.MAX_VALUE)
+            .addGap(0, 407, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -286,12 +290,12 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
     private javax.swing.JTextField campoCelular;
     private javax.swing.JTextField campoEspecialidad;
     private javax.swing.JTextField campoNombre;
+    private javax.swing.JLabel etiquetaApellidoMecanico;
+    private javax.swing.JLabel etiquetaCedulaMecanico;
+    private javax.swing.JLabel etiquetaCelularMecanico;
+    private javax.swing.JLabel etiquetaEspecialidadMecanico;
+    private javax.swing.JLabel etiquetaNombreMecanico;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel panelEntrada;
