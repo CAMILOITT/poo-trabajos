@@ -125,9 +125,12 @@ public class JFrame_Calculadora extends javax.swing.JFrame {
         minorButtom.setBorderPainted(false);
         jPanel2.add(minorButtom);
 
-        number1.setBackground(new java.awt.Color(153, 153, 153));
+        number1.setBackground(new java.awt.Color(15, 15, 15));
         number1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        number1.setForeground(new java.awt.Color(255, 255, 255));
         number1.setText("1");
+        number1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        number1.setBorderPainted(false);
         number1.addActionListener(this::number1ActionPerformed);
         jPanel2.add(number1);
 
