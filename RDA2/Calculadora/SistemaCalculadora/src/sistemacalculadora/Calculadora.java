@@ -47,9 +47,9 @@ public class Calculadora {
     {
         return Math.pow(operado1, operado1);
     }
-    public double radicacion()
+    public double porcentaje()
     {
-        return Math.pow(this.operado1,1.0/this.operado2);
+        return operado1 * (operado2 / 100);
     }
     
     
