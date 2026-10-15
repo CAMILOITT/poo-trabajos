@@ -2,6 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package mecanica;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,6 +21,7 @@ public class OrdenTrabajo {
     public OrdenTrabajo(String numeroOrden, Date fecha) {
         this.numeroOrden = numeroOrden;
         this.fecha = fecha;
+        this.repuestoUsado = new ArrayList<>();
     }
     public OrdenTrabajo(String numeroOrden, Date fecha, ArrayList<Repuesto> repuestoUsado) {
         this.numeroOrden = numeroOrden;
@@ -51,3 +56,5 @@ public class OrdenTrabajo {
     }
     
 }
+    
+

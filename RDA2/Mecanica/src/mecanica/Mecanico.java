@@ -3,12 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package mecanica;
+
 import java.util.ArrayList;
+
 /**
  *
  * @author grupo1
  */
 public class Mecanico extends Persona {
+
     private String especialidad;
     private ArrayList<OrdenTrabajo> listaOrdenes;
 
@@ -21,9 +24,8 @@ public class Mecanico extends Persona {
     public Mecanico(String especialidad, String nombre, String apellido, String cedula, String celular, String correo) {
         super(nombre, apellido, cedula, celular, correo);
         this.especialidad = especialidad;
+        this.listaOrdenes = new ArrayList<>();
     }
-
-    
 
     public String getEspecialidad() {
         return especialidad;
@@ -32,9 +34,9 @@ public class Mecanico extends Persona {
     public ArrayList<OrdenTrabajo> getOrdenRegistrada() {
         return listaOrdenes;
     }
-    public void registrarOrdenes(OrdenTrabajo orden)
-    {
+
+    public void registrarOrdenes(OrdenTrabajo orden) {
         listaOrdenes.add(orden);//OJo
     }
-    
+
 }

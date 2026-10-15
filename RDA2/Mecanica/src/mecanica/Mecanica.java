@@ -17,7 +17,17 @@ public class Mecanica {
     public static void main(String[] args) {
         // TODO code application logic here
         ArrayList<Cliente> listaClientes = new ArrayList<>();
-
+        
+        listaClientes.add(new Cliente(new ArrayList<>(),
+            "Ana", "Pérez", "1712345678", "0991234567", "ana.perez@mail.com"));
+        listaClientes.add(new Cliente(new ArrayList<>(),
+            "Carlos", "Mendoza", "1723456789", "0992345678", "carlos.mendoza@mail.com"));
+        listaClientes.add(new Cliente(new ArrayList<>(),
+            "Valeria", "Torres", "1734567890", "0993456789", "valeria.torres@mail.com"));
+        listaClientes.add(new Cliente(new ArrayList<>(),
+            "Diego", "Salazar", "1745678901", "0994567890", "diego.salazar@mail.com"));
+        listaClientes.add(new Cliente(new ArrayList<>(),
+            "Sofía", "Ramírez", "1756789012", "0995678901", "sofia.ramirez@mail.com"));
         ArrayList<Mecanico> listaMecanicos = new ArrayList<>();
         listaMecanicos.add(new Mecanico("Motor", new ArrayList<>(),
             "Pedro", "Loor", "1720000001", "0981111111", "pedro.loor@mail.com"));

@@ -87,21 +87,14 @@ public class RegistrarCliente extends javax.swing.JFrame {
 
         panelEntrada.setLayout(new java.awt.GridLayout(5, 1, 0, 15));
 
-        campoNombre.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         campoNombre.addActionListener(this::campoNombreActionPerformed);
         panelEntrada.add(campoNombre);
-
-        campoApellido.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         panelEntrada.add(campoApellido);
-
-        campoCedula.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         panelEntrada.add(campoCedula);
 
-        campoCorreo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         campoCorreo.addActionListener(this::campoCorreoActionPerformed);
         panelEntrada.add(campoCorreo);
 
-        campoCelular.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         campoCelular.addActionListener(this::campoCelularActionPerformed);
         campoCelular.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {

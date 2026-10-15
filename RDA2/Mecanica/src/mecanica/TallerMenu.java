@@ -41,8 +41,6 @@ public class TallerMenu extends javax.swing.JFrame {
 
         PanelSalida = new javax.swing.JPanel();
         botonSalida = new javax.swing.JButton();
-        PanelTitulo = new javax.swing.JPanel();
-        etiquetaTitulo = new javax.swing.JLabel();
         PanelBotones = new javax.swing.JPanel();
         botonRegistrarCliente = new javax.swing.JButton();
         botonRegistrarMecanico = new javax.swing.JButton();
@@ -51,6 +49,7 @@ public class TallerMenu extends javax.swing.JFrame {
         botonFactura = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("SIstema mecánica 1.0");
 
         PanelSalida.setBackground(new java.awt.Color(245, 247, 250));
         PanelSalida.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
@@ -66,32 +65,6 @@ public class TallerMenu extends javax.swing.JFrame {
         PanelSalida.add(botonSalida);
 
         getContentPane().add(PanelSalida, java.awt.BorderLayout.PAGE_END);
-
-        PanelTitulo.setBackground(new java.awt.Color(0, 102, 153));
-
-        etiquetaTitulo.setFont(new java.awt.Font("Candara", 1, 28)); // NOI18N
-        etiquetaTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        etiquetaTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiquetaTitulo.setText("SISTEMA MECANICA");
-
-        javax.swing.GroupLayout PanelTituloLayout = new javax.swing.GroupLayout(PanelTitulo);
-        PanelTitulo.setLayout(PanelTituloLayout);
-        PanelTituloLayout.setHorizontalGroup(
-            PanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTituloLayout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(etiquetaTitulo)
-                .addContainerGap(68, Short.MAX_VALUE))
-        );
-        PanelTituloLayout.setVerticalGroup(
-            PanelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTituloLayout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(etiquetaTitulo)
-                .addGap(17, 17, 17))
-        );
-
-        getContentPane().add(PanelTitulo, java.awt.BorderLayout.PAGE_START);
 
         PanelBotones.setBackground(new java.awt.Color(245, 247, 250));
         PanelBotones.setBorder(javax.swing.BorderFactory.createEmptyBorder(25, 70, 15, 70));
@@ -209,13 +182,11 @@ public class TallerMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelBotones;
     private javax.swing.JPanel PanelSalida;
-    private javax.swing.JPanel PanelTitulo;
     private javax.swing.JButton botonFactura;
     private javax.swing.JButton botonGestionarRepuesto;
     private javax.swing.JButton botonRegistrarCliente;
     private javax.swing.JButton botonRegistrarMecanico;
     private javax.swing.JButton botonRegistrarTrabajo;
     private javax.swing.JButton botonSalida;
-    private javax.swing.JLabel etiquetaTitulo;
     // End of variables declaration//GEN-END:variables
 }
