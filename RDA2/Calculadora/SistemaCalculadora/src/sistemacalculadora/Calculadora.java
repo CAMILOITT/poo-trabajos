@@ -27,10 +27,12 @@ public class Calculadora {
     public void setOperado2(double valor) {
         this.operado2 = valor;
     }
+    
     public double sumar()
     {
         return this.operado1+this.operado2;
     }
+    
     public double restar()
     {
         return this.operado1-this.operado2;
@@ -39,18 +41,20 @@ public class Calculadora {
     {
         return this.operado1*this.operado2;
     }
+    
     public double dividir()
     {
         return this.operado1/this.operado2;
     }
+    
     public double potencia()
     {
         return Math.pow(operado1, operado2);
     }
+    
     public double porcentaje()
     {
         return operado1 * (operado2 / 100);
     }
-    
-    
+       
 }

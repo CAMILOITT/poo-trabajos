@@ -1,32 +1,6 @@
-/Consesionarios/nbproject/private/
-/Consesionarios/build/
-/Cuenta_ejercicio/nbproject/private/
-/Cuenta_ejercicio/build/
-/ecuacion_ejercicio/ecuacion_ejercicio/build/
-/JavaApplication2/nbproject/private/
-/examen1Grupo/nbproject/private/
-/examen1Grupo1/nbproject/private/
-/examen1Grupo1/build/
-/empleados_ejercicio/nbproject/private/
-/Computador_ejercicio/nbproject/private/
-/Supermercado/nbproject/private/
-/Supermercado SuperPOO/nbproject/private/
-/RDA2/Deber2_ConsultaListeners/ActionListener/nbproject/private/
-/RDA2/Deber2_ConsultaListeners/ActionListener/build/
-
 *.dia~
 *.dia.autosave
 *.dia.autosave~
-/RDA2/Deber2_ConsultaListeners/KeyListener/nbproject/private/
-/RDA2/SistemaInterfaz/Sistema Supermercado/build/
-/RDA2/SistemaInterfaz/Sistema Supermercado/dist/
-/RDA2/Deber3_Herencia/Sistema Administrativo/nbproject/private/
-/RDA2/Deber3_Herencia/Sistema Administrativo/build/
-/RDA2/Deber3_Herencia/Sistema Administrativo/dist/
-/RDA2/Deber3_Minecraft/Minecraft/nbproject/private/
-/RDA2/Deber3_Minecraft/Minecraft/build/
-/RDA2/Mecanica/nbproject/private/
-/RDA2/Mecanica/build/
-/RDA2/Calculadora/Calculadora/nbproject/private/
-/RDA2/Calculadora/SistemaCalculadora/nbproject/private/
-/RDA2/Calculadora/SistemaCalculadora/build/
+/build/
+/dist/
+/nbproject/private/
