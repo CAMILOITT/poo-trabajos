@@ -45,7 +45,7 @@ public class Calculadora {
     }
     public double potencia()
     {
-        return Math.pow(operado1, operado1);
+        return Math.pow(operado1, operado2);
     }
     public double porcentaje()
     {

@@ -6,190 +6,226 @@ package sistemacalculadora;
 
 /**
  *
- * @author DET PC
+ * @author grupo1
  */
 public class JFrame_Calculadora extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrame_Calculadora.class.getName());
     private char operacionIndicador;
-   Calculadora calculadora=new Calculadora();
+    Calculadora calculadora = new Calculadora();
+
     public JFrame_Calculadora() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
 
-    
+    private double leerNumero() {
+        String texto = pantallaResultado.getText().replace(",", ".");
+        return Double.parseDouble(texto);
+    }
+
+    private String formatearNumero(double numero) {
+        java.text.DecimalFormatSymbols simbolos = new java.text.DecimalFormatSymbols();
+        simbolos.setDecimalSeparator(',');
+        java.text.DecimalFormat formato = new java.text.DecimalFormat("0.##########", simbolos);
+        return formato.format(numero);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        ACbutton = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        divButton = new javax.swing.JButton();
-        number7 = new javax.swing.JButton();
-        number8 = new javax.swing.JButton();
-        number9 = new javax.swing.JButton();
-        multiButton = new javax.swing.JButton();
-        number4 = new javax.swing.JButton();
-        number5 = new javax.swing.JButton();
-        number6 = new javax.swing.JButton();
-        minorButtom = new javax.swing.JButton();
-        number1 = new javax.swing.JButton();
-        number2 = new javax.swing.JButton();
-        number3 = new javax.swing.JButton();
-        sumButton = new javax.swing.JButton();
-        number0 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        backButton = new javax.swing.JButton();
-        equalButton = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        pantalla1 = new javax.swing.JTextField();
-        Pantalla2 = new javax.swing.JTextField();
+        panelBotones = new javax.swing.JPanel();
+        botonPotencia = new javax.swing.JButton();
+        botonDivision = new javax.swing.JButton();
+        botonBorrar = new javax.swing.JButton();
+        botonLimpiar = new javax.swing.JButton();
+        botonNumero7 = new javax.swing.JButton();
+        botonNumero8 = new javax.swing.JButton();
+        botonNumero9 = new javax.swing.JButton();
+        botonMultiplicacion = new javax.swing.JButton();
+        botonNumero4 = new javax.swing.JButton();
+        botonNumero5 = new javax.swing.JButton();
+        botonNumero6 = new javax.swing.JButton();
+        botonMenos = new javax.swing.JButton();
+        botonNumero1 = new javax.swing.JButton();
+        botonNumero2 = new javax.swing.JButton();
+        botonNumero3 = new javax.swing.JButton();
+        botonSumar = new javax.swing.JButton();
+        botonPorcentaje = new javax.swing.JButton();
+        botonNumero0 = new javax.swing.JButton();
+        botonComa = new javax.swing.JButton();
+        botonIgual = new javax.swing.JButton();
+        panelPantallas = new javax.swing.JPanel();
+        pantallaOperacion = new javax.swing.JTextField();
+        pantallaResultado = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SISTEMA CALCULADORA");
+        setTitle("Calculadora");
         setBackground(new java.awt.Color(153, 153, 153));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.setLayout(new java.awt.GridLayout(5, 4));
+        panelBotones.setLayout(new java.awt.GridLayout(5, 4, 5, 5));
 
-        ACbutton.setBackground(new java.awt.Color(255, 153, 51));
-        ACbutton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        ACbutton.setText("A/C");
-        ACbutton.addActionListener(this::ACbuttonActionPerformed);
-        jPanel2.add(ACbutton);
+        botonPotencia.setBackground(new java.awt.Color(210, 210, 210));
+        botonPotencia.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonPotencia.setText("^");
+        botonPotencia.setFocusPainted(false);
+        botonPotencia.addActionListener(this::botonPotenciaActionPerformed);
+        panelBotones.add(botonPotencia);
 
-        jButton3.setBackground(new java.awt.Color(102, 102, 102));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jButton3.setText("^");
-        jButton3.addActionListener(this::jButton3ActionPerformed);
-        jPanel2.add(jButton3);
+        botonDivision.setBackground(new java.awt.Color(210, 210, 210));
+        botonDivision.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonDivision.setText("/");
+        botonDivision.setFocusPainted(false);
+        botonDivision.addActionListener(this::botonDivisionActionPerformed);
+        panelBotones.add(botonDivision);
 
-        jButton19.setBackground(new java.awt.Color(102, 102, 102));
-        jButton19.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jButton19.setText("%");
-        jButton19.addActionListener(this::jButton19ActionPerformed);
-        jPanel2.add(jButton19);
+        botonBorrar.setBackground(new java.awt.Color(210, 210, 210));
+        botonBorrar.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonBorrar.setText("<-");
+        botonBorrar.setFocusPainted(false);
+        botonBorrar.addActionListener(this::botonBorrarActionPerformed);
+        panelBotones.add(botonBorrar);
 
-        divButton.setBackground(new java.awt.Color(102, 102, 102));
-        divButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        divButton.setText("/");
-        divButton.addActionListener(this::divButtonActionPerformed);
-        jPanel2.add(divButton);
+        botonLimpiar.setBackground(new java.awt.Color(210, 210, 210));
+        botonLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonLimpiar.setText("A/C");
+        botonLimpiar.setFocusPainted(false);
+        botonLimpiar.addActionListener(this::botonLimpiarActionPerformed);
+        panelBotones.add(botonLimpiar);
 
-        number7.setBackground(new java.awt.Color(153, 153, 153));
-        number7.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        number7.setText("7");
-        number7.addActionListener(this::number7ActionPerformed);
-        jPanel2.add(number7);
+        botonNumero7.setBackground(new java.awt.Color(250, 250, 250));
+        botonNumero7.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonNumero7.setText("7");
+        botonNumero7.setFocusPainted(false);
+        botonNumero7.addActionListener(this::botonNumero7ActionPerformed);
+        panelBotones.add(botonNumero7);
 
-        number8.setBackground(new java.awt.Color(153, 153, 153));
-        number8.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        number8.setText("8");
-        number8.addActionListener(this::number8ActionPerformed);
-        jPanel2.add(number8);
+        botonNumero8.setBackground(new java.awt.Color(250, 250, 250));
+        botonNumero8.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonNumero8.setText("8");
+        botonNumero8.setFocusPainted(false);
+        botonNumero8.addActionListener(this::botonNumero8ActionPerformed);
+        panelBotones.add(botonNumero8);
 
-        number9.setBackground(new java.awt.Color(153, 153, 153));
-        number9.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        number9.setText("9");
-        number9.addActionListener(this::number9ActionPerformed);
-        jPanel2.add(number9);
+        botonNumero9.setBackground(new java.awt.Color(250, 250, 250));
+        botonNumero9.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonNumero9.setText("9");
+        botonNumero9.setFocusPainted(false);
+        botonNumero9.addActionListener(this::botonNumero9ActionPerformed);
+        panelBotones.add(botonNumero9);
 
-        multiButton.setBackground(new java.awt.Color(102, 102, 102));
-        multiButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        multiButton.setText("x");
-        multiButton.addActionListener(this::multiButtonActionPerformed);
-        jPanel2.add(multiButton);
+        botonMultiplicacion.setBackground(new java.awt.Color(210, 210, 210));
+        botonMultiplicacion.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonMultiplicacion.setText("x");
+        botonMultiplicacion.setFocusPainted(false);
+        botonMultiplicacion.addActionListener(this::botonMultiplicacionActionPerformed);
+        panelBotones.add(botonMultiplicacion);
 
-        number4.setBackground(new java.awt.Color(153, 153, 153));
-        number4.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        number4.setText("4");
-        number4.addActionListener(this::number4ActionPerformed);
-        jPanel2.add(number4);
+        botonNumero4.setBackground(new java.awt.Color(250, 250, 250));
+        botonNumero4.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonNumero4.setText("4");
+        botonNumero4.setFocusPainted(false);
+        botonNumero4.addActionListener(this::botonNumero4ActionPerformed);
+        panelBotones.add(botonNumero4);
 
-        number5.setBackground(new java.awt.Color(153, 153, 153));
-        number5.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        number5.setText("5");
-        number5.addActionListener(this::number5ActionPerformed);
-        jPanel2.add(number5);
+        botonNumero5.setBackground(new java.awt.Color(250, 250, 250));
+        botonNumero5.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonNumero5.setText("5");
+        botonNumero5.setFocusPainted(false);
+        botonNumero5.addActionListener(this::botonNumero5ActionPerformed);
+        panelBotones.add(botonNumero5);
 
-        number6.setBackground(new java.awt.Color(153, 153, 153));
-        number6.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        number6.setText("6");
-        number6.addActionListener(this::number6ActionPerformed);
-        jPanel2.add(number6);
+        botonNumero6.setBackground(new java.awt.Color(250, 250, 250));
+        botonNumero6.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonNumero6.setText("6");
+        botonNumero6.setFocusPainted(false);
+        botonNumero6.addActionListener(this::botonNumero6ActionPerformed);
+        panelBotones.add(botonNumero6);
 
-        minorButtom.setBackground(new java.awt.Color(102, 102, 102));
-        minorButtom.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        minorButtom.setText("-");
-        minorButtom.setBorderPainted(false);
-        minorButtom.addActionListener(this::minorButtomActionPerformed);
-        jPanel2.add(minorButtom);
+        botonMenos.setBackground(new java.awt.Color(210, 210, 210));
+        botonMenos.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonMenos.setText("-");
+        botonMenos.setFocusPainted(false);
+        botonMenos.addActionListener(this::botonMenosActionPerformed);
+        panelBotones.add(botonMenos);
 
-        number1.setBackground(new java.awt.Color(153, 153, 153));
-        number1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        number1.setForeground(new java.awt.Color(255, 255, 255));
-        number1.setText("1");
-        number1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        number1.setBorderPainted(false);
-        number1.addActionListener(this::number1ActionPerformed);
-        jPanel2.add(number1);
+        botonNumero1.setBackground(new java.awt.Color(250, 250, 250));
+        botonNumero1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonNumero1.setText("1");
+        botonNumero1.setFocusPainted(false);
+        botonNumero1.addActionListener(this::botonNumero1ActionPerformed);
+        panelBotones.add(botonNumero1);
 
-        number2.setBackground(new java.awt.Color(153, 153, 153));
-        number2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        number2.setText("2");
-        number2.addActionListener(this::number2ActionPerformed);
-        jPanel2.add(number2);
+        botonNumero2.setBackground(new java.awt.Color(250, 250, 250));
+        botonNumero2.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonNumero2.setText("2");
+        botonNumero2.setFocusPainted(false);
+        botonNumero2.addActionListener(this::botonNumero2ActionPerformed);
+        panelBotones.add(botonNumero2);
 
-        number3.setBackground(new java.awt.Color(153, 153, 153));
-        number3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        number3.setText("3");
-        number3.addActionListener(this::number3ActionPerformed);
-        jPanel2.add(number3);
+        botonNumero3.setBackground(new java.awt.Color(250, 250, 250));
+        botonNumero3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonNumero3.setText("3");
+        botonNumero3.setFocusPainted(false);
+        botonNumero3.addActionListener(this::botonNumero3ActionPerformed);
+        panelBotones.add(botonNumero3);
 
-        sumButton.setBackground(new java.awt.Color(102, 102, 102));
-        sumButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        sumButton.setText("+");
-        sumButton.addActionListener(this::sumButtonActionPerformed);
-        jPanel2.add(sumButton);
+        botonSumar.setBackground(new java.awt.Color(210, 210, 210));
+        botonSumar.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonSumar.setText("+");
+        botonSumar.setFocusPainted(false);
+        botonSumar.addActionListener(this::botonSumarActionPerformed);
+        panelBotones.add(botonSumar);
 
-        number0.setBackground(new java.awt.Color(153, 153, 153));
-        number0.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        number0.setText("0");
-        number0.addActionListener(this::number0ActionPerformed);
-        jPanel2.add(number0);
+        botonPorcentaje.setBackground(new java.awt.Color(210, 210, 210));
+        botonPorcentaje.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonPorcentaje.setText("%");
+        botonPorcentaje.setFocusPainted(false);
+        botonPorcentaje.addActionListener(this::botonPorcentajeActionPerformed);
+        panelBotones.add(botonPorcentaje);
 
-        jButton18.setBackground(new java.awt.Color(102, 102, 102));
-        jButton18.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jButton18.setText(",");
-        jPanel2.add(jButton18);
+        botonNumero0.setBackground(new java.awt.Color(250, 250, 250));
+        botonNumero0.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonNumero0.setText("0");
+        botonNumero0.setFocusPainted(false);
+        botonNumero0.addActionListener(this::botonNumero0ActionPerformed);
+        panelBotones.add(botonNumero0);
 
-        backButton.setBackground(new java.awt.Color(102, 102, 102));
-        backButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        backButton.setText("<-");
-        backButton.addActionListener(this::backButtonActionPerformed);
-        jPanel2.add(backButton);
+        botonComa.setBackground(new java.awt.Color(210, 210, 210));
+        botonComa.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonComa.setText(",");
+        botonComa.setFocusPainted(false);
+        botonComa.addActionListener(this::botonComaActionPerformed);
+        panelBotones.add(botonComa);
 
-        equalButton.setBackground(new java.awt.Color(255, 153, 0));
-        equalButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        equalButton.setText("=");
-        equalButton.setBorder(null);
-        equalButton.addActionListener(this::equalButtonActionPerformed);
-        jPanel2.add(equalButton);
+        botonIgual.setBackground(new java.awt.Color(255, 149, 0));
+        botonIgual.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botonIgual.setForeground(new java.awt.Color(255, 255, 255));
+        botonIgual.setText("=");
+        botonIgual.setFocusPainted(false);
+        botonIgual.addActionListener(this::botonIgualActionPerformed);
+        panelBotones.add(botonIgual);
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.Y_AXIS));
+        panelPantallas.setLayout(new javax.swing.BoxLayout(panelPantallas, javax.swing.BoxLayout.Y_AXIS));
 
-        pantalla1.setEditable(false);
-        pantalla1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        pantalla1.addActionListener(this::pantalla1ActionPerformed);
-        jPanel3.add(pantalla1);
+        pantallaOperacion.setEditable(false);
+        pantallaOperacion.setBackground(new java.awt.Color(255, 255, 255));
+        pantallaOperacion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        pantallaOperacion.setForeground(new java.awt.Color(120, 120, 120));
+        pantallaOperacion.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        pantallaOperacion.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        pantallaOperacion.addActionListener(this::pantallaOperacionActionPerformed);
+        panelPantallas.add(pantallaOperacion);
 
-        Pantalla2.setBorder(null);
-        Pantalla2.addActionListener(this::Pantalla2ActionPerformed);
-        jPanel3.add(Pantalla2);
+        pantallaResultado.setEditable(false);
+        pantallaResultado.setBackground(new java.awt.Color(255, 255, 255));
+        pantallaResultado.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
+        pantallaResultado.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        pantallaResultado.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        pantallaResultado.addActionListener(this::pantallaResultadoActionPerformed);
+        panelPantallas.add(pantallaResultado);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,193 +234,206 @@ public class JFrame_Calculadora extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                    .addComponent(panelPantallas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelPantallas, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+    private void botonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_backButtonActionPerformed
+        String texto = pantallaResultado.getText();
+        if (!texto.isEmpty()) {
+            pantallaResultado.setText(texto.substring(0, texto.length() - 1));
+        }
+    }//GEN-LAST:event_botonBorrarActionPerformed
 
-    private void ACbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ACbuttonActionPerformed
+    private void botonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarActionPerformed
         // TODO add your handling code here:
-        Pantalla2.setText("");
-        pantalla1.setText("");
-    }//GEN-LAST:event_ACbuttonActionPerformed
+        pantallaOperacion.setText("");
+        pantallaResultado.setText("");
+    }//GEN-LAST:event_botonLimpiarActionPerformed
 
-    private void number3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_number3ActionPerformed
+    private void botonNumero3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNumero3ActionPerformed
         // TODO add your handling code here:
-        
-        String textoIngresado=pantalla1.getText()+"3";
-        pantalla1.setText(textoIngresado);
-    }//GEN-LAST:event_number3ActionPerformed
 
-    private void number7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_number7ActionPerformed
+        String textoIngresado = pantallaResultado.getText() + "3";
+        pantallaResultado.setText(textoIngresado);
+    }//GEN-LAST:event_botonNumero3ActionPerformed
+
+    private void botonNumero7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNumero7ActionPerformed
         //se declara una variable local
-        String textoIngresado=pantalla1.getText()+"7";
-        pantalla1.setText(textoIngresado);
-    }//GEN-LAST:event_number7ActionPerformed
+        String textoIngresado = pantallaResultado.getText() + "7";
+        pantallaResultado.setText(textoIngresado);
+    }//GEN-LAST:event_botonNumero7ActionPerformed
 
-    private void sumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumButtonActionPerformed
+    private void botonSumarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSumarActionPerformed
         // TODO add your handling code here:
-        double texto1=Double.parseDouble(pantalla1.getText());
+        double texto1 = leerNumero();
         calculadora.setOperado1(texto1);
-        operacionIndicador='+';
-        Pantalla2.setText(pantalla1.getText() + " + ");
-        pantalla1.setText("");
-        
-    }//GEN-LAST:event_sumButtonActionPerformed
+        operacionIndicador = '+';
+        pantallaOperacion.setText(pantallaResultado.getText() + " + ");
+        pantallaResultado.setText("");
 
-    private void number8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_number8ActionPerformed
+    }//GEN-LAST:event_botonSumarActionPerformed
+
+    private void botonNumero8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNumero8ActionPerformed
         // TODO add your handling code here:
-        String textoIngresado=pantalla1.getText()+"8";
-        pantalla1.setText(textoIngresado);
-    }//GEN-LAST:event_number8ActionPerformed
+        String textoIngresado = pantallaResultado.getText() + "8";
+        pantallaResultado.setText(textoIngresado);
+    }//GEN-LAST:event_botonNumero8ActionPerformed
 
-    private void number9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_number9ActionPerformed
+    private void botonNumero9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNumero9ActionPerformed
         // TODO add your handling code here:
-        String textoIngresado=pantalla1.getText()+"9";
-        pantalla1.setText(textoIngresado);
-    }//GEN-LAST:event_number9ActionPerformed
+        String textoIngresado = pantallaResultado.getText() + "9";
+        pantallaResultado.setText(textoIngresado);
+    }//GEN-LAST:event_botonNumero9ActionPerformed
 
-    private void number4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_number4ActionPerformed
+    private void botonNumero4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNumero4ActionPerformed
         // TODO add your handling code here:
-        String textoIngresado=pantalla1.getText()+"4";
-        pantalla1.setText(textoIngresado);
-    }//GEN-LAST:event_number4ActionPerformed
+        String textoIngresado = pantallaResultado.getText() + "4";
+        pantallaResultado.setText(textoIngresado);
+    }//GEN-LAST:event_botonNumero4ActionPerformed
 
-    private void number5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_number5ActionPerformed
+    private void botonNumero5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNumero5ActionPerformed
         // TODO add your handling code here:
-        String textoIngresado=pantalla1.getText()+"5";
-        pantalla1.setText(textoIngresado);
-    }//GEN-LAST:event_number5ActionPerformed
+        String textoIngresado = pantallaResultado.getText() + "5";
+        pantallaResultado.setText(textoIngresado);
+    }//GEN-LAST:event_botonNumero5ActionPerformed
 
-    private void number6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_number6ActionPerformed
+    private void botonNumero6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNumero6ActionPerformed
         // TODO add your handling code here:
-        String textoIngresado=pantalla1.getText()+"6";
-        pantalla1.setText(textoIngresado);
-        
-    }//GEN-LAST:event_number6ActionPerformed
+        String textoIngresado = pantallaResultado.getText() + "6";
+        pantallaResultado.setText(textoIngresado);
 
-    private void number1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_number1ActionPerformed
+    }//GEN-LAST:event_botonNumero6ActionPerformed
+
+    private void botonNumero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNumero1ActionPerformed
         // TODO add your handling code here:
-        
-        String textoIngresado=pantalla1.getText()+"1";
-        pantalla1.setText(textoIngresado);
-    }//GEN-LAST:event_number1ActionPerformed
 
-    private void number2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_number2ActionPerformed
+        String textoIngresado = pantallaResultado.getText() + "1";
+        pantallaResultado.setText(textoIngresado);
+    }//GEN-LAST:event_botonNumero1ActionPerformed
+
+    private void botonNumero2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNumero2ActionPerformed
         // TODO add your handling code here:
-        String textoIngresado=pantalla1.getText()+"2";
-        pantalla1.setText(textoIngresado);
-    }//GEN-LAST:event_number2ActionPerformed
+        String textoIngresado = pantallaResultado.getText() + "2";
+        pantallaResultado.setText(textoIngresado);
+    }//GEN-LAST:event_botonNumero2ActionPerformed
 
-    private void number0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_number0ActionPerformed
+    private void botonNumero0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNumero0ActionPerformed
         // TODO add your handling code here:
-        
-        String textoIngresado=pantalla1.getText()+"0";
-        pantalla1.setText(textoIngresado);
-    }//GEN-LAST:event_number0ActionPerformed
 
-    private void multiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiButtonActionPerformed
-       
-        double textoIngresado=Double.parseDouble(pantalla1.getText());
+        String textoIngresado = pantallaResultado.getText() + "0";
+        pantallaResultado.setText(textoIngresado);
+    }//GEN-LAST:event_botonNumero0ActionPerformed
+
+    private void botonMultiplicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMultiplicacionActionPerformed
+
+        double textoIngresado = leerNumero();
         calculadora.setOperado1(textoIngresado);
-        operacionIndicador='x';
-        Pantalla2.setText(pantalla1.getText()+"x");
-        pantalla1.setText("");
-    }//GEN-LAST:event_multiButtonActionPerformed
+        operacionIndicador = 'x';
+        pantallaOperacion.setText(pantallaResultado.getText() + " x ");
+        pantallaResultado.setText("");
+    }//GEN-LAST:event_botonMultiplicacionActionPerformed
 
-    private void pantalla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pantalla1ActionPerformed
+    private void pantallaResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pantallaResultadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pantalla1ActionPerformed
+    }//GEN-LAST:event_pantallaResultadoActionPerformed
 
-    private void Pantalla2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pantalla2ActionPerformed
+    private void pantallaOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pantallaOperacionActionPerformed
         // TODO add your handling code here:
         double valorActual = calculadora.getOperado1();
-        pantalla1.setText(String.valueOf(valorActual));
-    }//GEN-LAST:event_Pantalla2ActionPerformed
+        pantallaResultado.setText(String.valueOf(valorActual));
+    }//GEN-LAST:event_pantallaOperacionActionPerformed
 
-    private void equalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equalButtonActionPerformed
+    private void botonIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIgualActionPerformed
 
-        double valorSegundo=Double.parseDouble(pantalla1.getText());
+        double valorSegundo = leerNumero();
         calculadora.setOperado2(valorSegundo);
-        double resultado=0;
-        switch (operacionIndicador)
-        {
+        double resultado = 0;
+        switch (operacionIndicador) {
             case '+':
-                resultado=calculadora.sumar();
+                resultado = calculadora.sumar();
                 break;
             case '-':
-                resultado=calculadora.restar();
+                resultado = calculadora.restar();
                 break;
             case 'x':
-                resultado=calculadora.multiplicar();
+                resultado = calculadora.multiplicar();
                 break;
             case '/':
-                resultado=calculadora.dividir();
+                resultado = calculadora.dividir();
                 break;
             case '^':
-                resultado=calculadora.potencia();
+                resultado = calculadora.potencia();
                 break;
             case '%':
-                resultado=calculadora.porcentaje();
+                resultado = calculadora.porcentaje();
         }
-        pantalla1.setText(String.valueOf(resultado));
-        Pantalla2.setText("");
-        
-        
-    }//GEN-LAST:event_equalButtonActionPerformed
+        pantallaOperacion.setText(pantallaOperacion.getText() + pantallaResultado.getText() + " =");
+        pantallaResultado.setText(formatearNumero(resultado));
 
-    private void minorButtomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minorButtomActionPerformed
-        // TODO add your handling code here:
-        double textoIngresado=Double.parseDouble(pantalla1.getText());
-        calculadora.setOperado1(textoIngresado);
-        operacionIndicador='-';
-        Pantalla2.setText(pantalla1.getText()+"-");
-        pantalla1.setText("");
-    }//GEN-LAST:event_minorButtomActionPerformed
 
-    private void divButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divButtonActionPerformed
-        // TODO add your handling code here:
-        double textoIngresado=Double.parseDouble(pantalla1.getText());
-        calculadora.setOperado1(textoIngresado);
-        operacionIndicador='/';
-        Pantalla2.setText(pantalla1.getText()+"/");
-        pantalla1.setText("");
-    }//GEN-LAST:event_divButtonActionPerformed
+    }//GEN-LAST:event_botonIgualActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void botonMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMenosActionPerformed
         // TODO add your handling code here:
-        double textoIngresado=Double.parseDouble(pantalla1.getText());
+        double textoIngresado = leerNumero();
         calculadora.setOperado1(textoIngresado);
-        operacionIndicador='^';
-        Pantalla2.setText(pantalla1.getText()+"^");
-        pantalla1.setText("");
-    }//GEN-LAST:event_jButton3ActionPerformed
+        operacionIndicador = '-';
+        pantallaOperacion.setText(pantallaResultado.getText() + " - ");
+        pantallaResultado.setText("");
+    }//GEN-LAST:event_botonMenosActionPerformed
 
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+    private void botonDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDivisionActionPerformed
         // TODO add your handling code here:
-        double textoIngresado=Double.parseDouble(pantalla1.getText());
+        double textoIngresado = leerNumero();
         calculadora.setOperado1(textoIngresado);
-        operacionIndicador='%';
-        Pantalla2.setText(pantalla1.getText()+"%");
-        pantalla1.setText("");
-        
-    }//GEN-LAST:event_jButton19ActionPerformed
+        operacionIndicador = '/';
+        pantallaOperacion.setText(pantallaResultado.getText() + " / ");
+        pantallaResultado.setText("");
+    }//GEN-LAST:event_botonDivisionActionPerformed
+
+    private void botonPotenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPotenciaActionPerformed
+        // TODO add your handling code here:
+        double textoIngresado = leerNumero();
+        calculadora.setOperado1(textoIngresado);
+        operacionIndicador = '^';
+        pantallaOperacion.setText(pantallaResultado.getText() + " ^ ");
+        pantallaResultado.setText("");
+    }//GEN-LAST:event_botonPotenciaActionPerformed
+
+    private void botonPorcentajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPorcentajeActionPerformed
+        // TODO add your handling code here:
+        double textoIngresado = leerNumero();
+        calculadora.setOperado1(textoIngresado);
+        operacionIndicador = '%';
+        pantallaOperacion.setText(pantallaResultado.getText() + " % ");
+        pantallaResultado.setText("");
+
+    }//GEN-LAST:event_botonPorcentajeActionPerformed
+
+    private void botonComaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComaActionPerformed
+        // TODO add your handling code here:
+        String texto = pantallaResultado.getText();
+        if (texto.isEmpty()) {
+            pantallaResultado.setText("0,");
+        } else if (!texto.contains(",")) {
+            pantallaResultado.setText(texto + ",");
+        }
+    }//GEN-LAST:event_botonComaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -397,7 +446,7 @@ public class JFrame_Calculadora extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -412,29 +461,29 @@ public class JFrame_Calculadora extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ACbutton;
-    private javax.swing.JTextField Pantalla2;
-    private javax.swing.JButton backButton;
-    private javax.swing.JButton divButton;
-    private javax.swing.JButton equalButton;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JButton minorButtom;
-    private javax.swing.JButton multiButton;
-    private javax.swing.JButton number0;
-    private javax.swing.JButton number1;
-    private javax.swing.JButton number2;
-    private javax.swing.JButton number3;
-    private javax.swing.JButton number4;
-    private javax.swing.JButton number5;
-    private javax.swing.JButton number6;
-    private javax.swing.JButton number7;
-    private javax.swing.JButton number8;
-    private javax.swing.JButton number9;
-    private javax.swing.JTextField pantalla1;
-    private javax.swing.JButton sumButton;
+    private javax.swing.JButton botonBorrar;
+    private javax.swing.JButton botonComa;
+    private javax.swing.JButton botonDivision;
+    private javax.swing.JButton botonIgual;
+    private javax.swing.JButton botonLimpiar;
+    private javax.swing.JButton botonMenos;
+    private javax.swing.JButton botonMultiplicacion;
+    private javax.swing.JButton botonNumero0;
+    private javax.swing.JButton botonNumero1;
+    private javax.swing.JButton botonNumero2;
+    private javax.swing.JButton botonNumero3;
+    private javax.swing.JButton botonNumero4;
+    private javax.swing.JButton botonNumero5;
+    private javax.swing.JButton botonNumero6;
+    private javax.swing.JButton botonNumero7;
+    private javax.swing.JButton botonNumero8;
+    private javax.swing.JButton botonNumero9;
+    private javax.swing.JButton botonPorcentaje;
+    private javax.swing.JButton botonPotencia;
+    private javax.swing.JButton botonSumar;
+    private javax.swing.JPanel panelBotones;
+    private javax.swing.JPanel panelPantallas;
+    private javax.swing.JTextField pantallaOperacion;
+    private javax.swing.JTextField pantallaResultado;
     // End of variables declaration//GEN-END:variables
 }
