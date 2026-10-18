@@ -26,9 +26,6 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
 
     public JFrame_buscarProducto(ArrayList<Producto> listaProductos, ArrayList<Inventario> listaInventario, Jframe_Menu menu) {
         initComponents();
-        ImageIcon original = new ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/flecha retroceso.png"));
-        Image escalada = original.getImage().getScaledInstance(24, 24, Image.SCALE_SMOOTH);
-        botonRegresarMenu.setIcon(new ImageIcon(escalada));
         this.listaProductos = listaProductos;
         this.listaInventario = listaInventario;
         this.menu = menu;
@@ -44,231 +41,157 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        panelTituloProducto = new javax.swing.JPanel();
         botonRegresarMenu = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        panelPieProducto = new javax.swing.JPanel();
+        panelContenidoProducto = new javax.swing.JPanel();
+        panelBusquedaProducto = new javax.swing.JPanel();
+        etiquetaCodigoBuscado = new javax.swing.JLabel();
+        campoCodigoBuscado = new javax.swing.JTextField();
         botonBuscar = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        campoNombre = new javax.swing.JTextField();
+        panelDatosProductos = new javax.swing.JPanel();
+        etiquetaCodigo = new javax.swing.JLabel();
         campoCodigo = new javax.swing.JTextField();
+        etiquetaNombreProducto = new javax.swing.JLabel();
+        campoNombreProducto = new javax.swing.JTextField();
+        etiquetaPrecioProducto = new javax.swing.JLabel();
+        campoPrecioProducto = new javax.swing.JTextField();
+        etiquetaStock = new javax.swing.JLabel();
         campoStock = new javax.swing.JTextField();
-        campoPrecio = new javax.swing.JTextField();
+        etiquetaCategoria = new javax.swing.JLabel();
         campoCategoria = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
+        etiquetaPasillo = new javax.swing.JLabel();
         campoPasillo = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        limpiarDatos = new javax.swing.JButton();
-        campoCod = new javax.swing.JTextField();
-
-        jButton1.setText("jButton1");
+        panelBotonProducto = new javax.swing.JPanel();
+        botonLimpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Buscar producto");
 
-        jPanel1.setBackground(new java.awt.Color(51, 153, 0));
+        panelTituloProducto.setBackground(new java.awt.Color(51, 153, 0));
+        panelTituloProducto.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 10, 4, 10));
+        panelTituloProducto.setLayout(new java.awt.BorderLayout());
 
+        botonRegresarMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/icono_volver.png"))); // NOI18N
+        botonRegresarMenu.setBorderPainted(false);
+        botonRegresarMenu.setContentAreaFilled(false);
+        botonRegresarMenu.setFocusPainted(false);
+        botonRegresarMenu.setPreferredSize(new java.awt.Dimension(40, 40));
         botonRegresarMenu.addActionListener(this::botonRegresarMenuActionPerformed);
+        panelTituloProducto.add(botonRegresarMenu, java.awt.BorderLayout.WEST);
 
-        jLabel1.setFont(new java.awt.Font("Candara", 3, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Búsqueda de Productos");
+        getContentPane().add(panelTituloProducto, java.awt.BorderLayout.NORTH);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(botonRegresarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(botonRegresarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16))
-        );
+        panelPieProducto.setBackground(new java.awt.Color(51, 153, 0));
+        panelPieProducto.setPreferredSize(new java.awt.Dimension(10, 16));
+        getContentPane().add(panelPieProducto, java.awt.BorderLayout.SOUTH);
 
-        jPanel2.setBackground(new java.awt.Color(51, 153, 0));
+        panelContenidoProducto.setBackground(new java.awt.Color(255, 255, 255));
+        panelContenidoProducto.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 26, 20, 26));
+        panelContenidoProducto.setLayout(new javax.swing.BoxLayout(panelContenidoProducto, javax.swing.BoxLayout.Y_AXIS));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
+        panelBusquedaProducto.setBackground(new java.awt.Color(255, 255, 255));
+        panelBusquedaProducto.setMaximumSize(new java.awt.Dimension(32767, 50));
+        panelBusquedaProducto.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
-        jLabel2.setText("Ingrese el código del producto");
+        etiquetaCodigoBuscado.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        etiquetaCodigoBuscado.setForeground(new java.awt.Color(55, 55, 55));
+        etiquetaCodigoBuscado.setText("Ingrese el código del producto:");
+        panelBusquedaProducto.add(etiquetaCodigoBuscado);
+
+        campoCodigoBuscado.setPreferredSize(new java.awt.Dimension(200, 30));
+        campoCodigoBuscado.addActionListener(this::campoCodigoBuscadoActionPerformed);
+        panelBusquedaProducto.add(campoCodigoBuscado);
 
         botonBuscar.setBackground(new java.awt.Color(51, 153, 0));
-        botonBuscar.setFont(new java.awt.Font("Candara", 3, 20)); // NOI18N
+        botonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         botonBuscar.setForeground(new java.awt.Color(255, 255, 255));
         botonBuscar.setText("Buscar");
+        botonBuscar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 0)), javax.swing.BorderFactory.createEmptyBorder(6, 17, 6, 17)));
+        botonBuscar.setFocusPainted(false);
         botonBuscar.addActionListener(this::botonBuscarActionPerformed);
+        panelBusquedaProducto.add(botonBuscar);
 
-        jPanel3.setBackground(new java.awt.Color(235, 255, 255));
+        panelContenidoProducto.add(panelBusquedaProducto);
 
-        jLabel4.setText("Código del Producto:");
+        panelDatosProductos.setBackground(new java.awt.Color(240, 251, 251));
+        panelDatosProductos.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 228, 200)), javax.swing.BorderFactory.createEmptyBorder(12, 14, 12, 14)));
+        panelDatosProductos.setMaximumSize(new java.awt.Dimension(32767, 240));
+        panelDatosProductos.setLayout(new java.awt.GridLayout(6, 2, 12, 10));
 
-        jLabel5.setText("Nombre del Producto:");
-
-        jLabel6.setText("Precio Unitario:");
-
-        jLabel7.setText("Número de Stock:");
-
-        jLabel8.setText("Categoría:");
-
-        campoNombre.setEditable(false);
-        campoNombre.addActionListener(this::campoNombreActionPerformed);
+        etiquetaCodigo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        etiquetaCodigo.setForeground(new java.awt.Color(55, 55, 55));
+        etiquetaCodigo.setText("Código del Producto:");
+        panelDatosProductos.add(etiquetaCodigo);
 
         campoCodigo.setEditable(false);
+        panelDatosProductos.add(campoCodigo);
+
+        etiquetaNombreProducto.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        etiquetaNombreProducto.setForeground(new java.awt.Color(55, 55, 55));
+        etiquetaNombreProducto.setText("Nombre del Producto:");
+        panelDatosProductos.add(etiquetaNombreProducto);
+
+        campoNombreProducto.setEditable(false);
+        campoNombreProducto.addActionListener(this::campoNombreProductoActionPerformed);
+        panelDatosProductos.add(campoNombreProducto);
+
+        etiquetaPrecioProducto.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        etiquetaPrecioProducto.setForeground(new java.awt.Color(55, 55, 55));
+        etiquetaPrecioProducto.setText("Precio Unitario:");
+        panelDatosProductos.add(etiquetaPrecioProducto);
+
+        campoPrecioProducto.setEditable(false);
+        campoPrecioProducto.addActionListener(this::campoPrecioProductoActionPerformed);
+        panelDatosProductos.add(campoPrecioProducto);
+
+        etiquetaStock.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        etiquetaStock.setForeground(new java.awt.Color(55, 55, 55));
+        etiquetaStock.setText("Número de Stock:");
+        panelDatosProductos.add(etiquetaStock);
 
         campoStock.setEditable(false);
         campoStock.addActionListener(this::campoStockActionPerformed);
+        panelDatosProductos.add(campoStock);
 
-        campoPrecio.setEditable(false);
-        campoPrecio.addActionListener(this::campoPrecioActionPerformed);
+        etiquetaCategoria.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        etiquetaCategoria.setForeground(new java.awt.Color(55, 55, 55));
+        etiquetaCategoria.setText("Categoría:");
+        panelDatosProductos.add(etiquetaCategoria);
 
         campoCategoria.setEditable(false);
         campoCategoria.addActionListener(this::campoCategoriaActionPerformed);
+        panelDatosProductos.add(campoCategoria);
 
-        jLabel9.setText("Número de Pasillo:");
+        etiquetaPasillo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        etiquetaPasillo.setForeground(new java.awt.Color(55, 55, 55));
+        etiquetaPasillo.setText("Número de Pasillo:");
+        panelDatosProductos.add(etiquetaPasillo);
 
         campoPasillo.setEditable(false);
         campoPasillo.addActionListener(this::campoPasilloActionPerformed);
+        panelDatosProductos.add(campoPasillo);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoStock, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                    .addComponent(campoPrecio)
-                    .addComponent(campoCodigo)
-                    .addComponent(campoNombre)
-                    .addComponent(campoCategoria)
-                    .addComponent(campoPasillo))
-                .addGap(226, 226, 226))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(campoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(campoCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(campoStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(campoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(campoCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(campoPasillo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
+        panelContenidoProducto.add(panelDatosProductos);
 
-        jLabel3.setFont(new java.awt.Font("Candara", 3, 15)); // NOI18N
-        jLabel3.setText("Información del Producto");
+        panelBotonProducto.setBackground(new java.awt.Color(255, 255, 255));
+        panelBotonProducto.setMaximumSize(new java.awt.Dimension(32767, 50));
+        panelBotonProducto.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
-        limpiarDatos.setFont(new java.awt.Font("Candara", 3, 18)); // NOI18N
-        limpiarDatos.setForeground(new java.awt.Color(51, 51, 51));
-        limpiarDatos.setText("Limpiar");
-        limpiarDatos.addActionListener(this::limpiarDatosActionPerformed);
+        botonLimpiar.setBackground(new java.awt.Color(254, 254, 254));
+        botonLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        botonLimpiar.setForeground(new java.awt.Color(38, 115, 0));
+        botonLimpiar.setText("Limpiar");
+        botonLimpiar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 0)), javax.swing.BorderFactory.createEmptyBorder(6, 17, 6, 17)));
+        botonLimpiar.setFocusPainted(false);
+        botonLimpiar.addActionListener(this::botonLimpiarActionPerformed);
+        panelBotonProducto.add(botonLimpiar);
 
-        campoCod.addActionListener(this::campoCodActionPerformed);
+        panelContenidoProducto.add(panelBotonProducto);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(limpiarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(campoCod, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(botonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addComponent(jLabel3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 20, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(botonBuscar)
-                    .addComponent(campoCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(limpiarDatos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        getContentPane().add(panelContenidoProducto, java.awt.BorderLayout.CENTER);
 
-        pack();
+        setBounds(820, 620, 620, 490);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarMenuActionPerformed
@@ -277,15 +200,15 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
         
     }//GEN-LAST:event_botonRegresarMenuActionPerformed
 
-    private void campoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreActionPerformed
+    private void campoNombreProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreProductoActionPerformed
         // TODO add your handling code here:
        
-    }//GEN-LAST:event_campoNombreActionPerformed
+    }//GEN-LAST:event_campoNombreProductoActionPerformed
 
     
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         // TODO add your handling code here:
-        String codigoIngresado=String.valueOf(campoCod.getText()).trim();
+        String codigoIngresado=String.valueOf(campoCodigoBuscado.getText()).trim();
        if(codigoIngresado.isEmpty()||codigoIngresado.equals("null"))
        {
            JOptionPane.showMessageDialog(this,"Ingrese o seleccione un codgio de producto ","Aviso",JOptionPane.WARNING_MESSAGE);
@@ -301,10 +224,10 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
            }
        }
        if (productoEncontrado != null) {
-        campoNombre.setText(productoEncontrado.getNombreProducto());
+        campoNombreProducto.setText(productoEncontrado.getNombreProducto());
         campoCodigo.setText(String.valueOf(productoEncontrado.getCodigo()));
         campoStock.setText(String.valueOf(productoEncontrado.getStock()));
-        campoPrecio.setText(String.format("$%.2f", productoEncontrado.getPrecio()));
+        campoPrecioProducto.setText(String.format("$%.2f", productoEncontrado.getPrecio()));
         campoCategoria.setText(productoEncontrado.getCategoria());
         campoPasillo.setText("Sin pasillo");
         for (Inventario inv : listaInventario) {
@@ -320,30 +243,30 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_botonBuscarActionPerformed
 
-    private void limpiarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarDatosActionPerformed
+    private void botonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarActionPerformed
         // TODO add your handling code here:
-        campoCod.setText("");
+        campoCodigoBuscado.setText("");
     
    
-        campoNombre.setText("");
+        campoNombreProducto.setText("");
         campoCodigo.setText("");
         campoStock.setText("");
-        campoPrecio.setText("");
+        campoPrecioProducto.setText("");
         campoCategoria.setText("");
         campoPasillo.setText("");
-    }//GEN-LAST:event_limpiarDatosActionPerformed
+    }//GEN-LAST:event_botonLimpiarActionPerformed
 
-    private void campoCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCodActionPerformed
+    private void campoCodigoBuscadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCodigoBuscadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoCodActionPerformed
+    }//GEN-LAST:event_campoCodigoBuscadoActionPerformed
 
     private void campoStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoStockActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoStockActionPerformed
 
-    private void campoPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPrecioActionPerformed
+    private void campoPrecioProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPrecioProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoPrecioActionPerformed
+    }//GEN-LAST:event_campoPrecioProductoActionPerformed
 
     private void campoCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCategoriaActionPerformed
         // TODO add your handling code here:
@@ -380,27 +303,27 @@ public class JFrame_buscarProducto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBuscar;
+    private javax.swing.JButton botonLimpiar;
     private javax.swing.JButton botonRegresarMenu;
     private javax.swing.JTextField campoCategoria;
-    private javax.swing.JTextField campoCod;
     private javax.swing.JTextField campoCodigo;
-    private javax.swing.JTextField campoNombre;
+    private javax.swing.JTextField campoCodigoBuscado;
+    private javax.swing.JTextField campoNombreProducto;
     private javax.swing.JTextField campoPasillo;
-    private javax.swing.JTextField campoPrecio;
+    private javax.swing.JTextField campoPrecioProducto;
     private javax.swing.JTextField campoStock;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JButton limpiarDatos;
+    private javax.swing.JLabel etiquetaCategoria;
+    private javax.swing.JLabel etiquetaCodigo;
+    private javax.swing.JLabel etiquetaCodigoBuscado;
+    private javax.swing.JLabel etiquetaNombreProducto;
+    private javax.swing.JLabel etiquetaPasillo;
+    private javax.swing.JLabel etiquetaPrecioProducto;
+    private javax.swing.JLabel etiquetaStock;
+    private javax.swing.JPanel panelBotonProducto;
+    private javax.swing.JPanel panelBusquedaProducto;
+    private javax.swing.JPanel panelContenidoProducto;
+    private javax.swing.JPanel panelDatosProductos;
+    private javax.swing.JPanel panelPieProducto;
+    private javax.swing.JPanel panelTituloProducto;
     // End of variables declaration//GEN-END:variables
 }

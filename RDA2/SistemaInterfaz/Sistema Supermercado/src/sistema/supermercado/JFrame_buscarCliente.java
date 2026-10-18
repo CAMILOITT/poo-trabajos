@@ -75,7 +75,6 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         panelTituloCliente = new javax.swing.JPanel();
-        etiquetaTituloCliente = new javax.swing.JLabel();
         botonVolverMenu = new javax.swing.JButton();
         panelContenidoCliente = new javax.swing.JPanel();
         panelBusquedaCliente = new javax.swing.JPanel();
@@ -101,17 +100,11 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
         panelPieCliente = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("BusquedaCliente");
+        setTitle("Buscar Cliente");
 
         panelTituloCliente.setBackground(new java.awt.Color(51, 153, 0));
-        panelTituloCliente.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 14, 10, 10));
+        panelTituloCliente.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 10, 4, 10));
         panelTituloCliente.setLayout(new java.awt.BorderLayout());
-
-        etiquetaTituloCliente.setFont(new java.awt.Font("Candara", 3, 36)); // NOI18N
-        etiquetaTituloCliente.setForeground(new java.awt.Color(255, 255, 255));
-        etiquetaTituloCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiquetaTituloCliente.setText("Búsqueda de Cliente");
-        panelTituloCliente.add(etiquetaTituloCliente, java.awt.BorderLayout.CENTER);
 
         botonVolverMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/icono_volver.png"))); // NOI18N
         botonVolverMenu.setBorderPainted(false);
@@ -202,6 +195,7 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
         panelProductosCliente.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 228, 200)), javax.swing.BorderFactory.createEmptyBorder(12, 14, 12, 14)));
         panelProductosCliente.setLayout(new java.awt.BorderLayout());
 
+        listaProductos.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         scrollProductos.setViewportView(listaProductos);
 
         panelProductosCliente.add(scrollProductos, java.awt.BorderLayout.CENTER);
@@ -234,7 +228,7 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
         panelPieCliente.setPreferredSize(new java.awt.Dimension(10, 16));
         getContentPane().add(panelPieCliente, java.awt.BorderLayout.SOUTH);
 
-        setBounds(0, 0, 820, 620);
+        setBounds(0, 0, 620, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
@@ -318,7 +312,6 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaProductosComprados;
     private javax.swing.JLabel etiquetaPuntos;
     private javax.swing.JLabel etiquetaTelefono;
-    private javax.swing.JLabel etiquetaTituloCliente;
     private javax.swing.JList<String> listaProductos;
     private javax.swing.JPanel panelBotonesCliente;
     private javax.swing.JPanel panelBusquedaCliente;

@@ -3,11 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistema.supermercado;
+
 import java.awt.BorderLayout;
-import java.awt.Image;
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.ImageIcon;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -15,27 +14,26 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import javax.swing.JOptionPane;
+import java.awt.Color;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.renderer.category.StandardBarPainter;
 
 /**
  *
- * @author mnobo
+ * @author grupo1
  */
 public class Jframe_Reportes extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Jframe_Reportes.class.getName());
     private ArrayList<Cliente> listaClientes;
     private ArrayList<Producto> listaProductos;
     private Jframe_Menu menu;
+
     /**
      * Creates new form Jframe_Reportes
      */
-    public Jframe_Reportes(ArrayList<Cliente> listaClientes, ArrayList<Producto> listaProductos, Jframe_Menu menu) 
-    {
+    public Jframe_Reportes(ArrayList<Cliente> listaClientes, ArrayList<Producto> listaProductos, Jframe_Menu menu) {
         initComponents();
-        ImageIcon original = new ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/flecha retroceso.png"));
-        Image escalada = original.getImage().getScaledInstance(24, 24, Image.SCALE_SMOOTH);
-        setSize(900, 600);   // ancho y alto en píxeles
-        botonVolverMenu.setIcon(new ImageIcon(escalada));
         this.listaClientes = listaClientes;
         this.listaProductos = listaProductos;
         this.menu = menu;
@@ -50,78 +48,75 @@ public class Jframe_Reportes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelTitulo = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        panelTituloReportes = new javax.swing.JPanel();
         botonVolverMenu = new javax.swing.JButton();
-        panelDatos = new javax.swing.JPanel();
-        panelBusqueda = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        panelContenidoReportes = new javax.swing.JPanel();
+        panelOpcionesReportes = new javax.swing.JPanel();
+        etiquetaTipoReporte = new javax.swing.JLabel();
         comboTipo = new javax.swing.JComboBox<>();
         botonGenerar = new javax.swing.JButton();
-        PanelGrafico = new javax.swing.JPanel();
-        panelAbajo = new javax.swing.JPanel();
+        panelGraficoReportes = new javax.swing.JPanel();
+        panelPieReportes = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Reportes");
 
-        panelTitulo.setBackground(new java.awt.Color(51, 153, 0));
-        panelTitulo.setLayout(new java.awt.BorderLayout());
+        panelTituloReportes.setBackground(new java.awt.Color(51, 153, 0));
+        panelTituloReportes.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 10, 4, 10));
+        panelTituloReportes.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Candara", 3, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("                                         Reportes");
-        panelTitulo.add(jLabel1, java.awt.BorderLayout.CENTER);
-
-        botonVolverMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/flecha retroceso.png"))); // NOI18N
+        botonVolverMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/icono_volver.png"))); // NOI18N
+        botonVolverMenu.setBorderPainted(false);
+        botonVolverMenu.setContentAreaFilled(false);
+        botonVolverMenu.setFocusPainted(false);
+        botonVolverMenu.setPreferredSize(new java.awt.Dimension(40, 40));
         botonVolverMenu.addActionListener(this::botonVolverMenuActionPerformed);
-        panelTitulo.add(botonVolverMenu, java.awt.BorderLayout.WEST);
+        panelTituloReportes.add(botonVolverMenu, java.awt.BorderLayout.WEST);
 
-        getContentPane().add(panelTitulo, java.awt.BorderLayout.NORTH);
+        getContentPane().add(panelTituloReportes, java.awt.BorderLayout.NORTH);
 
-        panelDatos.setLayout(new javax.swing.BoxLayout(panelDatos, javax.swing.BoxLayout.Y_AXIS));
+        panelContenidoReportes.setBackground(new java.awt.Color(255, 255, 255));
+        panelContenidoReportes.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 26, 20, 26));
+        panelContenidoReportes.setLayout(new javax.swing.BoxLayout(panelContenidoReportes, javax.swing.BoxLayout.Y_AXIS));
 
-        panelBusqueda.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 5));
+        panelOpcionesReportes.setBackground(new java.awt.Color(255, 255, 255));
+        panelOpcionesReportes.setMaximumSize(new java.awt.Dimension(32767, 50));
+        panelOpcionesReportes.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
-        jLabel2.setText("Tipo de reporte");
-        panelBusqueda.add(jLabel2);
+        etiquetaTipoReporte.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        etiquetaTipoReporte.setForeground(new java.awt.Color(55, 55, 55));
+        etiquetaTipoReporte.setText("Tipo de reporte:");
+        panelOpcionesReportes.add(etiquetaTipoReporte);
 
-        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "selecione un reporte", "Grafico Stock", "Grafico Valor Categoria" }));
+        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un reporte", "Gráfico stock", "Gráfico valor por categoría" }));
+        comboTipo.setPreferredSize(new java.awt.Dimension(220, 30));
         comboTipo.addActionListener(this::comboTipoActionPerformed);
-        panelBusqueda.add(comboTipo);
+        panelOpcionesReportes.add(comboTipo);
 
         botonGenerar.setBackground(new java.awt.Color(51, 153, 0));
-        botonGenerar.setFont(new java.awt.Font("Candara", 3, 18)); // NOI18N
+        botonGenerar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         botonGenerar.setForeground(new java.awt.Color(255, 255, 255));
         botonGenerar.setText("Generar");
         botonGenerar.setAlignmentY(0.0F);
-        botonGenerar.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        botonGenerar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 0)), javax.swing.BorderFactory.createEmptyBorder(6, 17, 6, 17)));
+        botonGenerar.setFocusPainted(false);
         botonGenerar.addActionListener(this::botonGenerarActionPerformed);
-        panelBusqueda.add(botonGenerar);
+        panelOpcionesReportes.add(botonGenerar);
 
-        panelDatos.add(panelBusqueda);
+        panelContenidoReportes.add(panelOpcionesReportes);
 
-        PanelGrafico.setBackground(new java.awt.Color(235, 255, 255));
-        PanelGrafico.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        PanelGrafico.setLayout(new java.awt.BorderLayout(0, 4));
-        panelDatos.add(PanelGrafico);
+        panelGraficoReportes.setBackground(new java.awt.Color(240, 251, 251));
+        panelGraficoReportes.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 228, 200)), javax.swing.BorderFactory.createEmptyBorder(12, 14, 12, 14)));
+        panelGraficoReportes.setLayout(new java.awt.BorderLayout(0, 4));
+        panelContenidoReportes.add(panelGraficoReportes);
 
-        getContentPane().add(panelDatos, java.awt.BorderLayout.CENTER);
+        getContentPane().add(panelContenidoReportes, java.awt.BorderLayout.CENTER);
 
-        panelAbajo.setBackground(new java.awt.Color(51, 153, 0));
+        panelPieReportes.setBackground(new java.awt.Color(51, 153, 0));
+        panelPieReportes.setPreferredSize(new java.awt.Dimension(10, 16));
+        getContentPane().add(panelPieReportes, java.awt.BorderLayout.SOUTH);
 
-        javax.swing.GroupLayout panelAbajoLayout = new javax.swing.GroupLayout(panelAbajo);
-        panelAbajo.setLayout(panelAbajoLayout);
-        panelAbajoLayout.setHorizontalGroup(
-            panelAbajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1267, Short.MAX_VALUE)
-        );
-        panelAbajoLayout.setVerticalGroup(
-            panelAbajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 35, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(panelAbajo, java.awt.BorderLayout.SOUTH);
-
-        pack();
+        setBounds(0, 0, 832, 460);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonVolverMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverMenuActionPerformed
@@ -136,7 +131,7 @@ public class Jframe_Reportes extends javax.swing.JFrame {
 
         if (opcion <= 0) {
             JOptionPane.showMessageDialog(this, "Seleccione el tipo de reporte.",
-                "Aviso", JOptionPane.WARNING_MESSAGE);
+                    "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -151,73 +146,77 @@ public class Jframe_Reportes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboTipoActionPerformed
 
-        public void mostrarGrafico (JFreeChart grafico)
-        {
-            ChartPanel panelDelGrafico = new ChartPanel(grafico);
-            
-            PanelGrafico.removeAll();
-            PanelGrafico.setLayout(new BorderLayout());
-            PanelGrafico.add(panelDelGrafico, BorderLayout.CENTER);
-            PanelGrafico.revalidate();
-            PanelGrafico.repaint();
-        }
-        public JFreeChart crearGraficoStock()
-        {
-            DefaultCategoryDataset datos = new DefaultCategoryDataset();
-            
-             for (int i = 0; i < listaProductos.size(); i++) {
-                Producto p = listaProductos.get(i);
-                datos.addValue(p.getStock(), "Stock", p.getNombreProducto());
-                }
-             return ChartFactory.createBarChart(
-            "Stock por producto",   // título
-            "Producto",             // eje de categorías
-            "Unidades",             // eje de valores
-            datos,
-            PlotOrientation.VERTICAL,
-            true,                   // leyenda
-            true,                   // tooltips
-            false);                 // urls
-            
-        }
-        
-        private JFreeChart crearGraficoValorCategoria() {
-    HashMap<String, Double> valores = new HashMap<>();
+    public void mostrarGrafico(JFreeChart grafico) {
+        ChartPanel panelDelGrafico = new ChartPanel(grafico);
 
-    for (int i = 0; i < listaProductos.size(); i++) {
-        Producto p = listaProductos.get(i);
-        double valor = p.getPrecio() * p.getStock();
-        String categoria = p.getCategoria();
-        valores.put(categoria, valores.getOrDefault(categoria, 0.0) + valor);
+        panelGraficoReportes.removeAll();
+        panelGraficoReportes.setLayout(new BorderLayout());
+        panelGraficoReportes.add(panelDelGrafico, BorderLayout.CENTER);
+        panelGraficoReportes.revalidate();
+        panelGraficoReportes.repaint();
     }
 
-    DefaultPieDataset datos = new DefaultPieDataset();
-    for (String categoria : valores.keySet()) {
-        datos.setValue(categoria, valores.get(categoria));
+    public JFreeChart crearGraficoStock() {
+        DefaultCategoryDataset datos = new DefaultCategoryDataset();
+
+        for (int i = 0; i < listaProductos.size(); i++) {
+            Producto p = listaProductos.get(i);
+            datos.addValue(p.getStock(), "Stock", p.getNombreProducto());
+        }
+
+        JFreeChart grafico = ChartFactory.createBarChart(
+                "Stock por producto", // título
+                "Producto", // eje de categorías
+                "Unidades", // eje de valores
+                datos,
+                PlotOrientation.VERTICAL,
+                true, // leyenda
+                true, // tooltips
+                false);                 // urls
+
+        BarRenderer dibujoBarras = (BarRenderer) grafico.getCategoryPlot().getRenderer();
+        dibujoBarras.setBarPainter(new StandardBarPainter());
+        dibujoBarras.setSeriesPaint(0, new Color(52, 111, 145));
+
+        return grafico;
     }
 
-    return ChartFactory.createPieChart(
-        "Valor del inventario por categoría",
-        datos,
-        true,    // leyenda
-        true,    // tooltips
-        false);  // urls
-}
+    private JFreeChart crearGraficoValorCategoria() {
+        HashMap<String, Double> valores = new HashMap<>();
+
+        for (int i = 0; i < listaProductos.size(); i++) {
+            Producto p = listaProductos.get(i);
+            double valor = p.getPrecio() * p.getStock();
+            String categoria = p.getCategoria();
+            valores.put(categoria, valores.getOrDefault(categoria, 0.0) + valor);
+        }
+
+        DefaultPieDataset datos = new DefaultPieDataset();
+        for (String categoria : valores.keySet()) {
+            datos.setValue(categoria, valores.get(categoria));
+        }
+
+        return ChartFactory.createPieChart(
+                "Valor del inventario por categoría",
+                datos,
+                true, // leyenda
+                true, // tooltips
+                false);  // urls
+    }
     /**
      * @param args the command line arguments
      */
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelGrafico;
     private javax.swing.JButton botonGenerar;
     private javax.swing.JButton botonVolverMenu;
     private javax.swing.JComboBox<String> comboTipo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel panelAbajo;
-    private javax.swing.JPanel panelBusqueda;
-    private javax.swing.JPanel panelDatos;
-    private javax.swing.JPanel panelTitulo;
+    private javax.swing.JLabel etiquetaTipoReporte;
+    private javax.swing.JPanel panelContenidoReportes;
+    private javax.swing.JPanel panelGraficoReportes;
+    private javax.swing.JPanel panelOpcionesReportes;
+    private javax.swing.JPanel panelPieReportes;
+    private javax.swing.JPanel panelTituloReportes;
     // End of variables declaration//GEN-END:variables
 }

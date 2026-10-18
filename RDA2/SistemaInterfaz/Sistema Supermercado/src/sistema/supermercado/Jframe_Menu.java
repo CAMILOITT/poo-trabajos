@@ -74,7 +74,7 @@ public class Jframe_Menu extends javax.swing.JFrame {
         botonGestionarCliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         botonGestionarCliente.setForeground(new java.awt.Color(38, 115, 0));
         botonGestionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/icono_clientes.png"))); // NOI18N
-        botonGestionarCliente.setText("Gestionar Cliente");
+        botonGestionarCliente.setText("Buscar Cliente");
         botonGestionarCliente.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 228, 200)), javax.swing.BorderFactory.createEmptyBorder(10, 18, 10, 10)));
         botonGestionarCliente.setContentAreaFilled(false);
         botonGestionarCliente.setFocusPainted(false);
@@ -124,7 +124,7 @@ public class Jframe_Menu extends javax.swing.JFrame {
         botonCrearProducto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         botonCrearProducto.setForeground(new java.awt.Color(38, 115, 0));
         botonCrearProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/icono_crear_producto.png"))); // NOI18N
-        botonCrearProducto.setText("Crear Producto");
+        botonCrearProducto.setText("Registrar Producto");
         botonCrearProducto.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 228, 200)), javax.swing.BorderFactory.createEmptyBorder(10, 18, 10, 10)));
         botonCrearProducto.setContentAreaFilled(false);
         botonCrearProducto.setFocusPainted(false);
@@ -189,7 +189,7 @@ public class Jframe_Menu extends javax.swing.JFrame {
 
     private void botonCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearProductoActionPerformed
         // TODO add your handling code here:
-        JFrame_crearProducto ventana = new JFrame_crearProducto(listaProductos, listaInventario, this);
+        JFrame_registrarProducto ventana = new JFrame_registrarProducto(listaProductos, listaInventario, this);
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
         this.setVisible(false);
