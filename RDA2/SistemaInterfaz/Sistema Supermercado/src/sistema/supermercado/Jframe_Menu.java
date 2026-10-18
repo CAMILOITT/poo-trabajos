@@ -37,20 +37,19 @@ public class Jframe_Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         botonBuscarCliente = new javax.swing.JButton();
         botonBuscarProducto = new javax.swing.JButton();
         botonRegistrarCompra = new javax.swing.JButton();
+        botonCrearProducto = new javax.swing.JButton();
+        botonReportes = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Supermercado \"SuperPOO\" menu");
         setBackground(new java.awt.Color(51, 153, 0));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 51));
 
@@ -65,28 +64,32 @@ public class Jframe_Menu extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(161, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(154, 154, 154)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(153, 153, 153))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(235, 255, 255));
+        getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
 
-        botonBuscarCliente.setText("Buscar Cliente");
+        jPanel3.setBackground(new java.awt.Color(235, 255, 255));
+        jPanel3.setLayout(new java.awt.GridLayout(5, 1, 10, 4));
+
+        botonBuscarCliente.setText("Gestionar Cliente");
         botonBuscarCliente.setMaximumSize(new java.awt.Dimension(122, 23));
         botonBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBuscarClienteActionPerformed(evt);
             }
         });
+        jPanel3.add(botonBuscarCliente);
 
         botonBuscarProducto.setText("Buscar Producto");
         botonBuscarProducto.setMaximumSize(new java.awt.Dimension(122, 23));
@@ -95,6 +98,7 @@ public class Jframe_Menu extends javax.swing.JFrame {
                 botonBuscarProductoActionPerformed(evt);
             }
         });
+        jPanel3.add(botonBuscarProducto);
 
         botonRegistrarCompra.setText("Registrar Compra");
         botonRegistrarCompra.addActionListener(new java.awt.event.ActionListener() {
@@ -102,51 +106,25 @@ public class Jframe_Menu extends javax.swing.JFrame {
                 botonRegistrarCompraActionPerformed(evt);
             }
         });
+        jPanel3.add(botonRegistrarCompra);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(botonRegistrarCompra, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                    .addComponent(botonBuscarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(botonBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(115, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(botonBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botonBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(botonRegistrarCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
+        botonCrearProducto.setText("Crear Producto");
+        botonCrearProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCrearProductoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(botonCrearProducto);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        botonReportes.setText("Reportes");
+        botonReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonReportesActionPerformed(evt);
+            }
+        });
+        jPanel3.add(botonReportes);
+
+        getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 
         jPanel4.setBackground(new java.awt.Color(51, 153, 0));
 
@@ -154,55 +132,17 @@ public class Jframe_Menu extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 474, Short.MAX_VALUE)
+            .addGap(0, 497, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 25, Short.MAX_VALUE)
+            .addGap(0, 63, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        getContentPane().add(jPanel4, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void botonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarClienteActionPerformed
-        // TODO add your handling code here:
-        JFrame_buscarCliente ventana = new JFrame_buscarCliente(listaClientes, this);
-        ventana.setLocationRelativeTo(null); //la centra en la pantalla
-        ventana.setVisible(true);
-        this.setVisible(false);  
-    }//GEN-LAST:event_botonBuscarClienteActionPerformed
-
-    private void botonBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarProductoActionPerformed
-        // TODO add your handling code here:
-        JFrame_buscarProducto ventanaBuscarProducto= new JFrame_buscarProducto(listaProductos,listaInventario,this);
-        ventanaBuscarProducto.setLocationRelativeTo(null);
-        ventanaBuscarProducto.setVisible(true);
-        this.setVisible(false);
-        
-    }//GEN-LAST:event_botonBuscarProductoActionPerformed
 
     private void botonRegistrarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarCompraActionPerformed
         // TODO add your handling code here:
@@ -212,6 +152,39 @@ public class Jframe_Menu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_botonRegistrarCompraActionPerformed
 
+    private void botonBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarProductoActionPerformed
+        // TODO add your handling code here:
+        JFrame_buscarProducto ventanaBuscarProducto= new JFrame_buscarProducto(listaProductos,listaInventario,this);
+        ventanaBuscarProducto.setLocationRelativeTo(null);
+        ventanaBuscarProducto.setVisible(true);
+        this.setVisible(false);
+
+    }//GEN-LAST:event_botonBuscarProductoActionPerformed
+
+    private void botonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarClienteActionPerformed
+        // TODO add your handling code here:
+        JFrame_buscarCliente ventana = new JFrame_buscarCliente(listaClientes, this);
+        ventana.setLocationRelativeTo(null); //la centra en la pantalla
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_botonBuscarClienteActionPerformed
+
+    private void botonCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearProductoActionPerformed
+        // TODO add your handling code here:
+        JFrame_crearProducto ventana = new JFrame_crearProducto(listaProductos, listaInventario, this);
+        ventana.setLocationRelativeTo(null);
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_botonCrearProductoActionPerformed
+
+    private void botonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReportesActionPerformed
+        // TODO add your handling code here:
+        Jframe_Reportes ventana = new Jframe_Reportes(listaClientes, listaProductos, this);
+        ventana.setLocationRelativeTo(null);
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_botonReportesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -220,9 +193,10 @@ public class Jframe_Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBuscarCliente;
     private javax.swing.JButton botonBuscarProducto;
+    private javax.swing.JButton botonCrearProducto;
     private javax.swing.JButton botonRegistrarCompra;
+    private javax.swing.JButton botonReportes;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
