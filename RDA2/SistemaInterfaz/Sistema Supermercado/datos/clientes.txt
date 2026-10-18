@@ -1,0 +1,6 @@
+1710000001;Ana;Torres;0991111111;78;ana.torres@mail.com
+1710000002;Luis;Mera;0992222222;98;luis.mera@mail.com
+1710000003;María;Pérez;0993333333;8;maria.perez@mail.com
+1710000004;Carlos;Andrade;0994444444;58;carlos.andrade@mail.com
+1710000005;Sofía;Villacís;0995555555;7;sofia.villacis@mail.com
+1710000009;Gabriel;Martinez;0966666666;0;gbmartinez@mail.com

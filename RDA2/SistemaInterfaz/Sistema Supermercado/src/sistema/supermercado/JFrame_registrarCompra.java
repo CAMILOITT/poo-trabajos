@@ -5,7 +5,6 @@
 package sistema.supermercado;
 
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import java.time.LocalDateTime;
 import javax.swing.table.DefaultTableModel;
@@ -41,7 +40,6 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
 
         cargarCajeros();
         cargarProductos();
-        campoCedula.setEditable(true);
     }
 
     private void cargarCajeros() {
@@ -75,7 +73,7 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
     }
 
     private void limpiarFormulario() {
-        campoCedula.setSelectedItem("");
+        campoCedula.setText("");
         campoNombre.setText("");
         campoApellido.setText("");
         campoCorreo.setText("");
@@ -92,7 +90,19 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
     }
 
     private boolean validarCedula(String cedulaIngresada) {
-        return cedulaIngresada.matches("\\d{10}");
+        return cedulaIngresada.matches("\\d{10}|\\d{13}");
+    }
+
+    private boolean validarTelefono(String telefonoIngresado) {
+        return telefonoIngresado.matches("\\d{10}");
+    }
+
+    private boolean validarCorreo(String correoIngresado) {
+        return correoIngresado.contains("@") && correoIngresado.contains(".") && !correoIngresado.contains(";");
+    }
+
+    private boolean validarNombre(String textoIngresado) {
+        return textoIngresado.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+");
     }
 
     /**
@@ -111,7 +121,7 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
         panelIzquierdoCompra = new javax.swing.JPanel();
         panelBusquedaCompra = new javax.swing.JPanel();
         etiquetaCedulaCompra = new javax.swing.JLabel();
-        campoCedula = new javax.swing.JComboBox<>();
+        campoCedula = new javax.swing.JTextField();
         botonBuscar = new javax.swing.JButton();
         panelClienteCompra = new javax.swing.JPanel();
         etiquetaNombreCompra = new javax.swing.JLabel();
@@ -180,7 +190,8 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
         etiquetaCedulaCompra.setText("Cédula o RUC:");
         panelBusquedaCompra.add(etiquetaCedulaCompra);
 
-        campoCedula.addActionListener(this::campoCedulaActionPerformed);
+        campoCedula.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        campoCedula.setPreferredSize(new java.awt.Dimension(150, 30));
         panelBusquedaCompra.add(campoCedula);
 
         botonBuscar.setBackground(new java.awt.Color(51, 153, 0));
@@ -372,13 +383,9 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonVolverMenuActionPerformed
 
-    private void campoCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoCedulaActionPerformed
-
     private void botonRegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarClienteActionPerformed
         // TODO add your handling code here:
-        String cedulaIngresada = String.valueOf(campoCedula.getEditor().getItem()).trim();
+        String cedulaIngresada = campoCedula.getText().trim();
         String nombreIngresado = campoNombre.getText().trim();
         String apellidoIngresado = campoApellido.getText().trim();
         String correoIngresado = campoCorreo.getText().trim();
@@ -390,13 +397,35 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
             return;
         }
         if (!validarCedula(cedulaIngresada)) {
-            JOptionPane.showMessageDialog(this, "La cédula debe tener exactamente 10 números.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La cédula debe tener 10 números o el RUC 13 números.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
+        }
+        if (!validarNombre(nombreIngresado) || !validarNombre(apellidoIngresado)) {
+            JOptionPane.showMessageDialog(this, "El nombre y el apellido solo pueden tener letras.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (!validarTelefono(telefonoIngresado)) {
+            JOptionPane.showMessageDialog(this, "El teléfono debe tener 10 números.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (!validarCorreo(correoIngresado)) {
+            JOptionPane.showMessageDialog(this, "Ingrese un correo válido, por ejemplo ana@mail.com.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        for (Cliente datoCliente : listaClientes) {
+            if (datoCliente.getCedula().equals(cedulaIngresada)) {
+                JOptionPane.showMessageDialog(this, "Ya existe un cliente con esa cédula.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
         }
         Cliente clienteNuevo = new Cliente(cedulaIngresada, nombreIngresado, apellidoIngresado,
                 telefonoIngresado, 0, correoIngresado);
 
         listaClientes.add(clienteNuevo);
+        ArchivoDatos.guardarCliente(clienteNuevo);
         clienteActual = clienteNuevo;
 
         habilitarEdicionCliente(false);
@@ -450,14 +479,13 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         // TODO add your handling code here:
-        String cedulaIngresada = String.valueOf(campoCedula.getEditor().getItem()).trim();
-
+        String cedulaIngresada = campoCedula.getText().trim();
         if (cedulaIngresada.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese una cédula o RUC.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
         if (!validarCedula(cedulaIngresada)) {
-            JOptionPane.showMessageDialog(this, "La cédula debe tener exactamente 10 números.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La cédula debe tener 10 números o el RUC 13 números.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
         Cliente clienteEncontrado = null;
@@ -533,6 +561,7 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
                 + "Cajero: " + cajeroSeleccionado.getNombre() + " " + cajeroSeleccionado.getApellido() + "\n"
                 + "Total: " + String.format("$%.2f", totalCompra) + "\n"
                 + "Puntos ganados: " + puntosGanados);
+        limpiarFormulario();
     }//GEN-LAST:event_botonFinalizarCompraActionPerformed
 
     private void botonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarActionPerformed
@@ -555,7 +584,7 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
     private javax.swing.JButton botonRegistrarCliente;
     private javax.swing.JButton botonVolverMenu;
     private javax.swing.JTextField campoApellido;
-    private javax.swing.JComboBox<String> campoCedula;
+    private javax.swing.JTextField campoCedula;
     private javax.swing.JTextField campoCorreo;
     private javax.swing.JTextField campoNombre;
     private javax.swing.JTextField campoPuntos;

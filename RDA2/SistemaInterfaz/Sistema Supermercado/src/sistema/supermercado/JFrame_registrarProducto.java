@@ -3,31 +3,34 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistema.supermercado;
-    import java.util.ArrayList;
-    import javax.swing.JOptionPane;
+
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mnobo
  */
 public class JFrame_registrarProducto extends javax.swing.JFrame {
-    
+
     private ArrayList<Producto> listaProductos;
     private ArrayList<Inventario> listaInventario;
     private Jframe_Menu menu;
 
     /**
      * Creates new form JFrame_crearProducto
+     *
      * @param listaProductos
      * @param listaInventario
      * @param menu
      */
     public JFrame_registrarProducto(ArrayList<Producto> listaProductos,
-                             ArrayList<Inventario> listaInventario,
-                             Jframe_Menu menu) {
-    initComponents();
-    this.listaProductos = listaProductos;
-    this.listaInventario = listaInventario;
-    this.menu = menu;
+            ArrayList<Inventario> listaInventario,
+            Jframe_Menu menu) {
+        initComponents();
+        this.listaProductos = listaProductos;
+        this.listaInventario = listaInventario;
+        this.menu = menu;
     }
 
     /**
@@ -194,85 +197,93 @@ public class JFrame_registrarProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_botonLimpiarActionPerformed
 
     private void limpiarCampos() {
-    campoCodigoRegistrarProducto.setText("");
-    campoNombreRegistrarProducto.setText("");
-    campoStockRegistrarProducto.setText("");
-    campoPrecioRegistrarProducto.setText("");
-    campoCategoriaRegistrarProducto.setText("");
-    campoPasilloRegistrarProducto.setText("");
-    campoCodigoRegistrarProducto.requestFocus();
+        campoCodigoRegistrarProducto.setText("");
+        campoNombreRegistrarProducto.setText("");
+        campoStockRegistrarProducto.setText("");
+        campoPrecioRegistrarProducto.setText("");
+        campoCategoriaRegistrarProducto.setText("");
+        campoPasilloRegistrarProducto.setText("");
+        campoCodigoRegistrarProducto.requestFocus();
     }
-    
+
     private void botonGuardarRegistrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarRegistrarProductoActionPerformed
         // TODO add your handling code here:
         String codigo = campoCodigoRegistrarProducto.getText().trim();
-    String nombre = campoNombreRegistrarProducto.getText().trim();
-    String textoStock = campoStockRegistrarProducto.getText().trim();
-    String textoPrecio = campoPrecioRegistrarProducto.getText().trim().replace(',', '.');
-    String categoria = campoCategoriaRegistrarProducto.getText().trim();
-    String textoPasillo = campoPasilloRegistrarProducto.getText().trim();
+        String nombre = campoNombreRegistrarProducto.getText().trim();
+        String textoStock = campoStockRegistrarProducto.getText().trim();
+        String textoPrecio = campoPrecioRegistrarProducto.getText().trim().replace(',', '.');
+        String categoria = campoCategoriaRegistrarProducto.getText().trim();
+        String textoPasillo = campoPasilloRegistrarProducto.getText().trim();
 
-    // 1. Campos vacíos
-    if (codigo.isEmpty() || nombre.isEmpty() || textoStock.isEmpty()
-            || textoPrecio.isEmpty() || categoria.isEmpty() || textoPasillo.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Complete todos los campos.",
-            "Campos vacíos", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
-
-    // 2. Conversión de los datos numéricos
-    int stock;
-    float precio;
-    int pasillo;
-    try {
-        stock = Integer.parseInt(textoStock);
-        precio = Float.parseFloat(textoPrecio);
-        pasillo = Integer.parseInt(textoPasillo);
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this,
-            "El stock y el pasillo deben ser números enteros y el precio un número (ejemplo: 2.50).",
-            "Datos no válidos", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    // 3. Rangos válidos
-    if (stock < 0 || precio <= 0 || pasillo <= 0) {
-        JOptionPane.showMessageDialog(this,
-            "El stock no puede ser negativo, y el precio y el pasillo deben ser mayores que 0.",
-            "Datos no válidos", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    // 4. Código repetido
-    for (int i = 0; i < listaProductos.size(); i++) {
-        if (listaProductos.get(i).getCodigo().equals(codigo)) {
-            JOptionPane.showMessageDialog(this, "Ya existe un producto con ese código.",
-                "Código repetido", JOptionPane.ERROR_MESSAGE);
+        // 1. Campos vacíos
+        if (codigo.isEmpty() || nombre.isEmpty() || textoStock.isEmpty()
+                || textoPrecio.isEmpty() || categoria.isEmpty() || textoPasillo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Complete todos los campos.",
+                    "Campos vacíos", JOptionPane.WARNING_MESSAGE);
             return;
         }
-    }
 
-    // 5. Crear el producto y agregarlo a la lista general
-    Producto nuevo = new Producto(stock, precio, codigo, nombre, categoria);
-    listaProductos.add(nuevo);
-
-    // 6. Agregarlo al pasillo indicado (si el pasillo no existe, se crea)
-    Inventario pasilloDestino = null;
-    for (int i = 0; i < listaInventario.size(); i++) {
-        if (listaInventario.get(i).getNumeroPasillo() == pasillo) {
-            pasilloDestino = listaInventario.get(i);
-            break;
+        // 2. Punto y coma (dañaría el archivo de texto)
+        if (codigo.contains(";") || nombre.contains(";") || categoria.contains(";")) {
+            JOptionPane.showMessageDialog(this, "Los datos no pueden contener punto y coma.",
+                    "Datos no válidos", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-    }
-    if (pasilloDestino == null) {
-        pasilloDestino = new Inventario(pasillo);
-        listaInventario.add(pasilloDestino);
-    }
-    pasilloDestino.insertarProducto(nuevo);
 
-    JOptionPane.showMessageDialog(this, "Producto registrado: " + nombre,
-        "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
-    limpiarCampos();
+        // 3. Conversión de los datos numéricos
+        int stock;
+        float precio;
+        int pasillo;
+        try {
+            stock = Integer.parseInt(textoStock);
+            precio = Float.parseFloat(textoPrecio);
+            pasillo = Integer.parseInt(textoPasillo);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this,
+                    "El stock y el pasillo deben ser números enteros y el precio un número (ejemplo: 2.50).",
+                    "Datos no válidos", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // 4. Rangos válidos
+        if (stock < 0 || precio <= 0 || pasillo <= 0) {
+            JOptionPane.showMessageDialog(this,
+                    "El stock no puede ser negativo, y el precio y el pasillo deben ser mayores que 0.",
+                    "Datos no válidos", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // 5. Código repetido
+        for (int i = 0; i < listaProductos.size(); i++) {
+            if (listaProductos.get(i).getCodigo().equals(codigo)) {
+                JOptionPane.showMessageDialog(this, "Ya existe un producto con ese código.",
+                        "Código repetido", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+
+        // 6. Crear el producto, agregarlo a la lista y guardarlo en el archivo
+        Producto nuevo = new Producto(stock, precio, codigo, nombre, categoria);
+        listaProductos.add(nuevo);
+        ArchivoDatos.guardarProducto(nuevo, pasillo);
+
+        // 7. Agregarlo al pasillo indicado (si el pasillo no existe, se crea)
+        Inventario pasilloDestino = null;
+        for (int i = 0; i < listaInventario.size(); i++) {
+            if (listaInventario.get(i).getNumeroPasillo() == pasillo) {
+                pasilloDestino = listaInventario.get(i);
+                break;
+            }
+        }
+        if (pasilloDestino == null) {
+            pasilloDestino = new Inventario(pasillo);
+            listaInventario.add(pasilloDestino);
+        }
+        pasilloDestino.insertarProducto(nuevo);
+
+        JOptionPane.showMessageDialog(this, "Producto registrado: " + nombre,
+                "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+        limpiarCampos();
     }//GEN-LAST:event_botonGuardarRegistrarProductoActionPerformed
 
     private void botonVolverMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverMenuActionPerformed
@@ -284,7 +295,6 @@ public class JFrame_registrarProducto extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonGuardarRegistrarProducto;
