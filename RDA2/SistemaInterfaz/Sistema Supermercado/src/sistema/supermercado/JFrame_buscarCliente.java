@@ -29,9 +29,6 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
     public JFrame_buscarCliente(ArrayList<Cliente> listaClientes, Jframe_Menu menu) 
     {
         initComponents();
-        ImageIcon original = new ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/flecha retroceso.png"));
-        Image escalada = original.getImage().getScaledInstance(24, 24, Image.SCALE_SMOOTH);
-        botonVolverMenu.setIcon(new ImageIcon(escalada));
         this.listaClientes = listaClientes;
         this.menu = menu;
         configurarAutocompletado();
@@ -77,192 +74,167 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        panelTitulo = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        panelTituloCliente = new javax.swing.JPanel();
+        etiquetaTituloCliente = new javax.swing.JLabel();
         botonVolverMenu = new javax.swing.JButton();
-        panelDatos = new javax.swing.JPanel();
-        panelBusqueda = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        panelContenidoCliente = new javax.swing.JPanel();
+        panelBusquedaCliente = new javax.swing.JPanel();
+        etiquetaCedula = new javax.swing.JLabel();
         campoCedula = new javax.swing.JComboBox<>();
         botonBuscar = new javax.swing.JButton();
-        panelResultados = new javax.swing.JPanel();
-        paneltextoResultado = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        panelcamposResultados = new javax.swing.JPanel();
+        panelDatosCliente = new javax.swing.JPanel();
+        etiquetaNombre = new javax.swing.JLabel();
         campoNombre = new javax.swing.JTextField();
+        etiquetaTelefono = new javax.swing.JLabel();
         campoCelular = new javax.swing.JTextField();
+        etiquetaCorreo = new javax.swing.JLabel();
         campoCorreoElectronico = new javax.swing.JTextField();
+        etiquetaPuntos = new javax.swing.JLabel();
         campoPuntos = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        espacioTarjetas = new javax.swing.Box.Filler(new java.awt.Dimension(0, 14), new java.awt.Dimension(0, 14), new java.awt.Dimension(32767, 14));
+        panelProductosCliente = new javax.swing.JPanel();
+        scrollProductos = new javax.swing.JScrollPane();
         listaProductos = new javax.swing.JList<>();
-        jLabel9 = new javax.swing.JLabel();
-        panelBotones = new javax.swing.JPanel();
+        etiquetaProductosComprados = new javax.swing.JLabel();
+        panelBotonesCliente = new javax.swing.JPanel();
         botonLimpiar = new javax.swing.JButton();
-        panelAbajo = new javax.swing.JPanel();
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        panelPieCliente = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("BusquedaCliente");
 
-        panelTitulo.setBackground(new java.awt.Color(51, 153, 0));
+        panelTituloCliente.setBackground(new java.awt.Color(51, 153, 0));
+        panelTituloCliente.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 14, 10, 10));
+        panelTituloCliente.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Candara", 3, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Búsqueda de Cliente");
+        etiquetaTituloCliente.setFont(new java.awt.Font("Candara", 3, 36)); // NOI18N
+        etiquetaTituloCliente.setForeground(new java.awt.Color(255, 255, 255));
+        etiquetaTituloCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiquetaTituloCliente.setText("Búsqueda de Cliente");
+        panelTituloCliente.add(etiquetaTituloCliente, java.awt.BorderLayout.CENTER);
 
-        botonVolverMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/flecha retroceso.png"))); // NOI18N
+        botonVolverMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/icono_volver.png"))); // NOI18N
+        botonVolverMenu.setBorderPainted(false);
+        botonVolverMenu.setContentAreaFilled(false);
+        botonVolverMenu.setFocusPainted(false);
+        botonVolverMenu.setPreferredSize(new java.awt.Dimension(40, 40));
         botonVolverMenu.addActionListener(this::botonVolverMenuActionPerformed);
+        panelTituloCliente.add(botonVolverMenu, java.awt.BorderLayout.WEST);
 
-        javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
-        panelTitulo.setLayout(panelTituloLayout);
-        panelTituloLayout.setHorizontalGroup(
-            panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTituloLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(botonVolverMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(jLabel1)
-                .addContainerGap(74, Short.MAX_VALUE))
-        );
-        panelTituloLayout.setVerticalGroup(
-            panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTituloLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(botonVolverMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        getContentPane().add(panelTituloCliente, java.awt.BorderLayout.NORTH);
 
-        getContentPane().add(panelTitulo, java.awt.BorderLayout.NORTH);
+        panelContenidoCliente.setBackground(new java.awt.Color(255, 255, 255));
+        panelContenidoCliente.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 26, 20, 26));
+        panelContenidoCliente.setLayout(new javax.swing.BoxLayout(panelContenidoCliente, javax.swing.BoxLayout.Y_AXIS));
 
-        panelDatos.setLayout(new javax.swing.BoxLayout(panelDatos, javax.swing.BoxLayout.Y_AXIS));
+        panelBusquedaCliente.setBackground(new java.awt.Color(255, 255, 255));
+        panelBusquedaCliente.setMaximumSize(new java.awt.Dimension(32767, 50));
+        panelBusquedaCliente.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
-        panelBusqueda.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 5));
+        etiquetaCedula.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        etiquetaCedula.setForeground(new java.awt.Color(55, 55, 55));
+        etiquetaCedula.setText("Cédula o RUC:");
+        panelBusquedaCliente.add(etiquetaCedula);
 
-        jLabel2.setText("Ingrese CI o RUC:");
-        panelBusqueda.add(jLabel2);
-
+        campoCedula.setPreferredSize(new java.awt.Dimension(200, 30));
         campoCedula.addActionListener(this::campoCedulaActionPerformed);
-        panelBusqueda.add(campoCedula);
+        panelBusquedaCliente.add(campoCedula);
 
         botonBuscar.setBackground(new java.awt.Color(51, 153, 0));
-        botonBuscar.setFont(new java.awt.Font("Candara", 3, 18)); // NOI18N
+        botonBuscar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         botonBuscar.setForeground(new java.awt.Color(255, 255, 255));
         botonBuscar.setText("Buscar");
         botonBuscar.setAlignmentY(0.0F);
-        botonBuscar.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        botonBuscar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 0)), javax.swing.BorderFactory.createEmptyBorder(6, 17, 6, 17)));
+        botonBuscar.setFocusPainted(false);
         botonBuscar.addActionListener(this::botonBuscarActionPerformed);
-        panelBusqueda.add(botonBuscar);
+        panelBusquedaCliente.add(botonBuscar);
 
-        panelDatos.add(panelBusqueda);
+        panelContenidoCliente.add(panelBusquedaCliente);
 
-        panelResultados.setBackground(new java.awt.Color(235, 255, 255));
-        panelResultados.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        panelResultados.setLayout(new java.awt.BorderLayout(0, 4));
+        panelDatosCliente.setBackground(new java.awt.Color(240, 251, 251));
+        panelDatosCliente.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 228, 200)), javax.swing.BorderFactory.createEmptyBorder(12, 14, 12, 14)));
+        panelDatosCliente.setMaximumSize(new java.awt.Dimension(32767, 180));
+        panelDatosCliente.setLayout(new java.awt.GridLayout(4, 2, 12, 10));
 
-        paneltextoResultado.setLayout(new java.awt.GridLayout(4, 1));
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Telefono / Celular: ");
-        paneltextoResultado.add(jLabel3);
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Correo electrónico: ");
-        jLabel4.setToolTipText("");
-        paneltextoResultado.add(jLabel4);
-
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Nombres / Razón Social: ");
-        paneltextoResultado.add(jLabel5);
-
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("Puntos SuperPOO: ");
-        paneltextoResultado.add(jLabel6);
-
-        panelResultados.add(paneltextoResultado, java.awt.BorderLayout.WEST);
-
-        panelcamposResultados.setLayout(new java.awt.GridLayout(4, 0));
+        etiquetaNombre.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        etiquetaNombre.setForeground(new java.awt.Color(55, 55, 55));
+        etiquetaNombre.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        etiquetaNombre.setText("Nombres / Razón Social: ");
+        panelDatosCliente.add(etiquetaNombre);
 
         campoNombre.setEditable(false);
-        panelcamposResultados.add(campoNombre);
+        panelDatosCliente.add(campoNombre);
+
+        etiquetaTelefono.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        etiquetaTelefono.setForeground(new java.awt.Color(55, 55, 55));
+        etiquetaTelefono.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        etiquetaTelefono.setText("Teléfono / Celular: ");
+        panelDatosCliente.add(etiquetaTelefono);
 
         campoCelular.setEditable(false);
-        panelcamposResultados.add(campoCelular);
+        panelDatosCliente.add(campoCelular);
+
+        etiquetaCorreo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        etiquetaCorreo.setForeground(new java.awt.Color(55, 55, 55));
+        etiquetaCorreo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        etiquetaCorreo.setText("Correo electrónico: ");
+        etiquetaCorreo.setToolTipText("");
+        panelDatosCliente.add(etiquetaCorreo);
 
         campoCorreoElectronico.setEditable(false);
-        panelcamposResultados.add(campoCorreoElectronico);
+        panelDatosCliente.add(campoCorreoElectronico);
+
+        etiquetaPuntos.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        etiquetaPuntos.setForeground(new java.awt.Color(55, 55, 55));
+        etiquetaPuntos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        etiquetaPuntos.setText("Puntos SuperPOO: ");
+        panelDatosCliente.add(etiquetaPuntos);
 
         campoPuntos.setEditable(false);
         campoPuntos.addActionListener(this::campoPuntosActionPerformed);
-        panelcamposResultados.add(campoPuntos);
+        panelDatosCliente.add(campoPuntos);
 
-        panelResultados.add(panelcamposResultados, java.awt.BorderLayout.CENTER);
+        panelContenidoCliente.add(panelDatosCliente);
+        panelContenidoCliente.add(espacioTarjetas);
 
-        panelDatos.add(panelResultados);
+        panelProductosCliente.setBackground(new java.awt.Color(240, 251, 251));
+        panelProductosCliente.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 228, 200)), javax.swing.BorderFactory.createEmptyBorder(12, 14, 12, 14)));
+        panelProductosCliente.setLayout(new java.awt.BorderLayout());
 
-        jPanel4.setBackground(new java.awt.Color(235, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jPanel4.setLayout(new java.awt.BorderLayout());
+        scrollProductos.setViewportView(listaProductos);
 
-        jScrollPane2.setViewportView(listaProductos);
+        panelProductosCliente.add(scrollProductos, java.awt.BorderLayout.CENTER);
 
-        jPanel4.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+        etiquetaProductosComprados.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        etiquetaProductosComprados.setForeground(new java.awt.Color(38, 115, 0));
+        etiquetaProductosComprados.setText("Productos Comprados");
+        panelProductosCliente.add(etiquetaProductosComprados, java.awt.BorderLayout.PAGE_START);
 
-        jLabel9.setText("Productos Comprados");
-        jPanel4.add(jLabel9, java.awt.BorderLayout.PAGE_START);
+        panelContenidoCliente.add(panelProductosCliente);
 
-        panelDatos.add(jPanel4);
+        panelBotonesCliente.setBackground(new java.awt.Color(255, 255, 255));
+        panelBotonesCliente.setMaximumSize(new java.awt.Dimension(32767, 50));
+        panelBotonesCliente.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
+        botonLimpiar.setBackground(new java.awt.Color(254, 254, 254));
+        botonLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        botonLimpiar.setForeground(new java.awt.Color(38, 115, 0));
         botonLimpiar.setText("Limpiar");
+        botonLimpiar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 0)), javax.swing.BorderFactory.createEmptyBorder(6, 17, 6, 17)));
+        botonLimpiar.setFocusPainted(false);
         botonLimpiar.addActionListener(this::botonLimpiarActionPerformed);
+        panelBotonesCliente.add(botonLimpiar);
 
-        javax.swing.GroupLayout panelBotonesLayout = new javax.swing.GroupLayout(panelBotones);
-        panelBotones.setLayout(panelBotonesLayout);
-        panelBotonesLayout.setHorizontalGroup(
-            panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBotonesLayout.createSequentialGroup()
-                .addGap(193, 193, 193)
-                .addComponent(botonLimpiar)
-                .addContainerGap(203, Short.MAX_VALUE))
-        );
-        panelBotonesLayout.setVerticalGroup(
-            panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotonesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonLimpiar)
-                .addContainerGap())
-        );
+        panelContenidoCliente.add(panelBotonesCliente);
 
-        panelDatos.add(panelBotones);
+        getContentPane().add(panelContenidoCliente, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(panelDatos, java.awt.BorderLayout.CENTER);
+        panelPieCliente.setBackground(new java.awt.Color(51, 153, 0));
+        panelPieCliente.setPreferredSize(new java.awt.Dimension(10, 16));
+        getContentPane().add(panelPieCliente, java.awt.BorderLayout.SOUTH);
 
-        panelAbajo.setBackground(new java.awt.Color(51, 153, 0));
-
-        javax.swing.GroupLayout panelAbajoLayout = new javax.swing.GroupLayout(panelAbajo);
-        panelAbajo.setLayout(panelAbajoLayout);
-        panelAbajoLayout.setHorizontalGroup(
-            panelAbajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 468, Short.MAX_VALUE)
-        );
-        panelAbajoLayout.setVerticalGroup(
-            panelAbajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 35, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(panelAbajo, java.awt.BorderLayout.SOUTH);
-
-        pack();
+        setBounds(0, 0, 820, 620);
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
@@ -339,25 +311,22 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
     private javax.swing.JTextField campoCorreoElectronico;
     private javax.swing.JTextField campoNombre;
     private javax.swing.JTextField campoPuntos;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.Box.Filler espacioTarjetas;
+    private javax.swing.JLabel etiquetaCedula;
+    private javax.swing.JLabel etiquetaCorreo;
+    private javax.swing.JLabel etiquetaNombre;
+    private javax.swing.JLabel etiquetaProductosComprados;
+    private javax.swing.JLabel etiquetaPuntos;
+    private javax.swing.JLabel etiquetaTelefono;
+    private javax.swing.JLabel etiquetaTituloCliente;
     private javax.swing.JList<String> listaProductos;
-    private javax.swing.JPanel panelAbajo;
-    private javax.swing.JPanel panelBotones;
-    private javax.swing.JPanel panelBusqueda;
-    private javax.swing.JPanel panelDatos;
-    private javax.swing.JPanel panelResultados;
-    private javax.swing.JPanel panelTitulo;
-    private javax.swing.JPanel panelcamposResultados;
-    private javax.swing.JPanel paneltextoResultado;
+    private javax.swing.JPanel panelBotonesCliente;
+    private javax.swing.JPanel panelBusquedaCliente;
+    private javax.swing.JPanel panelContenidoCliente;
+    private javax.swing.JPanel panelDatosCliente;
+    private javax.swing.JPanel panelPieCliente;
+    private javax.swing.JPanel panelProductosCliente;
+    private javax.swing.JPanel panelTituloCliente;
+    private javax.swing.JScrollPane scrollProductos;
     // End of variables declaration//GEN-END:variables
 }

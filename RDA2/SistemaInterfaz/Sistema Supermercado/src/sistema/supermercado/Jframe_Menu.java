@@ -37,109 +37,127 @@ public class Jframe_Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        botonBuscarCliente = new javax.swing.JButton();
+        panelTituloMenu = new javax.swing.JPanel();
+        etiquetaTitulo = new javax.swing.JLabel();
+        panelOpcionesMenu = new javax.swing.JPanel();
+        botonGestionarCliente = new javax.swing.JButton();
         botonBuscarProducto = new javax.swing.JButton();
         botonRegistrarCompra = new javax.swing.JButton();
         botonCrearProducto = new javax.swing.JButton();
         botonReportes = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
+        panelPieMenu = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Supermercado \"SuperPOO\" menu");
         setBackground(new java.awt.Color(51, 153, 0));
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 51));
+        panelTituloMenu.setBackground(new java.awt.Color(0, 153, 51));
+        panelTituloMenu.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Candara", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("SuperPOO");
-        jLabel1.setMaximumSize(new java.awt.Dimension(200, 30));
+        etiquetaTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        etiquetaTitulo.setFont(new java.awt.Font("Candara", 1, 36)); // NOI18N
+        etiquetaTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        etiquetaTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiquetaTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/icono_tienda.png"))); // NOI18N
+        etiquetaTitulo.setText("SuperPOO");
+        etiquetaTitulo.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 14, 10, 14));
+        etiquetaTitulo.setIconTextGap(12);
+        etiquetaTitulo.setMaximumSize(new java.awt.Dimension(200, 30));
+        panelTituloMenu.add(etiquetaTitulo, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(panelTituloMenu, java.awt.BorderLayout.NORTH);
 
-        getContentPane().add(jPanel2, java.awt.BorderLayout.NORTH);
+        panelOpcionesMenu.setBackground(new java.awt.Color(255, 255, 255));
+        panelOpcionesMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 110, 30, 110));
+        panelOpcionesMenu.setLayout(new java.awt.GridLayout(5, 1, 0, 8));
 
-        jPanel3.setBackground(new java.awt.Color(235, 255, 255));
-        jPanel3.setLayout(new java.awt.GridLayout(5, 1, 10, 4));
-
-        botonBuscarCliente.setText("Gestionar Cliente");
-        botonBuscarCliente.setMaximumSize(new java.awt.Dimension(122, 23));
-        botonBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+        botonGestionarCliente.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonGestionarCliente.setForeground(new java.awt.Color(38, 115, 0));
+        botonGestionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/icono_clientes.png"))); // NOI18N
+        botonGestionarCliente.setText("Gestionar Cliente");
+        botonGestionarCliente.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 228, 200)), javax.swing.BorderFactory.createEmptyBorder(10, 18, 10, 10)));
+        botonGestionarCliente.setContentAreaFilled(false);
+        botonGestionarCliente.setFocusPainted(false);
+        botonGestionarCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonGestionarCliente.setIconTextGap(12);
+        botonGestionarCliente.setMaximumSize(new java.awt.Dimension(122, 23));
+        botonGestionarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonBuscarClienteActionPerformed(evt);
+                botonGestionarClienteActionPerformed(evt);
             }
         });
-        jPanel3.add(botonBuscarCliente);
+        panelOpcionesMenu.add(botonGestionarCliente);
 
+        botonBuscarProducto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonBuscarProducto.setForeground(new java.awt.Color(38, 115, 0));
+        botonBuscarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/icono_buscar_producto.png"))); // NOI18N
         botonBuscarProducto.setText("Buscar Producto");
+        botonBuscarProducto.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 228, 200)), javax.swing.BorderFactory.createEmptyBorder(10, 18, 10, 10)));
+        botonBuscarProducto.setContentAreaFilled(false);
+        botonBuscarProducto.setFocusPainted(false);
+        botonBuscarProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonBuscarProducto.setIconTextGap(12);
         botonBuscarProducto.setMaximumSize(new java.awt.Dimension(122, 23));
         botonBuscarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonBuscarProductoActionPerformed(evt);
             }
         });
-        jPanel3.add(botonBuscarProducto);
+        panelOpcionesMenu.add(botonBuscarProducto);
 
+        botonRegistrarCompra.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonRegistrarCompra.setForeground(new java.awt.Color(38, 115, 0));
+        botonRegistrarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/icono_compra.png"))); // NOI18N
         botonRegistrarCompra.setText("Registrar Compra");
+        botonRegistrarCompra.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 228, 200)), javax.swing.BorderFactory.createEmptyBorder(10, 18, 10, 10)));
+        botonRegistrarCompra.setContentAreaFilled(false);
+        botonRegistrarCompra.setFocusPainted(false);
+        botonRegistrarCompra.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonRegistrarCompra.setIconTextGap(12);
         botonRegistrarCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegistrarCompraActionPerformed(evt);
             }
         });
-        jPanel3.add(botonRegistrarCompra);
+        panelOpcionesMenu.add(botonRegistrarCompra);
 
+        botonCrearProducto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonCrearProducto.setForeground(new java.awt.Color(38, 115, 0));
+        botonCrearProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/icono_crear_producto.png"))); // NOI18N
         botonCrearProducto.setText("Crear Producto");
+        botonCrearProducto.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 228, 200)), javax.swing.BorderFactory.createEmptyBorder(10, 18, 10, 10)));
+        botonCrearProducto.setContentAreaFilled(false);
+        botonCrearProducto.setFocusPainted(false);
+        botonCrearProducto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonCrearProducto.setIconTextGap(12);
         botonCrearProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCrearProductoActionPerformed(evt);
             }
         });
-        jPanel3.add(botonCrearProducto);
+        panelOpcionesMenu.add(botonCrearProducto);
 
+        botonReportes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botonReportes.setForeground(new java.awt.Color(38, 115, 0));
+        botonReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/supermercado/imagenes/icono_reportes.png"))); // NOI18N
         botonReportes.setText("Reportes");
+        botonReportes.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 228, 200)), javax.swing.BorderFactory.createEmptyBorder(10, 18, 10, 10)));
+        botonReportes.setContentAreaFilled(false);
+        botonReportes.setFocusPainted(false);
+        botonReportes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonReportes.setIconTextGap(12);
         botonReportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonReportesActionPerformed(evt);
             }
         });
-        jPanel3.add(botonReportes);
+        panelOpcionesMenu.add(botonReportes);
 
-        getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
+        getContentPane().add(panelOpcionesMenu, java.awt.BorderLayout.CENTER);
 
-        jPanel4.setBackground(new java.awt.Color(51, 153, 0));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 497, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 63, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel4, java.awt.BorderLayout.SOUTH);
+        panelPieMenu.setBackground(new java.awt.Color(51, 153, 0));
+        panelPieMenu.setPreferredSize(new java.awt.Dimension(10, 16));
+        getContentPane().add(panelPieMenu, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -161,13 +179,13 @@ public class Jframe_Menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botonBuscarProductoActionPerformed
 
-    private void botonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarClienteActionPerformed
+    private void botonGestionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGestionarClienteActionPerformed
         // TODO add your handling code here:
         JFrame_buscarCliente ventana = new JFrame_buscarCliente(listaClientes, this);
         ventana.setLocationRelativeTo(null); //la centra en la pantalla
         ventana.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_botonBuscarClienteActionPerformed
+    }//GEN-LAST:event_botonGestionarClienteActionPerformed
 
     private void botonCrearProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearProductoActionPerformed
         // TODO add your handling code here:
@@ -191,14 +209,14 @@ public class Jframe_Menu extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonBuscarCliente;
     private javax.swing.JButton botonBuscarProducto;
     private javax.swing.JButton botonCrearProducto;
+    private javax.swing.JButton botonGestionarCliente;
     private javax.swing.JButton botonRegistrarCompra;
     private javax.swing.JButton botonReportes;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel etiquetaTitulo;
+    private javax.swing.JPanel panelOpcionesMenu;
+    private javax.swing.JPanel panelPieMenu;
+    private javax.swing.JPanel panelTituloMenu;
     // End of variables declaration//GEN-END:variables
 }
