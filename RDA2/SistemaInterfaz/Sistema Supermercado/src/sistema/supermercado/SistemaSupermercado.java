@@ -15,6 +15,7 @@ public class SistemaSupermercado {
         ArrayList<Producto> productos = ArchivoDatos.cargarProductos(inventarios);
         ArrayList<Cliente> clientes = ArchivoDatos.cargarClientes();
         ArrayList<Cajero> cajeros = ArchivoDatos.cargarCajeros();
+        ArchivoDatos.cargarCompras(clientes, cajeros, productos);
 
         // ---------- ABRIR EL MENU ----------
         Jframe_Menu menu = new Jframe_Menu(clientes, productos, cajeros, inventarios);

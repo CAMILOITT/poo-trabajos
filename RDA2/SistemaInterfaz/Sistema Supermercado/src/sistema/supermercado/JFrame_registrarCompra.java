@@ -550,6 +550,7 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
 
         clienteActual.agregarCompra(compraActual);
         cajeroSeleccionado.registrarVenta(compraActual);
+        ArchivoDatos.guardarCompra(compraActual, clienteActual, cajeroSeleccionado);
 
         float totalCompra = compraActual.calcularTotal();
         int puntosGanados = (int) totalCompra;

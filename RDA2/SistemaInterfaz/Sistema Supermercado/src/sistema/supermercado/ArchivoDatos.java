@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class ArchivoDatos {
@@ -12,6 +13,7 @@ public class ArchivoDatos {
     private static final String RUTA_PRODUCTOS = "datos/productos.txt";
     private static final String RUTA_CLIENTES = "datos/clientes.txt";
     private static final String RUTA_CAJEROS = "datos/cajeros.txt";
+    private static final String RUTA_COMPRAS = "datos/compras.txt";
 
     // ---------- LEER ----------
 
@@ -131,5 +133,86 @@ public class ArchivoDatos {
         Inventario pasilloNuevo = new Inventario(numeroPasillo);
         pasilloNuevo.insertarProducto(datoProducto);
         listaInventarios.add(pasilloNuevo);
+    }
+
+    // ---------- COMPRAS ----------
+
+    public static void cargarCompras(ArrayList<Cliente> listaClientes, ArrayList<Cajero> listaCajeros,
+            ArrayList<Producto> listaProductos) {
+        try (BufferedReader lector = new BufferedReader(new FileReader(RUTA_COMPRAS))) {
+            String linea;
+            while ((linea = lector.readLine()) != null) {
+                if (linea.isBlank()) {
+                    continue;
+                }
+                String[] partes = linea.split(";");
+                int numeroCompra = Integer.parseInt(partes[0]);
+                LocalDateTime fechaCompra = LocalDateTime.parse(partes[1]);
+                String cedulaCliente = partes[2];
+                String codigoCajero = partes[3];
+
+                Compra datoCompra = new Compra(numeroCompra, fechaCompra);
+                for (int i = 4; i < partes.length; i++) {
+                    Producto datoProducto = buscarProducto(listaProductos, partes[i]);
+                    if (datoProducto != null) {
+                        datoCompra.agregarProducto(datoProducto);
+                    }
+                }
+
+                Cliente datoCliente = buscarCliente(listaClientes, cedulaCliente);
+                if (datoCliente != null) {
+                    datoCliente.agregarCompra(datoCompra);
+                }
+                Cajero datoCajero = buscarCajero(listaCajeros, codigoCajero);
+                if (datoCajero != null) {
+                    datoCajero.registrarVenta(datoCompra);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("No se pudo leer el archivo de compras.");
+        }
+    }
+
+    public static void guardarCompra(Compra datoCompra, Cliente datoCliente, Cajero datoCajero) {
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter(RUTA_COMPRAS, true))) {
+            String linea = datoCompra.getNumeroCompra() + ";"
+                    + datoCompra.getFechaCompra().withNano(0) + ";"
+                    + datoCliente.getCedula() + ";"
+                    + datoCajero.getCodigoEmpleado();
+            for (Producto datoProducto : datoCompra.getListaDeProductosComprados()) {
+                linea = linea + ";" + datoProducto.getCodigo();
+            }
+            escritor.write(linea);
+            escritor.newLine();
+        } catch (IOException e) {
+            System.out.println("No se pudo guardar la compra.");
+        }
+    }
+
+    private static Producto buscarProducto(ArrayList<Producto> listaProductos, String codigo) {
+        for (Producto datoProducto : listaProductos) {
+            if (datoProducto.getCodigo().equals(codigo)) {
+                return datoProducto;
+            }
+        }
+        return null;
+    }
+
+    private static Cliente buscarCliente(ArrayList<Cliente> listaClientes, String cedula) {
+        for (Cliente datoCliente : listaClientes) {
+            if (datoCliente.getCedula().equals(cedula)) {
+                return datoCliente;
+            }
+        }
+        return null;
+    }
+
+    private static Cajero buscarCajero(ArrayList<Cajero> listaCajeros, String codigoEmpleado) {
+        for (Cajero datoCajero : listaCajeros) {
+            if (datoCajero.getCodigoEmpleado().equals(codigoEmpleado)) {
+                return datoCajero;
+            }
+        }
+        return null;
     }
 }

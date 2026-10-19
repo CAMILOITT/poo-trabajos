@@ -4,3 +4,5 @@
 1710000004;Carlos;Andrade;0994444444;58;carlos.andrade@mail.com
 1710000005;Sofía;Villacís;0995555555;7;sofia.villacis@mail.com
 1710000009;Gabriel;Martinez;0966666666;0;gbmartinez@mail.com
+1710000010;Matias;Noboa;0999999999;0;matias@gmail.com
+1710000011;Liz;Maldonado;0913865748;0;liz@gmail.com

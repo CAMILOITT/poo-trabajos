@@ -10,8 +10,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
-import java.awt.Image;
-import javax.swing.ImageIcon;
 /**
  *
  * @author mnobo
@@ -255,16 +253,15 @@ public class JFrame_buscarCliente extends javax.swing.JFrame {
         campoCorreoElectronico.setText(encontrado.getCorreo());
         campoPuntos.setText("" + encontrado.getPuntos());
         
-        DefaultListModel<String> modelo = new DefaultListModel<>();
-        
-        for (Compra compra: encontrado.getListaDeCompras())
-        {
-            for (Producto p: compra.getListaDeProductosComprados())
-            {
-                modelo.addElement(p.getNombreProducto() + "       $" + p.getPrecio());
+        DefaultListModel<String> modeloProductos = new DefaultListModel<>();
+        for (Compra datoCompra : encontrado.getListaDeCompras()) {
+            for (Producto datoProducto : datoCompra.getListaDeProductosComprados()) {
+                modeloProductos.addElement(datoProducto.getCodigo() + " - "
+                        + datoProducto.getNombreProducto() + " - $"
+                        + String.format("%.2f", datoProducto.getPrecio()));
             }
         }
-        listaProductos.setModel(modelo);
+        listaProductos.setModel(modeloProductos);
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void botonVolverMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverMenuActionPerformed
