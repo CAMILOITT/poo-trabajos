@@ -43,8 +43,6 @@ public class JFrame_RegistroDeEstudiante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        etiquetaTitulo = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         botonVolver = new javax.swing.JButton();
         campoNombres = new javax.swing.JTextField();
@@ -69,16 +67,6 @@ public class JFrame_RegistroDeEstudiante extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registrar nuevo estudiante");
-
-        jPanel3.setBackground(new java.awt.Color(0, 51, 102));
-        jPanel3.setLayout(new java.awt.BorderLayout());
-
-        etiquetaTitulo.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
-        etiquetaTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        etiquetaTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiquetaTitulo.setText("REGISTRAR NUEVO ESTUDIANTE");
-        etiquetaTitulo.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 0, 18, 0));
-        jPanel3.add(etiquetaTitulo, java.awt.BorderLayout.CENTER);
 
         jPanel4.setBackground(new java.awt.Color(241, 244, 248));
         jPanel4.setPreferredSize(new java.awt.Dimension(910, 360));
@@ -208,14 +196,11 @@ public class JFrame_RegistroDeEstudiante extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -334,8 +319,6 @@ public class JFrame_RegistroDeEstudiante extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaNivel;
     private javax.swing.JLabel etiquetaNombres;
     private javax.swing.JLabel etiquetaTelefono;
-    private javax.swing.JLabel etiquetaTitulo;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

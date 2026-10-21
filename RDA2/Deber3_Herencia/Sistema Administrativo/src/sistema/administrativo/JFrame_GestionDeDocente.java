@@ -54,8 +54,6 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
         BotonGestionDeDocentes1 = new javax.swing.JButton();
         BotonGestionDeAdministrativos1 = new javax.swing.JButton();
         botonSalir1 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestión de docentes");
@@ -143,42 +141,15 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
-
-        jLabel3.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("GESTIÓN DE DOCENTES");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(194, 194, 194))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -226,8 +197,6 @@ public class JFrame_GestionDeDocente extends javax.swing.JFrame {
     private javax.swing.JButton BotonGestionDeDocentes1;
     private javax.swing.JButton BotonGestionDeEstudiantes1;
     private javax.swing.JButton botonSalir1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

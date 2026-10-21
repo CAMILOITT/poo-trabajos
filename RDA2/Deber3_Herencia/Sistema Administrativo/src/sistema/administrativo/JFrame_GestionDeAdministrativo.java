@@ -56,8 +56,6 @@ public class JFrame_GestionDeAdministrativo extends javax.swing.JFrame {
         botonAsignarCargos = new javax.swing.JButton();
         botonVolver = new javax.swing.JButton();
         botonCatalogo = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestión de administrativos");
@@ -131,28 +129,15 @@ public class JFrame_GestionDeAdministrativo extends javax.swing.JFrame {
         botonCatalogo.addActionListener(this::botonCatalogoActionPerformed);
         jPanel4.add(botonCatalogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 420, 55));
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
-        jPanel1.setLayout(new java.awt.BorderLayout());
-
-        jLabel3.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("GESTIÓN DE ADMINISTRATIVOS");
-        jLabel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 0, 18, 0));
-        jPanel1.add(jLabel3, java.awt.BorderLayout.CENTER);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -209,8 +194,6 @@ public class JFrame_GestionDeAdministrativo extends javax.swing.JFrame {
     private javax.swing.JButton botonConsultarSueldo;
     private javax.swing.JButton botonRegistrarAdministrativo;
     private javax.swing.JButton botonVolver;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

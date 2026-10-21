@@ -119,7 +119,7 @@ public class SistemaAdministrativo {
 
         // ---------- Estudiante 1 ----------
         listaEstudiantes.add(new Estudiante("1750000001", "Mateo", "Guerrero", "0981111111",
-                "mateo.guerrero@mail.com", "Nivel 4", "L00123456", "Ingeniería de SIstemas de Información"));
+                "mateo.guerrero@mail.com", "Nivel 4", "L00123456", "Ingeniería de Sistemas de Información"));
 
         // ---------- Estudiante 2 ----------
         listaEstudiantes.add(new Estudiante("1750000002", "Valentina", "Ruiz", "0982222222",

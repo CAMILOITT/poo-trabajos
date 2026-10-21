@@ -43,8 +43,6 @@ public class JFrame_BuscarEstudiantePorCodigo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         botonVolver = new javax.swing.JButton();
         etiquetaCodigo = new javax.swing.JLabel();
@@ -57,16 +55,6 @@ public class JFrame_BuscarEstudiantePorCodigo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Buscar estudiante por código");
-
-        jPanel3.setBackground(new java.awt.Color(0, 51, 102));
-        jPanel3.setLayout(new java.awt.BorderLayout());
-
-        jLabel2.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("BUSCAR ESTUDIANTE POR CÓDIGO");
-        jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 0, 18, 0));
-        jPanel3.add(jLabel2, java.awt.BorderLayout.CENTER);
 
         jPanel4.setBackground(new java.awt.Color(241, 244, 248));
         jPanel4.setPreferredSize(new java.awt.Dimension(910, 360));
@@ -142,13 +130,10 @@ public class JFrame_BuscarEstudiantePorCodigo extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 939, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))
         );
 
@@ -211,8 +196,6 @@ public class JFrame_BuscarEstudiantePorCodigo extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaCodigo;
     private javax.swing.JLabel etiquetaDatosDelEstudiante;
     private javax.swing.JLabel etiquetaFiltroDeBusqueda;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaDatosEstudiantes;
