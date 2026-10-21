@@ -12,10 +12,10 @@ public class SistemaSupermercado {
 
         // ---------- CARGAR DATOS DE LOS ARCHIVOS ----------
         ArrayList<Inventario> inventarios = new ArrayList<>();
-        ArrayList<Producto> productos = ArchivoDatos.cargarProductos(inventarios);
-        ArrayList<Cliente> clientes = ArchivoDatos.cargarClientes();
-        ArrayList<Cajero> cajeros = ArchivoDatos.cargarCajeros();
-        ArchivoDatos.cargarCompras(clientes, cajeros, productos);
+        ArrayList<Producto> productos = ArchivoDatos.verProductos(inventarios);
+        ArrayList<Cliente> clientes = ArchivoDatos.verClientes();
+        ArrayList<Cajero> cajeros = ArchivoDatos.verCajeros();
+        ArchivoDatos.verCompras(clientes, cajeros, productos);
 
         // ---------- ABRIR EL MENU ----------
         Jframe_Menu menu = new Jframe_Menu(clientes, productos, cajeros, inventarios);
