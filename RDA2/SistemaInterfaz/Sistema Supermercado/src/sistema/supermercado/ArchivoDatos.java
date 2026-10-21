@@ -17,7 +17,7 @@ public class ArchivoDatos {
 
     // ---------- LEER ----------
 
-    public static ArrayList<Producto> cargarProductos(ArrayList<Inventario> listaInventarios) {
+    public static ArrayList<Producto> verProductos(ArrayList<Inventario> listaInventarios) {
         ArrayList<Producto> listaProductos = new ArrayList<>();
         try (BufferedReader lector = new BufferedReader(new FileReader(RUTA_PRODUCTOS))) {
             String linea;
@@ -43,7 +43,7 @@ public class ArchivoDatos {
         return listaProductos;
     }
 
-    public static ArrayList<Cliente> cargarClientes() {
+    public static ArrayList<Cliente> verClientes() {
         ArrayList<Cliente> listaClientes = new ArrayList<>();
         try (BufferedReader lector = new BufferedReader(new FileReader(RUTA_CLIENTES))) {
             String linea;
@@ -67,7 +67,7 @@ public class ArchivoDatos {
         return listaClientes;
     }
 
-    public static ArrayList<Cajero> cargarCajeros() {
+    public static ArrayList<Cajero> verCajeros() {
         ArrayList<Cajero> listaCajeros = new ArrayList<>();
         try (BufferedReader lector = new BufferedReader(new FileReader(RUTA_CAJEROS))) {
             String linea;
@@ -137,7 +137,7 @@ public class ArchivoDatos {
 
     // ---------- COMPRAS ----------
 
-    public static void cargarCompras(ArrayList<Cliente> listaClientes, ArrayList<Cajero> listaCajeros,
+    public static void verCompras(ArrayList<Cliente> listaClientes, ArrayList<Cajero> listaCajeros,
             ArrayList<Producto> listaProductos) {
         try (BufferedReader lector = new BufferedReader(new FileReader(RUTA_COMPRAS))) {
             String linea;
