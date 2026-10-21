@@ -12,17 +12,17 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author mnobo
  */
-public class CrearFactura extends javax.swing.JFrame {
+public class JFrameCrearFactura extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CrearFactura.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrameCrearFactura.class.getName());
     private ArrayList<Cliente> listaClientes;
     private ArrayList<Factura> listaFacturas;
-    private TallerMenu menu;
+    private JFrameTallerMenu menu;
     private ArrayList<OrdenTrabajo> ordenesPendientes = new ArrayList<>();
 
-    public CrearFactura(ArrayList<Cliente> listaClientes,
+    public JFrameCrearFactura(ArrayList<Cliente> listaClientes,
                     ArrayList<Factura> listaFacturas,
-                    TallerMenu menu) {
+                    JFrameTallerMenu menu) {
     initComponents();
     this.listaClientes = listaClientes;
     this.listaFacturas = listaFacturas;
@@ -58,17 +58,16 @@ public class CrearFactura extends javax.swing.JFrame {
         PanelDetalle = new javax.swing.JPanel();
         scroll = new javax.swing.JScrollPane();
         areaFactura = new javax.swing.JTextArea();
-        PanelTitulo = new javax.swing.JPanel();
-        etiquetaTituloGenerarFactura = new javax.swing.JLabel();
         PanelBotones = new javax.swing.JPanel();
         botonGenerarFactura = new javax.swing.JButton();
         botonLimpiar = new javax.swing.JButton();
         BotonVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Generación de facturas");
 
         PanelCentro.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 25, 15, 25));
-        PanelCentro.setLayout(new java.awt.BorderLayout(10, 0));
+        PanelCentro.setLayout(new java.awt.BorderLayout(10, 10));
 
         PanelDatos.setLayout(new java.awt.BorderLayout(10, 0));
 
@@ -146,33 +145,27 @@ public class CrearFactura extends javax.swing.JFrame {
 
         getContentPane().add(PanelCentro, java.awt.BorderLayout.CENTER);
 
-        PanelTitulo.setBackground(new java.awt.Color(0, 102, 153));
-        PanelTitulo.setLayout(new java.awt.BorderLayout());
-
-        etiquetaTituloGenerarFactura.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
-        etiquetaTituloGenerarFactura.setForeground(new java.awt.Color(255, 255, 255));
-        etiquetaTituloGenerarFactura.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiquetaTituloGenerarFactura.setText("GENERAR FACTURA");
-        etiquetaTituloGenerarFactura.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 0, 20, 0));
-        PanelTitulo.add(etiquetaTituloGenerarFactura, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(PanelTitulo, java.awt.BorderLayout.NORTH);
-
         PanelBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15));
 
         botonGenerarFactura.setBackground(new java.awt.Color(204, 255, 204));
+        botonGenerarFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_guardar.png"))); // NOI18N
         botonGenerarFactura.setText("Generar");
+        botonGenerarFactura.setIconTextGap(6);
         botonGenerarFactura.addActionListener(this::botonGenerarFacturaActionPerformed);
         PanelBotones.add(botonGenerarFactura);
 
         botonLimpiar.setBackground(new java.awt.Color(255, 255, 204));
+        botonLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_limpiar.png"))); // NOI18N
         botonLimpiar.setText("Limpiar");
+        botonLimpiar.setIconTextGap(6);
         botonLimpiar.addActionListener(this::botonLimpiarActionPerformed);
         PanelBotones.add(botonLimpiar);
 
         BotonVolver.setBackground(new java.awt.Color(255, 51, 51));
         BotonVolver.setForeground(new java.awt.Color(255, 255, 255));
+        BotonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_volver.png"))); // NOI18N
         BotonVolver.setText("Volver");
+        BotonVolver.setIconTextGap(6);
         BotonVolver.addActionListener(this::BotonVolverActionPerformed);
         PanelBotones.add(BotonVolver);
 
@@ -205,6 +198,7 @@ public class CrearFactura extends javax.swing.JFrame {
     Cliente cliente = listaClientes.get(posCliente - 1);
     Factura factura = new Factura(listaFacturas.size() + 1, new Date(), seleccionadas);
     listaFacturas.add(factura);
+    ArchivoDatos.guardarFactura(factura);
 
     areaFactura.setText("Cliente: " + cliente.getNombre() + " " + cliente.getApellido()
         + " - " + cliente.getCedula() + "\n\n" + factura.imprimirFactura());
@@ -323,7 +317,6 @@ public class CrearFactura extends javax.swing.JFrame {
     private javax.swing.JPanel PanelEntradas;
     private javax.swing.JPanel PanelEtiquetas;
     private javax.swing.JPanel PanelOrdenes;
-    private javax.swing.JPanel PanelTitulo;
     private javax.swing.JTextArea areaFactura;
     private javax.swing.JButton botonGenerarFactura;
     private javax.swing.JButton botonLimpiar;
@@ -334,7 +327,6 @@ public class CrearFactura extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaFechaFactura;
     private javax.swing.JLabel etiquetaNumeroFactura;
     private javax.swing.JLabel etiquetaOrdenesPendientes;
-    private javax.swing.JLabel etiquetaTituloGenerarFactura;
     private javax.swing.JScrollPane scroll;
     private javax.swing.JScrollPane scrollOrdenes;
     private javax.swing.JTable tablaOrdenes;

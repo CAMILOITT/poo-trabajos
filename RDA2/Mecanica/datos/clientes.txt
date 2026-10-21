@@ -1,0 +1,6 @@
+1712345678;Ana;Pérez;0991234567;ana.perez@mail.com
+1723456789;Carlos;Mendoza;0992345678;carlos.mendoza@mail.com
+1734567890;Valeria;Torres;0993456789;valeria.torres@mail.com
+1745678901;Diego;Salazar;0994567890;diego.salazar@mail.com
+1756789012;Sofía;Ramírez;0995678901;sofia.ramirez@mail.com
+1727648756;Liz;Maldonado;0986547364;liz@gmail.com

@@ -10,16 +10,15 @@ import java.util.ArrayList;
  *
  * @author grupo1
  */
-public class TallerMenu extends javax.swing.JFrame {
+public class JFrameTallerMenu extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TallerMenu.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrameTallerMenu.class.getName());
     private ArrayList<Cliente> listaClientes;
     private ArrayList<Mecanico> listaMecanicos;
     private ArrayList<Repuesto> listaRepuestos;
     private ArrayList<Factura> listaFacturas;
-    
 
-    public TallerMenu(ArrayList<Cliente> listaClientes,
+    public JFrameTallerMenu(ArrayList<Cliente> listaClientes,
             ArrayList<Mecanico> listaMecanicos,
             ArrayList<Repuesto> listaRepuestos,
             ArrayList<Factura> listaFacturas) {
@@ -47,9 +46,10 @@ public class TallerMenu extends javax.swing.JFrame {
         botonGestionarRepuesto = new javax.swing.JButton();
         botonRegistrarTrabajo = new javax.swing.JButton();
         botonFactura = new javax.swing.JButton();
+        botonReportes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SIstema mecánica 1.0");
+        setTitle("Sistema mecánica");
 
         PanelSalida.setBackground(new java.awt.Color(245, 247, 250));
         PanelSalida.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 15));
@@ -57,6 +57,7 @@ public class TallerMenu extends javax.swing.JFrame {
         botonSalida.setBackground(new java.awt.Color(255, 51, 51));
         botonSalida.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         botonSalida.setForeground(new java.awt.Color(255, 255, 255));
+        botonSalida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_salir.png"))); // NOI18N
         botonSalida.setText("Salir");
         botonSalida.setBorder(javax.swing.BorderFactory.createEmptyBorder(8, 30, 8, 30));
         botonSalida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -72,58 +73,87 @@ public class TallerMenu extends javax.swing.JFrame {
 
         botonRegistrarCliente.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         botonRegistrarCliente.setForeground(new java.awt.Color(0, 102, 153));
+        botonRegistrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_cliente.png"))); // NOI18N
         botonRegistrarCliente.setText("Registrar Cliente");
         botonRegistrarCliente.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153), 2), javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20)));
         botonRegistrarCliente.setContentAreaFilled(false);
         botonRegistrarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonRegistrarCliente.setFocusPainted(false);
+        botonRegistrarCliente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonRegistrarCliente.setIconTextGap(16);
         botonRegistrarCliente.setOpaque(true);
         botonRegistrarCliente.addActionListener(this::botonRegistrarClienteActionPerformed);
         PanelBotones.add(botonRegistrarCliente);
 
         botonRegistrarMecanico.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         botonRegistrarMecanico.setForeground(new java.awt.Color(0, 102, 153));
+        botonRegistrarMecanico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_mecanico.png"))); // NOI18N
         botonRegistrarMecanico.setText("Registrar Mecánico");
         botonRegistrarMecanico.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153), 2), javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20)));
         botonRegistrarMecanico.setContentAreaFilled(false);
         botonRegistrarMecanico.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonRegistrarMecanico.setFocusPainted(false);
+        botonRegistrarMecanico.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonRegistrarMecanico.setIconTextGap(16);
         botonRegistrarMecanico.setOpaque(true);
         botonRegistrarMecanico.addActionListener(this::botonRegistrarMecanicoActionPerformed);
         PanelBotones.add(botonRegistrarMecanico);
 
         botonGestionarRepuesto.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         botonGestionarRepuesto.setForeground(new java.awt.Color(0, 102, 153));
+        botonGestionarRepuesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_repuesto.png"))); // NOI18N
         botonGestionarRepuesto.setText("Gestionar Repuesto");
         botonGestionarRepuesto.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153), 2), javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20)));
         botonGestionarRepuesto.setContentAreaFilled(false);
         botonGestionarRepuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonGestionarRepuesto.setFocusPainted(false);
+        botonGestionarRepuesto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonGestionarRepuesto.setIconTextGap(16);
         botonGestionarRepuesto.setOpaque(true);
         botonGestionarRepuesto.addActionListener(this::botonGestionarRepuestoActionPerformed);
         PanelBotones.add(botonGestionarRepuesto);
 
         botonRegistrarTrabajo.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         botonRegistrarTrabajo.setForeground(new java.awt.Color(0, 102, 153));
+        botonRegistrarTrabajo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_orden.png"))); // NOI18N
         botonRegistrarTrabajo.setText("Registrar Orden de Trabajo");
         botonRegistrarTrabajo.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153), 2), javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20)));
         botonRegistrarTrabajo.setContentAreaFilled(false);
         botonRegistrarTrabajo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonRegistrarTrabajo.setFocusPainted(false);
+        botonRegistrarTrabajo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonRegistrarTrabajo.setIconTextGap(16);
         botonRegistrarTrabajo.setOpaque(true);
         botonRegistrarTrabajo.addActionListener(this::botonRegistrarTrabajoActionPerformed);
         PanelBotones.add(botonRegistrarTrabajo);
 
         botonFactura.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         botonFactura.setForeground(new java.awt.Color(0, 102, 153));
+        botonFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_factura.png"))); // NOI18N
         botonFactura.setText("Generar Factura");
         botonFactura.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153), 2), javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20)));
         botonFactura.setContentAreaFilled(false);
         botonFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonFactura.setFocusPainted(false);
+        botonFactura.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonFactura.setIconTextGap(16);
         botonFactura.setOpaque(true);
         botonFactura.addActionListener(this::botonFacturaActionPerformed);
         PanelBotones.add(botonFactura);
+
+        botonReportes.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        botonReportes.setForeground(new java.awt.Color(0, 102, 153));
+        botonReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_reportes.png"))); // NOI18N
+        botonReportes.setText("Reportes");
+        botonReportes.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153), 2), javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20)));
+        botonReportes.setContentAreaFilled(false);
+        botonReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonReportes.setFocusPainted(false);
+        botonReportes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonReportes.setIconTextGap(16);
+        botonReportes.setOpaque(true);
+        botonReportes.addActionListener(this::botonReportesActionPerformed);
+        PanelBotones.add(botonReportes);
 
         getContentPane().add(PanelBotones, java.awt.BorderLayout.CENTER);
 
@@ -132,7 +162,7 @@ public class TallerMenu extends javax.swing.JFrame {
 
     private void botonRegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarClienteActionPerformed
         // TODO add your handling code here:
-        RegistrarCliente ventana = new RegistrarCliente(listaClientes, this);
+        JFrameRegistrarCliente ventana = new JFrameRegistrarCliente(listaClientes, this);
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
         this.setVisible(false);
@@ -140,7 +170,7 @@ public class TallerMenu extends javax.swing.JFrame {
 
     private void botonRegistrarTrabajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarTrabajoActionPerformed
         // TODO add your handling code here:
-        RegistrarTrabajo ventana1 = new RegistrarTrabajo(listaClientes, listaMecanicos, listaRepuestos, this);
+        JFrameRegistrarTrabajo ventana1 = new JFrameRegistrarTrabajo(listaClientes, listaMecanicos, listaRepuestos, this);
         ventana1.setLocationRelativeTo(null);
         ventana1.setVisible(true);
         this.setVisible(false);
@@ -148,7 +178,7 @@ public class TallerMenu extends javax.swing.JFrame {
 
     private void botonFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacturaActionPerformed
         // TODO add your handling code here:
-        CrearFactura ventana = new CrearFactura(listaClientes, listaFacturas, this);
+        JFrameCrearFactura ventana = new JFrameCrearFactura(listaClientes, listaFacturas, this);
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
         this.setVisible(false);
@@ -175,6 +205,14 @@ public class TallerMenu extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_botonSalidaActionPerformed
 
+    private void botonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReportesActionPerformed
+        // TODO add your handling code here:
+        JFrameReportes ventana = new JFrameReportes(listaClientes, listaMecanicos, listaRepuestos, this);
+        ventana.setLocationRelativeTo(null);
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_botonReportesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -187,6 +225,7 @@ public class TallerMenu extends javax.swing.JFrame {
     private javax.swing.JButton botonRegistrarCliente;
     private javax.swing.JButton botonRegistrarMecanico;
     private javax.swing.JButton botonRegistrarTrabajo;
+    private javax.swing.JButton botonReportes;
     private javax.swing.JButton botonSalida;
     // End of variables declaration//GEN-END:variables
 }

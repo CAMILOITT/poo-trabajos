@@ -16,7 +16,7 @@ public class JFrame_GestionarRepuesto extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrame_GestionarRepuesto.class.getName());
     private ArrayList<Repuesto> listaRepuestos;
-    private TallerMenu menu;
+    private JFrameTallerMenu menu;
     private boolean cargandoCombo = false;
 
     /**
@@ -27,7 +27,7 @@ public class JFrame_GestionarRepuesto extends javax.swing.JFrame {
         this.listaRepuestos = new ArrayList<>();
     }
 
-    public JFrame_GestionarRepuesto(ArrayList<Repuesto> listaRepuestos, TallerMenu menu) {
+    public JFrame_GestionarRepuesto(ArrayList<Repuesto> listaRepuestos, JFrameTallerMenu menu) {
         initComponents();
         this.listaRepuestos = listaRepuestos;
         this.menu = menu;
@@ -87,8 +87,6 @@ public class JFrame_GestionarRepuesto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        PanelTitulo = new javax.swing.JPanel();
-        etiquetaTituloRepuesto = new javax.swing.JLabel();
         PanelCentro = new javax.swing.JPanel();
         PanelDatos = new javax.swing.JPanel();
         panelEtiquetasRepuesto = new javax.swing.JPanel();
@@ -111,18 +109,7 @@ public class JFrame_GestionarRepuesto extends javax.swing.JFrame {
         BotonVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        PanelTitulo.setBackground(new java.awt.Color(0, 102, 153));
-        PanelTitulo.setLayout(new java.awt.BorderLayout());
-
-        etiquetaTituloRepuesto.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
-        etiquetaTituloRepuesto.setForeground(new java.awt.Color(255, 255, 255));
-        etiquetaTituloRepuesto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiquetaTituloRepuesto.setText("REGISTRAR Y GESTIONAR REPUESTOS");
-        etiquetaTituloRepuesto.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 0, 20, 0));
-        PanelTitulo.add(etiquetaTituloRepuesto, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(PanelTitulo, java.awt.BorderLayout.NORTH);
+        setTitle("Gestión de repuestos");
 
         PanelCentro.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 25, 15, 25));
         PanelCentro.setLayout(new java.awt.BorderLayout(0, 15));
@@ -193,18 +180,24 @@ public class JFrame_GestionarRepuesto extends javax.swing.JFrame {
         PanelBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15));
 
         botonRegistrar.setBackground(new java.awt.Color(204, 255, 204));
+        botonRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_guardar.png"))); // NOI18N
         botonRegistrar.setText("Registrar");
+        botonRegistrar.setIconTextGap(6);
         botonRegistrar.addActionListener(this::botonRegistrarActionPerformed);
         PanelBotones.add(botonRegistrar);
 
         botonLimpiar.setBackground(new java.awt.Color(255, 255, 204));
+        botonLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_limpiar.png"))); // NOI18N
         botonLimpiar.setText("Limpiar");
+        botonLimpiar.setIconTextGap(6);
         botonLimpiar.addActionListener(this::botonLimpiarActionPerformed);
         PanelBotones.add(botonLimpiar);
 
         BotonVolver.setBackground(new java.awt.Color(255, 51, 51));
         BotonVolver.setForeground(new java.awt.Color(255, 255, 255));
+        BotonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_volver.png"))); // NOI18N
         BotonVolver.setText("Volver");
+        BotonVolver.setIconTextGap(6);
         BotonVolver.addActionListener(this::BotonVolverActionPerformed);
         PanelBotones.add(BotonVolver);
 
@@ -261,6 +254,7 @@ public class JFrame_GestionarRepuesto extends javax.swing.JFrame {
 
         cargarTabla();
         cargarCombo();
+        ArchivoDatos.guardarRepuestos(listaRepuestos);
     }//GEN-LAST:event_botonRegistrarActionPerformed
 
     private void botonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarActionPerformed
@@ -324,7 +318,6 @@ public class JFrame_GestionarRepuesto extends javax.swing.JFrame {
     private javax.swing.JPanel PanelCentro;
     private javax.swing.JPanel PanelDatos;
     private javax.swing.JPanel PanelEntradasRepuesto;
-    private javax.swing.JPanel PanelTitulo;
     private javax.swing.JButton botonLimpiar;
     private javax.swing.JButton botonRegistrar;
     private javax.swing.JTextField campoCantidadRepuesto;
@@ -337,7 +330,6 @@ public class JFrame_GestionarRepuesto extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaNombreRepuesto;
     private javax.swing.JLabel etiquetaPrecioRepuesto;
     private javax.swing.JLabel etiquetaRepuesto;
-    private javax.swing.JLabel etiquetaTituloRepuesto;
     private javax.swing.JPanel panelEtiquetasRepuesto;
     private javax.swing.JScrollPane scrollRepuestos;
     private javax.swing.JTable tablaRepuestos;

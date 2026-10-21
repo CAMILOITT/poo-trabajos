@@ -3,28 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package mecanica;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author mnobo
  */
-public class RegistrarTrabajo extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RegistrarTrabajo.class.getName());
+public class JFrameRegistrarTrabajo extends javax.swing.JFrame {
+
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrameRegistrarTrabajo.class.getName());
     private ArrayList<Cliente> listaClientes;
     private ArrayList<Mecanico> listaMecanicos;
     private ArrayList<Repuesto> listaRepuestos;
-    private TallerMenu menu;
+    private JFrameTallerMenu menu;
     private ArrayList<Repuesto> repuestosSeleccionados = new ArrayList<>();
 
-    public RegistrarTrabajo(ArrayList<Cliente> listaClientes,
-                            ArrayList<Mecanico> listaMecanicos,
-                            ArrayList<Repuesto> listaRepuestos,
-                            TallerMenu menu) {
+    public JFrameRegistrarTrabajo(ArrayList<Cliente> listaClientes,
+            ArrayList<Mecanico> listaMecanicos,
+            ArrayList<Repuesto> listaRepuestos,
+            JFrameTallerMenu menu) {
         initComponents();
         this.listaClientes = listaClientes;
         this.listaMecanicos = listaMecanicos;
@@ -59,26 +61,25 @@ public class RegistrarTrabajo extends javax.swing.JFrame {
         comboMecanico = new javax.swing.JComboBox<>();
         campoFecha = new javax.swing.JTextField();
         PanelRepuestos = new javax.swing.JPanel();
-        PanelAniadir = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        PanelRegistrar = new javax.swing.JPanel();
+        etiquetaRepuesto = new javax.swing.JLabel();
         comboRepuesto = new javax.swing.JComboBox<>();
-        botonAniadir = new javax.swing.JButton();
+        botonRegistrar = new javax.swing.JButton();
         PanelTotal = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        etiquetaTotalDolares = new javax.swing.JLabel();
         etiquetaTotal = new javax.swing.JLabel();
         scrollRepuestos = new javax.swing.JScrollPane();
         tablaRepuestos = new javax.swing.JTable();
-        PanelTitulo = new javax.swing.JPanel();
-        etiquetaTituloTrabajo = new javax.swing.JLabel();
         PanelBotones = new javax.swing.JPanel();
         botonGuardar = new javax.swing.JButton();
         botonLimpiar = new javax.swing.JButton();
         BotonVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registro de órdenes de trabajo");
 
         PanelCentro.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 25, 15, 25));
-        PanelCentro.setLayout(new java.awt.BorderLayout(10, 0));
+        PanelCentro.setLayout(new java.awt.BorderLayout(10, 10));
 
         PanelDatos.setLayout(new java.awt.BorderLayout(10, 0));
 
@@ -125,24 +126,27 @@ public class RegistrarTrabajo extends javax.swing.JFrame {
 
         PanelRepuestos.setLayout(new java.awt.BorderLayout());
 
-        jLabel6.setText("Repuesto:");
-        PanelAniadir.add(jLabel6);
+        etiquetaRepuesto.setText("Repuesto:");
+        PanelRegistrar.add(etiquetaRepuesto);
 
-        PanelAniadir.add(comboRepuesto);
+        PanelRegistrar.add(comboRepuesto);
 
-        botonAniadir.setBackground(new java.awt.Color(204, 255, 204));
-        botonAniadir.setText("Añadir");
-        botonAniadir.addActionListener(this::botonAniadirActionPerformed);
-        PanelAniadir.add(botonAniadir);
+        botonRegistrar.setBackground(new java.awt.Color(204, 255, 204));
+        botonRegistrar.setText("Añadir");
+        botonRegistrar.addActionListener(this::botonRegistrarActionPerformed);
+        PanelRegistrar.add(botonRegistrar);
 
-        PanelRepuestos.add(PanelAniadir, java.awt.BorderLayout.NORTH);
+        PanelRepuestos.add(PanelRegistrar, java.awt.BorderLayout.NORTH);
 
         PanelTotal.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
-        PanelRepuestos.add(PanelTotal, java.awt.BorderLayout.SOUTH);
 
-        jLabel7.setText("Total repuestos");
-        PanelRepuestos.add(jLabel7, java.awt.BorderLayout.CENTER);
-        PanelRepuestos.add(etiquetaTotal, java.awt.BorderLayout.LINE_END);
+        etiquetaTotalDolares.setText("Total repuestos: $");
+        PanelTotal.add(etiquetaTotalDolares);
+
+        etiquetaTotal.setText("0.00");
+        PanelTotal.add(etiquetaTotal);
+
+        PanelRepuestos.add(PanelTotal, java.awt.BorderLayout.SOUTH);
 
         tablaRepuestos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -168,33 +172,27 @@ public class RegistrarTrabajo extends javax.swing.JFrame {
 
         getContentPane().add(PanelCentro, java.awt.BorderLayout.CENTER);
 
-        PanelTitulo.setBackground(new java.awt.Color(0, 102, 153));
-        PanelTitulo.setLayout(new java.awt.BorderLayout());
-
-        etiquetaTituloTrabajo.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
-        etiquetaTituloTrabajo.setForeground(new java.awt.Color(255, 255, 255));
-        etiquetaTituloTrabajo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiquetaTituloTrabajo.setText("REGISTRAR TRABAJO");
-        etiquetaTituloTrabajo.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 0, 20, 0));
-        PanelTitulo.add(etiquetaTituloTrabajo, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(PanelTitulo, java.awt.BorderLayout.NORTH);
-
         PanelBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15));
 
         botonGuardar.setBackground(new java.awt.Color(204, 255, 204));
+        botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_guardar.png"))); // NOI18N
         botonGuardar.setText("Guardar");
+        botonGuardar.setIconTextGap(6);
         botonGuardar.addActionListener(this::botonGuardarActionPerformed);
         PanelBotones.add(botonGuardar);
 
         botonLimpiar.setBackground(new java.awt.Color(255, 255, 204));
+        botonLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_limpiar.png"))); // NOI18N
         botonLimpiar.setText("Limpiar");
+        botonLimpiar.setIconTextGap(6);
         botonLimpiar.addActionListener(this::botonLimpiarActionPerformed);
         PanelBotones.add(botonLimpiar);
 
         BotonVolver.setBackground(new java.awt.Color(255, 51, 51));
         BotonVolver.setForeground(new java.awt.Color(255, 255, 255));
+        BotonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_volver.png"))); // NOI18N
         BotonVolver.setText("Volver");
+        BotonVolver.setIconTextGap(6);
         BotonVolver.addActionListener(this::BotonVolverActionPerformed);
         PanelBotones.add(BotonVolver);
 
@@ -205,43 +203,44 @@ public class RegistrarTrabajo extends javax.swing.JFrame {
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         int posCliente = comboCliente.getSelectedIndex();
-    int posMecanico = comboMecanico.getSelectedIndex();
+        int posMecanico = comboMecanico.getSelectedIndex();
 
-    if (posCliente <= 0) {
-        JOptionPane.showMessageDialog(this, "Seleccione un cliente.",
-            "Aviso", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
+        if (posCliente <= 0) {
+            JOptionPane.showMessageDialog(this, "Seleccione un cliente.",
+                    "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
-    if (posMecanico <= 0) {
-        JOptionPane.showMessageDialog(this, "Seleccione un mecánico.",
-            "Aviso", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
+        if (posMecanico <= 0) {
+            JOptionPane.showMessageDialog(this, "Seleccione un mecánico.",
+                    "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
-    if (repuestosSeleccionados.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Añada al menos un repuesto.",
-            "Aviso", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
+        if (repuestosSeleccionados.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Añada al menos un repuesto.",
+                    "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
-    Cliente cliente = listaClientes.get(posCliente - 1);
-    Mecanico mecanico = listaMecanicos.get(posMecanico - 1);
-    String numero = campoNumero.getText();
+        Cliente cliente = listaClientes.get(posCliente - 1);
+        Mecanico mecanico = listaMecanicos.get(posMecanico - 1);
+        String numero = campoNumero.getText();
 
-    OrdenTrabajo orden = new OrdenTrabajo(numero, new Date());
-    for (int i = 0; i < repuestosSeleccionados.size(); i++) {
-        orden.agregarRepuesto(repuestosSeleccionados.get(i));
-    }
+        OrdenTrabajo orden = new OrdenTrabajo(numero, new Date());
+        for (int i = 0; i < repuestosSeleccionados.size(); i++) {
+            orden.agregarRepuesto(repuestosSeleccionados.get(i));
+        }
 
-    cliente.solicitarOrden(orden);
-    mecanico.registrarOrdenes(orden);
+        cliente.solicitarOrden(orden);
+        mecanico.registrarOrdenes(orden);
+        ArchivoDatos.guardarOrden(orden, cliente, mecanico);
 
-    JOptionPane.showMessageDialog(this,
-        "Orden " + numero + " registrada para " + cliente.getNombre() + " " + cliente.getApellido() + ".",
-        "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this,
+                "Orden " + numero + " registrada para " + cliente.getNombre() + " " + cliente.getApellido() + ".",
+                "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
 
-    limpiarFormulario();
+        limpiarFormulario();
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarActionPerformed
@@ -252,8 +251,8 @@ public class RegistrarTrabajo extends javax.swing.JFrame {
     private void BotonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVolverActionPerformed
         // TODO add your handling code here:
         menu.setVisible(true);
-    this.dispose();
-        
+        this.dispose();
+
     }//GEN-LAST:event_BotonVolverActionPerformed
 
     private void campoNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNumeroActionPerformed
@@ -264,79 +263,77 @@ public class RegistrarTrabajo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoFechaActionPerformed
 
-    private void botonAniadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAniadirActionPerformed
+    private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
         int posicion = comboRepuesto.getSelectedIndex();
 
-    if (posicion <= 0) {
-        JOptionPane.showMessageDialog(this, "Seleccione un repuesto.",
-            "Aviso", JOptionPane.WARNING_MESSAGE);
-        return;
+        if (posicion <= 0) {
+            JOptionPane.showMessageDialog(this, "Seleccione un repuesto.",
+                    "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        repuestosSeleccionados.add(listaRepuestos.get(posicion - 1));
+        actualizarTablaRepuestos();
+    }//GEN-LAST:event_botonRegistrarActionPerformed
+
+    private void cargarClientes() {
+        comboCliente.removeAllItems();
+        comboCliente.addItem("Seleccione un cliente");
+        for (int i = 0; i < listaClientes.size(); i++) {
+            Cliente c = listaClientes.get(i);
+            comboCliente.addItem(c.getNombre() + " " + c.getApellido() + " - " + c.getCedula());
+        }
     }
 
-    repuestosSeleccionados.add(listaRepuestos.get(posicion - 1));
-    actualizarTablaRepuestos();
-    }//GEN-LAST:event_botonAniadirActionPerformed
-    
-
-
-private void cargarClientes() {
-    comboCliente.removeAllItems();
-    comboCliente.addItem("Seleccione un cliente");
-    for (int i = 0; i < listaClientes.size(); i++) {
-        Cliente c = listaClientes.get(i);
-        comboCliente.addItem(c.getNombre() + " " + c.getApellido() + " - " + c.getCedula());
-    }
-}
-
-private void cargarMecanicos() {
-    comboMecanico.removeAllItems();
-    comboMecanico.addItem("Seleccione un mecánico");
-    for (int i = 0; i < listaMecanicos.size(); i++) {
-        Mecanico m = listaMecanicos.get(i);
-        comboMecanico.addItem(m.getNombre() + " " + m.getApellido() + " - " + m.getEspecialidad());
-    }
-}
-
-private void generarNumeroYFecha() {
-    int total = 0;
-    for (int i = 0; i < listaClientes.size(); i++) {
-        total += listaClientes.get(i).getOrdenesRealizadas().size();
-    }
-    campoNumero.setText(String.format("OT-%03d", total + 1));
-    campoFecha.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
-}
-
-private void cargarRepuestos() {
-    comboRepuesto.removeAllItems();
-    comboRepuesto.addItem("Seleccione un repuesto");
-    for (int i = 0; i < listaRepuestos.size(); i++) {
-        Repuesto r = listaRepuestos.get(i);
-        comboRepuesto.addItem(r.getCodigo() + " - " + r.getNombre());
-    }
-}
-
-private void actualizarTablaRepuestos() {
-    DefaultTableModel modelo = (DefaultTableModel) tablaRepuestos.getModel();
-    modelo.setRowCount(0);
-    double total = 0;
-
-    for (int i = 0; i < repuestosSeleccionados.size(); i++) {
-        Repuesto r = repuestosSeleccionados.get(i);
-        modelo.addRow(new Object[] { r.getCodigo(), r.getNombre(), String.format("%.2f", r.getPrecio()) });
-        total += r.getPrecio();
+    private void cargarMecanicos() {
+        comboMecanico.removeAllItems();
+        comboMecanico.addItem("Seleccione un mecánico");
+        for (int i = 0; i < listaMecanicos.size(); i++) {
+            Mecanico m = listaMecanicos.get(i);
+            comboMecanico.addItem(m.getNombre() + " " + m.getApellido() + " - " + m.getEspecialidad());
+        }
     }
 
-    etiquetaTotal.setText(String.format("%.2f", total));
-}
+    private void generarNumeroYFecha() {
+        int total = 0;
+        for (int i = 0; i < listaClientes.size(); i++) {
+            total += listaClientes.get(i).getOrdenesRealizadas().size();
+        }
+        campoNumero.setText(String.format("OT-%03d", total + 1));
+        campoFecha.setText(new SimpleDateFormat("dd/MM/yyyy").format(new Date()));
+    }
 
-private void limpiarFormulario() {
-    repuestosSeleccionados.clear();
-    comboCliente.setSelectedIndex(0);
-    comboMecanico.setSelectedIndex(0);
-    comboRepuesto.setSelectedIndex(0);
-    actualizarTablaRepuestos();
-    generarNumeroYFecha();
-}
+    private void cargarRepuestos() {
+        comboRepuesto.removeAllItems();
+        comboRepuesto.addItem("Seleccione un repuesto");
+        for (int i = 0; i < listaRepuestos.size(); i++) {
+            Repuesto r = listaRepuestos.get(i);
+            comboRepuesto.addItem(r.getCodigo() + " - " + r.getNombre());
+        }
+    }
+
+    private void actualizarTablaRepuestos() {
+        DefaultTableModel modelo = (DefaultTableModel) tablaRepuestos.getModel();
+        modelo.setRowCount(0);
+        double total = 0;
+
+        for (int i = 0; i < repuestosSeleccionados.size(); i++) {
+            Repuesto r = repuestosSeleccionados.get(i);
+            modelo.addRow(new Object[]{r.getCodigo(), r.getNombre(), String.format("%.2f", r.getPrecio())});
+            total += r.getPrecio();
+        }
+
+        etiquetaTotal.setText(String.format("%.2f", total));
+    }
+
+    private void limpiarFormulario() {
+        repuestosSeleccionados.clear();
+        comboCliente.setSelectedIndex(0);
+        comboMecanico.setSelectedIndex(0);
+        comboRepuesto.setSelectedIndex(0);
+        actualizarTablaRepuestos();
+        generarNumeroYFecha();
+    }
     /**
      * @param args the command line arguments
      */
@@ -344,18 +341,17 @@ private void limpiarFormulario() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonVolver;
-    private javax.swing.JPanel PanelAniadir;
     private javax.swing.JPanel PanelBotones;
     private javax.swing.JPanel PanelCentro;
     private javax.swing.JPanel PanelDatos;
     private javax.swing.JPanel PanelEntradas;
     private javax.swing.JPanel PanelEtiquetas;
+    private javax.swing.JPanel PanelRegistrar;
     private javax.swing.JPanel PanelRepuestos;
-    private javax.swing.JPanel PanelTitulo;
     private javax.swing.JPanel PanelTotal;
-    private javax.swing.JButton botonAniadir;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonLimpiar;
+    private javax.swing.JButton botonRegistrar;
     private javax.swing.JTextField campoFecha;
     private javax.swing.JTextField campoNumero;
     private javax.swing.JComboBox<String> comboCliente;
@@ -365,10 +361,9 @@ private void limpiarFormulario() {
     private javax.swing.JLabel etiquetaFechaTrabajo;
     private javax.swing.JLabel etiquetaMecanicoTrabajo;
     private javax.swing.JLabel etiquetaNumeroOrden;
-    private javax.swing.JLabel etiquetaTituloTrabajo;
+    private javax.swing.JLabel etiquetaRepuesto;
     private javax.swing.JLabel etiquetaTotal;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel etiquetaTotalDolares;
     private javax.swing.JScrollPane scrollRepuestos;
     private javax.swing.JTable tablaRepuestos;
     // End of variables declaration//GEN-END:variables

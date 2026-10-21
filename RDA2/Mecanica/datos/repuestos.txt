@@ -1,0 +1,7 @@
+R001;Filtro de aceite;8.5;15
+R002;Pastillas de freno;32.0;8
+R003;Bujía;4.75;10
+R004;Batería 12V;95.0;2
+R005;Aceite 10W-30 (1L);7.25;20
+R006;Banda de distribución;45.0;4
+R007;Amortiguador delantero;68.5;6

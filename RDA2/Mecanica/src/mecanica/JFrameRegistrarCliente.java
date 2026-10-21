@@ -3,25 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package mecanica;
+
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author mnobo
  */
-public class RegistrarCliente extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RegistrarCliente.class.getName());
+public class JFrameRegistrarCliente extends javax.swing.JFrame {
+
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrameRegistrarCliente.class.getName());
     private ArrayList<Cliente> listaClientes;
-    private TallerMenu menu;
-    
+    private JFrameTallerMenu menu;
+
     /**
      * Creates new form RegistrarCliente
      */
-    public RegistrarCliente(ArrayList<Cliente> listaClientes, TallerMenu menu) {
-    initComponents();
-    this.listaClientes = listaClientes;
-    this.menu = menu;
+    public JFrameRegistrarCliente(ArrayList<Cliente> listaClientes, JFrameTallerMenu menu) {
+        initComponents();
+        this.listaClientes = listaClientes;
+        this.menu = menu;
     }
 
     /**
@@ -46,17 +48,16 @@ public class RegistrarCliente extends javax.swing.JFrame {
         campoCedula = new javax.swing.JTextField();
         campoCorreo = new javax.swing.JTextField();
         campoCelular = new javax.swing.JTextField();
-        PanelTitulo = new javax.swing.JPanel();
-        etiquetaTituloRegistrarCliente = new javax.swing.JLabel();
         PanelBotones = new javax.swing.JPanel();
         botonRegistrar = new javax.swing.JButton();
         botonLimpiar = new javax.swing.JButton();
         BotonVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registrar cliente");
 
         PanelCampos.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 25, 15, 25));
-        PanelCampos.setPreferredSize(new java.awt.Dimension(380, 320));
+        PanelCampos.setPreferredSize(new java.awt.Dimension(380, 240));
         PanelCampos.setLayout(new java.awt.BorderLayout(10, 0));
 
         panelEtiquetas.setLayout(new java.awt.GridLayout(5, 1, 0, 15));
@@ -105,41 +106,35 @@ public class RegistrarCliente extends javax.swing.JFrame {
 
         PanelCampos.add(panelEntrada, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(PanelCampos, java.awt.BorderLayout.CENTER);
+        getContentPane().add(PanelCampos, java.awt.BorderLayout.NORTH);
 
-        PanelTitulo.setBackground(new java.awt.Color(0, 102, 153));
-        PanelTitulo.setLayout(new java.awt.BorderLayout());
-
-        etiquetaTituloRegistrarCliente.setFont(new java.awt.Font("Candara", 1, 24)); // NOI18N
-        etiquetaTituloRegistrarCliente.setForeground(new java.awt.Color(255, 255, 255));
-        etiquetaTituloRegistrarCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        etiquetaTituloRegistrarCliente.setText("REGISTRAR CLIENTE");
-        etiquetaTituloRegistrarCliente.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 0, 20, 0));
-        PanelTitulo.add(etiquetaTituloRegistrarCliente, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(PanelTitulo, java.awt.BorderLayout.NORTH);
-
-        PanelBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 5));
+        PanelBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 15));
 
         botonRegistrar.setBackground(new java.awt.Color(204, 255, 204));
+        botonRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_guardar.png"))); // NOI18N
         botonRegistrar.setText("Registrar");
+        botonRegistrar.setIconTextGap(6);
         botonRegistrar.addActionListener(this::botonRegistrarActionPerformed);
         PanelBotones.add(botonRegistrar);
 
         botonLimpiar.setBackground(new java.awt.Color(255, 255, 204));
+        botonLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_limpiar.png"))); // NOI18N
         botonLimpiar.setText("Limpiar");
+        botonLimpiar.setIconTextGap(6);
         botonLimpiar.addActionListener(this::botonLimpiarActionPerformed);
         PanelBotones.add(botonLimpiar);
 
         BotonVolver.setBackground(new java.awt.Color(255, 51, 51));
         BotonVolver.setForeground(new java.awt.Color(255, 255, 255));
+        BotonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mecanica/imagenes/icono_volver.png"))); // NOI18N
         BotonVolver.setText("Volver");
+        BotonVolver.setIconTextGap(6);
         BotonVolver.addActionListener(this::BotonVolverActionPerformed);
         PanelBotones.add(BotonVolver);
 
         getContentPane().add(PanelBotones, java.awt.BorderLayout.SOUTH);
 
-        pack();
+        setBounds(0, 0, 460, 350);
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreActionPerformed
@@ -148,51 +143,52 @@ public class RegistrarCliente extends javax.swing.JFrame {
 
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
         // TODO add your handling code here:
-       String nombre = campoNombre.getText().trim();
-    String apellido = campoApellido.getText().trim();
-    String cedula = campoCedula.getText().trim();
-    String celular = campoCelular.getText().trim();
-    String correo = campoCorreo.getText().trim();
+        String nombre = campoNombre.getText().trim();
+        String apellido = campoApellido.getText().trim();
+        String cedula = campoCedula.getText().trim();
+        String celular = campoCelular.getText().trim();
+        String correo = campoCorreo.getText().trim();
 
-    if (nombre.isEmpty() || apellido.isEmpty() || cedula.isEmpty()
-            || celular.isEmpty() || correo.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Complete todos los campos.",
-            "Campos vacíos", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
-
-    if (!cedula.matches("\\d{10}")) {
-        JOptionPane.showMessageDialog(this, "La cédula debe tener 10 dígitos.",
-            "Cédula no válida", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    if (!celular.matches("09\\d{8}")) {
-        JOptionPane.showMessageDialog(this, "El celular debe tener 10 dígitos y empezar con 09.",
-            "Celular no válido", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    if (!correo.matches("[\\w.+-]+@[\\w-]+(\\.[\\w-]+)+")) {
-        JOptionPane.showMessageDialog(this, "El correo no es válido (ejemplo: nombre@correo.com).",
-            "Correo no válido", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    for (int i = 0; i < listaClientes.size(); i++) {
-        if (listaClientes.get(i).getCedula().equals(cedula)) {
-            JOptionPane.showMessageDialog(this, "Ya existe un cliente con esa cédula.",
-                "Cédula repetida", JOptionPane.ERROR_MESSAGE);
+        if (nombre.isEmpty() || apellido.isEmpty() || cedula.isEmpty()
+                || celular.isEmpty() || correo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Complete todos los campos.",
+                    "Campos vacíos", JOptionPane.WARNING_MESSAGE);
             return;
         }
-    }
 
-    Cliente nuevo = new Cliente(new ArrayList<>(), nombre, apellido, cedula, celular, correo);
-    listaClientes.add(nuevo);
+        if (!cedula.matches("\\d{10}")) {
+            JOptionPane.showMessageDialog(this, "La cédula debe tener 10 dígitos.",
+                    "Cédula no válida", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-    JOptionPane.showMessageDialog(this, "Cliente registrado: " + nombre + " " + apellido,
-        "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
-    limpiarCampos();
+        if (!celular.matches("09\\d{8}")) {
+            JOptionPane.showMessageDialog(this, "El celular debe tener 10 dígitos y empezar con 09.",
+                    "Celular no válido", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (!correo.matches("[\\w.+-]+@[\\w-]+(\\.[\\w-]+)+")) {
+            JOptionPane.showMessageDialog(this, "El correo no es válido (ejemplo: nombre@correo.com).",
+                    "Correo no válido", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        for (int i = 0; i < listaClientes.size(); i++) {
+            if (listaClientes.get(i).getCedula().equals(cedula)) {
+                JOptionPane.showMessageDialog(this, "Ya existe un cliente con esa cédula.",
+                        "Cédula repetida", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+
+        Cliente nuevo = new Cliente(new ArrayList<>(), nombre, apellido, cedula, celular, correo);
+        listaClientes.add(nuevo);
+        ArchivoDatos.guardarCliente(nuevo);
+
+        JOptionPane.showMessageDialog(this, "Cliente registrado: " + nombre + " " + apellido,
+                "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+        limpiarCampos();
     }//GEN-LAST:event_botonRegistrarActionPerformed
 
     private void botonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarActionPerformed
@@ -212,38 +208,37 @@ public class RegistrarCliente extends javax.swing.JFrame {
 
     private void campoCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoCelularActionPerformed
         // TODO add your handling code here:
-       
+
     }//GEN-LAST:event_campoCelularActionPerformed
 
     private void campoCelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoCelularKeyTyped
         // TODO add your handling code here:
-         char c = evt.getKeyChar();
-    boolean esControl = c == java.awt.event.KeyEvent.VK_BACK_SPACE
-                     || c == java.awt.event.KeyEvent.VK_DELETE;
+        char c = evt.getKeyChar();
+        boolean esControl = c == java.awt.event.KeyEvent.VK_BACK_SPACE
+                || c == java.awt.event.KeyEvent.VK_DELETE;
 
-    if (!esControl && (!Character.isDigit(c) || campoCelular.getText().length() >= 10)) {
-        evt.consume();
-    }
+        if (!esControl && (!Character.isDigit(c) || campoCelular.getText().length() >= 10)) {
+            evt.consume();
+        }
     }//GEN-LAST:event_campoCelularKeyTyped
 
     private void limpiarCampos() {
-    campoNombre.setText("");
-    campoApellido.setText("");
-    campoCedula.setText("");
-    campoCelular.setText("");
-    campoCorreo.setText("");
-    campoNombre.requestFocus();
+        campoNombre.setText("");
+        campoApellido.setText("");
+        campoCedula.setText("");
+        campoCelular.setText("");
+        campoCorreo.setText("");
+        campoNombre.requestFocus();
     }
     /**
      * @param args the command line arguments
      */
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonVolver;
     private javax.swing.JPanel PanelBotones;
     private javax.swing.JPanel PanelCampos;
-    private javax.swing.JPanel PanelTitulo;
     private javax.swing.JButton botonLimpiar;
     private javax.swing.JButton botonRegistrar;
     private javax.swing.JTextField campoApellido;
@@ -256,7 +251,6 @@ public class RegistrarCliente extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaCelularCliente;
     private javax.swing.JLabel etiquetaCorreoCliente;
     private javax.swing.JLabel etiquetaNombreCliente;
-    private javax.swing.JLabel etiquetaTituloRegistrarCliente;
     private javax.swing.JPanel panelEntrada;
     private javax.swing.JPanel panelEtiquetas;
     // End of variables declaration//GEN-END:variables

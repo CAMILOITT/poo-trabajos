@@ -1,0 +1,4 @@
+1720000001;Pedro;Loor;0981111111;pedro.loor@mail.com;Motor
+1720000002;Lucía;Gómez;0982222222;lucia.gomez@mail.com;Frenos
+1720000003;Mario;Vera;0983333333;mario.vera@mail.com;Electricidad
+0301086453;Mateo;Perez;0954736486;;Frenos
