@@ -61,9 +61,9 @@ public class ArchivoTexto {
 
     // ---------------- ELEMENTOS ----------------
 
-    public static void guardarElementos(ArrayList<Elemento> listaElementos) {
+    public static void guardarElementos(ArrayList<Mascota> listaElementos) {
         try (BufferedWriter escritor = new BufferedWriter(new FileWriter(ARCHIVO_ELEMENTOS))) {
-            for (Elemento elemento : listaElementos) {
+            for (Mascota elemento : listaElementos) {
                 escritor.write(elemento.getCodigo() + SEPARADOR
                         + elemento.getNombre() + SEPARADOR
                         + elemento.getCategoria() + SEPARADOR
@@ -76,8 +76,8 @@ public class ArchivoTexto {
         }
     }
 
-    public static ArrayList<Elemento> leerElementos() {
-        ArrayList<Elemento> listaElementos = new ArrayList<>();
+    public static ArrayList<Mascota> leerElementos() {
+        ArrayList<Mascota> listaElementos = new ArrayList<>();
         File archivo = new File(ARCHIVO_ELEMENTOS);
         if (!archivo.exists()) {
             return listaElementos;
@@ -92,7 +92,7 @@ public class ArchivoTexto {
                 // Los números se guardan como texto, por eso hay que convertirlos
                 int cantidad = Integer.parseInt(datos[3]);
                 double precio = Double.parseDouble(datos[4]);
-                listaElementos.add(new Elemento(datos[0], datos[1], datos[2], cantidad, precio));
+                listaElementos.add(new Mascota(datos[0], datos[1], datos[2], cantidad, precio));
             }
         } catch (IOException | NumberFormatException | ArrayIndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(null, "No se pudo leer el archivo de elementos");

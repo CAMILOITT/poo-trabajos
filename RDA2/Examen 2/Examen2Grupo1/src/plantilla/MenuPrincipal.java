@@ -10,9 +10,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Listas con los datos del sistema, llegan desde la clase principal
     private ArrayList<Persona> listaPersonas;
-    private ArrayList<Elemento> listaElementos;
+    private ArrayList<Mascota> listaElementos;
 
-    public MenuPrincipal(ArrayList<Persona> listaPersonas, ArrayList<Elemento> listaElementos) {
+    public MenuPrincipal(ArrayList<Persona> listaPersonas, ArrayList<Mascota> listaElementos) {
         initComponents();
         this.listaPersonas = listaPersonas;
         this.listaElementos = listaElementos;

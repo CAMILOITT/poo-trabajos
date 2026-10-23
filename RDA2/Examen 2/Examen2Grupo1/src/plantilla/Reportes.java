@@ -21,9 +21,9 @@ import org.jfree.data.general.DefaultPieDataset;
 public class Reportes extends javax.swing.JFrame {
 
     private javax.swing.JFrame ventanaAnterior;
-    private ArrayList<Elemento> listaElementos;
+    private ArrayList<Mascota> listaElementos;
 
-    public Reportes(javax.swing.JFrame ventanaAnterior, ArrayList<Elemento> listaElementos) {
+    public Reportes(javax.swing.JFrame ventanaAnterior, ArrayList<Mascota> listaElementos) {
         initComponents();
         this.ventanaAnterior = ventanaAnterior;
         this.listaElementos = listaElementos;
@@ -41,7 +41,7 @@ public class Reportes extends javax.swing.JFrame {
     // Barras con la cantidad que hay de cada elemento
     private void mostrarGraficoBarras() {
         DefaultCategoryDataset datos = new DefaultCategoryDataset();
-        for (Elemento elemento : listaElementos) {
+        for (Mascota elemento : listaElementos) {
             datos.addValue(elemento.getCantidad(), "Cantidad", elemento.getNombre());
         }
         JFreeChart grafico = ChartFactory.createBarChart("Cantidad por elemento", "Elemento", "Cantidad", datos);
@@ -62,7 +62,7 @@ public class Reportes extends javax.swing.JFrame {
     // Pastel con cuántos elementos hay en cada categoría
     private void mostrarGraficoPastel() {
         DefaultPieDataset<String> datos = new DefaultPieDataset<>();
-        for (Elemento elemento : listaElementos) {
+        for (Mascota elemento : listaElementos) {
             String categoria = elemento.getCategoria();
             if (datos.getKeys().contains(categoria)) {
                 datos.setValue(categoria, datos.getValue(categoria).intValue() + 1);

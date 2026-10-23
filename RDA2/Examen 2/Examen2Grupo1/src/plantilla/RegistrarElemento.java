@@ -11,11 +11,11 @@ import javax.swing.table.DefaultTableModel;
 public class RegistrarElemento extends javax.swing.JFrame {
 
     private javax.swing.JFrame ventanaAnterior;
-    private ArrayList<Elemento> listaElementos;
+    private ArrayList<Mascota> listaElementos;
     // Fila elegida en la tabla, -1 quiere decir que no hay ninguna
     private int filaSeleccionada = -1;
 
-    public RegistrarElemento(javax.swing.JFrame ventanaAnterior, ArrayList<Elemento> listaElementos) {
+    public RegistrarElemento(javax.swing.JFrame ventanaAnterior, ArrayList<Mascota> listaElementos) {
         initComponents();
         this.ventanaAnterior = ventanaAnterior;
         this.listaElementos = listaElementos;
@@ -25,7 +25,7 @@ public class RegistrarElemento extends javax.swing.JFrame {
     private void cargarTabla() {
         DefaultTableModel modeloTabla = (DefaultTableModel) tablaElementos.getModel();
         modeloTabla.setRowCount(0);
-        for (Elemento elemento : listaElementos) {
+        for (Mascota elemento : listaElementos) {
             modeloTabla.addRow(new Object[]{elemento.getCodigo(), elemento.getNombre(), elemento.getCategoria(),
                 elemento.getCantidad(), String.format("%.2f", elemento.getPrecio())});
         }
@@ -68,8 +68,8 @@ public class RegistrarElemento extends javax.swing.JFrame {
     }
 
     // Devuelve el elemento con ese código o null si no existe
-    private Elemento buscarElemento(String codigo) {
-        for (Elemento elemento : listaElementos) {
+    private Mascota buscarElemento(String codigo) {
+        for (Mascota elemento : listaElementos) {
             if (elemento.getCodigo().equalsIgnoreCase(codigo)) {
                 return elemento;
             }
@@ -275,7 +275,7 @@ public class RegistrarElemento extends javax.swing.JFrame {
         if (filaSeleccionada == -1) {
             return;
         }
-        Elemento elemento = listaElementos.get(filaSeleccionada);
+        Mascota elemento = listaElementos.get(filaSeleccionada);
         campoCodigo.setText(elemento.getCodigo());
         campoNombre.setText(elemento.getNombre());
         comboCategoria.setSelectedItem(elemento.getCategoria());
@@ -301,11 +301,11 @@ public class RegistrarElemento extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Ya existe un elemento con ese código");
                 return;
             }
-            listaElementos.add(new Elemento(codigo, nombre, categoria, cantidad, precio));
+            listaElementos.add(new Mascota(codigo, nombre, categoria, cantidad, precio));
             JOptionPane.showMessageDialog(this, "Elemento registrado");
         } else {
             // Edición del elemento elegido en la tabla
-            Elemento elemento = listaElementos.get(filaSeleccionada);
+            Mascota elemento = listaElementos.get(filaSeleccionada);
             elemento.setNombre(nombre);
             elemento.setCategoria(categoria);
             elemento.setCantidad(cantidad);
