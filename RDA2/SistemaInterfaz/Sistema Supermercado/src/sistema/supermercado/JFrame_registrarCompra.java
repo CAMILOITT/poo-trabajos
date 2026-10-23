@@ -137,8 +137,6 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
         etiquetaVaciaCliente = new javax.swing.JLabel();
         botonRegistrarCliente = new javax.swing.JButton();
         panelDatosCompra = new javax.swing.JPanel();
-        etiquetaCajeroCompra = new javax.swing.JLabel();
-        comboCajero = new javax.swing.JComboBox<>();
         etiquetaProductoCompra = new javax.swing.JLabel();
         comboProducto = new javax.swing.JComboBox<>();
         etiquetaVaciaCompra = new javax.swing.JLabel();
@@ -270,13 +268,6 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
         panelDatosCompra.setBackground(new java.awt.Color(240, 251, 251));
         panelDatosCompra.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(200, 228, 200)), javax.swing.BorderFactory.createEmptyBorder(12, 14, 12, 14)));
         panelDatosCompra.setLayout(new java.awt.GridLayout(3, 2, 12, 8));
-
-        etiquetaCajeroCompra.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        etiquetaCajeroCompra.setForeground(new java.awt.Color(55, 55, 55));
-        etiquetaCajeroCompra.setText("Cajero:");
-        panelDatosCompra.add(etiquetaCajeroCompra);
-
-        panelDatosCompra.add(comboCajero);
 
         etiquetaProductoCompra.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         etiquetaProductoCompra.setForeground(new java.awt.Color(55, 55, 55));
@@ -549,7 +540,6 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
         }
 
         clienteActual.agregarCompra(compraActual);
-        cajeroSeleccionado.registrarVenta(compraActual);
         ArchivoDatos.guardarCompra(compraActual, clienteActual, cajeroSeleccionado);
 
         float totalCompra = compraActual.calcularTotal();
@@ -591,10 +581,8 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
     private javax.swing.JTextField campoPuntos;
     private javax.swing.JTextField campoTelefono;
     private javax.swing.JTextField campoTotal;
-    private javax.swing.JComboBox<String> comboCajero;
     private javax.swing.JComboBox<String> comboProducto;
     private javax.swing.JLabel etiquetaApellidoCompra;
-    private javax.swing.JLabel etiquetaCajeroCompra;
     private javax.swing.JLabel etiquetaCedulaCompra;
     private javax.swing.JLabel etiquetaCorreoCompra;
     private javax.swing.JLabel etiquetaNombreCompra;

@@ -149,7 +149,6 @@ public class ArchivoDatos {
                 int numeroCompra = Integer.parseInt(partes[0]);
                 LocalDateTime fechaCompra = LocalDateTime.parse(partes[1]);
                 String cedulaCliente = partes[2];
-                String codigoCajero = partes[3];
 
                 Compra datoCompra = new Compra(numeroCompra, fechaCompra);
                 for (int i = 4; i < partes.length; i++) {
@@ -163,10 +162,7 @@ public class ArchivoDatos {
                 if (datoCliente != null) {
                     datoCliente.agregarCompra(datoCompra);
                 }
-                Cajero datoCajero = buscarCajero(listaCajeros, codigoCajero);
-                if (datoCajero != null) {
-                    datoCajero.registrarVenta(datoCompra);
-                }
+                
             }
         } catch (IOException e) {
             System.out.println("No se pudo leer el archivo de compras.");
@@ -207,12 +203,4 @@ public class ArchivoDatos {
         return null;
     }
 
-    private static Cajero buscarCajero(ArrayList<Cajero> listaCajeros, String codigoEmpleado) {
-        for (Cajero datoCajero : listaCajeros) {
-            if (datoCajero.getCodigoEmpleado().equals(codigoEmpleado)) {
-                return datoCajero;
-            }
-        }
-        return null;
-    }
 }
