@@ -1,0 +1,4 @@
+E001;Elemento uno;Categoría A;12;4.5
+E002;Elemento dos;Categoría A;5;10.0
+E003;Elemento tres;Categoría B;20;2.75
+E004;Elemento cuatro;Categoría C;8;15.9

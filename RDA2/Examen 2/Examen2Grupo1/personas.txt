@@ -1,0 +1,3 @@
+1712345675;Ana María;López;0991234567;ana.lopez@gmail.com
+1709876542;Carlos;Pérez;0987654321;carlos.perez@gmail.com
+0911223345;Lucía;Andrade;0998877665;lucia.andrade@gmail.com
