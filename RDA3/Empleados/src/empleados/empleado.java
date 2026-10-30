@@ -49,11 +49,4 @@ public class empleado {
     public String getCorreo() {
         return correo;
     }
-
-    
-
-    @Override
-    public String toString() {
-        return nombres + " " + apellidos;
-    }
 }
