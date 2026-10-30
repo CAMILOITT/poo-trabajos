@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package empleados;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -11,14 +14,23 @@ package empleados;
 public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrame_RegistroEmpleado.class.getName());
-
+    private static final int TAM_ID = 10;
+    private static final int TAM_NOMBRES = 20;
+    private static final int TAM_APELLIDOS = 20;
+    private static final int TAM_TELEFONO = 10;
+    private static final int TAM_CORREO = 30;
+    private static final String ARCHIVO = "empleados.dat";
+    private javax.swing.JFrame menu;
+    
     /**
      * Creates new form JFrame_RegistroEmpleado
      */
-    public JFrame_RegistroEmpleado() {
+    public JFrame_RegistroEmpleado(javax.swing.JFrame menu) {
         initComponents();
+        cargarEdades();
+        this.menu = menu;
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,12 +56,11 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
         campoApellidos = new javax.swing.JTextField();
         campoTelefono = new javax.swing.JTextField();
         campoCorreo = new javax.swing.JTextField();
-        campoCorreo1 = new javax.swing.JTextField();
+        comboEdad = new javax.swing.JComboBox<>();
         scrollPersonas = new javax.swing.JScrollPane();
         tablaPersonas = new javax.swing.JTable();
         panelBotones = new javax.swing.JPanel();
         botonGuardar = new javax.swing.JButton();
-        botonEliminar = new javax.swing.JButton();
         botonLimpiar = new javax.swing.JButton();
         botonRegresar = new javax.swing.JButton();
         panelFranjaInferior = new javax.swing.JPanel();
@@ -67,7 +78,7 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
         panelEtiquetas.setLayout(new java.awt.GridLayout(6, 1, 0, 10));
 
         etiquetaCedula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        etiquetaCedula.setText("identificador");
+        etiquetaCedula.setText("Cedula");
         panelEtiquetas.add(etiquetaCedula);
 
         etiquetaNombres.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -109,8 +120,9 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
         campoCorreo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         panelCampos.add(campoCorreo);
 
-        campoCorreo1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        panelCampos.add(campoCorreo1);
+        comboEdad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione una edad--" }));
+        comboEdad.addActionListener(this::comboEdadActionPerformed);
+        panelCampos.add(comboEdad);
 
         panelDatos.add(panelCampos, java.awt.BorderLayout.CENTER);
 
@@ -153,14 +165,6 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
         botonGuardar.addActionListener(this::botonGuardarActionPerformed);
         panelBotones.add(botonGuardar);
 
-        botonEliminar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        botonEliminar.setText("Eliminar");
-        botonEliminar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153)), javax.swing.BorderFactory.createEmptyBorder(6, 14, 6, 14)));
-        botonEliminar.setContentAreaFilled(false);
-        botonEliminar.setOpaque(true);
-        botonEliminar.addActionListener(this::botonEliminarActionPerformed);
-        panelBotones.add(botonEliminar);
-
         botonLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         botonLimpiar.setText("Limpiar");
         botonLimpiar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153)), javax.swing.BorderFactory.createEmptyBorder(6, 14, 6, 14)));
@@ -177,7 +181,7 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
         botonRegresar.addActionListener(this::botonRegresarActionPerformed);
         panelBotones.add(botonRegresar);
 
-        panelContenido.add(panelBotones, java.awt.BorderLayout.SOUTH);
+        panelContenido.add(panelBotones, java.awt.BorderLayout.PAGE_END);
 
         panelFranjaInferior.setBackground(new java.awt.Color(0, 102, 153));
         panelFranjaInferior.setPreferredSize(new java.awt.Dimension(100, 22));
@@ -214,111 +218,167 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tablaPersonasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPersonasMouseClicked
-        filaSeleccionada = tablaPersonas.getSelectedRow();
-        if (filaSeleccionada == -1) {
-            return;
-        }
-        Persona persona = listaPersonas.get(filaSeleccionada);
-        campoCedula.setText(persona.getCedula());
-        campoNombres.setText(persona.getNombres());
-        campoApellidos.setText(persona.getApellidos());
-        campoTelefono.setText(persona.getTelefono());
-        campoCorreo.setText(persona.getCorreo());
-        // La cédula no se puede cambiar cuando se edita
-        campoCedula.setEditable(false);
+        
     }//GEN-LAST:event_tablaPersonasMouseClicked
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        if (!validarCampos()) {
-            return;
+        if (!validarCampos()) 
+        {
+        return;
         }
         String cedula = campoCedula.getText().trim();
         String nombres = campoNombres.getText().trim();
         String apellidos = campoApellidos.getText().trim();
         String telefono = campoTelefono.getText().trim();
         String correo = campoCorreo.getText().trim();
+        int edad = Integer.parseInt(String.valueOf(comboEdad.getSelectedItem()));
 
-        if (filaSeleccionada == -1) {
-            // Registro nuevo
-            if (buscarPersona(cedula) != null) {
-                JOptionPane.showMessageDialog(this, "Ya existe una persona con esa cédula");
-                return;
-            }
-            listaPersonas.add(new Persona(cedula, nombres, apellidos, telefono, correo));
-            JOptionPane.showMessageDialog(this, "Persona registrada");
-        } else {
-            // Edición de la persona elegida en la tabla
-            Persona persona = listaPersonas.get(filaSeleccionada);
-            persona.setNombres(nombres);
-            persona.setApellidos(apellidos);
-            persona.setTelefono(telefono);
-            persona.setCorreo(correo);
-            JOptionPane.showMessageDialog(this, "Datos actualizados");
-        }
-        ArchivoTexto.guardarPersonas(listaPersonas);
-        cargarTabla();
-        limpiarCampos();
-    }//GEN-LAST:event_botonGuardarActionPerformed
-
-    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        if (filaSeleccionada == -1) {
-            JOptionPane.showMessageDialog(this, "Primero elige una persona en la tabla");
+        try (RandomAccessFile f = new RandomAccessFile(ARCHIVO, "rw")) 
+        {
+            f.seek(f.length());   // al final del archivo, para no sobrescribir lo anterior
+            escribirTexto(f, cedula, TAM_ID);
+            escribirTexto(f, nombres, TAM_NOMBRES);
+            escribirTexto(f, apellidos, TAM_APELLIDOS);
+            escribirTexto(f, telefono, TAM_TELEFONO);
+            escribirTexto(f, correo, TAM_CORREO);
+            f.writeInt(edad);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "No se pudo guardar: " + e.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        int respuesta = JOptionPane.showConfirmDialog(this, "¿Seguro que quieres eliminar a esta persona?",
-            "Eliminar", JOptionPane.YES_NO_OPTION);
-        if (respuesta == JOptionPane.YES_OPTION) {
-            listaPersonas.remove(filaSeleccionada);
-            ArchivoTexto.guardarPersonas(listaPersonas);
-            cargarTabla();
-            limpiarCampos();
-        }
-    }//GEN-LAST:event_botonEliminarActionPerformed
+
+        JOptionPane.showMessageDialog(this, "Empleado registrado");
+        limpiarCampos();
+    }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarActionPerformed
         limpiarCampos();
     }//GEN-LAST:event_botonLimpiarActionPerformed
 
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-        regresar();
+        this.dispose();
+        menu.setVisible(true);
+        menu.setLocationRelativeTo(null);
     }//GEN-LAST:event_botonRegresarActionPerformed
 
+    private void comboEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEdadActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_comboEdadActionPerformed
+    
+    private String ajustar(String texto, int tamanio)
+    {
+        String cadenaConEspacios = "";
+        
+        if (texto.length() < tamanio)
+        {
+            cadenaConEspacios += texto;
+            for (int i = texto.length(); i< tamanio; i++)
+            {
+                cadenaConEspacios += " ";
+            }
+        }
+        else if (texto.length() > tamanio)
+        {
+            cadenaConEspacios = texto.substring(0, tamanio);
+        }
+        else
+        {
+            cadenaConEspacios += texto;
+        }
+        return cadenaConEspacios;
+    }
+    
+    private void cargarEdades() 
+    {
+        comboEdad.removeAllItems();
+        comboEdad.addItem("--Seleccione una edad--");
+        for (int edad = 18; edad <= 65; edad++) {
+            comboEdad.addItem(String.valueOf(edad));
+        }
+    }
+    
+    private void escribirTexto(RandomAccessFile f, String texto, int tamanio) throws IOException 
+    {
+        f.writeChars(ajustar(texto, tamanio));
+    }
+    
+    private void limpiarCampos() 
+    {
+        campoCedula.setText("");
+        campoNombres.setText("");
+        campoApellidos.setText("");
+        campoTelefono.setText("");
+        campoCorreo.setText("");
+        comboEdad.setSelectedIndex(0);
+        campoCedula.requestFocus();
+    }
+    
+    private void aviso(String mensaje) 
+    {
+        JOptionPane.showMessageDialog(this, mensaje, "Aviso", JOptionPane.WARNING_MESSAGE);
+    }
+    
+    private boolean validarCampos() 
+    {
+        String cedula = campoCedula.getText().trim();
+        String nombres = campoNombres.getText().trim();
+        String apellidos = campoApellidos.getText().trim();
+        String telefono = campoTelefono.getText().trim();
+        String correo = campoCorreo.getText().trim();
+
+        if (cedula.isEmpty() || nombres.isEmpty() || apellidos.isEmpty()
+                || telefono.isEmpty() || correo.isEmpty()) {
+            aviso("Complete todos los campos.");
+            return false;
+        }
+        if (!cedula.matches("\\d{10}")) {
+            aviso("La cédula debe tener 10 dígitos.");
+            campoCedula.requestFocus();
+            return false;
+        }
+        if (nombres.length() > TAM_NOMBRES) {
+            aviso("Los nombres admiten máximo " + TAM_NOMBRES + " caracteres.");
+            campoNombres.requestFocus();
+            return false;
+        }
+        if (apellidos.length() > TAM_APELLIDOS) {
+            aviso("Los apellidos admiten máximo " + TAM_APELLIDOS + " caracteres.");
+            campoApellidos.requestFocus();
+            return false;
+        }
+        if (!telefono.matches("\\d{" + TAM_TELEFONO + "}")) {
+            aviso("El teléfono debe tener " + TAM_TELEFONO + " dígitos.");
+            campoTelefono.requestFocus();
+            return false;
+        }
+        if (!correo.contains("@") || !correo.contains(".") || correo.length() > TAM_CORREO) {
+            aviso("Ingrese un correo válido de máximo " + TAM_CORREO + " caracteres.");
+            campoCorreo.requestFocus();
+            return false;
+        }
+        if (comboEdad.getSelectedIndex() <= 0) {
+            aviso("Seleccione una edad.");
+            return false;
+        }
+        return true;
+    }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new JFrame_RegistroEmpleado().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonEliminar;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonLimpiar;
     private javax.swing.JButton botonRegresar;
     private javax.swing.JTextField campoApellidos;
     private javax.swing.JTextField campoCedula;
     private javax.swing.JTextField campoCorreo;
-    private javax.swing.JTextField campoCorreo1;
     private javax.swing.JTextField campoNombres;
     private javax.swing.JTextField campoTelefono;
+    private javax.swing.JComboBox<String> comboEdad;
     private javax.swing.JLabel etiquetaApellidos;
     private javax.swing.JLabel etiquetaCedula;
     private javax.swing.JLabel etiquetaCorreo;

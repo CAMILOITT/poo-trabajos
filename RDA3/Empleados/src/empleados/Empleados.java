@@ -15,6 +15,9 @@ public class Empleados {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        JFrame_Menu menu = new JFrame_Menu();   
+            menu.setLocationRelativeTo(null);
+            menu.setVisible(true);
     }
     
 }

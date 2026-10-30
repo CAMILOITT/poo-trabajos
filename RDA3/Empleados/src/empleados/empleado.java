@@ -3,85 +3,57 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package empleados;
-import java.util.ArrayList;
 
 /**
  *
  * @author grupo1
  */
-public class empleado extends persona {
+public class empleado {
 
-    protected float sueldo;
-    protected String titulo;
-    protected String nivelDeFormacion;
-    protected ArrayList<String> listaDeCargos;
+    private String cedula;
+    private String nombres;
+    private String apellidos;
+    private int telefono;
+    private String correo;
+    private int edad;
 
-    public empleado(String cedula, String nombre, String apellido, String telefono,
-            String correo, ArrayList<String> listaDeCargos, float sueldo,
-            String nivelDeFormacion, String titulo) {
-        super(cedula, nombre, apellido, correo, telefono);
-        this.listaDeCargos = listaDeCargos;
-        this.sueldo = sueldo;
-        this.nivelDeFormacion = nivelDeFormacion;
-        this.titulo = titulo;
+    public empleado(String cedula, String nombres, int edad, String apellidos, int telefono, String correo) {
+        this.cedula = cedula;
+        this.nombres = nombres;
+        this.edad = edad;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.correo = correo;
     }
 
-    public float getSueldo() {
-        return sueldo;
+    public String getCedula() {
+        return cedula;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getNombres() {
+        return nombres;
     }
 
-    public String getNivelDeFormacion() {
-        return nivelDeFormacion;
+    public int getEdad() {
+        return edad;
     }
 
-    public ArrayList<String> getListaDeCargos() {
-        return listaDeCargos;
+    public String getApellidos() {
+        return apellidos;
     }
 
-    public void setSueldo(float nuevoSueldo) {
-        this.sueldo = nuevoSueldo;
+    public int getTelefono() {
+        return telefono;
     }
 
-    public void setTitulo(String nuevoTitulo) {
-        this.titulo = nuevoTitulo;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setNivelDeFormacion(String nivelFormacion) {
-        this.nivelDeFormacion = nivelFormacion;
-    }
+    
 
-    public void setListaDeCargos(ArrayList<String> nuevaListaDeCargos) {
-        this.listaDeCargos = nuevaListaDeCargos;
-    }
-
-    public boolean verificarCargo(String cargo) {
-        for (int i = 0; i < this.listaDeCargos.size(); i++) {
-            if (this.listaDeCargos.get(i).equals(cargo)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean aniadirCargo(String cargo) {
-        if (verificarCargo(cargo)) {
-            return false;
-        }
-        this.listaDeCargos.add(cargo);
-        return true;
-    }
-
-    public boolean eliminarCargo(String nombreCargo) {
-        for (int i = 0; i < this.listaDeCargos.size(); i++) {
-            if (this.listaDeCargos.get(i).equals(nombreCargo)) {
-                this.listaDeCargos.remove(i);
-                return true;
-            }
-        }
-        return false;
+    @Override
+    public String toString() {
+        return nombres + " " + apellidos;
     }
 }

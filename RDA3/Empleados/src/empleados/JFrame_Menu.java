@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package empleados;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,9 +33,6 @@ public class JFrame_Menu extends javax.swing.JFrame {
         panelContenido = new javax.swing.JPanel();
         panelBotonesMenu = new javax.swing.JPanel();
         botonRegistrarPersona = new javax.swing.JButton();
-        botonRegistrarElemento = new javax.swing.JButton();
-        botonBuscarPersona = new javax.swing.JButton();
-        botonReportes = new javax.swing.JButton();
         panelSalida = new javax.swing.JPanel();
         botonSalir = new javax.swing.JButton();
         panelFranjaInferior = new javax.swing.JPanel();
@@ -50,40 +48,13 @@ public class JFrame_Menu extends javax.swing.JFrame {
         panelBotonesMenu.setLayout(new java.awt.GridLayout(0, 1, 0, 12));
 
         botonRegistrarPersona.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        botonRegistrarPersona.setText("Registrar persona");
-        botonRegistrarPersona.setIconTextGap(10);
+        botonRegistrarPersona.setText("Registrar Empleado");
         botonRegistrarPersona.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153), 2), javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20)));
         botonRegistrarPersona.setContentAreaFilled(false);
+        botonRegistrarPersona.setIconTextGap(10);
         botonRegistrarPersona.setOpaque(true);
         botonRegistrarPersona.addActionListener(this::botonRegistrarPersonaActionPerformed);
         panelBotonesMenu.add(botonRegistrarPersona);
-
-        botonRegistrarElemento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        botonRegistrarElemento.setText("Registrar elemento");
-        botonRegistrarElemento.setIconTextGap(10);
-        botonRegistrarElemento.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153), 2), javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20)));
-        botonRegistrarElemento.setContentAreaFilled(false);
-        botonRegistrarElemento.setOpaque(true);
-        botonRegistrarElemento.addActionListener(this::botonRegistrarElementoActionPerformed);
-        panelBotonesMenu.add(botonRegistrarElemento);
-
-        botonBuscarPersona.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        botonBuscarPersona.setText("Buscar persona");
-        botonBuscarPersona.setIconTextGap(10);
-        botonBuscarPersona.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153), 2), javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20)));
-        botonBuscarPersona.setContentAreaFilled(false);
-        botonBuscarPersona.setOpaque(true);
-        botonBuscarPersona.addActionListener(this::botonBuscarPersonaActionPerformed);
-        panelBotonesMenu.add(botonBuscarPersona);
-
-        botonReportes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        botonReportes.setText("Reportes");
-        botonReportes.setIconTextGap(10);
-        botonReportes.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153), 2), javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20)));
-        botonReportes.setContentAreaFilled(false);
-        botonReportes.setOpaque(true);
-        botonReportes.addActionListener(this::botonReportesActionPerformed);
-        panelBotonesMenu.add(botonReportes);
 
         panelContenido.add(panelBotonesMenu, java.awt.BorderLayout.CENTER);
 
@@ -134,20 +105,12 @@ public class JFrame_Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRegistrarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarPersonaActionPerformed
-        abrirVentana(new RegistrarPersona(this, listaPersonas));
+        JFrame_RegistroEmpleado ventana = new JFrame_RegistroEmpleado(this);
+        ventana.setVisible(true);
+        ventana.setLocationRelativeTo(null);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_botonRegistrarPersonaActionPerformed
-
-    private void botonRegistrarElementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarElementoActionPerformed
-        abrirVentana(new RegistrarElemento(this, listaElementos));
-    }//GEN-LAST:event_botonRegistrarElementoActionPerformed
-
-    private void botonBuscarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarPersonaActionPerformed
-        abrirVentana(new BuscarPersona(this, listaPersonas));
-    }//GEN-LAST:event_botonBuscarPersonaActionPerformed
-
-    private void botonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReportesActionPerformed
-        abrirVentana(new Reportes(this, listaElementos));
-    }//GEN-LAST:event_botonReportesActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         int respuesta = JOptionPane.showConfirmDialog(this, "¿Seguro que quieres salir?", "Salir",
@@ -160,33 +123,10 @@ public class JFrame_Menu extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new JFrame_Menu().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonBuscarPersona;
-    private javax.swing.JButton botonRegistrarElemento;
     private javax.swing.JButton botonRegistrarPersona;
-    private javax.swing.JButton botonReportes;
     private javax.swing.JButton botonSalir;
     private javax.swing.JPanel panelBotonesMenu;
     private javax.swing.JPanel panelContenido;
