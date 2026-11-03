@@ -16,14 +16,18 @@ public class empleado {
     private int telefono;
     private String correo;
     private int edad;
+    private String cargo;
+    private float saldo;
 
-    public empleado(String cedula, String nombres, int edad, String apellidos, int telefono, String correo) {
+    public empleado(String cedula, String nombres, String apellidos, int telefono, String correo, int edad, String cargo, float saldo) {
         this.cedula = cedula;
         this.nombres = nombres;
-        this.edad = edad;
         this.apellidos = apellidos;
         this.telefono = telefono;
         this.correo = correo;
+        this.edad = edad;
+        this.cargo = cargo;
+        this.saldo = saldo;
     }
 
     public String getCedula() {
@@ -32,10 +36,6 @@ public class empleado {
 
     public String getNombres() {
         return nombres;
-    }
-
-    public int getEdad() {
-        return edad;
     }
 
     public String getApellidos() {
@@ -49,4 +49,17 @@ public class empleado {
     public String getCorreo() {
         return correo;
     }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public float getSaldo() {
+        return saldo;
+    }
+   
 }

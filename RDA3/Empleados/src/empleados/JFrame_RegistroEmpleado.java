@@ -5,11 +5,19 @@
 package empleados;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author mnobo
+ * @author grupo 1
  */
 public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
     
@@ -20,6 +28,11 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
     private static final int TAM_TELEFONO = 10;
     private static final int TAM_CORREO = 30;
     private static final String ARCHIVO = "empleados.dat";
+    private static final int TAM_REGISTRO =
+        (TAM_ID + TAM_NOMBRES + TAM_APELLIDOS + TAM_TELEFONO + TAM_CORREO) * 2 + 4;   // 184
+    private int posicionEdicion = -1;                       // -1 = registro nuevo
+    private ArrayList<String> listaCedulas = new ArrayList<>();   // solo para las sugerencias
+    
     private javax.swing.JFrame menu;
     
     /**
@@ -27,8 +40,11 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
      */
     public JFrame_RegistroEmpleado(javax.swing.JFrame menu) {
         initComponents();
-        cargarEdades();
         this.menu = menu;
+        cargarEdades();
+        CargarCedulas();
+        //configurarAutocompletado();
+        mostrarTodos();
     }
     
     /**
@@ -51,7 +67,9 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
         etiquetaCorreo = new javax.swing.JLabel();
         etiquetaCorreo1 = new javax.swing.JLabel();
         panelCampos = new javax.swing.JPanel();
-        campoCedula = new javax.swing.JTextField();
+        panelCampoCedula = new javax.swing.JPanel();
+        BottonBuscar = new javax.swing.JButton();
+        ComboCedulaClientes = new javax.swing.JComboBox<>();
         campoNombres = new javax.swing.JTextField();
         campoApellidos = new javax.swing.JTextField();
         campoTelefono = new javax.swing.JTextField();
@@ -105,8 +123,17 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
 
         panelCampos.setLayout(new java.awt.GridLayout(6, 1, 0, 10));
 
-        campoCedula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        panelCampos.add(campoCedula);
+        panelCampoCedula.setLayout(new java.awt.BorderLayout());
+
+        BottonBuscar.setBackground(new java.awt.Color(102, 204, 255));
+        BottonBuscar.setText("Buscar");
+        BottonBuscar.addActionListener(this::BottonBuscarActionPerformed);
+        panelCampoCedula.add(BottonBuscar, java.awt.BorderLayout.LINE_END);
+
+        ComboCedulaClientes.setEditable(true);
+        panelCampoCedula.add(ComboCedulaClientes, java.awt.BorderLayout.CENTER);
+
+        panelCampos.add(panelCampoCedula);
 
         campoNombres.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         panelCampos.add(campoNombres);
@@ -190,25 +217,25 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 408, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 4, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(panelFranjaSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(panelContenido, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(panelFranjaInferior, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 4, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 317, Short.MAX_VALUE)
+            .addGap(0, 456, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelFranjaSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelFranjaSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(panelContenido, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelContenido, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(panelFranjaInferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
@@ -218,7 +245,13 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tablaPersonasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaPersonasMouseClicked
-        
+       int fila = tablaPersonas.getSelectedRow();
+        if (fila == -1)
+        {
+            return;
+        }
+        setCedula(String.valueOf(tablaPersonas.getValueAt(fila, 0)));
+        buscarEmpleado(false);   // la tabla conserva todas sus filas
     }//GEN-LAST:event_tablaPersonasMouseClicked
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
@@ -226,12 +259,12 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
         {
         return;
         }
-        String cedula = campoCedula.getText().trim();
+        String cedula = String.valueOf(ComboCedulaClientes.getEditor().getItem()).trim();
         String nombres = campoNombres.getText().trim();
         String apellidos = campoApellidos.getText().trim();
         String telefono = campoTelefono.getText().trim();
         String correo = campoCorreo.getText().trim();
-        int edad = Integer.parseInt(String.valueOf(comboEdad.getSelectedItem()));
+        int edad = Integer.parseInt((String) comboEdad.getSelectedItem());
 
         try (RandomAccessFile f = new RandomAccessFile(ARCHIVO, "rw")) 
         {
@@ -266,6 +299,58 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_comboEdadActionPerformed
+
+    private void BottonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BottonBuscarActionPerformed
+        // TODO add your handling code here:
+        if (getCedula().isEmpty())
+        {
+            aviso("Escriba o elija la cédula que desea buscar.");
+            return;
+        }
+        if (!buscarEmpleado(true))
+        {
+            aviso("No existe un empleado con esa cédula.");
+        }
+    
+    }//GEN-LAST:event_BottonBuscarActionPerformed
+    
+    // Llena los campos con el empleado de la cédula escrita. Devuelve false si no existe.
+    // soloEste = true: la tabla muestra únicamente ese registro
+    private boolean buscarEmpleado(boolean soloEste) 
+    {
+        int posicion = buscarPosicion(getCedula());
+        if (posicion == -1) {
+            return false;
+        }
+
+        Object[] fila;
+        try (RandomAccessFile f = new RandomAccessFile(ARCHIVO, "r")) {
+            f.seek((long) posicion * TAM_REGISTRO);   // salta al registro encontrado
+            fila = leerFila(f);                       // lee los seis campos en orden
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "No se pudo leer el archivo: " + e.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        setCedula(String.valueOf(fila[0]));
+        campoNombres.setText(String.valueOf(fila[1]));
+        campoApellidos.setText(String.valueOf(fila[2]));
+        campoTelefono.setText(String.valueOf(fila[3]));
+        campoCorreo.setText(String.valueOf(fila[4]));
+        comboEdad.setSelectedItem(String.valueOf(fila[5]));
+
+        if (soloEste) {
+            DefaultTableModel modelo = (DefaultTableModel) tablaPersonas.getModel();
+            modelo.setRowCount(0);
+            modelo.addRow(fila);                      // la tabla muestra solo ese empleado
+        }
+
+        posicionEdicion = posicion;                   // desde aquí, Guardar actualiza
+        ComboCedulaClientes.setEnabled(false);                // la cédula es la clave: no se cambia
+        botonGuardar.setText("Actualizar");
+        return true;
+    }
     
     private String ajustar(String texto, int tamanio)
     {
@@ -306,13 +391,16 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
     
     private void limpiarCampos() 
     {
-        campoCedula.setText("");
+        setCedula("");
         campoNombres.setText("");
         campoApellidos.setText("");
         campoTelefono.setText("");
         campoCorreo.setText("");
         comboEdad.setSelectedIndex(0);
-        campoCedula.requestFocus();
+        posicionEdicion = -1;                  // vuelve a modo registro nuevo
+        ComboCedulaClientes.setEnabled(true);  // se desbloquea la cédula
+        botonGuardar.setText("Guardar");
+        mostrarTodos();                        // la tabla vuelve a mostrar a todos
     }
     
     private void aviso(String mensaje) 
@@ -322,7 +410,7 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
     
     private boolean validarCampos() 
     {
-        String cedula = campoCedula.getText().trim();
+        String cedula = String.valueOf(ComboCedulaClientes.getEditor().getItem()).trim();
         String nombres = campoNombres.getText().trim();
         String apellidos = campoApellidos.getText().trim();
         String telefono = campoTelefono.getText().trim();
@@ -335,27 +423,22 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
         }
         if (!cedula.matches("\\d{10}")) {
             aviso("La cédula debe tener 10 dígitos.");
-            campoCedula.requestFocus();
             return false;
         }
         if (nombres.length() > TAM_NOMBRES) {
             aviso("Los nombres admiten máximo " + TAM_NOMBRES + " caracteres.");
-            campoNombres.requestFocus();
             return false;
         }
         if (apellidos.length() > TAM_APELLIDOS) {
             aviso("Los apellidos admiten máximo " + TAM_APELLIDOS + " caracteres.");
-            campoApellidos.requestFocus();
             return false;
         }
         if (!telefono.matches("\\d{" + TAM_TELEFONO + "}")) {
             aviso("El teléfono debe tener " + TAM_TELEFONO + " dígitos.");
-            campoTelefono.requestFocus();
             return false;
         }
         if (!correo.contains("@") || !correo.contains(".") || correo.length() > TAM_CORREO) {
             aviso("Ingrese un correo válido de máximo " + TAM_CORREO + " caracteres.");
-            campoCorreo.requestFocus();
             return false;
         }
         if (comboEdad.getSelectedIndex() <= 0) {
@@ -364,17 +447,125 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
         }
         return true;
     }
+    
+    private void CargarCedulas()
+    {
+        listaCedulas.clear();
+        ComboCedulaClientes.removeAllItems();
+
+        if (!new File(ARCHIVO).exists())
+        {
+            return;
+        }
+        try (RandomAccessFile f = new RandomAccessFile(ARCHIVO, "r"))
+        {
+            long total = f.length() / TAM_REGISTRO;
+            for (int i = 0; i < total; i++)
+            {
+                f.seek((long) i * TAM_REGISTRO);          // inicio del registro i
+                String cedula = leerTexto(f, TAM_ID);     // el primer campo es la cédula
+                listaCedulas.add(cedula);
+                ComboCedulaClientes.addItem(cedula);
+            }
+        }
+        catch (IOException e)
+        {
+            JOptionPane.showMessageDialog(this, "No se pudo leer el archivo: " + e.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        setCedula("");
+        
+    }
+    
+    private String leerTexto(RandomAccessFile f, int tamanio) throws IOException
+    {
+        StringBuilder cadena = new StringBuilder();
+        for (int i = 0; i < tamanio; i++) 
+        {
+            cadena.append(f.readChar());
+        }
+        return cadena.toString().trim();   // quita los espacios de relleno
+    }
+    
+    private Object[] leerFila(RandomAccessFile f) throws IOException 
+    {
+        String cedula = leerTexto(f, TAM_ID);
+        String nombres = leerTexto(f, TAM_NOMBRES);
+        String apellidos = leerTexto(f, TAM_APELLIDOS);
+        String telefono = leerTexto(f, TAM_TELEFONO);
+        String correo = leerTexto(f, TAM_CORREO);
+        int edad = f.readInt();
+        return new Object[] {cedula, nombres, apellidos, telefono, correo, edad};
+    }
+    
+    private void mostrarTodos() 
+    {
+        DefaultTableModel modelo = (DefaultTableModel) tablaPersonas.getModel();
+        modelo.setRowCount(0);                       // vacía la tabla antes de llenarla
+
+        if (!new File(ARCHIVO).exists()) 
+        {
+            return;                                  // todavía no hay registros
+        }
+        try (RandomAccessFile f = new RandomAccessFile(ARCHIVO, "r")) 
+        {
+            long total = f.length() / TAM_REGISTRO;
+            for (long i = 0; i < total; i++) 
+            {
+                modelo.addRow(leerFila(f));          // el puntero avanza solo al siguiente registro
+            }
+        } 
+            catch (IOException e) 
+        {
+            JOptionPane.showMessageDialog(this, "No se pudo leer el archivo: " + e.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    // Devuelve el número de registro de esa cédula, o -1 si no existe
+    private int buscarPosicion(String cedula) 
+    {
+        if (!new File(ARCHIVO).exists()) {
+            return -1;
+        }
+        try (RandomAccessFile f = new RandomAccessFile(ARCHIVO, "r")) {
+            long total = f.length() / TAM_REGISTRO;
+            for (int i = 0; i < total; i++) {
+                f.seek((long) i * TAM_REGISTRO);          // inicio del registro i
+                if (leerTexto(f, TAM_ID).equals(cedula)) { // compara solo el primer campo
+                    return i;
+                }
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "No se pudo leer el archivo: " + e.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return -1;
+    }
+    
+    private String getCedula() 
+    {
+        return String.valueOf(ComboCedulaClientes.getEditor().getItem()).trim();
+    }
+
+    private void setCedula(String texto) 
+    {
+        ComboCedulaClientes.getEditor().setItem(texto);
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BottonBuscar;
+    private javax.swing.JComboBox<String> ComboCedulaClientes;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JButton botonLimpiar;
     private javax.swing.JButton botonRegresar;
     private javax.swing.JTextField campoApellidos;
-    private javax.swing.JTextField campoCedula;
     private javax.swing.JTextField campoCorreo;
     private javax.swing.JTextField campoNombres;
     private javax.swing.JTextField campoTelefono;
@@ -386,6 +577,7 @@ public class JFrame_RegistroEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaNombres;
     private javax.swing.JLabel etiquetaTelefono;
     private javax.swing.JPanel panelBotones;
+    private javax.swing.JPanel panelCampoCedula;
     private javax.swing.JPanel panelCampos;
     private javax.swing.JPanel panelContenido;
     private javax.swing.JPanel panelDatos;

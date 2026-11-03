@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author mnobo
+ * @author grupo 1
  */
 public class JFrame_Menu extends javax.swing.JFrame {
     
@@ -45,7 +45,7 @@ public class JFrame_Menu extends javax.swing.JFrame {
         panelContenido.setLayout(new java.awt.BorderLayout());
 
         panelBotonesMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(25, 70, 10, 70));
-        panelBotonesMenu.setLayout(new java.awt.GridLayout(0, 1, 0, 12));
+        panelBotonesMenu.setLayout(new java.awt.GridLayout(4, 1, 0, 12));
 
         botonRegistrarPersona.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         botonRegistrarPersona.setText("Registrar Empleado");
