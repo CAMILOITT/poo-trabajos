@@ -4,6 +4,9 @@
  */
 package archivorandomico;
 
+import java.io.File;
+import java.io.RandomAccessFile;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import java.io.IOException;
 
@@ -15,6 +18,11 @@ public class JFrameRegistro extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrameRegistro.class.getName());
     private ArchivoRandomico archivoRandomico = new ArchivoRandomico();
+    private static final int TAM_CLAVE = 5;
+    private static final int TAM_NOMBRE = 20;
+    private static final String ARCHIVO = "ArchivoEjercicio.dat";
+    private static final int TAM_REGISTRO = (TAM_CLAVE + TAM_NOMBRE) * 2 + 4;   // 54
+    private int posicionEdicion = -1; 
 
     /**
      * Creates new form RegistrarCliente
@@ -38,13 +46,18 @@ public class JFrameRegistro extends javax.swing.JFrame {
         etiquetaApellidoCliente = new javax.swing.JLabel();
         etiquetaCedulaCliente = new javax.swing.JLabel();
         panelEntrada = new javax.swing.JPanel();
-        campoClave = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        BotonBuscar = new javax.swing.JButton();
+        ComboClave = new javax.swing.JComboBox<>();
         campoNombre = new javax.swing.JTextField();
         campoEdad = new javax.swing.JComboBox<>();
         PanelBotones = new javax.swing.JPanel();
         botonRegistrar = new javax.swing.JButton();
         botonLimpiar = new javax.swing.JButton();
         BotonVolver = new javax.swing.JButton();
+        PanelTabla = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registrar persona");
@@ -76,8 +89,18 @@ public class JFrameRegistro extends javax.swing.JFrame {
 
         panelEntrada.setLayout(new java.awt.GridLayout(3, 1, 0, 15));
 
-        campoClave.addActionListener(this::campoClaveActionPerformed);
-        panelEntrada.add(campoClave);
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        BotonBuscar.setBackground(new java.awt.Color(51, 204, 255));
+        BotonBuscar.setText("Buscar");
+        BotonBuscar.addActionListener(this::BotonBuscarActionPerformed);
+        jPanel1.add(BotonBuscar, java.awt.BorderLayout.LINE_END);
+
+        ComboClave.setEditable(true);
+        ComboClave.addActionListener(this::ComboClaveActionPerformed);
+        jPanel1.add(ComboClave, java.awt.BorderLayout.CENTER);
+
+        panelEntrada.add(jPanel1);
 
         campoNombre.addActionListener(this::campoNombreActionPerformed);
         panelEntrada.add(campoNombre);
@@ -113,31 +136,73 @@ public class JFrameRegistro extends javax.swing.JFrame {
 
         getContentPane().add(PanelBotones, java.awt.BorderLayout.SOUTH);
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        PanelTabla.add(jScrollPane1);
+
+        getContentPane().add(PanelTabla, java.awt.BorderLayout.CENTER);
+
         setBounds(0, 0, 460, 350);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campoClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoClaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoClaveActionPerformed
-
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
-        // TODO add your handling code here:
-        String clave = campoClave.getText().trim();
+        String clave = getClave();
         String nombre = campoNombre.getText().trim();
 
-        if (!validarCampos(clave, nombre)) {
+        if (!validarCampos(clave, nombre))
+        {
             return;
         }
 
         int edad = Integer.parseInt((String) campoEdad.getSelectedItem());
 
-        try {
-            archivoRandomico.guardarRegistro(clave, nombre, edad);
-            JOptionPane.showMessageDialog(this, "Se registro correctamente", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
-            limpiarCampos();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error al guardar el archivo", "Error", JOptionPane.ERROR_MESSAGE);
+        if (posicionEdicion == -1 && buscarPosicion(clave) != -1)
+        {
+            aviso("Ya existe un registro con esa clave. Busquelo para editarlo.");
+            return;
         }
+
+        try (RandomAccessFile f = new RandomAccessFile(ARCHIVO, "rw"))
+        {
+            if (posicionEdicion == -1)
+            {
+                f.seek(f.length());                                // nuevo: al final
+            }
+            else
+            {
+                f.seek((long) posicionEdicion * TAM_REGISTRO);     // edicion: sobre ese registro
+            }
+            escribirTexto(f, clave, TAM_CLAVE);
+            escribirTexto(f, nombre, TAM_NOMBRE);
+            f.writeInt(edad);
+        }
+        catch (IOException e)
+        {
+            JOptionPane.showMessageDialog(this, "Error al guardar el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (posicionEdicion == -1)
+        {
+            JOptionPane.showMessageDialog(this, "Se registro correctamente", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Se actualizo correctamente", "Actualizacion exitosa", JOptionPane.INFORMATION_MESSAGE);
+        }
+        CargarClaves();
+        limpiarCampos();
     }//GEN-LAST:event_botonRegistrarActionPerformed
 
     private void botonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarActionPerformed
@@ -161,54 +226,284 @@ public class JFrameRegistro extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarEdades();
-    }//GEN-LAST:event_formWindowOpened
+        CargarClaves();
+        mostrarTodos();    }//GEN-LAST:event_formWindowOpened
 
-    private boolean validarCampos(String clave, String nombre) {
-        if (clave.isEmpty() || nombre.isEmpty()) {
+    private void ComboClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboClaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboClaveActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt)
+    {
+        int fila = jTable1.getSelectedRow();
+        if (fila == -1)
+        {
+            return;
+        }
+        setClave(String.valueOf(jTable1.getValueAt(fila, 0)));
+        buscarPersona(false);   // la tabla conserva todas sus filas
+    }
+    
+    private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
+        // TODO add your handling code here:
+        if (getClave().isEmpty())
+        {
+            aviso("Escriba o elija la clave que desea buscar.");
+            return;
+        }
+        if (!buscarPersona(true))
+        {
+            aviso("No existe un registro con esa clave.");
+        }
+    }//GEN-LAST:event_BotonBuscarActionPerformed
+
+    private boolean validarCampos(String clave, String nombre)
+    {
+        if (clave.isEmpty() || nombre.isEmpty())
+        {
             JOptionPane.showMessageDialog(this, "Complete todos los campos", "Campos vacios", JOptionPane.WARNING_MESSAGE);
             return false;
         }
-        if (clave.length() > 5) {
-            JOptionPane.showMessageDialog(this, "La clave debe tener maximo 5 caracteres", "Clave no valida", JOptionPane.ERROR_MESSAGE);
+        if (clave.length() > TAM_CLAVE)
+        {
+            JOptionPane.showMessageDialog(this, "La clave debe tener maximo " + TAM_CLAVE + " caracteres", "Clave no valida", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        if (nombre.length() > 20) {
-            JOptionPane.showMessageDialog(this, "El nombre debe tener maximo 20 caracteres", "Nombre no valido", JOptionPane.ERROR_MESSAGE);
+        if (nombre.length() > TAM_NOMBRE)
+        {
+            JOptionPane.showMessageDialog(this, "El nombre debe tener maximo " + TAM_NOMBRE + " caracteres", "Nombre no valido", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (campoEdad.getSelectedIndex() <= 0)
+        {
+            JOptionPane.showMessageDialog(this, "Seleccione una edad", "Edad no valida", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         return true;
     }
 
-    private void cargarEdades() {
+    private void cargarEdades()
+    {
         campoEdad.removeAllItems();
-        for (int i = 18; i < 51; i++) {
+        campoEdad.addItem("--Seleccione su edad--");
+        for (int i = 18; i < 51; i++)
+        {
             campoEdad.addItem(String.valueOf(i));
         }
     }
 
-    private void limpiarCampos() {
-        campoClave.setText("");
+    private void limpiarCampos()
+    {
+        setClave("");
         campoNombre.setText("");
         campoEdad.setSelectedIndex(0);
-        campoClave.requestFocus();
+        posicionEdicion = -1;                  // vuelve a modo registro nuevo
+        ComboClave.setEnabled(true);           // se desbloquea la clave
+        botonRegistrar.setText("Registrar");
+        mostrarTodos();                        // la tabla vuelve a mostrar a todos
+        ComboClave.requestFocus();
     }
+    
+    private void aviso(String mensaje)
+    {
+        JOptionPane.showMessageDialog(this, mensaje, "Aviso", JOptionPane.WARNING_MESSAGE);
+    }
+
+    private String getClave()
+    {
+        return String.valueOf(ComboClave.getEditor().getItem()).trim();
+    }
+
+    private void setClave(String texto)
+    {
+        ComboClave.getEditor().setItem(texto);
+    }
+
+    private String ajustar(String texto, int tamanio)
+    {
+        String cadenaConEspacios = "";
+
+        if (texto.length() < tamanio)
+        {
+            cadenaConEspacios += texto;
+            for (int i = texto.length(); i < tamanio; i++)
+            {
+                cadenaConEspacios += " ";
+            }
+        }
+        else if (texto.length() > tamanio)
+        {
+            cadenaConEspacios = texto.substring(0, tamanio);
+        }
+        else
+        {
+            cadenaConEspacios += texto;
+        }
+        return cadenaConEspacios;
+    }
+
+    private void escribirTexto(RandomAccessFile f, String texto, int tamanio) throws IOException
+    {
+        f.writeChars(ajustar(texto, tamanio));
+    }
+
+    private String leerTexto(RandomAccessFile f, int tamanio) throws IOException
+    {
+        StringBuilder cadena = new StringBuilder();
+        for (int i = 0; i < tamanio; i++)
+        {
+            cadena.append(f.readChar());
+        }
+        return cadena.toString().trim();   // quita los espacios de relleno
+    }
+
+    private Object[] leerFila(RandomAccessFile f) throws IOException
+    {
+        String clave = leerTexto(f, TAM_CLAVE);
+        String nombre = leerTexto(f, TAM_NOMBRE);
+        int edad = f.readInt();
+        return new Object[] {clave, nombre, edad};
+    }
+    
+    private void CargarClaves()
+    {
+        ComboClave.removeAllItems();
+
+        if (!new File(ARCHIVO).exists())
+        {
+            return;
+        }
+        try (RandomAccessFile f = new RandomAccessFile(ARCHIVO, "r"))
+        {
+            long total = f.length() / TAM_REGISTRO;
+            for (int i = 0; i < total; i++)
+            {
+                f.seek((long) i * TAM_REGISTRO);              // inicio del registro i
+                ComboClave.addItem(leerTexto(f, TAM_CLAVE));  // el primer campo es la clave
+            }
+        }
+        catch (IOException e)
+        {
+            JOptionPane.showMessageDialog(this, "No se pudo leer el archivo: " + e.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        setClave("");
+    }
+
+    private void mostrarTodos()
+    {
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setRowCount(0);                       // vacia la tabla antes de llenarla
+
+        if (!new File(ARCHIVO).exists())
+        {
+            return;                                  // todavia no hay registros
+        }
+        try (RandomAccessFile f = new RandomAccessFile(ARCHIVO, "r"))
+        {
+            long total = f.length() / TAM_REGISTRO;
+            for (long i = 0; i < total; i++)
+            {
+                modelo.addRow(leerFila(f));          // el puntero avanza solo al siguiente registro
+            }
+        }
+        catch (IOException e)
+        {
+            JOptionPane.showMessageDialog(this, "No se pudo leer el archivo: " + e.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    // Devuelve el numero de registro de esa clave, o -1 si no existe
+    private int buscarPosicion(String clave)
+    {
+        if (!new File(ARCHIVO).exists())
+        {
+            return -1;
+        }
+        try (RandomAccessFile f = new RandomAccessFile(ARCHIVO, "r"))
+        {
+            long total = f.length() / TAM_REGISTRO;
+            for (int i = 0; i < total; i++)
+            {
+                f.seek((long) i * TAM_REGISTRO);            // inicio del registro i
+                if (leerTexto(f, TAM_CLAVE).equals(clave))  // compara solo el primer campo
+                {
+                    return i;
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            JOptionPane.showMessageDialog(this, "No se pudo leer el archivo: " + e.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return -1;
+    }
+
+    // Llena los campos con la persona de la clave escrita. Devuelve false si no existe.
+    // soloEsta = true: la tabla muestra unicamente ese registro
+    private boolean buscarPersona(boolean soloEsta)
+    {
+        int posicion = buscarPosicion(getClave());
+        if (posicion == -1)
+        {
+            return false;
+        }
+
+        Object[] fila;
+        try (RandomAccessFile f = new RandomAccessFile(ARCHIVO, "r"))
+        {
+            f.seek((long) posicion * TAM_REGISTRO);   // salta al registro encontrado
+            fila = leerFila(f);                       // lee los tres campos en orden
+        }
+        catch (IOException e)
+        {
+            JOptionPane.showMessageDialog(this, "No se pudo leer el archivo: " + e.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+        setClave(String.valueOf(fila[0]));
+        campoNombre.setText(String.valueOf(fila[1]));
+        campoEdad.setSelectedItem(String.valueOf(fila[2]));
+
+        if (soloEsta)
+        {
+            DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+            modelo.setRowCount(0);
+            modelo.addRow(fila);                      // la tabla muestra solo ese registro
+        }
+
+        posicionEdicion = posicion;                   // desde aqui, Registrar actualiza
+        ComboClave.setEnabled(false);                 // la clave es la llave: no se cambia
+        botonRegistrar.setText("Actualizar");
+        return true;
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonBuscar;
     private javax.swing.JButton BotonVolver;
+    private javax.swing.JComboBox<String> ComboClave;
     private javax.swing.JPanel PanelBotones;
     private javax.swing.JPanel PanelCampos;
+    private javax.swing.JPanel PanelTabla;
     private javax.swing.JButton botonLimpiar;
     private javax.swing.JButton botonRegistrar;
-    private javax.swing.JTextField campoClave;
     private javax.swing.JComboBox<String> campoEdad;
     private javax.swing.JTextField campoNombre;
     private javax.swing.JLabel etiquetaApellidoCliente;
     private javax.swing.JLabel etiquetaCedulaCliente;
     private javax.swing.JLabel etiquetaNombreCliente;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JPanel panelEntrada;
     private javax.swing.JPanel panelEtiquetas;
     // End of variables declaration//GEN-END:variables
