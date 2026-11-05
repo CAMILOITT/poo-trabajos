@@ -42,12 +42,12 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
         cargarProductos();
     }
 
-    private void cargarCajeros() {
-        comboCajero.removeAllItems();
-        for (Cajero datoCajero : listaCajeros) {
-            comboCajero.addItem(datoCajero.getNombre() + " " + datoCajero.getApellido());
+        private void cargarCajeros() {
+            //comboCajero.removeAllItems();
+            for (Cajero datoCajero : listaCajeros) {
+                //comboCajero.addItem(datoCajero.getNombre() + " " + datoCajero.getApellido());
+            }
         }
-    }
 
     private void cargarProductos() {
         comboProducto.removeAllItems();
@@ -527,9 +527,9 @@ public class JFrame_registrarCompra extends javax.swing.JFrame {
             return;
         }
 
-        int posicionCajero = comboCajero.getSelectedIndex();
-        if (posicionCajero == -1) {
-            JOptionPane.showMessageDialog(this, "Seleccione un cajero.", "Aviso", JOptionPane.WARNING_MESSAGE);
+        int posicionCajero = 0;
+        if (posicionCajero >= listaCajeros.size()) {
+            JOptionPane.showMessageDialog(this, "No hay cajeros registrados.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
