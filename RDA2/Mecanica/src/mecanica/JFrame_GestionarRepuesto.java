@@ -242,19 +242,21 @@ public class JFrame_GestionarRepuesto extends javax.swing.JFrame {
                     return;
                 }
             }
-            listaRepuestos.add(new Repuesto(codigo, nombre, precio, cantidad));
+            Repuesto nuevo = new Repuesto(codigo, nombre, precio, cantidad);
+            listaRepuestos.add(nuevo);
+            ArchivoDatos.guardarRepuesto(nuevo);
             JOptionPane.showMessageDialog(this, "Repuesto registrado correctamente.");
         } else {
             Repuesto r = listaRepuestos.get(indice - 1);
             r.setNombre(nombre);
             r.setPrecio(precio);
             r.setCantidad(cantidad);
+            ArchivoDatos.actualizarRepuesto(r);
             JOptionPane.showMessageDialog(this, "Repuesto actualizado correctamente.");
         }
 
         cargarTabla();
         cargarCombo();
-        ArchivoDatos.guardarRepuestos(listaRepuestos);
     }//GEN-LAST:event_botonRegistrarActionPerformed
 
     private void botonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarActionPerformed
