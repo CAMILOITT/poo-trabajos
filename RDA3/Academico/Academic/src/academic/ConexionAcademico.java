@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
 
 public class ConexionAcademico {
 
-    // Ruta relativa: el archivo AcademicoDB.accdb debe estar en la carpeta raíz del proyecto
     private final String url = "jdbc:ucanaccess://AcademicoDB.accdb";
 
     public Connection abrirConexion() {

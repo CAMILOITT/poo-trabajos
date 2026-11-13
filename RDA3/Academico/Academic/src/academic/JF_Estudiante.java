@@ -4,22 +4,15 @@
  */
 package academic;
 
-import java.awt.Color;
-import java.awt.Component;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
  * Pantalla 2 - Estudiantes: filtra por rango de calificaciones y muestra el resultado en un JTable.
- * El diseño visual está en JF_Estudiante.form (editable con el diseñador de NetBeans).
  *
  * @author DET PC
  */
@@ -27,191 +20,11 @@ public class JF_Estudiante extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JF_Estudiante.class.getName());
 
-    private static final Color AZUL_OSCURO = new Color(0x1F3A5F);
-    private static final Color FILA_PAR = Color.WHITE;
-    private static final Color FILA_IMPAR = new Color(0xF0F4FA);
-    private static final Color TEXTO = new Color(0x1E2633);
-    private static final Color TEXTO_SUAVE = new Color(0x667085);
-    private static final Color ERROR = new Color(0xC0392B);
-    private static final Color OK = new Color(0x1E8449);
-
-    private final ConexionAcademico conexion = new ConexionAcademico();
-
     /**
      * Creates new form JF_Estudiante
      */
     public JF_Estudiante() {
         initComponents();
-        personalizarTabla();
-        cargarRangoNotas();
-        buscar();
-    }
-
-    // ---------- Detalles de la tabla (colores de encabezado y filas alternadas) ----------
-
-    private void personalizarTabla() {
-        tblEstudiantes.setAutoCreateRowSorter(true);
-        tblEstudiantes.getTableHeader().setReorderingAllowed(false);
-        tblEstudiantes.getTableHeader().setPreferredSize(new java.awt.Dimension(0, 36));
-        tblEstudiantes.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
-            @Override
-            public Component getTableCellRendererComponent(JTable t, Object valor, boolean sel,
-                    boolean foco, int fila, int columna) {
-                super.getTableCellRendererComponent(t, valor, sel, foco, fila, columna);
-                setBackground(AZUL_OSCURO);
-                setForeground(Color.WHITE);
-                setFont(t.getFont().deriveFont(java.awt.Font.BOLD));
-                setHorizontalAlignment(columna >= 5 ? SwingConstants.CENTER : SwingConstants.LEFT);
-                setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
-                return this;
-            }
-        });
-
-        DefaultTableCellRenderer izquierda = crearRenderer(SwingConstants.LEFT);
-        DefaultTableCellRenderer centro = crearRenderer(SwingConstants.CENTER);
-        for (int i = 0; i < tblEstudiantes.getColumnCount(); i++) {
-            tblEstudiantes.getColumnModel().getColumn(i).setCellRenderer(i >= 5 ? centro : izquierda);
-        }
-        int[] anchos = {90, 110, 130, 130, 220, 80, 110};
-        for (int i = 0; i < anchos.length && i < tblEstudiantes.getColumnCount(); i++) {
-            tblEstudiantes.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
-        }
-    }
-
-    private DefaultTableCellRenderer crearRenderer(int alineacion) {
-        return new DefaultTableCellRenderer() {
-            @Override
-            public Component getTableCellRendererComponent(JTable t, Object valor, boolean sel,
-                    boolean foco, int fila, int columna) {
-                super.getTableCellRendererComponent(t, valor, sel, false, fila, columna);
-                setHorizontalAlignment(alineacion);
-                setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
-                if (!sel) {
-                    setBackground(fila % 2 == 0 ? FILA_PAR : FILA_IMPAR);
-                    setForeground(TEXTO);
-                }
-                return this;
-            }
-        };
-    }
-
-    // ---------- Lógica (usa la clase de conexión directamente, como el proyecto Hotel) ----------
-
-    /** Llena los combos con las notas que existen en la base (nada escrito a mano). */
-    private void cargarRangoNotas() {
-        cmbInferior.removeAllItems();
-        cmbSuperior.removeAllItems();
-        Connection con = conexion.abrirConexion();
-        if (con == null) {
-            mostrarEstado("No se pudo conectar con la base de datos.", ERROR);
-            btnBuscar.setEnabled(false);
-            btnMostrarTodos.setEnabled(false);
-            return;
-        }
-        Statement st = null;
-        ResultSet rs = null;
-        try {
-            st = con.createStatement();
-            rs = st.executeQuery("SELECT MIN(Calificacion) AS minimo, MAX(Calificacion) AS maximo FROM lista");
-            if (rs.next()) {
-                int minimo = rs.getInt("minimo");
-                int maximo = rs.getInt("maximo");
-                for (int nota = minimo; nota <= maximo; nota++) {
-                    cmbInferior.addItem(String.valueOf(nota));
-                    cmbSuperior.addItem(String.valueOf(nota));
-                }
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error al leer las notas: " + e.getMessage());
-        } finally {
-            cerrar(rs, st, con);
-        }
-        seleccionarRangoCompleto();
-    }
-
-    private void seleccionarRangoCompleto() {
-        if (cmbInferior.getItemCount() > 0) {
-            cmbInferior.setSelectedIndex(0);
-            cmbSuperior.setSelectedIndex(cmbSuperior.getItemCount() - 1);
-        }
-    }
-
-    /** Consulta la tabla "lista" con las notas elegidas y llena el JTable. */
-    private void buscar() {
-        if (cmbInferior.getSelectedItem() == null || cmbSuperior.getSelectedItem() == null) {
-            return;
-        }
-        int inferior = Integer.parseInt((String) cmbInferior.getSelectedItem());
-        int superior = Integer.parseInt((String) cmbSuperior.getSelectedItem());
-        if (inferior > superior) {
-            mostrarEstado("La nota inferior (" + inferior + ") no puede ser mayor que la superior ("
-                    + superior + ").", ERROR);
-            return;
-        }
-
-        DefaultTableModel modelo = (DefaultTableModel) tblEstudiantes.getModel();
-        modelo.setRowCount(0);
-
-        Connection con = conexion.abrirConexion();
-        if (con == null) {
-            return;
-        }
-        Statement st = null;
-        ResultSet rs = null;
-        int total = 0;
-        try {
-            st = con.createStatement();
-            rs = st.executeQuery("SELECT idBanner, cedula, nombre, apellido, carrera, NRC, Calificacion "
-                    + "FROM lista WHERE Calificacion >= " + inferior + " AND Calificacion <= " + superior
-                    + " ORDER BY Calificacion DESC, apellido");
-            while (rs.next()) {
-                Estudiante e = new Estudiante(
-                        rs.getString("idBanner"),
-                        rs.getString("cedula"),
-                        rs.getString("nombre"),
-                        rs.getString("apellido"),
-                        rs.getString("carrera"),
-                        rs.getString("NRC"),
-                        rs.getInt("Calificacion"));
-                modelo.addRow(new Object[]{
-                    e.getIdBanner(), e.getCedula(), e.getNombre(), e.getApellido(),
-                    e.getCarrera(), e.getNRC(), e.getCalificacion()});
-                total++;
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(this, "Error al consultar los estudiantes: " + ex.getMessage());
-        } finally {
-            cerrar(rs, st, con);
-        }
-
-        if (total == 0) {
-            mostrarEstado("No hay estudiantes con nota entre " + inferior + " y " + superior + ".", TEXTO_SUAVE);
-        } else {
-            mostrarEstado(total + (total == 1 ? " estudiante" : " estudiantes")
-                    + " con nota entre " + inferior + " y " + superior + ".", OK);
-        }
-    }
-
-    /** Cierra el ResultSet, el Statement y la conexión. */
-    private void cerrar(ResultSet rs, Statement st, Connection con) {
-        try {
-            if (rs != null) {
-                rs.close();
-            }
-            if (st != null) {
-                st.close();
-            }
-            if (con != null) {
-                con.close();
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "No se pudo cerrar la conexión: " + e.getMessage());
-        }
-    }
-
-    private void mostrarEstado(String texto, Color color) {
-        lblEstado.setForeground(color);
-        lblEstado.setText(texto);
     }
 
     /**
@@ -244,12 +57,16 @@ public class JF_Estudiante extends javax.swing.JFrame {
         cmbSuperior = new javax.swing.JComboBox<>();
         btnBuscar = new javax.swing.JButton();
         btnMostrarTodos = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblEstudiantes = new javax.swing.JTable();
-        lblEstado = new javax.swing.JLabel();
+        scrResultados = new javax.swing.JScrollPane();
+        tblResultados = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Académico - Estudiantes"); // NOI18N
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         setPreferredSize(new java.awt.Dimension(1180, 700));
         setMinimumSize(new java.awt.Dimension(960, 600));
         getContentPane().setLayout(new java.awt.BorderLayout());
@@ -401,44 +218,30 @@ public class JF_Estudiante extends javax.swing.JFrame {
         pnlSuperior.add(pnlTextos, java.awt.BorderLayout.NORTH);
         pnlSuperior.add(pnlFiltros, java.awt.BorderLayout.CENTER);
 
-        tblEstudiantes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tblEstudiantes.setForeground(new java.awt.Color(30, 38, 51));
-        tblEstudiantes.setGridColor(new java.awt.Color(213, 219, 229));
-        tblEstudiantes.setSelectionBackground(new java.awt.Color(46, 111, 186));
-        tblEstudiantes.setRowHeight(30);
-        tblEstudiantes.setShowVerticalLines(false);
-        tblEstudiantes.setFillsViewportHeight(true);
-        tblEstudiantes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
+        tblResultados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblResultados.setForeground(new java.awt.Color(30, 38, 51));
+        tblResultados.setGridColor(new java.awt.Color(213, 219, 229));
+        tblResultados.setSelectionBackground(new java.awt.Color(46, 111, 186));
+        tblResultados.setRowHeight(30);
+        tblResultados.setShowVerticalLines(false);
+        tblResultados.setFillsViewportHeight(true);
+        tblResultados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblResultados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID Banner", "Cédula", "Nombre", "Apellido", "Carrera", "NRC", "Calificación"
+
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
+        ));
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-
-        jScrollPane1.setViewportView(tblEstudiantes);
-
-        lblEstado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblEstado.setForeground(new java.awt.Color(102, 112, 133));
-        lblEstado.setText(" "); // NOI18N
-        lblEstado.setBorder(javax.swing.BorderFactory.createEmptyBorder(14, 0, 0, 0));
+        scrResultados.setViewportView(tblResultados);
 
         pnlPagina.setBackground(new java.awt.Color(244, 246, 250));
-        pnlPagina.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 28, 20, 28));
+        pnlPagina.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 28, 24, 28));
         pnlPagina.setLayout(new java.awt.BorderLayout());
         pnlPagina.add(pnlSuperior, java.awt.BorderLayout.NORTH);
-        pnlPagina.add(jScrollPane1, java.awt.BorderLayout.CENTER);
-        pnlPagina.add(lblEstado, java.awt.BorderLayout.SOUTH);
+        pnlPagina.add(scrResultados, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnlPagina, java.awt.BorderLayout.CENTER);
 
@@ -446,13 +249,17 @@ public class JF_Estudiante extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {
+        cargarNotas();
+    }
+
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {
-        buscar();
+        mostrarEstudiantesPorRango();
     }
 
     private void btnMostrarTodosActionPerformed(java.awt.event.ActionEvent evt) {
         seleccionarRangoCompleto();
-        buscar();
+        mostrarEstudiantesPorRango();
     }
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {
@@ -466,6 +273,106 @@ public class JF_Estudiante extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {
         System.exit(0);
+    }
+
+    private void cargarNotas() {
+        ConexionAcademico conexionAcademico = new ConexionAcademico();
+        Connection conexion = conexionAcademico.abrirConexion();
+        if (conexion == null) {
+            return;
+        }
+        try {
+            Statement sentencia = conexion.createStatement();
+            ResultSet resultado = sentencia.executeQuery("SELECT MIN(Calificacion) AS minimo, MAX(Calificacion) AS maximo FROM lista");
+            cmbInferior.removeAllItems();
+            cmbSuperior.removeAllItems();
+            if (resultado.next()) {
+                int minimo = resultado.getInt("minimo");
+                int maximo = resultado.getInt("maximo");
+                for (int nota = minimo; nota <= maximo; nota++) {
+                    cmbInferior.addItem(String.valueOf(nota));
+                    cmbSuperior.addItem(String.valueOf(nota));
+                }
+            }
+            resultado.close();
+            sentencia.close();
+            conexion.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar las notas " + e.getMessage());
+        }
+        seleccionarRangoCompleto();
+        mostrarEstudiantesPorRango();
+    }
+
+    private void seleccionarRangoCompleto() {
+        if (cmbInferior.getItemCount() > 0) {
+            cmbInferior.setSelectedIndex(0);
+            cmbSuperior.setSelectedIndex(cmbSuperior.getItemCount() - 1);
+        }
+    }
+
+    private DefaultTableModel crearModeloTabla(String[] columnas) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        for (int i = 0; i < columnas.length; i++) {
+            modelo.addColumn(columnas[i]);
+        }
+        return modelo;
+    }
+
+    private void mostrarEstudiantesPorRango() {
+        if (cmbInferior.getSelectedItem() == null || cmbSuperior.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Seleccione la nota inferior y la nota superior");
+            return;
+        }
+        int notaInferior = Integer.parseInt(cmbInferior.getSelectedItem().toString());
+        int notaSuperior = Integer.parseInt(cmbSuperior.getSelectedItem().toString());
+        if (notaInferior > notaSuperior) {
+            JOptionPane.showMessageDialog(this, "La nota inferior no puede ser mayor que la nota superior");
+            return;
+        }
+        String[] columnas = {"ID Banner", "Cédula", "Nombre", "Apellido", "Carrera", "NRC", "Calificación"};
+        DefaultTableModel modelo = crearModeloTabla(columnas);
+        String consulta = "SELECT idBanner, cedula, nombre, apellido, carrera, NRC, Calificacion "
+                + "FROM lista WHERE Calificacion >= " + notaInferior + " AND Calificacion <= " + notaSuperior + " "
+                + "ORDER BY Calificacion DESC, apellido";
+        ConexionAcademico conexionAcademico = new ConexionAcademico();
+        Connection conexion = conexionAcademico.abrirConexion();
+        if (conexion == null) {
+            return;
+        }
+        try {
+            Statement sentencia = conexion.createStatement();
+            ResultSet resultado = sentencia.executeQuery(consulta);
+            while (resultado.next()) {
+                Estudiante estudiante = new Estudiante(
+                        resultado.getString("idBanner"),
+                        resultado.getString("cedula"),
+                        resultado.getString("nombre"),
+                        resultado.getString("apellido"),
+                        resultado.getString("carrera"),
+                        resultado.getString("NRC"),
+                        resultado.getInt("Calificacion"));
+                Object[] fila = {
+                    estudiante.getIdBanner(),
+                    estudiante.getCedula(),
+                    estudiante.getNombre(),
+                    estudiante.getApellido(),
+                    estudiante.getCarrera(),
+                    estudiante.getNRC(),
+                    estudiante.getCalificacion()
+                };
+                modelo.addRow(fila);
+            }
+            resultado.close();
+            sentencia.close();
+            conexion.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al buscar estudiantes " + e.getMessage());
+        }
+        tblResultados.setModel(modelo);
+        if (modelo.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this, "No hay estudiantes con notas entre " + notaInferior + " y " + notaSuperior);
+        }
     }
 
     /**
@@ -484,9 +391,7 @@ public class JF_Estudiante extends javax.swing.JFrame {
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cmbInferior;
     private javax.swing.JComboBox<String> cmbSuperior;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDetalle;
-    private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblInferior;
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblSubtitulo;
@@ -500,6 +405,7 @@ public class JF_Estudiante extends javax.swing.JFrame {
     private javax.swing.JPanel pnlPagina;
     private javax.swing.JPanel pnlSuperior;
     private javax.swing.JPanel pnlTextos;
-    private javax.swing.JTable tblEstudiantes;
+    private javax.swing.JScrollPane scrResultados;
+    private javax.swing.JTable tblResultados;
     // End of variables declaration//GEN-END:variables
 }

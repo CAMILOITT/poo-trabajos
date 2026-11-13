@@ -43,41 +43,34 @@ public class Jf_Menu extends javax.swing.JFrame {
         lblDescripcion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sistema Académico");
+        setTitle("Sistema Académico"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1180, 700));
         setMinimumSize(new java.awt.Dimension(960, 600));
+        getContentPane().setLayout(new java.awt.BorderLayout());
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("Sistema Académico"); // NOI18N
+
+        lblDetalle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblDetalle.setForeground(new java.awt.Color(201, 216, 238));
+        lblDetalle.setText("Consulta de calificaciones"); // NOI18N
 
         pnlEncabezado.setBackground(new java.awt.Color(31, 58, 95));
         pnlEncabezado.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 24, 16, 24));
         pnlEncabezado.setPreferredSize(new java.awt.Dimension(0, 72));
         pnlEncabezado.setLayout(new java.awt.BorderLayout());
-
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitulo.setText("Sistema Académico");
         pnlEncabezado.add(lblTitulo, java.awt.BorderLayout.WEST);
-
-        lblDetalle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblDetalle.setForeground(new java.awt.Color(201, 216, 238));
-        lblDetalle.setText("Consulta de calificaciones");
         pnlEncabezado.add(lblDetalle, java.awt.BorderLayout.EAST);
 
         getContentPane().add(pnlEncabezado, java.awt.BorderLayout.NORTH);
 
-        pnlMenu.setBackground(new java.awt.Color(38, 52, 75));
-        pnlMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 12, 18, 12));
-        pnlMenu.setPreferredSize(new java.awt.Dimension(230, 0));
-        pnlMenu.setLayout(new java.awt.BorderLayout());
-
-        pnlOpciones.setOpaque(false);
-        pnlOpciones.setLayout(new java.awt.GridLayout(0, 1));
-
         lblMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblMenu.setForeground(new java.awt.Color(143, 163, 192));
-        lblMenu.setText("MENÚ");
+        lblMenu.setText("MENÚ"); // NOI18N
         lblMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 6, 0));
-        pnlOpciones.add(lblMenu);
 
-        btnInicio.setText("Inicio");
+        btnInicio.setText("Inicio"); // NOI18N
         btnInicio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnInicio.setForeground(new java.awt.Color(255, 255, 255));
         btnInicio.setBackground(new java.awt.Color(46, 111, 186));
@@ -88,9 +81,8 @@ public class Jf_Menu extends javax.swing.JFrame {
         btnInicio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnInicio.setBorder(javax.swing.BorderFactory.createEmptyBorder(11, 14, 11, 14));
         btnInicio.addActionListener(this::btnInicioActionPerformed);
-        pnlOpciones.add(btnInicio);
 
-        btnEstudiantes.setText("Estudiantes");
+        btnEstudiantes.setText("Estudiantes"); // NOI18N
         btnEstudiantes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnEstudiantes.setForeground(new java.awt.Color(255, 255, 255));
         btnEstudiantes.setBackground(new java.awt.Color(38, 52, 75));
@@ -101,11 +93,14 @@ public class Jf_Menu extends javax.swing.JFrame {
         btnEstudiantes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnEstudiantes.setBorder(javax.swing.BorderFactory.createEmptyBorder(11, 14, 11, 14));
         btnEstudiantes.addActionListener(this::btnEstudiantesActionPerformed);
+
+        pnlOpciones.setOpaque(false);
+        pnlOpciones.setLayout(new java.awt.GridLayout(0, 1));
+        pnlOpciones.add(lblMenu);
+        pnlOpciones.add(btnInicio);
         pnlOpciones.add(btnEstudiantes);
 
-        pnlMenu.add(pnlOpciones, java.awt.BorderLayout.NORTH);
-
-        btnSalir.setText("Salir");
+        btnSalir.setText("Salir"); // NOI18N
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setBackground(new java.awt.Color(142, 59, 70));
@@ -116,24 +111,30 @@ public class Jf_Menu extends javax.swing.JFrame {
         btnSalir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnSalir.setBorder(javax.swing.BorderFactory.createEmptyBorder(11, 14, 11, 14));
         btnSalir.addActionListener(this::btnSalirActionPerformed);
+
+        pnlMenu.setBackground(new java.awt.Color(38, 52, 75));
+        pnlMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 12, 18, 12));
+        pnlMenu.setPreferredSize(new java.awt.Dimension(230, 0));
+        pnlMenu.setLayout(new java.awt.BorderLayout());
+        pnlMenu.add(pnlOpciones, java.awt.BorderLayout.NORTH);
         pnlMenu.add(btnSalir, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(pnlMenu, java.awt.BorderLayout.WEST);
 
-        pnlPagina.setBackground(new java.awt.Color(244, 246, 250));
-        pnlPagina.setBorder(javax.swing.BorderFactory.createEmptyBorder(28, 32, 28, 32));
-        pnlPagina.setLayout(new java.awt.BorderLayout());
-
         lblBienvenida.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblBienvenida.setForeground(new java.awt.Color(31, 58, 95));
-        lblBienvenida.setText("Bienvenido");
+        lblBienvenida.setText("Bienvenido"); // NOI18N
         lblBienvenida.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 8, 0));
-        pnlPagina.add(lblBienvenida, java.awt.BorderLayout.NORTH);
 
         lblDescripcion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblDescripcion.setForeground(new java.awt.Color(102, 112, 133));
-        lblDescripcion.setText("<html>Usa el menú de la izquierda y entra a <b>Estudiantes</b> para filtrar a los estudiantes por rango de calificaciones.</html>");
+        lblDescripcion.setText("<html>Usa el menú de la izquierda y entra a <b>Estudiantes</b> para filtrar a los estudiantes por rango de calificaciones.</html>"); // NOI18N
         lblDescripcion.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        pnlPagina.setBackground(new java.awt.Color(244, 246, 250));
+        pnlPagina.setBorder(javax.swing.BorderFactory.createEmptyBorder(28, 32, 28, 32));
+        pnlPagina.setLayout(new java.awt.BorderLayout());
+        pnlPagina.add(lblBienvenida, java.awt.BorderLayout.NORTH);
         pnlPagina.add(lblDescripcion, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnlPagina, java.awt.BorderLayout.CENTER);
