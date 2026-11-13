@@ -6,7 +6,7 @@ package ejerciciobiblioteca;
 
 /**
  *
- * @author mnobo
+ * @author grupo 1
  */
 public class EjercicioBiblioteca {
 
@@ -15,6 +15,9 @@ public class EjercicioBiblioteca {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        JFrame_Menu ventana = new JFrame_Menu();
+        ventana.setLocationRelativeTo(null); //la centra en la pantalla
+        ventana.setVisible(true);
     }
     
 }
