@@ -1,0 +1,85 @@
+package academic;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+
+/**
+ * Acceso a datos de la tabla "lista" de AcademicoDB.accdb.
+ */
+public class EstudianteDAO {
+
+    private final ConexionAcademico conexion = new ConexionAcademico();
+
+    /**
+     * Devuelve {notaMinima, notaMaxima} existentes en la tabla, o null si no hay datos.
+     * Sirve para llenar los JComboBox sin escribir números en el código.
+     */
+    public int[] obtenerRangoNotas() {
+        Connection con = conexion.abrirConexion();
+        if (con == null) {
+            return null;
+        }
+        int[] rango = null;
+        String sql = "SELECT MIN(Calificacion) AS minimo, MAX(Calificacion) AS maximo FROM lista";
+        try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
+            if (rs.next()) {
+                int min = rs.getInt("minimo");
+                int max = rs.getInt("maximo");
+                if (!rs.wasNull()) {
+                    rango = new int[]{min, max};
+                }
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al leer el rango de notas: " + e.getMessage());
+        } finally {
+            cerrar(con);
+        }
+        return rango;
+    }
+
+    /**
+     * Devuelve los estudiantes cuya Calificacion está entre notaMin y notaMax (inclusive).
+     */
+    public List<Estudiante> buscarPorRango(int notaMin, int notaMax) {
+        List<Estudiante> lista = new ArrayList<>();
+        Connection con = conexion.abrirConexion();
+        if (con == null) {
+            return lista;
+        }
+        String sql = "SELECT idBanner, cedula, nombre, apellido, carrera, NRC, Calificacion "
+                + "FROM lista WHERE Calificacion >= " + notaMin + " AND Calificacion <= " + notaMax
+                + " ORDER BY Calificacion DESC, apellido";
+        try (Statement st = con.createStatement(); ResultSet rs = st.executeQuery(sql)) {
+            while (rs.next()) {
+                lista.add(new Estudiante(
+                        rs.getString("idBanner"),
+                        rs.getString("cedula"),
+                        rs.getString("nombre"),
+                        rs.getString("apellido"),
+                        rs.getString("carrera"),
+                        rs.getString("NRC"),
+                        rs.getInt("Calificacion")));
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al consultar los estudiantes: " + e.getMessage());
+        } finally {
+            cerrar(con);
+        }
+        return lista;
+    }
+
+    private void cerrar(Connection con) {
+        try {
+            if (con != null) {
+                con.close();
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se pudo cerrar la conexión: " + e.getMessage());
+        }
+    }
+}
