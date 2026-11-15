@@ -4,6 +4,24 @@
  */
 package academic;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.renderer.category.StandardBarPainter;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 public class Jf_Menu extends javax.swing.JFrame {
 
@@ -42,11 +60,33 @@ public class Jf_Menu extends javax.swing.JFrame {
         lblDescripcion = new javax.swing.JLabel();
         Reportes = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
+        pnlEstadisticas = new javax.swing.JPanel();
+        pnlDatos = new javax.swing.JPanel();
+        pnlFiltros = new javax.swing.JPanel();
+        lblPeriodo = new javax.swing.JLabel();
+        cmbPeriodo = new javax.swing.JComboBox();
+        lblMateria = new javax.swing.JLabel();
+        cmbMateria = new javax.swing.JComboBox();
+        btnCalcular = new javax.swing.JButton();
+        pnlValores = new javax.swing.JPanel();
+        lblCantidad = new javax.swing.JLabel();
+        lblSuma = new javax.swing.JLabel();
+        lblPromedio = new javax.swing.JLabel();
+        lblMaximo = new javax.swing.JLabel();
+        lblMinimo = new javax.swing.JLabel();
+        pnlGraficos = new javax.swing.JPanel();
+        pnlBarras = new javax.swing.JPanel();
+        pnlDispersion = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema Académico");
         setMinimumSize(new java.awt.Dimension(960, 600));
         setPreferredSize(new java.awt.Dimension(1180, 700));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         pnlEncabezado.setBackground(new java.awt.Color(31, 58, 95));
         pnlEncabezado.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 24, 16, 24));
@@ -170,6 +210,97 @@ public class Jf_Menu extends javax.swing.JFrame {
         ReportesCabecera.add(Reportes);
 
         PanelReportes.add(ReportesCabecera, java.awt.BorderLayout.PAGE_START);
+        pnlEstadisticas.setBackground(new java.awt.Color(255, 255, 255));
+        pnlEstadisticas.setLayout(new java.awt.BorderLayout());
+
+        pnlDatos.setOpaque(false);
+        pnlDatos.setLayout(new java.awt.GridLayout(2, 1));
+
+        pnlFiltros.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 14, 4, 14));
+        pnlFiltros.setOpaque(false);
+        pnlFiltros.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        lblPeriodo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPeriodo.setForeground(new java.awt.Color(30, 38, 51));
+        lblPeriodo.setText("Periodo:");
+        pnlFiltros.add(lblPeriodo);
+
+        cmbPeriodo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbPeriodo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2024-1", "2024-2", "2025-1", "2025-2", "2026-1" }));
+        cmbPeriodo.setPreferredSize(new java.awt.Dimension(90, 32));
+        pnlFiltros.add(cmbPeriodo);
+
+        lblMateria.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblMateria.setForeground(new java.awt.Color(30, 38, 51));
+        lblMateria.setText("Materia:");
+        pnlFiltros.add(lblMateria);
+
+        cmbMateria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbMateria.setPreferredSize(new java.awt.Dimension(300, 32));
+        pnlFiltros.add(cmbMateria);
+
+        btnCalcular.setBackground(new java.awt.Color(46, 111, 186));
+        btnCalcular.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCalcular.setForeground(new java.awt.Color(255, 255, 255));
+        btnCalcular.setText("Calcular");
+        btnCalcular.setBorderPainted(false);
+        btnCalcular.setContentAreaFilled(false);
+        btnCalcular.setFocusPainted(false);
+        btnCalcular.setOpaque(true);
+        btnCalcular.setPreferredSize(new java.awt.Dimension(110, 34));
+        btnCalcular.addActionListener(this::btnCalcularActionPerformed);
+        pnlFiltros.add(btnCalcular);
+
+        pnlDatos.add(pnlFiltros);
+
+        pnlValores.setBorder(javax.swing.BorderFactory.createEmptyBorder(4, 20, 10, 14));
+        pnlValores.setOpaque(false);
+        pnlValores.setLayout(new java.awt.GridLayout(1, 5));
+
+        lblCantidad.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblCantidad.setForeground(new java.awt.Color(31, 58, 95));
+        lblCantidad.setText("Cantidad: -");
+        pnlValores.add(lblCantidad);
+
+        lblSuma.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSuma.setForeground(new java.awt.Color(31, 58, 95));
+        lblSuma.setText("Suma: -");
+        pnlValores.add(lblSuma);
+
+        lblPromedio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPromedio.setForeground(new java.awt.Color(31, 58, 95));
+        lblPromedio.setText("Promedio: -");
+        pnlValores.add(lblPromedio);
+
+        lblMaximo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblMaximo.setForeground(new java.awt.Color(31, 58, 95));
+        lblMaximo.setText("Máximo: -");
+        pnlValores.add(lblMaximo);
+
+        lblMinimo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblMinimo.setForeground(new java.awt.Color(31, 58, 95));
+        lblMinimo.setText("Mínimo: -");
+        pnlValores.add(lblMinimo);
+
+        pnlDatos.add(pnlValores);
+
+        pnlEstadisticas.add(pnlDatos, java.awt.BorderLayout.PAGE_START);
+
+        pnlGraficos.setOpaque(false);
+        pnlGraficos.setLayout(new java.awt.GridLayout(1, 2));
+
+        pnlBarras.setOpaque(false);
+        pnlBarras.setLayout(new java.awt.BorderLayout());
+        pnlGraficos.add(pnlBarras);
+
+        pnlDispersion.setOpaque(false);
+        pnlDispersion.setLayout(new java.awt.BorderLayout());
+        pnlGraficos.add(pnlDispersion);
+
+        pnlEstadisticas.add(pnlGraficos, java.awt.BorderLayout.CENTER);
+
+        jScrollPane1.setViewportView(pnlEstadisticas);
+
         PanelReportes.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         pnlPagina.add(PanelReportes, java.awt.BorderLayout.CENTER);
@@ -186,6 +317,16 @@ public class Jf_Menu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnDocentesActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cargarMaterias();
+        XYSeries puntos = consultarEdadesPromedios();
+        mostrarGraficoDispersion(puntos);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
+        calcularEstadisticas();
+    }//GEN-LAST:event_btnCalcularActionPerformed
+
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {
         // Ya estás en Inicio
     }
@@ -197,6 +338,195 @@ public class Jf_Menu extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {
         System.exit(0);
+    }
+
+    private void cargarMaterias() {
+        ConexionAcademico conexionAcademico = new ConexionAcademico();
+        Connection conexion = conexionAcademico.abrirConexion();
+        if (conexion == null) {
+            return;
+        }
+        try {
+            Statement sentencia = conexion.createStatement();
+            ResultSet resultado = sentencia.executeQuery("SELECT\n" +
+            "    nombre\n" +
+            "FROM\n" +
+            "    MATERIA\n" +
+            "ORDER BY\n" +
+            "    nombre;");
+            while (resultado.next()) {
+                String materia = resultado.getString(1);
+                cmbMateria.addItem(materia);
+            }
+            resultado.close();
+            sentencia.close();
+            conexion.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar las materias " + e.getMessage());
+        }
+    }
+
+    private void calcularEstadisticas() {
+        ConexionAcademico conexionAcademico = new ConexionAcademico();
+        Connection conexion = conexionAcademico.abrirConexion();
+        if (conexion == null) {
+            return;
+        }
+        String periodo = cmbPeriodo.getSelectedItem().toString();
+        String materia = cmbMateria.getSelectedItem().toString();
+        try {
+            Statement sentencia = conexion.createStatement();
+            ResultSet resultado = sentencia.executeQuery("SELECT\n" +
+            "    Count(m.nota_final),\n" +
+            "    Sum(m.nota_final),\n" +
+            "    Avg(m.nota_final),\n" +
+            "    Max(m.nota_final),\n" +
+            "    Min(m.nota_final)\n" +
+            "FROM\n" +
+            "    MATRICULA AS m,\n" +
+            "    MATERIA AS t\n" +
+            "WHERE\n" +
+            "    m.codigo_materia = t.codigo_materia\n" +
+            "    AND m.periodo = '" + periodo + "'\n" +
+            "    AND t.nombre = '" + materia + "';");
+            if (resultado.next()) {
+                int cantidad = resultado.getInt(1);
+                double suma = resultado.getDouble(2);
+                double promedio = resultado.getDouble(3);
+                double maximo = resultado.getDouble(4);
+                double minimo = resultado.getDouble(5);
+                mostrarValores(cantidad, suma, promedio, maximo, minimo);
+                mostrarGraficoBarras(suma, promedio, maximo, minimo);
+                if (cantidad == 0) {
+                    JOptionPane.showMessageDialog(this, "No hay notas registradas de esa materia en ese periodo");
+                }
+            }
+            resultado.close();
+            sentencia.close();
+            conexion.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al calcular las estadisticas " + e.getMessage());
+        }
+    }
+
+    private void mostrarValores(int cantidad, double suma, double promedio, double maximo, double minimo) {
+        lblCantidad.setText("Cantidad: " + cantidad);
+        lblSuma.setText("Suma: " + redondear(suma));
+        lblPromedio.setText("Promedio: " + redondear(promedio));
+        lblMaximo.setText("Máximo: " + redondear(maximo));
+        lblMinimo.setText("Mínimo: " + redondear(minimo));
+    }
+
+    private void mostrarGraficoBarras(double suma, double promedio, double maximo, double minimo) {
+        String periodo = cmbPeriodo.getSelectedItem().toString();
+        String materia = cmbMateria.getSelectedItem().toString();
+
+        DefaultCategoryDataset datos = new DefaultCategoryDataset();
+        datos.addValue(redondear(suma), "Nota final", "Suma");
+        datos.addValue(redondear(promedio), "Nota final", "Promedio");
+        datos.addValue(redondear(maximo), "Nota final", "Máximo");
+        datos.addValue(redondear(minimo), "Nota final", "Mínimo");
+
+        JFreeChart grafico = ChartFactory.createBarChart(
+                "Notas finales de " + materia + " en " + periodo,
+                "Función estadística",
+                "Nota final",
+                datos,
+                PlotOrientation.VERTICAL,
+                false,
+                true,
+                false);
+
+        CategoryPlot plano = grafico.getCategoryPlot();
+        plano.setBackgroundPaint(java.awt.Color.WHITE);
+        plano.setRangeGridlinePaint(java.awt.Color.LIGHT_GRAY);
+        plano.getRangeAxis().setUpperMargin(0.15);
+
+        BarRenderer barras = (BarRenderer) plano.getRenderer();
+        barras.setSeriesPaint(0, new java.awt.Color(46, 111, 186));
+        barras.setBarPainter(new StandardBarPainter());
+        barras.setDefaultItemLabelGenerator(new StandardCategoryItemLabelGenerator());
+        barras.setDefaultItemLabelsVisible(true);
+
+        ChartPanel panelGrafico = new ChartPanel(grafico);
+        panelGrafico.setPreferredSize(new java.awt.Dimension(380, 300));
+        pnlBarras.removeAll();
+        pnlBarras.add(panelGrafico, java.awt.BorderLayout.CENTER);
+        pnlBarras.revalidate();
+    }
+
+    private XYSeries consultarEdadesPromedios() {
+        XYSeries puntos = new XYSeries("Estudiantes");
+        ConexionAcademico conexionAcademico = new ConexionAcademico();
+        Connection conexion = conexionAcademico.abrirConexion();
+        if (conexion == null) {
+            return puntos;
+        }
+        try {
+            Statement sentencia = conexion.createStatement();
+            ResultSet resultado = sentencia.executeQuery("SELECT\n" +
+            "    e.fecha_nacimiento,\n" +
+            "    Avg(m.nota_final)\n" +
+            "FROM\n" +
+            "    ESTUDIANTE AS e,\n" +
+            "    MATRICULA AS m\n" +
+            "WHERE\n" +
+            "    e.codigo_estudiante = m.codigo_estudiante\n" +
+            "    AND m.estado <> 'En curso'\n" +
+            "GROUP BY\n" +
+            "    e.codigo_estudiante,\n" +
+            "    e.fecha_nacimiento;");
+            while (resultado.next()) {
+                Date fechaNacimiento = resultado.getDate(1);
+                double promedio = resultado.getDouble(2);
+                double edad = calcularEdad(fechaNacimiento);
+                puntos.add(edad, promedio);
+            }
+            resultado.close();
+            sentencia.close();
+            conexion.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al consultar las edades y promedios " + e.getMessage());
+        }
+        return puntos;
+    }
+
+    private double calcularEdad(Date fechaNacimiento) {
+        Date hoy = new Date();
+        double milisegundosPorAnio = 1000.0 * 60 * 60 * 24 * 365.25;
+        return (hoy.getTime() - fechaNacimiento.getTime()) / milisegundosPorAnio;
+    }
+
+    private void mostrarGraficoDispersion(XYSeries puntos) {
+        XYSeriesCollection datos = new XYSeriesCollection();
+        datos.addSeries(puntos);
+
+        JFreeChart grafico = ChartFactory.createScatterPlot(
+                "Edad y promedio de los estudiantes",
+                "Edad (años)",
+                "Promedio de notas",
+                datos,
+                PlotOrientation.VERTICAL,
+                false,
+                true,
+                false);
+
+        XYPlot plano = grafico.getXYPlot();
+        plano.setBackgroundPaint(java.awt.Color.WHITE);
+        plano.setDomainGridlinePaint(java.awt.Color.LIGHT_GRAY);
+        plano.setRangeGridlinePaint(java.awt.Color.LIGHT_GRAY);
+        plano.getRenderer().setSeriesPaint(0, new java.awt.Color(46, 111, 186));
+        plano.getRenderer().setSeriesShape(0, new java.awt.geom.Ellipse2D.Double(-2, -2, 4, 4));
+
+        ChartPanel panelGrafico = new ChartPanel(grafico);
+        panelGrafico.setPreferredSize(new java.awt.Dimension(380, 300));
+        pnlDispersion.removeAll();
+        pnlDispersion.add(panelGrafico, java.awt.BorderLayout.CENTER);
+        pnlDispersion.revalidate();
+    }
+
+    private double redondear(double valor) {
+        return Math.round(valor * 100) / 100.0;
     }
 
     /**
@@ -211,19 +541,36 @@ public class Jf_Menu extends javax.swing.JFrame {
     private javax.swing.JPanel PanelReportes;
     private javax.swing.JLabel Reportes;
     private javax.swing.JPanel ReportesCabecera;
+    private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnDocentes;
     private javax.swing.JButton btnEstudiantes;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JComboBox cmbMateria;
+    private javax.swing.JComboBox cmbPeriodo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBienvenida;
+    private javax.swing.JLabel lblCantidad;
     private javax.swing.JLabel lblDescripcion;
     private javax.swing.JLabel lblDetalle;
+    private javax.swing.JLabel lblMateria;
+    private javax.swing.JLabel lblMaximo;
     private javax.swing.JLabel lblMenu;
+    private javax.swing.JLabel lblMinimo;
+    private javax.swing.JLabel lblPeriodo;
+    private javax.swing.JLabel lblPromedio;
+    private javax.swing.JLabel lblSuma;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel pnlBarras;
+    private javax.swing.JPanel pnlDatos;
+    private javax.swing.JPanel pnlDispersion;
     private javax.swing.JPanel pnlEncabezado;
+    private javax.swing.JPanel pnlEstadisticas;
+    private javax.swing.JPanel pnlFiltros;
+    private javax.swing.JPanel pnlGraficos;
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlOpciones;
     private javax.swing.JPanel pnlPagina;
+    private javax.swing.JPanel pnlValores;
     // End of variables declaration//GEN-END:variables
 }
