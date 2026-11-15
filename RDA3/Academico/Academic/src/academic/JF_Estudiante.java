@@ -12,19 +12,17 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Pantalla 2 - Estudiantes: filtra por rango de calificaciones y muestra el resultado en un JTable.
  *
- * @author DET PC
+ * @author grupo 1
  */
 public class JF_Estudiante extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JF_Estudiante.class.getName());
 
-    /**
-     * Creates new form JF_Estudiante
-     */
+
     public JF_Estudiante() {
         initComponents();
+        cargarMaterias();
     }
 
     /**
@@ -44,6 +42,7 @@ public class JF_Estudiante extends javax.swing.JFrame {
         lblMenu = new javax.swing.JLabel();
         btnInicio = new javax.swing.JButton();
         btnEstudiantes = new javax.swing.JButton();
+        btnDocentes = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         pnlPagina = new javax.swing.JPanel();
         pnlSuperior = new javax.swing.JPanel();
@@ -52,48 +51,58 @@ public class JF_Estudiante extends javax.swing.JFrame {
         lblSubtitulo = new javax.swing.JLabel();
         pnlFiltros = new javax.swing.JPanel();
         lblInferior = new javax.swing.JLabel();
-        cmbInferior = new javax.swing.JComboBox<>();
+        cmbPeriodo = new javax.swing.JComboBox();
         lblSuperior = new javax.swing.JLabel();
-        cmbSuperior = new javax.swing.JComboBox<>();
+        cmbMaterias = new javax.swing.JComboBox();
         btnBuscar = new javax.swing.JButton();
         btnMostrarTodos = new javax.swing.JButton();
-        scrResultados = new javax.swing.JScrollPane();
-        tblResultados = new javax.swing.JTable();
+        TablaResultados = new javax.swing.JScrollPane();
+        jTableResul = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sistema Académico - Estudiantes"); // NOI18N
+        setTitle("Sistema Académico - Estudiantes");
+        setMinimumSize(new java.awt.Dimension(960, 600));
+        setPreferredSize(new java.awt.Dimension(1180, 700));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
-        setPreferredSize(new java.awt.Dimension(1180, 700));
-        setMinimumSize(new java.awt.Dimension(960, 600));
-        getContentPane().setLayout(new java.awt.BorderLayout());
-
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitulo.setText("Sistema Académico"); // NOI18N
-
-        lblDetalle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblDetalle.setForeground(new java.awt.Color(201, 216, 238));
-        lblDetalle.setText("Consulta de calificaciones"); // NOI18N
 
         pnlEncabezado.setBackground(new java.awt.Color(31, 58, 95));
         pnlEncabezado.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 24, 16, 24));
         pnlEncabezado.setPreferredSize(new java.awt.Dimension(0, 72));
         pnlEncabezado.setLayout(new java.awt.BorderLayout());
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("Sistema Académico");
         pnlEncabezado.add(lblTitulo, java.awt.BorderLayout.WEST);
+
+        lblDetalle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblDetalle.setForeground(new java.awt.Color(201, 216, 238));
+        lblDetalle.setText("Consulta de calificaciones");
         pnlEncabezado.add(lblDetalle, java.awt.BorderLayout.EAST);
 
         getContentPane().add(pnlEncabezado, java.awt.BorderLayout.NORTH);
 
+        pnlMenu.setBackground(new java.awt.Color(38, 52, 75));
+        pnlMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 12, 18, 12));
+        pnlMenu.setPreferredSize(new java.awt.Dimension(230, 0));
+        pnlMenu.setLayout(new java.awt.BorderLayout());
+
+        pnlOpciones.setOpaque(false);
+        pnlOpciones.setLayout(new java.awt.GridLayout(0, 1));
+
         lblMenu.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblMenu.setForeground(new java.awt.Color(143, 163, 192));
-        lblMenu.setText("MENÚ"); // NOI18N
+        lblMenu.setText("MENÚ");
         lblMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 6, 0));
+        pnlOpciones.add(lblMenu);
 
-        btnInicio.setText("Inicio"); // NOI18N
+        btnInicio.setText("Inicio");
+        btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/academic/imagenes/icono_inicio.png"))); // NOI18N
+        btnInicio.setIconTextGap(10);
         btnInicio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnInicio.setForeground(new java.awt.Color(255, 255, 255));
         btnInicio.setBackground(new java.awt.Color(38, 52, 75));
@@ -104,26 +113,43 @@ public class JF_Estudiante extends javax.swing.JFrame {
         btnInicio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnInicio.setBorder(javax.swing.BorderFactory.createEmptyBorder(11, 14, 11, 14));
         btnInicio.addActionListener(this::btnInicioActionPerformed);
+        pnlOpciones.add(btnInicio);
 
-        btnEstudiantes.setText("Estudiantes"); // NOI18N
+        btnEstudiantes.setBackground(new java.awt.Color(46, 111, 186));
         btnEstudiantes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnEstudiantes.setForeground(new java.awt.Color(255, 255, 255));
-        btnEstudiantes.setBackground(new java.awt.Color(46, 111, 186));
+        btnEstudiantes.setText("Estudiantes");
+        btnEstudiantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/academic/imagenes/icono_estudiantes.png"))); // NOI18N
+        btnEstudiantes.setIconTextGap(10);
+        btnEstudiantes.setBorder(javax.swing.BorderFactory.createEmptyBorder(11, 14, 11, 14));
         btnEstudiantes.setBorderPainted(false);
         btnEstudiantes.setContentAreaFilled(false);
         btnEstudiantes.setFocusPainted(false);
-        btnEstudiantes.setOpaque(true);
         btnEstudiantes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnEstudiantes.setBorder(javax.swing.BorderFactory.createEmptyBorder(11, 14, 11, 14));
+        btnEstudiantes.setOpaque(true);
         btnEstudiantes.addActionListener(this::btnEstudiantesActionPerformed);
-
-        pnlOpciones.setOpaque(false);
-        pnlOpciones.setLayout(new java.awt.GridLayout(0, 1));
-        pnlOpciones.add(lblMenu);
-        pnlOpciones.add(btnInicio);
         pnlOpciones.add(btnEstudiantes);
 
-        btnSalir.setText("Salir"); // NOI18N
+        btnDocentes.setBackground(new java.awt.Color(38, 52, 75));
+        btnDocentes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnDocentes.setForeground(new java.awt.Color(255, 255, 255));
+        btnDocentes.setText("Docentes");
+        btnDocentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/academic/imagenes/icono_docentes.png"))); // NOI18N
+        btnDocentes.setIconTextGap(10);
+        btnDocentes.setBorder(javax.swing.BorderFactory.createEmptyBorder(11, 14, 11, 14));
+        btnDocentes.setBorderPainted(false);
+        btnDocentes.setContentAreaFilled(false);
+        btnDocentes.setFocusPainted(false);
+        btnDocentes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnDocentes.setOpaque(true);
+        btnDocentes.addActionListener(this::btnDocentesActionPerformed);
+        pnlOpciones.add(btnDocentes);
+
+        pnlMenu.add(pnlOpciones, java.awt.BorderLayout.NORTH);
+
+        btnSalir.setText("Salir");
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/academic/imagenes/icono_salir.png"))); // NOI18N
+        btnSalir.setIconTextGap(10);
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setBackground(new java.awt.Color(142, 59, 70));
@@ -134,114 +160,106 @@ public class JF_Estudiante extends javax.swing.JFrame {
         btnSalir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnSalir.setBorder(javax.swing.BorderFactory.createEmptyBorder(11, 14, 11, 14));
         btnSalir.addActionListener(this::btnSalirActionPerformed);
-
-        pnlMenu.setBackground(new java.awt.Color(38, 52, 75));
-        pnlMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 12, 18, 12));
-        pnlMenu.setPreferredSize(new java.awt.Dimension(230, 0));
-        pnlMenu.setLayout(new java.awt.BorderLayout());
-        pnlMenu.add(pnlOpciones, java.awt.BorderLayout.NORTH);
         pnlMenu.add(btnSalir, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(pnlMenu, java.awt.BorderLayout.WEST);
 
+        pnlPagina.setBackground(new java.awt.Color(244, 246, 250));
+        pnlPagina.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 28, 24, 28));
+        pnlPagina.setLayout(new java.awt.BorderLayout());
+
+        pnlSuperior.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 16, 0));
+        pnlSuperior.setOpaque(false);
+        pnlSuperior.setLayout(new java.awt.BorderLayout());
+
+        pnlTextos.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 14, 0));
+        pnlTextos.setOpaque(false);
+        pnlTextos.setLayout(new java.awt.BorderLayout());
+
         lblTituloPagina.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTituloPagina.setForeground(new java.awt.Color(31, 58, 95));
-        lblTituloPagina.setText("Filtrado de estudiantes por calificación"); // NOI18N
+        lblTituloPagina.setText("Filtrado de estudiantes por periodo y materia");
+        pnlTextos.add(lblTituloPagina, java.awt.BorderLayout.NORTH);
 
         lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblSubtitulo.setForeground(new java.awt.Color(102, 112, 133));
-        lblSubtitulo.setText("Elige la nota inferior y la nota superior para ver los estudiantes dentro de ese rango."); // NOI18N
-
-        pnlTextos.setOpaque(false);
-        pnlTextos.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 14, 0));
-        pnlTextos.setLayout(new java.awt.BorderLayout());
-        pnlTextos.add(lblTituloPagina, java.awt.BorderLayout.NORTH);
+        lblSubtitulo.setText("Elige el periodo y la materia para ver los estudiantes dentro de ese rango.");
         pnlTextos.add(lblSubtitulo, java.awt.BorderLayout.CENTER);
 
-        lblInferior.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblInferior.setForeground(new java.awt.Color(30, 38, 51));
-        lblInferior.setText("Nota inferior:"); // NOI18N
-
-        cmbInferior.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmbInferior.setBackground(new java.awt.Color(255, 255, 255));
-        cmbInferior.setPreferredSize(new java.awt.Dimension(90, 32));
-        cmbInferior.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  }));
-
-        lblSuperior.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblSuperior.setForeground(new java.awt.Color(30, 38, 51));
-        lblSuperior.setText("Nota superior:"); // NOI18N
-
-        cmbSuperior.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmbSuperior.setBackground(new java.awt.Color(255, 255, 255));
-        cmbSuperior.setPreferredSize(new java.awt.Dimension(90, 32));
-        cmbSuperior.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  }));
-
-        btnBuscar.setText("Buscar"); // NOI18N
-        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscar.setBackground(new java.awt.Color(46, 111, 186));
-        btnBuscar.setBorderPainted(false);
-        btnBuscar.setContentAreaFilled(false);
-        btnBuscar.setFocusPainted(false);
-        btnBuscar.setOpaque(true);
-        btnBuscar.setBorder(javax.swing.BorderFactory.createEmptyBorder(11, 14, 11, 14));
-        btnBuscar.setPreferredSize(new java.awt.Dimension(120, 34));
-        btnBuscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnBuscar.addActionListener(this::btnBuscarActionPerformed);
-
-        btnMostrarTodos.setText("Mostrar todos"); // NOI18N
-        btnMostrarTodos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnMostrarTodos.setForeground(new java.awt.Color(31, 58, 95));
-        btnMostrarTodos.setBackground(new java.awt.Color(232, 240, 251));
-        btnMostrarTodos.setBorderPainted(false);
-        btnMostrarTodos.setContentAreaFilled(false);
-        btnMostrarTodos.setFocusPainted(false);
-        btnMostrarTodos.setOpaque(true);
-        btnMostrarTodos.setBorder(javax.swing.BorderFactory.createEmptyBorder(11, 14, 11, 14));
-        btnMostrarTodos.setPreferredSize(new java.awt.Dimension(140, 34));
-        btnMostrarTodos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnMostrarTodos.addActionListener(this::btnMostrarTodosActionPerformed);
+        pnlSuperior.add(pnlTextos, java.awt.BorderLayout.NORTH);
 
         pnlFiltros.setBackground(new java.awt.Color(255, 255, 255));
         pnlFiltros.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 14, 10, 14));
         pnlFiltros.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        lblInferior.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblInferior.setForeground(new java.awt.Color(30, 38, 51));
+        lblInferior.setText("Periodo:");
         pnlFiltros.add(lblInferior);
-        pnlFiltros.add(cmbInferior);
+
+        cmbPeriodo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbPeriodo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2024-1", "2024-2", "2025-1", "2025-2", "2026-1" }));
+        cmbPeriodo.setPreferredSize(new java.awt.Dimension(90, 32));
+        pnlFiltros.add(cmbPeriodo);
+
+        lblSuperior.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSuperior.setForeground(new java.awt.Color(30, 38, 51));
+        lblSuperior.setText("Materias:");
         pnlFiltros.add(lblSuperior);
-        pnlFiltros.add(cmbSuperior);
+
+        cmbMaterias.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmbMaterias.setMinimumSize(new java.awt.Dimension(172, 26));
+        cmbMaterias.setPreferredSize(new java.awt.Dimension(300, 32));
+        pnlFiltros.add(cmbMaterias);
+
+        btnBuscar.setBackground(new java.awt.Color(46, 111, 186));
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setText("Buscar");
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/academic/imagenes/icono_buscar.png"))); // NOI18N
+        btnBuscar.setIconTextGap(10);
+        btnBuscar.setBorder(javax.swing.BorderFactory.createEmptyBorder(11, 14, 11, 14));
+        btnBuscar.setBorderPainted(false);
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setFocusPainted(false);
+        btnBuscar.setOpaque(true);
+        btnBuscar.setPreferredSize(new java.awt.Dimension(120, 34));
+        btnBuscar.addActionListener(this::btnBuscarActionPerformed);
         pnlFiltros.add(btnBuscar);
+
+        btnMostrarTodos.setBackground(new java.awt.Color(232, 240, 251));
+        btnMostrarTodos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnMostrarTodos.setForeground(new java.awt.Color(31, 58, 95));
+        btnMostrarTodos.setText("Mostrar todos");
+        btnMostrarTodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/academic/imagenes/icono_todos.png"))); // NOI18N
+        btnMostrarTodos.setIconTextGap(10);
+        btnMostrarTodos.setBorder(javax.swing.BorderFactory.createEmptyBorder(11, 14, 11, 14));
+        btnMostrarTodos.setBorderPainted(false);
+        btnMostrarTodos.setContentAreaFilled(false);
+        btnMostrarTodos.setFocusPainted(false);
+        btnMostrarTodos.setOpaque(true);
+        btnMostrarTodos.setPreferredSize(new java.awt.Dimension(175, 34));
+        btnMostrarTodos.addActionListener(this::btnMostrarTodosActionPerformed);
         pnlFiltros.add(btnMostrarTodos);
 
-        pnlSuperior.setOpaque(false);
-        pnlSuperior.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 16, 0));
-        pnlSuperior.setLayout(new java.awt.BorderLayout());
-        pnlSuperior.add(pnlTextos, java.awt.BorderLayout.NORTH);
         pnlSuperior.add(pnlFiltros, java.awt.BorderLayout.CENTER);
 
-        tblResultados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tblResultados.setForeground(new java.awt.Color(30, 38, 51));
-        tblResultados.setGridColor(new java.awt.Color(213, 219, 229));
-        tblResultados.setSelectionBackground(new java.awt.Color(46, 111, 186));
-        tblResultados.setRowHeight(30);
-        tblResultados.setShowVerticalLines(false);
-        tblResultados.setFillsViewportHeight(true);
-        tblResultados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblResultados.setModel(new javax.swing.table.DefaultTableModel(
+        jTableResul.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-
+                "Codigo", "Cedula", "Nombre", "Promedio Final", "Estado"
             }
         ));
+        TablaResultados.setViewportView(jTableResul);
 
-        scrResultados.setViewportView(tblResultados);
+        pnlSuperior.add(TablaResultados, java.awt.BorderLayout.PAGE_END);
 
-        pnlPagina.setBackground(new java.awt.Color(244, 246, 250));
-        pnlPagina.setBorder(javax.swing.BorderFactory.createEmptyBorder(24, 28, 24, 28));
-        pnlPagina.setLayout(new java.awt.BorderLayout());
         pnlPagina.add(pnlSuperior, java.awt.BorderLayout.NORTH);
-        pnlPagina.add(scrResultados, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnlPagina, java.awt.BorderLayout.CENTER);
 
@@ -249,17 +267,22 @@ public class JF_Estudiante extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnDocentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDocentesActionPerformed
+        // TODO add your handling code here:
+        new JF_Docentes().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnDocentesActionPerformed
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
-        cargarNotas();
     }
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {
-        mostrarEstudiantesPorRango();
+        cargarNotas();
     }
 
     private void btnMostrarTodosActionPerformed(java.awt.event.ActionEvent evt) {
         seleccionarRangoCompleto();
-        mostrarEstudiantesPorRango();
+        cargarNotasTodos();
     }
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,116 +304,168 @@ public class JF_Estudiante extends javax.swing.JFrame {
         if (conexion == null) {
             return;
         }
+        DefaultTableModel modelo = (DefaultTableModel) jTableResul.getModel();
+        modelo.setRowCount(0);
         try {
             Statement sentencia = conexion.createStatement();
-            ResultSet resultado = sentencia.executeQuery("SELECT MIN(Calificacion) AS minimo, MAX(Calificacion) AS maximo FROM lista");
-            cmbInferior.removeAllItems();
-            cmbSuperior.removeAllItems();
-            if (resultado.next()) {
-                int minimo = resultado.getInt("minimo");
-                int maximo = resultado.getInt("maximo");
-                for (int nota = minimo; nota <= maximo; nota++) {
-                    cmbInferior.addItem(String.valueOf(nota));
-                    cmbSuperior.addItem(String.valueOf(nota));
-                }
+
+            ResultSet resultado = sentencia.executeQuery("SELECT\n" +
+            "    e.codigo_estudiante,\n" +
+            "    e.cedula,\n" +
+            "    e.nombre,\n" +
+            "    e.apellido,\n" +
+            "    Avg(m.nota_final) AS Promedio,\n" +
+            "    m.estado\n" +
+            "FROM\n" +
+            "    MATRICULA AS m,\n" +
+            "    ESTUDIANTE AS e,\n" +
+            "    MATERIA AS t\n" +
+            "WHERE\n" +
+            "    e.codigo_estudiante = m.codigo_estudiante\n" +
+            "    AND m.periodo = '"+ cmbPeriodo.getSelectedItem().toString()+"'\n" +           
+            "    AND m.periodo = '"+ cmbPeriodo.getSelectedItem().toString()+"'\n" +
+            "GROUP BY\n" +
+            "    e.codigo_estudiante,\n" +
+            "    e.cedula,\n" +
+            "    e.nombre,\n" +
+            "    e.apellido,\n" +
+            "    m.estado;");
+            
+            while(resultado.next())
+            {
+                String codigo = resultado.getString(1);
+                String Cedula = resultado.getString(2);
+                String nombre = resultado.getString(3)+ " "+ resultado.getString(4);
+                String promedio = Float.toString(resultado.getFloat(5)); 
+                String estado = resultado.getString(6);
+
+                String[] fila = new String[6];
+                fila[0] = codigo;
+                fila[1] = Cedula;
+                fila[2] = nombre;
+                fila[3] = promedio;
+                fila[4] = estado;
+
+                modelo.addRow(fila);         
             }
+            
             resultado.close();
             sentencia.close();
             conexion.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error al cargar las notas " + e.getMessage());
         }
-        seleccionarRangoCompleto();
-        mostrarEstudiantesPorRango();
     }
-
-    private void seleccionarRangoCompleto() {
-        if (cmbInferior.getItemCount() > 0) {
-            cmbInferior.setSelectedIndex(0);
-            cmbSuperior.setSelectedIndex(cmbSuperior.getItemCount() - 1);
-        }
-    }
-
-    private DefaultTableModel crearModeloTabla(String[] columnas) {
-        DefaultTableModel modelo = new DefaultTableModel();
-        for (int i = 0; i < columnas.length; i++) {
-            modelo.addColumn(columnas[i]);
-        }
-        return modelo;
-    }
-
-    private void mostrarEstudiantesPorRango() {
-        if (cmbInferior.getSelectedItem() == null || cmbSuperior.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(this, "Seleccione la nota inferior y la nota superior");
-            return;
-        }
-        int notaInferior = Integer.parseInt(cmbInferior.getSelectedItem().toString());
-        int notaSuperior = Integer.parseInt(cmbSuperior.getSelectedItem().toString());
-        if (notaInferior > notaSuperior) {
-            JOptionPane.showMessageDialog(this, "La nota inferior no puede ser mayor que la nota superior");
-            return;
-        }
-        String[] columnas = {"ID Banner", "Cédula", "Nombre", "Apellido", "Carrera", "NRC", "Calificación"};
-        DefaultTableModel modelo = crearModeloTabla(columnas);
-        String consulta = "SELECT idBanner, cedula, nombre, apellido, carrera, NRC, Calificacion "
-                + "FROM lista WHERE Calificacion >= " + notaInferior + " AND Calificacion <= " + notaSuperior + " "
-                + "ORDER BY Calificacion DESC, apellido";
+    
+     private void cargarNotasTodos() {
         ConexionAcademico conexionAcademico = new ConexionAcademico();
         Connection conexion = conexionAcademico.abrirConexion();
         if (conexion == null) {
             return;
         }
+        DefaultTableModel modelo = (DefaultTableModel) jTableResul.getModel();
+        modelo.setRowCount(0);
         try {
             Statement sentencia = conexion.createStatement();
-            ResultSet resultado = sentencia.executeQuery(consulta);
-            while (resultado.next()) {
-                Estudiante estudiante = new Estudiante(
-                        resultado.getString("idBanner"),
-                        resultado.getString("cedula"),
-                        resultado.getString("nombre"),
-                        resultado.getString("apellido"),
-                        resultado.getString("carrera"),
-                        resultado.getString("NRC"),
-                        resultado.getInt("Calificacion"));
-                Object[] fila = {
-                    estudiante.getIdBanner(),
-                    estudiante.getCedula(),
-                    estudiante.getNombre(),
-                    estudiante.getApellido(),
-                    estudiante.getCarrera(),
-                    estudiante.getNRC(),
-                    estudiante.getCalificacion()
-                };
-                modelo.addRow(fila);
+
+            ResultSet resultado = sentencia.executeQuery("SELECT\n" +
+            "    e.codigo_estudiante,\n" +
+            "    e.cedula,\n" +
+            "    e.nombre,\n" +
+            "    e.apellido,\n" +
+            "    Avg(m.nota_final) AS Promedio,\n" +
+            "    m.estado\n" +
+            "FROM\n" +
+            "    MATRICULA AS m,\n" +
+            "    ESTUDIANTE AS e,\n" +
+            "    MATERIA AS t\n" +
+            "WHERE\n" +
+            "    m.periodo = '"+ cmbPeriodo.getSelectedItem().toString()+"'\n" +
+            "    AND e.codigo_estudiante = m.codigo_estudiante\n" +
+            "GROUP BY\n" +
+            "    e.codigo_estudiante,\n" +
+            "    e.cedula,\n" +
+            "    e.nombre,\n" +
+            "    e.apellido,\n" +
+            "    m.estado;");
+            
+            while(resultado.next())
+            {
+                String codigo = resultado.getString(1);
+                String Cedula = resultado.getString(2);
+                String nombre = resultado.getString(3)+ " "+ resultado.getString(4);
+                String promedio = Float.toString(resultado.getFloat(5)); 
+                String estado = resultado.getString(6);
+
+                String[] fila = new String[6];
+                fila[0] = codigo;
+                fila[1] = Cedula;
+                fila[2] = nombre;
+                fila[3] = promedio;
+                fila[4] = estado;
+
+                modelo.addRow(fila);         
             }
+            
             resultado.close();
             sentencia.close();
             conexion.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error al buscar estudiantes " + e.getMessage());
-        }
-        tblResultados.setModel(modelo);
-        if (modelo.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(this, "No hay estudiantes con notas entre " + notaInferior + " y " + notaSuperior);
+            JOptionPane.showMessageDialog(this, "Error al cargar las notas " + e.getMessage());
         }
     }
+
+    private void seleccionarRangoCompleto() {
+        if (cmbPeriodo.getItemCount() > 0) {
+            cmbPeriodo.setSelectedIndex(0);
+            cmbMaterias.setSelectedIndex(cmbMaterias.getItemCount() - 1);
+        }
+    }
+
+    private void cargarMaterias()
+    {
+        ConexionAcademico conexionAcademico = new ConexionAcademico();
+        Connection conexion = conexionAcademico.abrirConexion();
+        if (conexion == null) {
+            return;
+        }
+        try 
+        {
+            
+            Statement sentencia = conexion.createStatement();
+            ResultSet resultado = sentencia.executeQuery("SELECT\n" +
+            "    nombre\n" +
+            "FROM\n" +
+            "    MATERIA\n" +
+            "GROUP BY\n" +
+            "    nombre;");
+            while(resultado.next())
+            {
+                String materia = resultado.getString(1);
+                cmbMaterias.addItem(materia);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar las notas " + e.getMessage());
+        }
+    }
+
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        JF_Estudiante ventanaEstudiante = new JF_Estudiante();
-        ventanaEstudiante.setVisible(true);
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane TablaResultados;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnDocentes;
     private javax.swing.JButton btnEstudiantes;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnMostrarTodos;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox<String> cmbInferior;
-    private javax.swing.JComboBox<String> cmbSuperior;
+    private javax.swing.JComboBox cmbMaterias;
+    private javax.swing.JComboBox cmbPeriodo;
+    private javax.swing.JTable jTableResul;
     private javax.swing.JLabel lblDetalle;
     private javax.swing.JLabel lblInferior;
     private javax.swing.JLabel lblMenu;
@@ -405,7 +480,5 @@ public class JF_Estudiante extends javax.swing.JFrame {
     private javax.swing.JPanel pnlPagina;
     private javax.swing.JPanel pnlSuperior;
     private javax.swing.JPanel pnlTextos;
-    private javax.swing.JScrollPane scrResultados;
-    private javax.swing.JTable tblResultados;
     // End of variables declaration//GEN-END:variables
 }

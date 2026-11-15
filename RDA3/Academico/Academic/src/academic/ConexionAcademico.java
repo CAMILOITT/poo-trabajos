@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 public class ConexionAcademico {
 
-    private final String url = "jdbc:ucanaccess://AcademicoDB.accdb";
+    private final String url = "jdbc:ucanaccess://UniversidadBD.accdb";
 
     public Connection abrirConexion() {
         Connection conexion = null;

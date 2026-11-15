@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MIT y Google Cambridge</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root { --bg:#ffffff; --ink:#1d1d1f; --quiet:#5f6368; --line:#e3e3e3; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#161616; --ink:#f2f2f2; --quiet:#a8a8a8; --line:#333; } }
+  html, body { margin:0; height:100%; background:var(--bg); color:var(--ink); font-family:system-ui, -apple-system, "Segoe UI", sans-serif; }
+  .wrap { display:flex; flex-direction:column; height:100%; }
+  header { padding:14px 16px 10px; border-bottom:1px solid var(--line); }
+  h1 { font-size:17px; margin:0 0 4px; }
+  p { margin:0; font-size:13px; color:var(--quiet); line-height:1.45; }
+  #map { flex:1; min-height:360px; }
+  .leg { display:flex; gap:16px; flex-wrap:wrap; margin-top:8px; font-size:12.5px; }
+  .dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:middle; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>MIT está a unos 12 minutos a pie de Google Cambridge</h1>
+    <p>Desde el edificio principal del MIT (77 Massachusetts Ave) hasta Google (325 Main St, Kendall Square) hay unos 0,8 km en línea recta, cerca de 1 km caminando. El borde este del campus (Kendall/MIT) queda prácticamente enfrente de Google. Distancias aproximadas.</p>
+    <div class="leg">
+      <span><span class="dot" style="background:#a31f34"></span>MIT – Great Dome</span>
+      <span><span class="dot" style="background:#1a73e8"></span>Google Cambridge</span>
+      <span><span class="dot" style="background:#e37400"></span>Estación Kendall/MIT (línea roja)</span>
+    </div>
+  </header>
+  <div id="map"></div>
+</div>
+<script>
+  var mit = [42.3592, -71.0932], google = [42.3624, -71.0853], kendall = [42.3625, -71.0862];
+  var map = L.map('map', { scrollWheelZoom: true });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19, attribution: '&copy; colaboradores de OpenStreetMap'
+  }).addTo(map);
+  function punto(c, color, texto) {
+    return L.circleMarker(c, { radius: 9, color: '#fff', weight: 2, fillColor: color, fillOpacity: 1 })
+      .addTo(map).bindTooltip(texto, { permanent: true, direction: 'top', offset: [0, -8] });
+  }
+  punto(mit, '#a31f34', 'MIT (77 Massachusetts Ave)');
+  punto(google, '#1a73e8', 'Google (325 Main St)');
+  punto(kendall, '#e37400', 'Kendall/MIT');
+  L.polyline([mit, google], { color: '#1a73e8', weight: 3, dashArray: '6 6' }).addTo(map)
+    .bindTooltip('≈ 0,8 km en línea recta · ≈ 12 min a pie', { permanent: true, direction: 'center', className: '' });
+  map.fitBounds([mit, google], { padding: [60, 60] });
+</script>
+</body>
+</html>
