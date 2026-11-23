@@ -165,7 +165,7 @@ public class JF_Inventario extends javax.swing.JFrame {
         pnlBotones_FlowLayout.setOpaque(false);
         pnlBotones_FlowLayout.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
-        btnSalir.setBackground(new java.awt.Color(96, 125, 139));
+        btnSalir.setBackground(new java.awt.Color(255, 51, 102));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setText("Salir");
