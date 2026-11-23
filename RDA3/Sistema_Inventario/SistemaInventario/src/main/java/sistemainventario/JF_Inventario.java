@@ -21,7 +21,7 @@ public class JF_Inventario extends javax.swing.JFrame {
     }
 
     // ------------------------------------------------------------------
-    // Configuracion (sin tocar el diseño generado)
+    // Configuracion
     // ------------------------------------------------------------------
     private void configurarConsultas() {
         jcbConsulta.setModel(new DefaultComboBoxModel<>(new String[]{
