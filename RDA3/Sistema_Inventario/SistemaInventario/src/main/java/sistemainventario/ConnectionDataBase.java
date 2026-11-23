@@ -1,31 +1,26 @@
 package sistemainventario;
 
+import java.io.File;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Prueba de conexion a PostgreSQL siguiendo los 7 pasos de JDBC.
+ * Prueba de conexion a SQLite siguiendo los 7 pasos de JDBC.
+ *
+ * La base es un archivo local incluido en la raiz del proyecto (inventario.db),
+ * por lo que funciona en cualquier maquina sin instalar nada. Si el archivo
+ * no existe, BaseDatos lo crea automaticamente desde el script embebido.
  */
 public class ConnectionDataBase {
-
-    private static final String URL = "jdbc:postgresql://localhost:5432/inventario";
-    private static final String USUARIO = "user";
-    private static final String CLAVE = "password";
 
     /**
      * Pasos 1 y 2 de la conexion: carga el driver y abre la conexion.
      * Quien la reciba debe cerrarla (paso 7).
      */
     public static Connection getConexion() throws SQLException {
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new SQLException("No se encontro el driver de PostgreSQL", e);
-        }
-        return DriverManager.getConnection(URL, USUARIO, CLAVE);
+        return BaseDatos.getConexion();
     }
 
     public static void main(String[] args) {
@@ -34,13 +29,12 @@ public class ConnectionDataBase {
         ResultSet resultado = null;
 
         try {
-            // 1. Establecer el driver
-            Class.forName("org.postgresql.Driver");
+            // 1 y 2. Driver cargado y conexion establecida (via BaseDatos)
+            conexion = getConexion();
             System.out.println("1. Driver cargado");
-
-            // 2. Establecer la conexion
-            conexion = DriverManager.getConnection(URL, USUARIO, CLAVE);
-            System.out.println("2. Conexion establecida");
+            File archivo = BaseDatos.resolverArchivo();
+            System.out.println("2. Conexion establecida: " + archivo.getAbsolutePath()
+                    + " (existe: " + archivo.exists() + ")");
 
             // 3. Establecer el query
             String sql = "SELECT id_categoria, nombre, descripcion, estado FROM categorias";
@@ -61,8 +55,6 @@ public class ConnectionDataBase {
                 System.out.println(id + " | " + nombre + " | " + descripcion + " | " + estado);
             }
 
-        } catch (ClassNotFoundException e) {
-            System.out.println("No se encontro el driver: " + e.getMessage());
         } catch (SQLException e) {
             System.out.println("Error de base de datos: " + e.getMessage());
         } finally {

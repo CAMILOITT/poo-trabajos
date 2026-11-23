@@ -1,19 +1,21 @@
 -- =====================================================
--- CASO 3. SISTEMA DE INVENTARIO  (PostgreSQL)
--- Ejecutar en pgAdmin > Query Tool sobre una base vacia
+-- CASO 3. SISTEMA DE INVENTARIO  (SQLite)
+-- Ejecutar con la CLI de SQLite sobre la base inventario.db:
+--   sqlite3 inventario.db < inventario_ScriptCreacion.sql
+-- En este proyecto la base la genera el servicio "sqlite" del
+-- docker-compose ubicado en C:/Dev/universidad/db-1/rda1
+-- (sqlite_data/inventario.db).
 -- =====================================================
--- (Opcional) crear la base desde la conexion 'postgres':
--- CREATE DATABASE inventario;
--- \c inventario
 
-DROP TABLE IF EXISTS movimientos CASCADE;
-DROP TABLE IF EXISTS articulos   CASCADE;
-DROP TABLE IF EXISTS proveedores CASCADE;
-DROP TABLE IF EXISTS categorias  CASCADE;
+DROP VIEW IF EXISTS v_existencias;
+DROP TABLE IF EXISTS movimientos;
+DROP TABLE IF EXISTS articulos;
+DROP TABLE IF EXISTS proveedores;
+DROP TABLE IF EXISTS categorias;
 
 -- ---------- TABLAS ----------
 CREATE TABLE categorias (
-    id_categoria SERIAL       PRIMARY KEY,
+    id_categoria INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre       VARCHAR(50)  NOT NULL UNIQUE,
     descripcion  VARCHAR(150),
     estado       CHAR(1)      NOT NULL DEFAULT 'A',
@@ -21,7 +23,7 @@ CREATE TABLE categorias (
 );
 
 CREATE TABLE proveedores (
-    id_proveedor SERIAL       PRIMARY KEY,
+    id_proveedor INTEGER PRIMARY KEY AUTOINCREMENT,
     ruc          CHAR(13)     NOT NULL UNIQUE,
     nombre       VARCHAR(100) NOT NULL,
     contacto     VARCHAR(80),
@@ -34,7 +36,7 @@ CREATE TABLE proveedores (
 );
 
 CREATE TABLE articulos (
-    id_articulo    SERIAL        PRIMARY KEY,
+    id_articulo    INTEGER PRIMARY KEY AUTOINCREMENT,
     codigo         CHAR(7)       NOT NULL UNIQUE,
     nombre         VARCHAR(100)  NOT NULL,
     descripcion    VARCHAR(200),
@@ -52,7 +54,7 @@ CREATE TABLE articulos (
 );
 
 CREATE TABLE movimientos (
-    id_movimiento   SERIAL        PRIMARY KEY,
+    id_movimiento   INTEGER PRIMARY KEY AUTOINCREMENT,
     id_articulo     INTEGER       NOT NULL,
     tipo            VARCHAR(6)    NOT NULL,
     cantidad        INTEGER       NOT NULL CHECK (cantidad > 0),
@@ -114,7 +116,7 @@ INSERT INTO movimientos (id_articulo, tipo, cantidad, precio_unitario, fecha, do
  (8, 'VENTA',  5,  3.50, '2026-10-17', 'FV-0008', NULL);
 
 -- ---------- VISTA DE EXISTENCIAS (derivadas de movimientos) ----------
-CREATE OR REPLACE VIEW v_existencias AS
+CREATE VIEW v_existencias AS
 SELECT a.id_articulo, a.codigo, a.nombre,
        COALESCE(SUM(CASE m.tipo WHEN 'COMPRA' THEN m.cantidad
                                 WHEN 'VENTA'  THEN -m.cantidad END), 0) AS existencias,
