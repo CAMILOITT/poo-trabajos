@@ -11,9 +11,9 @@ import java.sql.Statement;
  */
 public class ConnectionDataBase {
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/Inventario";
-    private static final String USUARIO = "postgres";
-    private static final String CLAVE = "Kam3009";
+    private static final String URL = "jdbc:postgresql://localhost:5432/inventario";
+    private static final String USUARIO = "user";
+    private static final String CLAVE = "password";
 
     /**
      * Pasos 1 y 2 de la conexion: carga el driver y abre la conexion.
