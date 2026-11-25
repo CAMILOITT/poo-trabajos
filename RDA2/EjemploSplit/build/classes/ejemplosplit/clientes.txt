@@ -1,0 +1,6 @@
+1710000001,Ana,Torres,0991111111,120
+1710000002,Luis,Mera,0992222222,45
+1710000003,María,Pérez,0993333333,0
+esta linea no tiene el formato correcto
+1710000004,Carlos,Andrade,0994444444,abc
+1710000005,Sofía,Villacís,0995555555,310
