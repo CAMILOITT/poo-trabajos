@@ -40,7 +40,7 @@ public class JFrameConsultas extends javax.swing.JFrame {
         panelGrafico = new javax.swing.JPanel();
         panelInferior = new javax.swing.JPanel();
         etiquetaEstado = new javax.swing.JLabel();
-        botonSalir = new javax.swing.JButton();
+        botonRegresar = new javax.swing.JButton();
         panelFranjaInferior = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -112,18 +112,18 @@ public class JFrameConsultas extends javax.swing.JFrame {
         etiquetaEstado.setText("Elija una consulta y presione Ejecutar");
         panelInferior.add(etiquetaEstado, java.awt.BorderLayout.CENTER);
 
-        botonSalir.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/iconos/icono_salir.png"))); // NOI18N
-        botonSalir.setText("Salir");
-        botonSalir.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(31, 58, 95)), javax.swing.BorderFactory.createEmptyBorder(6, 14, 6, 14)));
-        botonSalir.setContentAreaFilled(false);
-        botonSalir.setOpaque(true);
-        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+        botonRegresar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/iconos/icono_regresar.png"))); // NOI18N
+        botonRegresar.setText("Regresar al menu");
+        botonRegresar.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(31, 58, 95)), javax.swing.BorderFactory.createEmptyBorder(6, 14, 6, 14)));
+        botonRegresar.setContentAreaFilled(false);
+        botonRegresar.setOpaque(true);
+        botonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSalirActionPerformed(evt);
+                botonRegresarActionPerformed(evt);
             }
         });
-        panelInferior.add(botonSalir, java.awt.BorderLayout.EAST);
+        panelInferior.add(botonRegresar, java.awt.BorderLayout.EAST);
 
         panelContenido.add(panelInferior, java.awt.BorderLayout.SOUTH);
 
@@ -141,9 +141,15 @@ public class JFrameConsultas extends javax.swing.JFrame {
         ejecutarConsulta();
     }//GEN-LAST:event_botonEjecutarActionPerformed
 
-    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_botonSalirActionPerformed
+    private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
+        regresarAlMenu();
+    }//GEN-LAST:event_botonRegresarActionPerformed
+
+    private void regresarAlMenu() {
+        JFrameMenu menu = new JFrameMenu();
+        menu.setVisible(true);
+        dispose();
+    }
 
     private void ejecutarConsulta() {
         int opcion = comboConsultas.getSelectedIndex();
@@ -414,7 +420,7 @@ public class JFrameConsultas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonEjecutar;
-    private javax.swing.JButton botonSalir;
+    private javax.swing.JButton botonRegresar;
     private javax.swing.JComboBox<String> comboConsultas;
     private javax.swing.JLabel etiquetaConsulta;
     private javax.swing.JLabel etiquetaEstado;

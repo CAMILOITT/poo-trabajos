@@ -3,7 +3,7 @@ package universidad;
 public class Universidad {
 
     public static void main(String[] args) {
-        JFrameConsultas ventana = new JFrameConsultas();
+        JFrameMenu ventana = new JFrameMenu();
         ventana.setVisible(true);
     }
 }
