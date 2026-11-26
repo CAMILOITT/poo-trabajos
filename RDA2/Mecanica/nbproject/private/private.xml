@@ -2,21 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Dev/universidad/poo-trabajos/RDA2/Mecanica/src/mecanica/ArchivoDatos.java</file>
-            <file>file:/C:/Dev/universidad/poo-trabajos/RDA2/Mecanica/src/mecanica/Cliente.java</file>
-            <file>file:/C:/Dev/universidad/poo-trabajos/RDA2/Mecanica/src/mecanica/Factura.java</file>
-            <file>file:/C:/Dev/universidad/poo-trabajos/RDA2/Mecanica/src/mecanica/Repuesto.java</file>
-            <file>file:/C:/Dev/universidad/poo-trabajos/RDA2/Mecanica/src/mecanica/OrdenTrabajo.java</file>
-            <file>file:/C:/Dev/universidad/poo-trabajos/RDA2/Mecanica/src/mecanica/Persona.java</file>
-            <file>file:/C:/Dev/universidad/poo-trabajos/RDA2/Mecanica/src/mecanica/Mecanica.java</file>
-            <file>file:/C:/Dev/universidad/poo-trabajos/RDA2/Mecanica/src/mecanica/JFrame_ResgistarMecanico.java</file>
-            <file>file:/C:/Dev/universidad/poo-trabajos/RDA2/Mecanica/src/mecanica/JFrame_GestionarRepuesto.java</file>
-            <file>file:/C:/Dev/universidad/poo-trabajos/RDA2/Mecanica/src/mecanica/JFrameTallerMenu.java</file>
-            <file>file:/C:/Dev/universidad/poo-trabajos/RDA2/Mecanica/src/mecanica/JFrameReportes.java</file>
-            <file>file:/C:/Dev/universidad/poo-trabajos/RDA2/Mecanica/src/mecanica/JFrameRegistrarTrabajo.java</file>
-            <file>file:/C:/Dev/universidad/poo-trabajos/RDA2/Mecanica/src/mecanica/JFrameRegistrarCliente.java</file>
-            <file>file:/C:/Dev/universidad/poo-trabajos/RDA2/Mecanica/src/mecanica/JFrameCrearFactura.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

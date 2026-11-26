@@ -62,7 +62,6 @@ public class JFrameEstudiantes extends javax.swing.JFrame {
 
         panelFranjaSuperior.setBackground(new java.awt.Color(31, 58, 95));
         panelFranjaSuperior.setPreferredSize(new java.awt.Dimension(100, 8));
-        panelFranjaSuperior.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 5));
         getContentPane().add(panelFranjaSuperior, java.awt.BorderLayout.NORTH);
 
         panelContenido.setBackground(new java.awt.Color(236, 240, 244));
@@ -81,37 +80,48 @@ public class JFrameEstudiantes extends javax.swing.JFrame {
         etiquetaFormulario.setForeground(new java.awt.Color(31, 58, 95));
         etiquetaFormulario.setText("Datos del estudiante");
         panelCampos.add(etiquetaFormulario);
+
         etiquetaCodigo.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         etiquetaCodigo.setForeground(new java.awt.Color(31, 58, 95));
         etiquetaCodigo.setText("Codigo");
         panelCampos.add(etiquetaCodigo);
+
         campoCodigo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         campoCodigo.setEditable(false);
         panelCampos.add(campoCodigo);
+
         etiquetaCedula.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         etiquetaCedula.setForeground(new java.awt.Color(31, 58, 95));
         etiquetaCedula.setText("Cedula");
         panelCampos.add(etiquetaCedula);
+
         campoCedula.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         panelCampos.add(campoCedula);
+
         etiquetaNombres.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         etiquetaNombres.setForeground(new java.awt.Color(31, 58, 95));
         etiquetaNombres.setText("Nombres");
         panelCampos.add(etiquetaNombres);
+
         campoNombres.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         panelCampos.add(campoNombres);
+
         etiquetaApellidos.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         etiquetaApellidos.setForeground(new java.awt.Color(31, 58, 95));
         etiquetaApellidos.setText("Apellidos");
         panelCampos.add(etiquetaApellidos);
+
         campoApellidos.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         panelCampos.add(campoApellidos);
+
         etiquetaCarrera.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         etiquetaCarrera.setForeground(new java.awt.Color(31, 58, 95));
         etiquetaCarrera.setText("Carrera");
         panelCampos.add(etiquetaCarrera);
+
         comboCarrera.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         panelCampos.add(comboCarrera);
+
         panelFormulario.add(panelCampos, java.awt.BorderLayout.NORTH);
 
         panelContenido.add(panelFormulario, java.awt.BorderLayout.WEST);
@@ -127,6 +137,7 @@ public class JFrameEstudiantes extends javax.swing.JFrame {
         etiquetaBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/iconos/icono_buscar_chico.png"))); // NOI18N
         etiquetaBuscar.setText("Buscar");
         panelBusqueda.add(etiquetaBuscar);
+
         campoBuscar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         campoBuscar.setColumns(28);
         campoBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -135,6 +146,7 @@ public class JFrameEstudiantes extends javax.swing.JFrame {
             }
         });
         panelBusqueda.add(campoBuscar);
+
         panelListado.add(panelBusqueda, java.awt.BorderLayout.NORTH);
 
         tablaEstudiantes.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -168,6 +180,7 @@ public class JFrameEstudiantes extends javax.swing.JFrame {
         etiquetaEstado.setForeground(new java.awt.Color(80, 90, 110));
         etiquetaEstado.setText(" ");
         panelListado.add(etiquetaEstado, java.awt.BorderLayout.SOUTH);
+
         panelContenido.add(panelListado, java.awt.BorderLayout.CENTER);
 
         panelInferior.setBackground(new java.awt.Color(236, 240, 244));
@@ -176,7 +189,6 @@ public class JFrameEstudiantes extends javax.swing.JFrame {
         panelBotones.setBackground(new java.awt.Color(236, 240, 244));
         panelBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 0));
 
-        botonGuardar.setBackground(new java.awt.Color(255, 255, 255));
         botonGuardar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/iconos/icono_guardar.png"))); // NOI18N
         botonGuardar.setText("Guardar");
@@ -189,7 +201,7 @@ public class JFrameEstudiantes extends javax.swing.JFrame {
             }
         });
         panelBotones.add(botonGuardar);
-        botonActualizar.setBackground(new java.awt.Color(255, 255, 255));
+
         botonActualizar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         botonActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/iconos/icono_editar.png"))); // NOI18N
         botonActualizar.setText("Actualizar");
@@ -202,7 +214,7 @@ public class JFrameEstudiantes extends javax.swing.JFrame {
             }
         });
         panelBotones.add(botonActualizar);
-        botonEliminar.setBackground(new java.awt.Color(255, 255, 255));
+
         botonEliminar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/iconos/icono_eliminar.png"))); // NOI18N
         botonEliminar.setText("Eliminar");
@@ -215,7 +227,7 @@ public class JFrameEstudiantes extends javax.swing.JFrame {
             }
         });
         panelBotones.add(botonEliminar);
-        botonLimpiar.setBackground(new java.awt.Color(255, 255, 255));
+
         botonLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         botonLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/iconos/icono_limpiar.png"))); // NOI18N
         botonLimpiar.setText("Limpiar");
@@ -228,9 +240,9 @@ public class JFrameEstudiantes extends javax.swing.JFrame {
             }
         });
         panelBotones.add(botonLimpiar);
+
         panelInferior.add(panelBotones, java.awt.BorderLayout.CENTER);
 
-        botonRegresar.setBackground(new java.awt.Color(255, 255, 255));
         botonRegresar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/iconos/icono_regresar.png"))); // NOI18N
         botonRegresar.setText("Regresar al menu");
@@ -243,13 +255,13 @@ public class JFrameEstudiantes extends javax.swing.JFrame {
             }
         });
         panelInferior.add(botonRegresar, java.awt.BorderLayout.EAST);
+
         panelContenido.add(panelInferior, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(panelContenido, java.awt.BorderLayout.CENTER);
 
         panelFranjaInferior.setBackground(new java.awt.Color(31, 58, 95));
         panelFranjaInferior.setPreferredSize(new java.awt.Dimension(100, 22));
-        panelFranjaInferior.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 5));
         getContentPane().add(panelFranjaInferior, java.awt.BorderLayout.SOUTH);
 
         pack();

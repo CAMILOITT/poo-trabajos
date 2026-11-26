@@ -55,7 +55,6 @@ public class JFrameCarreras extends javax.swing.JFrame {
 
         panelFranjaSuperior.setBackground(new java.awt.Color(31, 58, 95));
         panelFranjaSuperior.setPreferredSize(new java.awt.Dimension(100, 8));
-        panelFranjaSuperior.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 5));
         getContentPane().add(panelFranjaSuperior, java.awt.BorderLayout.NORTH);
 
         panelContenido.setBackground(new java.awt.Color(236, 240, 244));
@@ -74,25 +73,32 @@ public class JFrameCarreras extends javax.swing.JFrame {
         etiquetaFormulario.setForeground(new java.awt.Color(31, 58, 95));
         etiquetaFormulario.setText("Datos de la carrera");
         panelCampos.add(etiquetaFormulario);
+
         etiquetaCodigo.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         etiquetaCodigo.setForeground(new java.awt.Color(31, 58, 95));
         etiquetaCodigo.setText("Codigo");
         panelCampos.add(etiquetaCodigo);
+
         campoCodigo.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         campoCodigo.setEditable(false);
         panelCampos.add(campoCodigo);
+
         etiquetaNombre.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         etiquetaNombre.setForeground(new java.awt.Color(31, 58, 95));
         etiquetaNombre.setText("Nombre de la carrera");
         panelCampos.add(etiquetaNombre);
+
         campoNombre.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         panelCampos.add(campoNombre);
+
         etiquetaFacultad.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         etiquetaFacultad.setForeground(new java.awt.Color(31, 58, 95));
         etiquetaFacultad.setText("Facultad");
         panelCampos.add(etiquetaFacultad);
+
         campoFacultad.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         panelCampos.add(campoFacultad);
+
         panelFormulario.add(panelCampos, java.awt.BorderLayout.NORTH);
 
         panelContenido.add(panelFormulario, java.awt.BorderLayout.WEST);
@@ -106,8 +112,9 @@ public class JFrameCarreras extends javax.swing.JFrame {
         etiquetaBuscar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         etiquetaBuscar.setForeground(new java.awt.Color(31, 58, 95));
         etiquetaBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/iconos/icono_buscar_chico.png"))); // NOI18N
-        etiquetaBuscar.setText("Buscar");
+        etiquetaBuscar.setText("Buscar por carrera");
         panelBusqueda.add(etiquetaBuscar);
+
         campoBuscar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         campoBuscar.setColumns(28);
         campoBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -116,6 +123,7 @@ public class JFrameCarreras extends javax.swing.JFrame {
             }
         });
         panelBusqueda.add(campoBuscar);
+
         panelListado.add(panelBusqueda, java.awt.BorderLayout.NORTH);
 
         tablaCarreras.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
@@ -149,6 +157,7 @@ public class JFrameCarreras extends javax.swing.JFrame {
         etiquetaEstado.setForeground(new java.awt.Color(80, 90, 110));
         etiquetaEstado.setText(" ");
         panelListado.add(etiquetaEstado, java.awt.BorderLayout.SOUTH);
+
         panelContenido.add(panelListado, java.awt.BorderLayout.CENTER);
 
         panelInferior.setBackground(new java.awt.Color(236, 240, 244));
@@ -157,7 +166,6 @@ public class JFrameCarreras extends javax.swing.JFrame {
         panelBotones.setBackground(new java.awt.Color(236, 240, 244));
         panelBotones.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 0));
 
-        botonGuardar.setBackground(new java.awt.Color(255, 255, 255));
         botonGuardar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/iconos/icono_guardar.png"))); // NOI18N
         botonGuardar.setText("Guardar");
@@ -170,7 +178,7 @@ public class JFrameCarreras extends javax.swing.JFrame {
             }
         });
         panelBotones.add(botonGuardar);
-        botonActualizar.setBackground(new java.awt.Color(255, 255, 255));
+
         botonActualizar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         botonActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/iconos/icono_editar.png"))); // NOI18N
         botonActualizar.setText("Actualizar");
@@ -183,7 +191,7 @@ public class JFrameCarreras extends javax.swing.JFrame {
             }
         });
         panelBotones.add(botonActualizar);
-        botonEliminar.setBackground(new java.awt.Color(255, 255, 255));
+
         botonEliminar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/iconos/icono_eliminar.png"))); // NOI18N
         botonEliminar.setText("Eliminar");
@@ -196,7 +204,7 @@ public class JFrameCarreras extends javax.swing.JFrame {
             }
         });
         panelBotones.add(botonEliminar);
-        botonLimpiar.setBackground(new java.awt.Color(255, 255, 255));
+
         botonLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         botonLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/iconos/icono_limpiar.png"))); // NOI18N
         botonLimpiar.setText("Limpiar");
@@ -209,9 +217,9 @@ public class JFrameCarreras extends javax.swing.JFrame {
             }
         });
         panelBotones.add(botonLimpiar);
+
         panelInferior.add(panelBotones, java.awt.BorderLayout.CENTER);
 
-        botonRegresar.setBackground(new java.awt.Color(255, 255, 255));
         botonRegresar.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidad/iconos/icono_regresar.png"))); // NOI18N
         botonRegresar.setText("Regresar al menu");
@@ -224,13 +232,13 @@ public class JFrameCarreras extends javax.swing.JFrame {
             }
         });
         panelInferior.add(botonRegresar, java.awt.BorderLayout.EAST);
+
         panelContenido.add(panelInferior, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(panelContenido, java.awt.BorderLayout.CENTER);
 
         panelFranjaInferior.setBackground(new java.awt.Color(31, 58, 95));
         panelFranjaInferior.setPreferredSize(new java.awt.Dimension(100, 22));
-        panelFranjaInferior.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 5));
         getContentPane().add(panelFranjaInferior, java.awt.BorderLayout.SOUTH);
 
         pack();
