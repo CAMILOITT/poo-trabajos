@@ -346,7 +346,7 @@ public class ArchivoDatos {
             f.seek(f.length()); //para no sobreescribir
 
             f.writeInt(datoFactura.getNumeroFactura());
-            escribirTexto(f, formatoFecha.format(datoFactura.getFehca()), TAM_FECHA);
+            escribirTexto(f, formatoFecha.format(datoFactura.getFecha()), TAM_FECHA);
         }
         catch (IOException e)
         {

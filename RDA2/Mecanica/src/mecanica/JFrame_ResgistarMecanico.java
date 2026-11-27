@@ -45,12 +45,14 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
         etiquetaApellidoMecanico = new javax.swing.JLabel();
         etiquetaCedulaMecanico = new javax.swing.JLabel();
         etiquetaCelularMecanico = new javax.swing.JLabel();
+        etiquetaCorreoMecanico = new javax.swing.JLabel();
         etiquetaEspecialidadMecanico = new javax.swing.JLabel();
         panelEntrada = new javax.swing.JPanel();
         campoNombre = new javax.swing.JTextField();
         campoApellido = new javax.swing.JTextField();
         campoCedula = new javax.swing.JTextField();
         campoCelular = new javax.swing.JTextField();
+        campoCorreo = new javax.swing.JTextField();
         campoEspecialidad = new javax.swing.JTextField();
         PanelBotones = new javax.swing.JPanel();
         botonRegistrar = new javax.swing.JButton();
@@ -61,10 +63,10 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
         setTitle("Registro de mecánicos");
 
         PanelCampos.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 25, 15, 25));
-        PanelCampos.setPreferredSize(new java.awt.Dimension(380, 240));
+        PanelCampos.setPreferredSize(new java.awt.Dimension(380, 285));
         PanelCampos.setLayout(new java.awt.BorderLayout(10, 0));
 
-        panelEtiquetas.setLayout(new java.awt.GridLayout(5, 1, 0, 15));
+        panelEtiquetas.setLayout(new java.awt.GridLayout(6, 1, 0, 15));
 
         etiquetaNombreMecanico.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         etiquetaNombreMecanico.setText("Nombre:");
@@ -82,6 +84,10 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
         etiquetaCelularMecanico.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         panelEtiquetas.add(etiquetaCelularMecanico);
 
+        etiquetaCorreoMecanico.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        etiquetaCorreoMecanico.setText("Correo:");
+        panelEtiquetas.add(etiquetaCorreoMecanico);
+
         etiquetaEspecialidadMecanico.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         etiquetaEspecialidadMecanico.setText("Especialidad:");
         etiquetaEspecialidadMecanico.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -89,7 +95,7 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
 
         PanelCampos.add(panelEtiquetas, java.awt.BorderLayout.WEST);
 
-        panelEntrada.setLayout(new java.awt.GridLayout(5, 1, 0, 15));
+        panelEntrada.setLayout(new java.awt.GridLayout(6, 1, 0, 15));
 
         campoNombre.addActionListener(this::campoNombreActionPerformed);
         panelEntrada.add(campoNombre);
@@ -100,6 +106,7 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
 
         campoCelular.addActionListener(this::campoCelularActionPerformed);
         panelEntrada.add(campoCelular);
+        panelEntrada.add(campoCorreo);
 
         campoEspecialidad.addActionListener(this::campoEspecialidadActionPerformed);
         panelEntrada.add(campoEspecialidad);
@@ -134,7 +141,7 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
 
         getContentPane().add(PanelBotones, java.awt.BorderLayout.SOUTH);
 
-        setBounds(0, 0, 460, 350);
+        setBounds(0, 0, 460, 395);
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreActionPerformed
@@ -150,9 +157,11 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
         String apellido = campoApellido.getText().trim();
         String cedula = campoCedula.getText().trim();
         String celular = campoCelular.getText().trim();
+        String correo = campoCorreo.getText().trim();
         String especialidad = campoEspecialidad.getText().trim();
 
-        if (nombre.isEmpty() || apellido.isEmpty() || cedula.isEmpty() || especialidad.isEmpty()) {
+        if (nombre.isEmpty() || apellido.isEmpty() || cedula.isEmpty()
+                || celular.isEmpty() || correo.isEmpty() || especialidad.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Complete todos los campos.",
                     "Campos vacíos", JOptionPane.WARNING_MESSAGE);
             return;
@@ -163,6 +172,16 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
                     "Cédula no válida", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        if (!celular.matches("09\\d{8}")) {
+            JOptionPane.showMessageDialog(this, "El celular debe tener 10 dígitos y empezar con 09.",
+                    "Celular no válido", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!correo.matches("[\\w.+-]+@[\\w-]+(\\.[\\w-]+)+")) {
+            JOptionPane.showMessageDialog(this, "El correo no es válido (ejemplo: nombre@correo.com).",
+                    "Correo no válido", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         for (int i = 0; i < listaMecanicos.size(); i++) {
             if (listaMecanicos.get(i).getCedula().equals(cedula)) {
@@ -171,8 +190,7 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
                 return;
             }
         }
-        // Le pasamos "" en el correo ya que no lo capturamos en este formulario
-        Mecanico nuevo = new Mecanico(especialidad, nombre, apellido, cedula, celular, "");
+        Mecanico nuevo = new Mecanico(especialidad, nombre, apellido, cedula, celular, correo);
 
         // Guardamos el objeto 'nuevo' en la lista
         listaMecanicos.add(nuevo);
@@ -209,6 +227,7 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
         campoEspecialidad.setText("");
         campoNombre.requestFocus();
         campoCelular.setText("");
+        campoCorreo.setText("");
     }
 
     /**
@@ -245,11 +264,13 @@ public class JFrame_ResgistarMecanico extends javax.swing.JFrame {
     private javax.swing.JTextField campoApellido;
     private javax.swing.JTextField campoCedula;
     private javax.swing.JTextField campoCelular;
+    private javax.swing.JTextField campoCorreo;
     private javax.swing.JTextField campoEspecialidad;
     private javax.swing.JTextField campoNombre;
     private javax.swing.JLabel etiquetaApellidoMecanico;
     private javax.swing.JLabel etiquetaCedulaMecanico;
     private javax.swing.JLabel etiquetaCelularMecanico;
+    private javax.swing.JLabel etiquetaCorreoMecanico;
     private javax.swing.JLabel etiquetaEspecialidadMecanico;
     private javax.swing.JLabel etiquetaNombreMecanico;
     private javax.swing.JPanel panelEntrada;

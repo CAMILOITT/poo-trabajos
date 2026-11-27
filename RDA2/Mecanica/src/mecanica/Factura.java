@@ -35,7 +35,7 @@ public class Factura {
         return numeroFactura;
     }
 
-    public Date getFehca() {
+    public Date getFecha() {
         return fecha;
     }
 

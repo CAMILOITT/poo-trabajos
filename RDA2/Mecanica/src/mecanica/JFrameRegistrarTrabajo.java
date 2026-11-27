@@ -229,7 +229,10 @@ public class JFrameRegistrarTrabajo extends javax.swing.JFrame {
 
         OrdenTrabajo orden = new OrdenTrabajo(numero, new Date());
         for (int i = 0; i < repuestosSeleccionados.size(); i++) {
-            orden.agregarRepuesto(repuestosSeleccionados.get(i));
+            Repuesto r = repuestosSeleccionados.get(i);
+            orden.agregarRepuesto(r);
+            r.setCantidad(r.getCantidad() - 1); //descuenta del stock
+            ArchivoDatos.actualizarRepuesto(r);
         }
 
         cliente.solicitarOrden(orden);
@@ -272,7 +275,19 @@ public class JFrameRegistrarTrabajo extends javax.swing.JFrame {
             return;
         }
 
-        repuestosSeleccionados.add(listaRepuestos.get(posicion - 1));
+        Repuesto repuesto = listaRepuestos.get(posicion - 1);
+        int usados = 0;
+        for (int i = 0; i < repuestosSeleccionados.size(); i++) {
+            if (repuestosSeleccionados.get(i).getCodigo().equals(repuesto.getCodigo())) {
+                usados++;
+            }
+        }
+        if (usados >= repuesto.getCantidad()) {
+            JOptionPane.showMessageDialog(this, "No hay stock suficiente de " + repuesto.getNombre() + ".",
+                    "Sin stock", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        repuestosSeleccionados.add(repuesto);
         actualizarTablaRepuestos();
     }//GEN-LAST:event_botonRegistrarActionPerformed
 
